@@ -33,9 +33,9 @@
 
 <td>waydxd</td>
 
-<td>team1-dev</td>
+<td>Task3</td>
 
-<td>Create/Manage Team Repo</td>
+<td>Task3</td>
 
 </tr>
 
@@ -49,9 +49,9 @@
 
 <td>yxqxq</td>
 
-<td>team1-dev</td>
+<td>Task1</td>
 
-<td>Editing Source</td>
+<td>Task1</td>
 
 </tr>
 
@@ -65,9 +65,9 @@
 
 <td>EZEROR</td>
 
-<td>team1-dev</td>
+<td>Task2</td>
 
-<td>Create Readme files</td>
+<td>Task2</td>
 
 </tr>
 
