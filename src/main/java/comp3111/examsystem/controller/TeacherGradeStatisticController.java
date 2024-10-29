@@ -101,32 +101,64 @@ public class TeacherGradeStatisticController implements Initializable {
 
     @FXML
     public void refresh() {
+        gradeTable.refresh();
+        loadChart();
     }
 
     private void loadChart() {
+        // Bar Chart - Average score per course
         XYChart.Series<String, Number> seriesBar = new XYChart.Series<>();
+        Map<String, Double> courseAverages = calculateCourseAverages();
         seriesBar.getData().clear();
         barChart.getData().clear();
-        for (int i = 0;  i < 5; i++) {
-            seriesBar.getData().add(new XYChart.Data<>("COMP" + i, 50));
-        }
+        courseAverages.forEach((course, avg) ->
+                seriesBar.getData().add(new XYChart.Data<>(course, avg))
+        );
         barChart.getData().add(seriesBar);
 
+        // Pie Chart - Student score distribution
         pieChart.getData().clear();
-        for (int i = 0;  i < 4; i++) {
-            pieChart.getData().add(new PieChart.Data("student" + i, 80));
-        }
+        gradeList.forEach(grade ->
+                pieChart.getData().add(new PieChart.Data(
+                        grade.getStudentName(),
+                        Double.parseDouble(grade.getScore())
+                ))
+        );
 
+        // Line Chart - Score progression
         XYChart.Series<String, Number> seriesLine = new XYChart.Series<>();
         seriesLine.getData().clear();
         lineChart.getData().clear();
-        for (int i = 0;  i < 6; i++) {
-            seriesLine.getData().add(new XYChart.Data<>("COMP3111" + "-" + "quiz" + i, 70));
-        }
+        gradeList.forEach(grade ->
+                seriesLine.getData().add(new XYChart.Data<>(
+                        grade.getCourseNum() + "-" + grade.getExamName(),
+                        Double.parseDouble(grade.getScore())
+                ))
+        );
         lineChart.getData().add(seriesLine);
-
     }
 
+    private Map<String, Double> calculateCourseAverages() {
+        Map<String, List<Double>> courseScores = new HashMap<>();
+        Map<String, Double> averages = new HashMap<>();
+
+        gradeList.forEach(grade -> {
+            String course = grade.getCourseNum();
+            double score = Double.parseDouble(grade.getScore());
+            courseScores.computeIfAbsent(course, k -> FXCollections.observableArrayList())
+                    .add(score);
+        });
+
+        courseScores.forEach((course, scores) -> {
+            double avg = scores.stream()
+                    .mapToDouble(Double::doubleValue)
+                    .average()
+                    .orElse(0.0);
+            averages.put(course, avg);
+        });
+
+        return averages;
+    }
     @FXML
     public void reset() {
     }
