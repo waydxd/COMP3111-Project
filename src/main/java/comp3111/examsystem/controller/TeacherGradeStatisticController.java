@@ -15,28 +15,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.HashSet;
+import java.util.Set;
+import comp3111.examsystem.entity.Grade;
 
 public class TeacherGradeStatisticController implements Initializable {
-    public static class GradeExampleClass {
-        public String getStudentName() {
-            return "student";
-        }
-        public String getCourseNum() {
-            return "comp3111";
-        }
-        public String getExamName() {
-            return "final";
-        }
-        public String getScore() {
-            return "100";
-        }
-        public String getFullScore() {
-            return "100";
-        }
-        public String getTimeSpend() {
-            return "60";
-        }
-    }
+    Grade Grade = new Grade();
 
     @FXML
     private ChoiceBox<String> courseCombox;
@@ -45,19 +29,19 @@ public class TeacherGradeStatisticController implements Initializable {
     @FXML
     private ChoiceBox<String> studentCombox;
     @FXML
-    private TableView<GradeExampleClass> gradeTable;
+    private TableView<Grade> gradeTable;
     @FXML
-    private TableColumn<GradeExampleClass, String> studentColumn;
+    private TableColumn<Grade, String> studentColumn;
     @FXML
-    private TableColumn<GradeExampleClass, String> courseColumn;
+    private TableColumn<Grade, String> courseColumn;
     @FXML
-    private TableColumn<GradeExampleClass, String> examColumn;
+    private TableColumn<Grade, String> examColumn;
     @FXML
-    private TableColumn<GradeExampleClass, String> scoreColumn;
+    private TableColumn<Grade, String> scoreColumn;
     @FXML
-    private TableColumn<GradeExampleClass, String> fullScoreColumn;
+    private TableColumn<Grade, String> fullScoreColumn;
     @FXML
-    private TableColumn<GradeExampleClass, String> timeSpendColumn;
+    private TableColumn<Grade, String> timeSpendColumn;
     @FXML
     BarChart<String, Number> barChart;
     @FXML
@@ -73,7 +57,7 @@ public class TeacherGradeStatisticController implements Initializable {
     @FXML
     PieChart pieChart;
 
-    private final ObservableList<GradeExampleClass> gradeList = FXCollections.observableArrayList();
+    private final ObservableList<Grade> gradeList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -86,17 +70,102 @@ public class TeacherGradeStatisticController implements Initializable {
         categoryAxisLine.setLabel("Exam");
         numberAxisLine.setLabel("Avg. Score");
 
-        gradeList.add(new GradeExampleClass());
+        addDummyData();
+
+        gradeList.add(new Grade());
         gradeTable.setItems(gradeList);
         studentColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
-        courseColumn.setCellValueFactory(new PropertyValueFactory<>("courseNum"));
+        courseColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         examColumn.setCellValueFactory(new PropertyValueFactory<>("examName"));
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
         fullScoreColumn.setCellValueFactory(new PropertyValueFactory<>("fullScore"));
-        timeSpendColumn.setCellValueFactory(new PropertyValueFactory<>("timeSpend"));
+        timeSpendColumn.setCellValueFactory(new PropertyValueFactory<>("timeSpent"));
+
+        initializeChoiceBoxes();
 
         refresh();
         loadChart();
+    }
+    private void addDummyData() {
+        Grade grade1 = new Grade();
+        grade1.setStudentName("John Doe");
+        grade1.setCourseName("COMP3111");
+        grade1.setExamName("Midterm");
+        grade1.setScore(85.5);
+        grade1.setFullScore(100.0);
+        grade1.setTimeSpent(45);
+
+        Grade grade2 = new Grade();
+        grade2.setStudentName("Jane Smith");
+        grade2.setCourseName("COMP3111");
+        grade2.setExamName("Final");
+        grade2.setScore(92.0);
+        grade2.setFullScore(100.0);
+        grade2.setTimeSpent(120);
+
+        Grade grade3 = new Grade();
+        grade3.setStudentName("Alice Johnson");
+        grade3.setCourseName("COMP2012");
+        grade3.setExamName("Quiz 1");
+        grade3.setScore(78.5);
+        grade3.setFullScore(100.0);
+        grade3.setTimeSpent(30);
+
+        Grade grade4 = new Grade();
+        grade4.setStudentName("Bob Wilson");
+        grade4.setCourseName("COMP2012");
+        grade4.setExamName("Midterm");
+        grade4.setScore(88.0);
+        grade4.setFullScore(100.0);
+        grade4.setTimeSpent(60);
+
+        Grade grade5 = new Grade();
+        grade5.setStudentName("Charlie Brown");
+        grade5.setCourseName("COMP1022");
+        grade5.setExamName("Final");
+        grade5.setScore(95.5);
+        grade5.setFullScore(100.0);
+        grade5.setTimeSpent(90);
+
+        gradeList.addAll(grade1, grade2, grade3, grade4, grade5);
+    }
+
+    private void initializeChoiceBoxes() {
+        // Get unique values
+        Set<String> courses = new HashSet<>();
+        Set<String> exams = new HashSet<>();
+        Set<String> students = new HashSet<>();
+
+        gradeList.forEach(grade -> {
+            courses.add(grade.getCourseName());
+            exams.add(grade.getExamName());
+            students.add(grade.getStudentName());
+        });
+
+        // Convert sets to sorted lists
+        ObservableList<String> courseItems = FXCollections.observableArrayList(courses);
+        ObservableList<String> examItems = FXCollections.observableArrayList(exams);
+        ObservableList<String> studentItems = FXCollections.observableArrayList(students);
+
+        // Sort the lists
+        FXCollections.sort(courseItems);
+        FXCollections.sort(examItems);
+        FXCollections.sort(studentItems);
+
+        // Add an empty choice as first item
+        courseItems.add(0, "");
+        examItems.add(0, "");
+        studentItems.add(0, "");
+
+        // Set items to choice boxes
+        courseCombox.setItems(courseItems);
+        examCombox.setItems(examItems);
+        studentCombox.setItems(studentItems);
+
+        // Set default values
+        courseCombox.setValue("");
+        examCombox.setValue("");
+        studentCombox.setValue("");
     }
 
     @FXML
@@ -121,7 +190,7 @@ public class TeacherGradeStatisticController implements Initializable {
         gradeList.forEach(grade ->
                 pieChart.getData().add(new PieChart.Data(
                         grade.getStudentName(),
-                        Double.parseDouble(grade.getScore())
+                        grade.getScore()
                 ))
         );
 
@@ -131,8 +200,8 @@ public class TeacherGradeStatisticController implements Initializable {
         lineChart.getData().clear();
         gradeList.forEach(grade ->
                 seriesLine.getData().add(new XYChart.Data<>(
-                        grade.getCourseNum() + "-" + grade.getExamName(),
-                        Double.parseDouble(grade.getScore())
+                        grade.getCourseName() + "-" + grade.getExamName(),
+                        grade.getScore()
                 ))
         );
         lineChart.getData().add(seriesLine);
@@ -143,8 +212,8 @@ public class TeacherGradeStatisticController implements Initializable {
         Map<String, Double> averages = new HashMap<>();
 
         gradeList.forEach(grade -> {
-            String course = grade.getCourseNum();
-            double score = Double.parseDouble(grade.getScore());
+            String course = grade.getCourseName();
+            double score = grade.getScore();
             courseScores.computeIfAbsent(course, k -> FXCollections.observableArrayList())
                     .add(score);
         });
@@ -161,9 +230,39 @@ public class TeacherGradeStatisticController implements Initializable {
     }
     @FXML
     public void reset() {
+        courseCombox.setValue(null);
+        examCombox.setValue(null);
+        studentCombox.setValue(null);
+        gradeTable.setItems(gradeList);
+        loadChart();
     }
 
     @FXML
     public void query() {
+        String selectedCourse = courseCombox.getValue();
+        String selectedExam = examCombox.getValue();
+        String selectedStudent = studentCombox.getValue();
+
+        ObservableList<Grade> filteredList = FXCollections.observableArrayList();
+
+        for (Grade grade : gradeList) {
+            boolean matches = true;
+            if (selectedCourse != null && !selectedCourse.isEmpty() && !grade.getCourseName().equals(selectedCourse)) {
+                matches = false;
+            }
+            if (selectedExam != null && !selectedExam.isEmpty() && !grade.getExamName().equals(selectedExam)) {
+                matches = false;
+            }
+            if (selectedStudent != null && !selectedStudent.isEmpty() && !grade.getStudentName().equals(selectedStudent)) {
+                matches = false;
+            }
+            if (matches) {
+                filteredList.add(grade);
+            }
+        }
+
+        gradeTable.setItems(filteredList);
+        loadChart();
     }
+
 }
