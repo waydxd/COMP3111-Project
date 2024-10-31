@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseDAOImpl {
+public class CourseDAO {
 
     public void addCourse(String courseCode, String courseName, String instructorName) {
         String sql = "INSERT INTO courses (code, name, instructor) VALUES (?, ?, ?)";
