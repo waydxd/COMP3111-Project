@@ -1,7 +1,6 @@
 package comp3111.examsystem.entity;
 
-public class Course {
-    private int id;
+public class Course extends Entity {
     private String name;
     private String department;
 
@@ -16,13 +15,6 @@ public class Course {
     }
 
     // Getters and Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

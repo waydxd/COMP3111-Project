@@ -1,7 +1,8 @@
 package comp3111.examsystem.entity;
 
-public class Member {
-    public long id;
+import org.jooq.User;
+
+public class Member extends Entity {
     private String Username;
     private String Password;
     private String Name;

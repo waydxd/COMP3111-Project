@@ -47,7 +47,22 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>  </dependencies>
+    </dependency>  <dependency>
+    <groupId>org.jooq</groupId>
+    <artifactId>jooq</artifactId>
+    <version>3.19.14</version>
+  </dependency>
+    <dependency>
+      <groupId>org.jooq</groupId>
+      <artifactId>jooq-meta</artifactId>
+      <version>3.19.14</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jooq</groupId>
+      <artifactId>jooq-codegen</artifactId>
+      <version>3.19.14</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
@@ -76,6 +91,52 @@
               <noManPages>true</noManPages>
               <stripDebug>true</stripDebug>
               <noHeaderFiles>true</noHeaderFiles>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <!-- Specify the maven code generator plugin -->
+        <!-- Use org.jooq                for the Open Source Edition
+                 org.jooq.pro            for commercial editions with Java 17 support,
+                 org.jooq.pro-java-11    for commercial editions with Java 11 support,
+                 org.jooq.pro-java-8     for commercial editions with Java 8 support,
+                 org.jooq.trial          for the free trial edition with Java 17 support,
+                 org.jooq.trial-java-11  for the free trial edition with Java 11 support,
+                 org.jooq.trial-java-8   for the free trial edition with Java 8 support
+
+         Note: Only the Open Source Edition is hosted on Maven Central.
+               Install the others locally using the provided scripts, or access them from here: https://repo.jooq.org/
+               See the JDK version support matrix here: https://www.jooq.org/download/support-matrix-jdk -->
+
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-codegen-maven</artifactId>
+        <version>3.19.14</version>
+
+        <executions>
+          <execution>
+            <id>generate-sources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <jdbc>
+                <driver>org.sqlite.JDBC</driver>
+                <url>jdbc:sqlite:./sqlite.db</url>
+                <user></user>
+                <password></password>
+              </jdbc>
+              <generator>
+                <name>org.jooq.codegen.JavaGenerator</name>
+                <database>
+                  <name>org.jooq.meta.sqlite.SQLiteDatabase</name>
+                </database>
+                <target>
+                  <packageName>com.examsystem.jooq.generated</packageName>
+                  <directory>src/main/java</directory>
+                </target>
+              </generator>
             </configuration>
           </execution>
         </executions>

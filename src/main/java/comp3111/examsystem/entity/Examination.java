@@ -1,8 +1,7 @@
 package comp3111.examsystem.entity;
 
-public class Examination {
+public class Examination extends Entity {
     private int CourseID;
-    private int id;
     private double examTime;
     private String examName;
     private Question[] questions_list;

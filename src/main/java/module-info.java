@@ -1,9 +1,9 @@
 module comp3111.examsystem {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.desktop;
     requires org.xerial.sqlitejdbc;
     requires javafx.base;
+    requires org.jooq;
 
 
     opens comp3111.examsystem to javafx.fxml;
