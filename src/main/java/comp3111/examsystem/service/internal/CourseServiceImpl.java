@@ -1,14 +1,14 @@
-package comp3111.examsystem.service.impl;
+package comp3111.examsystem.service.internal;
 
+import comp3111.examsystem.dao.internal.CourseDAO;
 import comp3111.examsystem.entity.Course;
 import comp3111.examsystem.service.CourseService;
 import comp3111.examsystem.service.service;
-import comp3111.examsystem.dao.CourseDAOImpl;
 
 import java.util.List;
 
 public class CourseServiceImpl extends service implements CourseService {
-    private final CourseDAOImpl courseDAO = new CourseDAOImpl();
+    private final CourseDAO courseDAO = new CourseDAO();
 
     public void addCourse(String courseCode, String courseName, String instructorName) {
         courseDAO.addCourse(courseCode, courseName, instructorName);

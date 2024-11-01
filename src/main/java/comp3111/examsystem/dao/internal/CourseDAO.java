@@ -1,5 +1,6 @@
-package comp3111.examsystem.dao;
+package comp3111.examsystem.dao.internal;
 
+import comp3111.examsystem.dao.SQLiteConnection;
 import comp3111.examsystem.entity.Course;
 
 import java.sql.Connection;
@@ -58,51 +59,11 @@ public class CourseDAO {
     }
 
     public List<Course> filterCoursesByDepartment(String department) {
-        String sql = "SELECT * FROM courses WHERE department = ?";
-        List<Course> courses = new ArrayList<>();
-
-        try (Connection conn = SQLiteConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, department);
-            ResultSet rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                Course course = new Course();
-                course.setId(rs.getInt("id"));
-                course.setName(rs.getString("name"));
-                course.setDepartment(rs.getString("department"));
-                courses.add(course);
-            }
-
-            return courses;
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Error filtering courses", e);
-        }
+        return null;
     }
 
     // Additional helper methods if needed
     public Course findByCode(String courseCode) {
-        String sql = "SELECT * FROM courses WHERE code = ?";
-
-        try (Connection conn = SQLiteConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, courseCode);
-            ResultSet rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                Course course = new Course();
-                course.setId(rs.getInt("id"));
-                course.setName(rs.getString("name"));
-                course.setDepartment(rs.getString("department"));
-                return course;
-            }
-            return null;
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Error finding course", e);
-        }
+        return null;
     }
 }

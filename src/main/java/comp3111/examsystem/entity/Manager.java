@@ -1,4 +1,8 @@
 package comp3111.examsystem.entity;
 
-public class Manager extends Member {
+public class Manager {
+    public long id;
+    private String Username;
+    private String Password;
+    private Member[] Members;
 }

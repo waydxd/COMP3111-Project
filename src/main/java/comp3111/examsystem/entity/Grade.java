@@ -1,7 +1,6 @@
 package comp3111.examsystem.entity;
 
-public class Grade {
-    private Long id;
+public class Grade extends Entity {
     private String studentName;
     private String courseName;
     private String examName;
@@ -68,7 +67,4 @@ public class Grade {
         this.timeSpent = timeSpent;
     }
 
-    public long getId(Long id) {
-        return this.id;
-    }
 }
