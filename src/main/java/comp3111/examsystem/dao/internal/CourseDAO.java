@@ -1,61 +1,36 @@
 package comp3111.examsystem.dao.internal;
 
-import comp3111.examsystem.dao.SQLiteConnection;
+import comp3111.examsystem.DatabaseConnection;
 import comp3111.examsystem.entity.Course;
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDAO {
+    private DSLContext create;
 
-    public void addCourse(String courseCode, String courseName, String instructorName) {
-        String sql = "INSERT INTO courses (code, name, instructor) VALUES (?, ?, ?)";
-
-        try (Connection conn = SQLiteConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, courseCode);
-            pstmt.setString(2, courseName);
-            pstmt.setString(3, instructorName);
-            pstmt.executeUpdate();
-
+    public CourseDAO() {
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            this.create = DSL.using(conn, SQLDialect.SQLITE);
         } catch (SQLException e) {
-            throw new RuntimeException("Error adding course", e);
+            e.printStackTrace();
         }
+    }
+    public void addCourse(String courseCode, String courseName, String instructorName) {
+
     }
 
     public void updateCourse(String courseID, String courseName, String department) {
-        String sql = "UPDATE courses SET name = ?, department = ? WHERE code = ?";
 
-        try (Connection conn = SQLiteConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, courseName);
-            pstmt.setString(2, department);
-            pstmt.setString(3, courseID);
-            pstmt.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Error updating course", e);
-        }
     }
 
     public void deleteCourse(String courseID) {
-        String sql = "DELETE FROM courses WHERE code = ?";
 
-        try (Connection conn = SQLiteConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, courseID);
-            pstmt.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Error deleting course", e);
-        }
     }
 
     public List<Course> filterCoursesByDepartment(String department) {

@@ -1,13 +1,13 @@
 package comp3111.examsystem.entity;
 
 public class Entity implements java.io.Serializable, Comparable<Member> {
-    protected Long id = 0L;
+    protected int id = 0;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -15,7 +15,7 @@ public class Entity implements java.io.Serializable, Comparable<Member> {
         super();
     }
 
-    public Entity(Long id) {
+    public Entity(int id) {
         super();
         this.id = id;
     }

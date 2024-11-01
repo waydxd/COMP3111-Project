@@ -4,34 +4,41 @@ public class Grade extends Entity {
     private String studentName;
     private String courseName;
     private String examName;
-    private double score;
-    private double fullScore;
-    private double timeSpent;
+    private float score;
+    private float fullScore;
+    private float timeSpent;
 
     // Default constructor with default values
     public Grade() {
-        this.id = 0L;
+        this.id = 0;
         this.studentName = "Default Student";
         this.courseName = "Default Course";
         this.examName = "Default Exam";
-        this.score = 0.0;
-        this.fullScore = 100.0;
+        this.score = 0.0F;
+        this.fullScore = 100.0F;
         this.timeSpent = 0;
     }
-
+    public Grade(String studentName, String courseName, String examName, float score, float fullScore, float timeSpent) {
+        this.studentName = studentName;
+        this.courseName = courseName;
+        this.examName = examName;
+        this.score = score;
+        this.fullScore = fullScore;
+        this.timeSpent = timeSpent;
+    }
     public String getStudentName() {
         return studentName;
     }
 
-    public double getFullScore() {
+    public float getFullScore() {
         return fullScore;
     }
 
-    public double getScore() {
+    public float getScore() {
         return score;
     }
 
-    public double getTimeSpent() {
+    public float getTimeSpent() {
         return timeSpent;
     }
 
@@ -55,15 +62,15 @@ public class Grade extends Entity {
         this.examName = examName;
     }
 
-    public void setScore(double score) {
+    public void setScore(float score) {
         this.score = score;
     }
 
-    public void setFullScore(double fullScore) {
+    public void setFullScore(float fullScore) {
         this.fullScore = fullScore;
     }
 
-    public void setTimeSpent(double timeSpent) {
+    public void setTimeSpent(float timeSpent) {
         this.timeSpent = timeSpent;
     }
 

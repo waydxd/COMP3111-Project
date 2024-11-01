@@ -1,5 +1,7 @@
 package comp3111.examsystem.controller;
 
+import comp3111.examsystem.service.GradeService;
+import comp3111.examsystem.service.internal.GradeServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -61,6 +63,8 @@ public class TeacherGradeStatisticController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        GradeService gradeService = new GradeServiceImpl();
+
         barChart.setLegendVisible(false);
         categoryAxisBar.setLabel("Course");
         numberAxisBar.setLabel("Avg. Score");
@@ -70,9 +74,9 @@ public class TeacherGradeStatisticController implements Initializable {
         categoryAxisLine.setLabel("Exam");
         numberAxisLine.setLabel("Avg. Score");
 
-        addDummyData();
+//        addDummyData();
 
-        gradeList.add(new Grade());
+        gradeList.addAll(gradeService.getAllGrades());
         gradeTable.setItems(gradeList);
         studentColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         courseColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
@@ -86,49 +90,21 @@ public class TeacherGradeStatisticController implements Initializable {
         refresh();
         loadChart();
     }
-    private void addDummyData() {
-        Grade grade1 = new Grade();
-        grade1.setStudentName("John Doe");
-        grade1.setCourseName("COMP3111");
-        grade1.setExamName("Midterm");
-        grade1.setScore(85.5);
-        grade1.setFullScore(100.0);
-        grade1.setTimeSpent(45);
-
-        Grade grade2 = new Grade();
-        grade2.setStudentName("Jane Smith");
-        grade2.setCourseName("COMP3111");
-        grade2.setExamName("Final");
-        grade2.setScore(92.0);
-        grade2.setFullScore(100.0);
-        grade2.setTimeSpent(120);
-
-        Grade grade3 = new Grade();
-        grade3.setStudentName("Alice Johnson");
-        grade3.setCourseName("COMP2012");
-        grade3.setExamName("Quiz 1");
-        grade3.setScore(78.5);
-        grade3.setFullScore(100.0);
-        grade3.setTimeSpent(30);
-
-        Grade grade4 = new Grade();
-        grade4.setStudentName("Bob Wilson");
-        grade4.setCourseName("COMP2012");
-        grade4.setExamName("Midterm");
-        grade4.setScore(88.0);
-        grade4.setFullScore(100.0);
-        grade4.setTimeSpent(60);
-
-        Grade grade5 = new Grade();
-        grade5.setStudentName("Charlie Brown");
-        grade5.setCourseName("COMP1022");
-        grade5.setExamName("Final");
-        grade5.setScore(95.5);
-        grade5.setFullScore(100.0);
-        grade5.setTimeSpent(90);
-
-        gradeList.addAll(grade1, grade2, grade3, grade4, grade5);
-    }
+//    private void addDummyData() {
+//
+//        Grade grade1 = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
+//        Grade grade2 = new Grade("Jane Smith", "COMP3111", "Final", 92.0F, 100.0F, 120);
+//        Grade grade3 = new Grade("Alice Johnson", "COMP2012", "Quiz 1", 78.5F, 100.0F, 30);
+//        Grade grade4 = new Grade("Bob Wilson", "COMP2012", "Midterm", 88.0F, 100.0F, 60);
+//        Grade grade5 = new Grade("Charlie Brown", "COMP1022", "Final", 95.5F, 100.0F, 90);
+//
+//        gradeService.addGrade(grade1);
+//        gradeService.addGrade(grade2);
+//        gradeService.addGrade(grade3);
+//        gradeService.addGrade(grade4);
+//        gradeService.addGrade(grade5);
+//
+//    }
 
     private void initializeChoiceBoxes() {
         // Get unique values

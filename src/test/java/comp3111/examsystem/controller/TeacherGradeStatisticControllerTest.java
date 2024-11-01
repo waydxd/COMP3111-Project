@@ -8,6 +8,7 @@ class TeacherGradeStatisticControllerTest {
 
     @Test
     void initialize() {
+
     }
 
     @Test
