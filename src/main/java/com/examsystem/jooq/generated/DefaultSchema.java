@@ -4,7 +4,6 @@
 package com.examsystem.jooq.generated;
 
 
-import com.examsystem.jooq.generated.tables.Demo;
 import com.examsystem.jooq.generated.tables.Grades;
 
 import java.util.Arrays;
@@ -29,11 +28,6 @@ public class DefaultSchema extends SchemaImpl {
     public static final DefaultSchema DEFAULT_SCHEMA = new DefaultSchema();
 
     /**
-     * The table <code>demo</code>.
-     */
-    public final Demo DEMO = Demo.DEMO;
-
-    /**
      * The table <code>grades</code>.
      */
     public final Grades GRADES = Grades.GRADES;
@@ -54,7 +48,6 @@ public class DefaultSchema extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.asList(
-            Demo.DEMO,
             Grades.GRADES
         );
     }

@@ -4,7 +4,6 @@
 package com.examsystem.jooq.generated;
 
 
-import com.examsystem.jooq.generated.tables.Demo;
 import com.examsystem.jooq.generated.tables.Grades;
 
 
@@ -13,11 +12,6 @@ import com.examsystem.jooq.generated.tables.Grades;
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
 public class Tables {
-
-    /**
-     * The table <code>demo</code>.
-     */
-    public static final Demo DEMO = Demo.DEMO;
 
     /**
      * The table <code>grades</code>.

@@ -25,13 +25,13 @@ public class TeacherGradeStatisticController implements Initializable {
     Grade Grade = new Grade();
 
     @FXML
-    private ChoiceBox<String> courseCombox;
+    protected ChoiceBox<String> courseCombox;
     @FXML
-    private ChoiceBox<String> examCombox;
+    protected ChoiceBox<String> examCombox;
     @FXML
-    private ChoiceBox<String> studentCombox;
+    protected ChoiceBox<String> studentCombox;
     @FXML
-    private TableView<Grade> gradeTable;
+    protected TableView<Grade> gradeTable;
     @FXML
     private TableColumn<Grade, String> studentColumn;
     @FXML
@@ -59,7 +59,7 @@ public class TeacherGradeStatisticController implements Initializable {
     @FXML
     PieChart pieChart;
 
-    private final ObservableList<Grade> gradeList = FXCollections.observableArrayList();
+    protected final ObservableList<Grade> gradeList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -183,7 +183,7 @@ public class TeacherGradeStatisticController implements Initializable {
         lineChart.getData().add(seriesLine);
     }
 
-    private Map<String, Double> calculateCourseAverages() {
+    protected Map<String, Double> calculateCourseAverages() {
         Map<String, List<Double>> courseScores = new HashMap<>();
         Map<String, Double> averages = new HashMap<>();
 

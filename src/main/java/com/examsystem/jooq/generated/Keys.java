@@ -4,9 +4,7 @@
 package com.examsystem.jooq.generated;
 
 
-import com.examsystem.jooq.generated.tables.Demo;
 import com.examsystem.jooq.generated.tables.Grades;
-import com.examsystem.jooq.generated.tables.records.DemoRecord;
 import com.examsystem.jooq.generated.tables.records.GradesRecord;
 
 import org.jooq.TableField;
@@ -26,6 +24,5 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<DemoRecord> DEMO__PK_DEMO = Internal.createUniqueKey(Demo.DEMO, DSL.name("pk_demo"), new TableField[] { Demo.DEMO.ID }, true);
     public static final UniqueKey<GradesRecord> GRADES__PK_GRADES = Internal.createUniqueKey(Grades.GRADES, DSL.name("pk_grades"), new TableField[] { Grades.GRADES.ID }, true);
 }
