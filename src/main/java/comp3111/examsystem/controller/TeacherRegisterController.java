@@ -1,6 +1,7 @@
 package comp3111.examsystem.controller;
 
 import comp3111.examsystem.Main;
+import comp3111.examsystem.entity.Manager;
 import comp3111.examsystem.entity.Teacher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,11 +14,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.text.Position;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import static comp3111.examsystem.entity.Manager.getAccountManager;
+import static comp3111.examsystem.entity.Manager.*;
 
 
 public class TeacherRegisterController implements Initializable {
@@ -46,6 +49,9 @@ public class TeacherRegisterController implements Initializable {
     @FXML
     private PasswordField passwordConfirmTxt;
     private TeacherLoginController teacherLoginController;
+    private int testcount=0;
+
+
     public void initialize(URL location, ResourceBundle resources) {
 
 
@@ -86,33 +92,96 @@ public class TeacherRegisterController implements Initializable {
     public void register(ActionEvent e)
     {
         boolean register_success=true;
-        //Case I:用户名已经存在
+        //Case III: At least one input is empty
+        //Case IV: Invalid Age
+        if(!ageTxt.getText().isEmpty())
+        {
+            int age = Integer.parseInt(ageTxt.getText());
+            if (age < 0 || age > 100) {
+                register_success = false;
+
+                //Error popup
+                ErrorPopupController.Error_Popup("Age must be between 18 and 100.");
+            }
+
+        }
+        if(usernameTxt.getText().isEmpty() || passwordTxt.getText().isEmpty() ||
+                nameTxt.getText().isEmpty() || Gender.getValue() == null ||
+                ageTxt.getText().isEmpty() || departmentTxt.getText().isEmpty() ||
+                Position.getValue() == null)
+        {
+            register_success=false;
+
+            //Error popup
+            ErrorPopupController.Error_Popup("Please fill in all required fields.");
+        }
+        //Case I:Existing username
         if(getAccountManager().account_exist(usernameTxt.getText()))
         {
             register_success=false;
 
-            //显示报错窗口
+            //Error popup
             ErrorPopupController.Error_Popup();
         }
 
-        //Case II:俩个密码不同
-        if(!passwordConfirmTxt.toString().equals(passwordTxt.toString()))
+        //Case II:different pwd
+        if(!passwordConfirmTxt.getText().equals(passwordTxt.getText()))
         {
             register_success=false;
 
-            //显示报错窗口
+            //Error popup
             ErrorPopupController.Error_Popup();
 
         }
 
+
+
+
+
+
         //注册
-        String Username = usernameTxt.getText();
-        String Password = passwordTxt.getText();
-        String Name = nameTxt.getText();
-        String Gender_ = Gender.getValue();
-        String Age = ageTxt.getText();
-        String Department = departmentTxt.getText();
-        String Position_ = Position.getValue();
+        if (register_success) {
+            String Username = usernameTxt.getText();
+            String Password = passwordTxt.getText();
+            String Name = nameTxt.getText();
+            String Gender_ = Gender.getValue();
+            String Age = ageTxt.getText();
+            String Department = departmentTxt.getText();
+            String Position_ = Position.getValue();
+
+            Teacher teacher = new Teacher(
+                    Username,
+                    Password,
+                    Name,
+                    Gender_,
+                    Age,
+                    Department,
+                    Position_
+            );
+
+            //加入到账户库中
+            getAccountManager().addAccount(teacher);
+
+
+            teacherLoginController.getRegisterStage().close();}
+        if(testcount==0)
+        {
+            test();
+            testcount++;
+        }
+
+
+    }
+
+    public static void test()
+    {
+        String Username = "";
+        String Password = "";
+        String Name =     "";
+        String Gender_ =  "";
+        String Age =      "";
+        String Department="";
+        String Position_ ="";
 
         Teacher teacher = new Teacher(
                 Username,
@@ -123,11 +192,7 @@ public class TeacherRegisterController implements Initializable {
                 Department,
                 Position_
         );
-
-        //加入到账户库中
         getAccountManager().addAccount(teacher);
-
-
-
     }
+
 }

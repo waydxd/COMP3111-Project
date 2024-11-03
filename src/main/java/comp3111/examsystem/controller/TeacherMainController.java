@@ -20,10 +20,28 @@ public class TeacherMainController implements Initializable {
 
     @FXML
     public void openQuestionManageUI() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("QuestionBankManagementUI.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Question Management");
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void openExamManageUI() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ExamManagementSystemUI.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Exam Management");
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

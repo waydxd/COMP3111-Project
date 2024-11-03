@@ -4,9 +4,11 @@ import comp3111.examsystem.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +43,22 @@ public class ErrorPopupController implements Initializable  {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ErrorUI.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             errorWindow.setTitle("Error");
+            errorWindow.setScene(scene);
+            errorWindow.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void Error_Popup(String text) {
+        try {
+            if(errorWindow==null)
+            {
+                errorWindow = new Stage();
+            }
+
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ErrorUI.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            errorWindow.setTitle(text);
             errorWindow.setScene(scene);
             errorWindow.show();
         } catch (IOException e) {

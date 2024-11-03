@@ -28,8 +28,6 @@ public class TeacherLoginController implements Initializable {
     public static Stage registerstage;
     public void initialize(URL location, ResourceBundle resources) {
 
-        usernameTxt=new TextField();
-        passwordTxt=new PasswordField();
     }
 
     public boolean Check_login()
@@ -69,6 +67,7 @@ public class TeacherLoginController implements Initializable {
             else
             {
                 //错误弹窗
+                ErrorPopupController.Error_Popup();
 
             }
         } catch (IOException e1) {

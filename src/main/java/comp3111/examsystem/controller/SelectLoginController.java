@@ -32,6 +32,9 @@ public class SelectLoginController {
             stage.setTitle("Teacher Login");
             stage.setScene(scene);
             stage.show();
+
+            //Test
+            TeacherRegisterController.test();
         } catch (IOException e) {
             e.printStackTrace();
         }
