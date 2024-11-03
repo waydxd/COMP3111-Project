@@ -5,6 +5,7 @@ module comp3111.examsystem {
     requires javafx.base;
     requires org.jooq;
     requires java.sql;
+    requires java.desktop;
 
     opens comp3111.examsystem to javafx.fxml;
     opens comp3111.examsystem.entity to javafx.fxml, javafx.base, java.sql, org.jooq;
