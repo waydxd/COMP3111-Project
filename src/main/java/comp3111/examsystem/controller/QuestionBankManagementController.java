@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+
+
 public class QuestionBankManagementController implements Initializable {
 
     @FXML
@@ -76,7 +78,7 @@ public class QuestionBankManagementController implements Initializable {
     @FXML
     private Button updateButton;
 
-    private ObservableList<Question> questionList = FXCollections.observableArrayList();
+//    private ObservableList<Question> questionList = FXCollections.observableArrayList();
 //    private ObservableList<Question> fliter_questionList = FXCollections.observableArrayList();
 
     @Override
@@ -86,7 +88,7 @@ public class QuestionBankManagementController implements Initializable {
 
 
 
-        questionTableView.setItems(questionList);
+        questionTableView.setItems(Question.getQuestionList());
     }
 
     void Bind_All_Columns()
@@ -116,8 +118,8 @@ public class QuestionBankManagementController implements Initializable {
         // Populate the question table view
         Bind_All_Columns();
 
-        // Add  sample questions
-        init_questionlist();
+//        // Add  sample questions
+//        init_questionlist();
 
         // Initialize question filter choice box
         init_ChoiceBox();
@@ -125,26 +127,26 @@ public class QuestionBankManagementController implements Initializable {
 
     }
 
-    private void init_questionlist()
-    {
-
-        questionList.addAll(
-                new Question("Which of the following is a programming language?", new String[] {"Apple", "Java", "Banana", "Orange"}, "B", "Single", "10"),
-                new Question("What does CPU stand for?", new String[] {"Computer Processor", "Central Processing Unit", "Computer Program", "Centralized Programming"}, "B", "Single", "10"),
-                new Question("Which of the following is a programming language?", new String[] {"Excel", "Photoshop", "Java", "HTML"}, "C", "Single", "10"),
-                new Question("What does RAM stand for in computing?", new String[] {"Random Access Memory", "Read-Only Memory", "Running Applications", "Remote Access Memory"}, "A", "Single", "10"),
-                new Question("Which of the following is NOT a programming language?", new String[] {"Java", "Python", "HTML", "Photoshop"}, "D", "Single", "10"),
-                new Question("What is the main function of a GPU?", new String[] {"Data Storage", "Graphics Rendering", "Network Connection", "Power Supply"}, "B", "Single", "10"),
-                new Question("What does HTML stand for in web development?", new String[] {"Hyper Text Markup", "High Tech Modern", "How to Make Lists", "Home Tool Management"}, "A", "Single", "10"),
-                new Question("Which component of a computer is often referred to as the 'brain'?", new String[] {"Hard Drive", "CPU", "Monitor", "Keyboard"}, "B", "Single", "10"),
-                new Question("Which of the following are object-oriented programming languages?", new String[] {"Java", "Python", "C", "HTML"}, "AB", "Multiple", "20"),
-                new Question("Which of the following are types of computer memory?", new String[] {"RAM", "ROM", "CPU", "HDD"}, "AB", "Multiple", "20"),
-                new Question("Which of the following are essential components of a computer?", new String[] {"Motherboard", "Keyboard", "Monitor", "Mouse"}, "ABC", "Multiple", "20"),
-                new Question("Which of the following are commonly used web browsers?", new String[] {"Google Chrome", "Photoshop", "Safari", "Microsoft Word"}, "AC", "Multiple", "20"),
-                new Question("Which of the following are programming paradigms?", new String[] {"Imperative", "Declarative", "Procedural", "Visual Studio"}, "ABC", "Multiple", "20")
-        );
-
-    }
+//    private void init_questionlist()
+//    {
+//
+//                questionList.addAll(
+//                        new Question("Which of the following is a programming language?", new String[] {"Apple", "Java", "Banana", "Orange"}, "B", "Single", "10"),
+//                        new Question("What does CPU stand for?", new String[] {"Computer Processor", "Central Processing Unit", "Computer Program", "Centralized Programming"}, "B", "Single", "10"),
+//                        new Question("Which of the following is a programming language?", new String[] {"Excel", "Photoshop", "Java", "HTML"}, "C", "Single", "10"),
+//                        new Question("What does RAM stand for in computing?", new String[] {"Random Access Memory", "Read-Only Memory", "Running Applications", "Remote Access Memory"}, "A", "Single", "10"),
+//                        new Question("Which of the following is NOT a programming language?", new String[] {"Java", "Python", "HTML", "Photoshop"}, "D", "Single", "10"),
+//                        new Question("What is the main function of a GPU?", new String[] {"Data Storage", "Graphics Rendering", "Network Connection", "Power Supply"}, "B", "Single", "10"),
+//                        new Question("What does HTML stand for in web development?", new String[] {"Hyper Text Markup", "High Tech Modern", "How to Make Lists", "Home Tool Management"}, "A", "Single", "10"),
+//                        new Question("Which component of a computer is often referred to as the 'brain'?", new String[] {"Hard Drive", "CPU", "Monitor", "Keyboard"}, "B", "Single", "10"),
+//                        new Question("Which of the following are object-oriented programming languages?", new String[] {"Java", "Python", "C", "HTML"}, "AB", "Multiple", "20"),
+//                        new Question("Which of the following are types of computer memory?", new String[] {"RAM", "ROM", "CPU", "HDD"}, "AB", "Multiple", "20"),
+//                        new Question("Which of the following are essential components of a computer?", new String[] {"Motherboard", "Keyboard", "Monitor", "Mouse"}, "ABC", "Multiple", "20"),
+//                        new Question("Which of the following are commonly used web browsers?", new String[] {"Google Chrome", "Photoshop", "Safari", "Microsoft Word"}, "AC", "Multiple", "20"),
+//                        new Question("Which of the following are programming paradigms?", new String[] {"Imperative", "Declarative", "Procedural", "Visual Studio"}, "ABC", "Multiple", "20")
+//                );
+//
+//    }
 
     @FXML
     private void handleAddButton() {
@@ -159,33 +161,50 @@ public class QuestionBankManagementController implements Initializable {
     @FXML
     private void handleDeleteButton() {
         // Add logic to handle deleting a question
+        // Retrieve the currently selected question from the TableView
+        Question selectedQuestion = questionTableView.getSelectionModel().getSelectedItem();
+
+        if (selectedQuestion != null) {
+            // Remove the selected question from the questionList
+            Question.getQuestionList().remove(selectedQuestion);
+
+            // Refresh the TableView to display the updated list of questions
+            questionTableView.setItems(Question.getQuestionList());
+        }
+
     }
 
     @FXML
     private void handleRefreshButton() {
-        // Add logic to handle refreshing the question table
+        // Reset the filter values to their default state
+        questionFilter.clear();
+        typeTextField.getSelectionModel().select(0);
+        scoreFilterTextField.clear();
+
+        // Reset the question form fields
+        questionTextField.clear();
+        optionATextField.clear();
+        optionBTextField.clear();
+        optionCTextField.clear();
+        optionDTextField.clear();
+        answerTextField.clear();
+        typeTextField.getSelectionModel().selectFirst();
+        scoreTextField.clear();
+
+//        questionTableView.setItems(FXCollections.observableArrayList(questionList));
+
+        questionTableView.setItems(FXCollections.observableArrayList(Question.getQuestionList()));
     }
 
     @FXML
     private void handleFilterButton() {
         // Add logic to handle filtering the question table
-        applyFilters();
-    }
-
-    @FXML
-    private void handleResetButton() {
-        // Add logic to handle resetting the form
-    }
-
-
-    // Method to apply the filters
-    private void applyFilters() {
         String selectedQuestion = questionFilter.getText();
-        String selectedType = typeFilterTextField.getValue();
+        String selectedType =  typeFilterTextField.getValue();
         String selectedScore = scoreFilterTextField.getText();
 
         // Filter the questionList based on the selected values
-        List<Question> filteredQuestions = questionList.stream()
+        List<Question> filteredQuestions = Question.getQuestionList().stream()
                 .filter(q -> {
                     boolean questionFilter = selectedQuestion == null || selectedQuestion.isEmpty() || q.getQuestion().contains(selectedQuestion);
                     boolean typeFilter = selectedType == null || selectedType.equals("Type") || q.getType().equals(selectedType);
@@ -197,4 +216,16 @@ public class QuestionBankManagementController implements Initializable {
         // Update the TableView with the filtered questions
         questionTableView.setItems(FXCollections.observableArrayList(filteredQuestions));
     }
+
+    @FXML
+    private void handleResetButton() {
+
+        // Reset the filter values to their default state
+        questionFilter.clear();
+        typeFilterTextField.getSelectionModel().select(0);
+        scoreFilterTextField.clear();
+    }
+
+
+
 }

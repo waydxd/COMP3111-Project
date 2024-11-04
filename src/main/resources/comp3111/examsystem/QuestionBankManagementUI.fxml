@@ -56,7 +56,7 @@
     <top>
         <HBox alignment="BOTTOM_LEFT" spacing="10.0" BorderPane.alignment="BOTTOM_LEFT">
             <children>
-                <Button mnemonicParsing="false" text="Reset" />
+                <Button mnemonicParsing="false" onAction="#handleResetButton" text="Reset" />
                 <Button mnemonicParsing="false" onAction="#handleFilterButton" text="Filter" />
                 <Label text="Question:" />
                 <TextField fx:id="questionFilter" prefWidth="150.0" />
@@ -73,10 +73,10 @@
     <bottom>
         <HBox alignment="BOTTOM_RIGHT" spacing="20.0" BorderPane.alignment="BOTTOM_RIGHT">
             <children>
-                <Button mnemonicParsing="false" text="Delete" />
-                <Button mnemonicParsing="false" text="Refresh" />
-                <Button mnemonicParsing="false" text="Add" />
-                <Button mnemonicParsing="false" text="Update" />
+                <Button mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete" />
+                <Button mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh" />
+                <Button mnemonicParsing="false" onAction="#handleAddButton" text="Add" />
+                <Button mnemonicParsing="false" onAction="#handleUpdateButton" text="Update" />
             </children>
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
