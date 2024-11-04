@@ -13,18 +13,18 @@
 
 <?import javafx.geometry.Insets?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.QuestionBankManagementController">
     <center>
-        <TableView prefHeight="400.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+        <TableView fx:id="questionTableView" prefHeight="400.0" prefWidth="500.0" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn prefWidth="100.0" text="Question" />
-                <TableColumn prefWidth="100.0" text="Option A" />
-                <TableColumn prefWidth="100.0" text="Option B" />
-                <TableColumn prefWidth="100.0" text="Option C" />
-                <TableColumn prefWidth="100.0" text="Option D" />
-                <TableColumn prefWidth="100.0" text="Answer" />
-                <TableColumn prefWidth="100.0" text="Type" />
-                <TableColumn prefWidth="100.0" text="Score" />
+                <TableColumn fx:id="QuestionColumn" prefWidth="330.0" text="Question" />
+                <TableColumn fx:id="OptionAColumn" prefWidth="100.0" text="Option A" />
+                <TableColumn fx:id="OptionBColumn" prefWidth="100.0" text="Option B" />
+                <TableColumn fx:id="OptionCColumn" prefWidth="100.0" text="Option C" />
+                <TableColumn fx:id="OptionDColumn" prefWidth="100.0" text="Option D" />
+                <TableColumn fx:id="AnswerColumn" prefWidth="100.0" text="Answer" />
+                <TableColumn fx:id="TypeColumn" prefWidth="100.0" text="Type" />
+                <TableColumn fx:id="ScoreColumn" prefWidth="100.0" text="Score" />
             </columns>
         </TableView>
     </center>
@@ -32,9 +32,9 @@
         <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
             <children>
                 <Label text="Question:" />
-                <ChoiceBox fx:id="questionChoiceBox" prefWidth="150.0" />
+                <TextField fx:id="questionTextField" prefWidth="150.0" />
                 <Label text="Type:" />
-                <TextField fx:id="typeTextField" prefWidth="150.0" />
+                <ChoiceBox fx:id="typeTextField" prefWidth="150.0" />
                 <Label text="Score:" />
                 <TextField fx:id="scoreTextField" prefWidth="100.0" />
                 <Label text="Option A:" />
@@ -57,11 +57,11 @@
         <HBox alignment="BOTTOM_LEFT" spacing="10.0" BorderPane.alignment="BOTTOM_LEFT">
             <children>
                 <Button mnemonicParsing="false" text="Reset" />
-                <Button mnemonicParsing="false" text="Filter" />
+                <Button mnemonicParsing="false" onAction="#handleFilterButton" text="Filter" />
                 <Label text="Question:" />
-                <ChoiceBox fx:id="questionFilterChoiceBox" prefWidth="150.0" />
+                <TextField fx:id="questionFilter" prefWidth="150.0" />
                 <Label text="Type:" />
-                <TextField fx:id="typeFilterTextField" prefWidth="150.0" />
+                <ChoiceBox fx:id="typeFilterTextField" prefWidth="150.0" />
                 <Label text="Score:" />
                 <TextField fx:id="scoreFilterTextField" prefWidth="100.0" />
             </children>
