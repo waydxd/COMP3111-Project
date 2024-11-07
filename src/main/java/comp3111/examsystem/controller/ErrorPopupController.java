@@ -6,6 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -16,7 +19,8 @@ import java.util.ResourceBundle;
 
 public class ErrorPopupController implements Initializable  {
 
-
+    @FXML
+    private static Labeled errorLabel=new Label();
 
     private static Stage errorWindow;
 
@@ -58,7 +62,8 @@ public class ErrorPopupController implements Initializable  {
 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ErrorUI.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            errorWindow.setTitle(text);
+//            errorLabel.setText(text);
+            errorWindow.setTitle("Error");
             errorWindow.setScene(scene);
             errorWindow.show();
         } catch (IOException e) {

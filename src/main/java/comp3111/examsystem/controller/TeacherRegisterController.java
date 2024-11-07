@@ -89,57 +89,61 @@ public class TeacherRegisterController implements Initializable {
 
     }
     @FXML
-    public void register(ActionEvent e)
-    {
-        boolean register_success=true;
-        //Case III: At least one input is empty
-        //Case IV: Invalid Age
-        if(!ageTxt.getText().isEmpty())
+    public void register(ActionEvent e) {
+        boolean register_success = true;
+
+        // Case III: At least one input is empty
+        // Case IV: Invalid Age
+
+        try
         {
-            int age = Integer.parseInt(ageTxt.getText());
-            if (age < 0 || age > 100) {
-                register_success = false;
+            if (!ageTxt.getText().isEmpty()) {
+                int age = Integer.parseInt(ageTxt.getText());
+                if (age < 0 || age > 100) {
+                    register_success = false;
 
-                //Error popup
-                ErrorPopupController.Error_Popup("Age must be between 18 and 100.");
+                    // Error popup
+                    ErrorPopupController.Error_Popup("Age must be between 18 and 100.");
+                    return; }
             }
-
         }
-        if(usernameTxt.getText().isEmpty() || passwordTxt.getText().isEmpty() ||
+        catch (NumberFormatException s) {
+            ErrorPopupController.Error_Popup("Invalid exam time format. Please enter a valid number.");
+            return;
+        }
+
+
+
+        if (usernameTxt.getText().isEmpty() || passwordTxt.getText().isEmpty() ||
                 nameTxt.getText().isEmpty() || Gender.getValue() == null ||
                 ageTxt.getText().isEmpty() || departmentTxt.getText().isEmpty() ||
-                Position.getValue() == null)
-        {
-            register_success=false;
+                Position.getValue() == null) {
+            register_success = false;
 
-            //Error popup
+            // Error popup
             ErrorPopupController.Error_Popup("Please fill in all required fields.");
-        }
-        //Case I:Existing username
-        if(getAccountManager().account_exist(usernameTxt.getText()))
-        {
-            register_success=false;
-
-            //Error popup
-            ErrorPopupController.Error_Popup();
+            return;
         }
 
-        //Case II:different pwd
-        if(!passwordConfirmTxt.getText().equals(passwordTxt.getText()))
-        {
-            register_success=false;
+        // Case I: Existing username
+        if (getAccountManager().account_exist(usernameTxt.getText())) {
+            register_success = false;
 
-            //Error popup
-            ErrorPopupController.Error_Popup();
-
+            // Error popup
+            ErrorPopupController.Error_Popup("Username already exists.");
+            return;
         }
 
+        // Case II: Different passwords
+        if (!passwordConfirmTxt.getText().equals(passwordTxt.getText())) {
+            register_success = false;
 
+            // Error popup
+            ErrorPopupController.Error_Popup("Passwords do not match.");
+            return;
+        }
 
-
-
-
-        //注册
+        // Registration
         if (register_success) {
             String Username = usernameTxt.getText();
             String Password = passwordTxt.getText();
@@ -159,18 +163,16 @@ public class TeacherRegisterController implements Initializable {
                     Position_
             );
 
-            //加入到账户库中
+            // Add the account to the account manager
             getAccountManager().addAccount(teacher);
 
+            teacherLoginController.getRegisterStage().close();
+        }
 
-            teacherLoginController.getRegisterStage().close();}
-        if(testcount==0)
-        {
+        if (testcount == 0) {
             test();
             testcount++;
         }
-
-
     }
 
     public static void test()

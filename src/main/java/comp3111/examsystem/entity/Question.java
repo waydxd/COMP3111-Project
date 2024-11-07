@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Question {
+
     private StringProperty question = new SimpleStringProperty();
     private StringProperty optionA = new SimpleStringProperty();
     private StringProperty optionB = new SimpleStringProperty();
@@ -16,6 +17,16 @@ public class Question {
     private StringProperty answer = new SimpleStringProperty();
     private StringProperty type = new SimpleStringProperty();
     private StringProperty score = new SimpleStringProperty();
+
+    private int id;
+    private String question_;
+    private String optionA_;
+    private String optionB_;
+    private String optionC_;
+    private String optionD_;
+    private String answer_;
+    private String type_;
+    private double score_;
 
     private static ObservableList<Question> questionList = FXCollections.observableArrayList(                        new Question("Which of the following is a programming language?", new String[] {"Apple", "Java", "Banana", "Orange"}, "B", "Single", "10"),
             new Question("What does CPU stand for?", new String[] {"Computer Processor", "Central Processing Unit", "Computer Program", "Centralized Programming"}, "B", "Single", "10"),
@@ -44,6 +55,15 @@ public class Question {
         setAnswer(answer);
         setType(type);
         setScore(score);
+
+        this.question_ = question;
+        this.optionA_ = options[0];
+        this.optionB_ = options[1];
+        this.optionC_ = options[2];
+        this.optionD_ = options[3];
+        this.answer_ = answer;
+        this.type_ = type;
+        this.score_ = Double.parseDouble(score);
     }
 
     public String getQuestion() {
@@ -142,4 +162,6 @@ public class Question {
     public String getScore() {
         return scoreProperty().get();
     }
+
+
 }

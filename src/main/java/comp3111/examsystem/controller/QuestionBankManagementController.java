@@ -151,11 +151,63 @@ public class QuestionBankManagementController implements Initializable {
     @FXML
     private void handleAddButton() {
         // Add logic to handle adding a new question
+        // Retrieve the values from the form fields
+        String question = questionTextField.getText();
+        String optionA = optionATextField.getText();
+        String optionB = optionBTextField.getText();
+        String optionC = optionCTextField.getText();
+        String optionD = optionDTextField.getText();
+        String answer = answerTextField.getText();
+        String type = typeTextField.getValue();
+        String score = scoreTextField.getText();
+        // Validate the user input
+        if (question.isEmpty() || optionA.isEmpty() || optionB.isEmpty() || optionC.isEmpty() || optionD.isEmpty() || answer.isEmpty() || type == null || type.equals("Type") || score.isEmpty()) {
+            // Display an error message or show a dialog to the user
+            ErrorPopupController.Error_Popup();
+            return;
+        }
+        // Create a new Question object with the entered data
+        Question newQuestion = new Question(question, new String[] {optionA, optionB, optionC, optionD}, answer, type, score);
+
+        // Add the new question to the questionList
+        Question.getQuestionList().add(newQuestion);
+
+        questionTableView.setItems(Question.getQuestionList());
+
+
     }
 
     @FXML
     private void handleUpdateButton() {
         // Add logic to handle updating an existing question
+        // Retrieve the currently selected question from the TableView
+        Question selectedQuestion = questionTableView.getSelectionModel().getSelectedItem();
+
+        if (selectedQuestion != null) {
+            // Retrieve the updated values from the form fields
+            String updatedQuestion = questionTextField.getText().trim();
+            String updatedOptionA = optionATextField.getText().trim();
+            String updatedOptionB = optionBTextField.getText().trim();
+            String updatedOptionC = optionCTextField.getText().trim();
+            String updatedOptionD = optionDTextField.getText().trim();
+            String updatedAnswer = answerTextField.getText().trim();
+            String updatedType = typeTextField.getValue();
+            String updatedScore = scoreTextField.getText().trim();
+
+            // Validate the updated values
+            if (updatedQuestion.isEmpty() || updatedOptionA.isEmpty() || updatedOptionB.isEmpty() || updatedOptionC.isEmpty() || updatedOptionD.isEmpty() || updatedAnswer.isEmpty() || updatedType == null || updatedType.equals("Type") || updatedScore.isEmpty()) {
+                // Display an error message or show a dialog to the user
+                ErrorPopupController.Error_Popup();
+                return;
+            }
+
+
+            // Refresh the TableView to display the updated question
+            questionTableView.refresh();
+            return;
+
+        }
+        ErrorPopupController.Error_Popup();
     }
 
     @FXML
