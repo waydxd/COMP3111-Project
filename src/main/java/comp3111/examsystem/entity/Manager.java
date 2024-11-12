@@ -1,9 +1,12 @@
 package comp3111.examsystem.entity;
 
+
+import Interface.HandleDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Manager extends Member {
+public class Manager extends Member implements HandleDatabase{
 
 
 
@@ -75,6 +78,23 @@ public class Manager extends Member {
 
     public Manager(String Username, String Password, String Name, String Gender, String Age, String Department) {
         super(Username, Password, Name, Gender, Age, Department);
+    }
+    @Override
+    public void Read() {
+        //Set the all_accounts and teacher accounts
+        //all_accounts include manager, student and teacher
+        accountManager.all_accounts=null;
+        accountManager.teacher_accounts=null;
+
+    }
+
+    @Override
+    public void Write() {
+        //Write the all_accounts and teacher accounts iin the database
+
+        accountManager.all_accounts=null;
+        accountManager.teacher_accounts=null;
+
     }
 
 

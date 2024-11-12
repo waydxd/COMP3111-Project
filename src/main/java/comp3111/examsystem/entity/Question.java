@@ -1,5 +1,6 @@
 package comp3111.examsystem.entity;
 
+import Interface.HandleDatabase;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -7,7 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Question {
+public class Question implements HandleDatabase {
 
     private StringProperty question = new SimpleStringProperty();
     private StringProperty optionA = new SimpleStringProperty();
@@ -164,4 +165,16 @@ public class Question {
     }
 
 
+    @Override
+    public void Read() {
+       //Change null to database's all questions
+        questionList=null;
+    }
+
+    @Override
+    public void Write() {
+        //Change null to database's all questions
+        questionList=null;
+
+    }
 }

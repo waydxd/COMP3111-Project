@@ -1,5 +1,6 @@
 package comp3111.examsystem.entity;
 
+import Interface.HandleDatabase;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,7 +8,7 @@ import javafx.scene.control.Label;
 
 
 
-public class Examination {
+public class Examination implements HandleDatabase {
     private StringProperty courseID = new SimpleStringProperty();
     private IntegerProperty id = new SimpleIntegerProperty();
     private DoubleProperty examTime = new SimpleDoubleProperty();
@@ -125,5 +126,17 @@ public class Examination {
 
     public StringProperty publishProperty() {
         return publish;
+    }
+
+
+
+    @Override
+    public void Read() {
+
+    }
+
+    @Override
+    public void Write() {
+
     }
 }
