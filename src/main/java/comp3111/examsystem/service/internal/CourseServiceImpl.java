@@ -10,17 +10,21 @@ import java.util.List;
 public class CourseServiceImpl extends service implements CourseService {
     private final CourseDAO courseDAO = new CourseDAO();
 
-    public void addCourse(String courseCode, String courseName, String instructorName) {
-        courseDAO.addCourse(courseCode, courseName, instructorName);
+    /**
+     * @param course
+     */
+    @Override
+    public void addCourse(Course course) {
+        courseDAO.addCourse(course);
     }
 
     @Override
-    public void updateCourse(String courseID, String courseName, String department) {
+    public void updateCourse(int courseID, String courseName, String department) {
         courseDAO.updateCourse(courseID, courseName, department);
     }
 
     @Override
-    public void deleteCourse(String courseID) {
+    public void deleteCourse(int courseID) {
         courseDAO.deleteCourse(courseID);
     }
 

@@ -10,4 +10,6 @@ public interface ManagerService {
     Manager getManager(int id);
     List<Manager> getAllManagers();
     List<Member> getAllAccounts();
+    void updateManager(Manager manager);
+    void deleteManager(int id);
 }

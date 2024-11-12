@@ -8,5 +8,11 @@ public class Teacher extends Member {
         Position=position;
     }
 
+    public String getPosition() {
+        return Position;
+    }
 
+    public void setPosition(String Position) {
+        this.Position = Position;
+    }
 }

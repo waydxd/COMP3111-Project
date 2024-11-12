@@ -4,7 +4,14 @@
 package com.examsystem.jooq.generated;
 
 
+import com.examsystem.jooq.generated.tables.Courses;
+import com.examsystem.jooq.generated.tables.Demo;
+import com.examsystem.jooq.generated.tables.Examinations;
 import com.examsystem.jooq.generated.tables.Grades;
+import com.examsystem.jooq.generated.tables.Managers;
+import com.examsystem.jooq.generated.tables.Members;
+import com.examsystem.jooq.generated.tables.Questions;
+import com.examsystem.jooq.generated.tables.StudentExaminations;
 
 
 /**
@@ -14,7 +21,42 @@ import com.examsystem.jooq.generated.tables.Grades;
 public class Tables {
 
     /**
+     * The table <code>courses</code>.
+     */
+    public static final Courses COURSES = Courses.COURSES;
+
+    /**
+     * The table <code>demo</code>.
+     */
+    public static final Demo DEMO = Demo.DEMO;
+
+    /**
+     * The table <code>examinations</code>.
+     */
+    public static final Examinations EXAMINATIONS = Examinations.EXAMINATIONS;
+
+    /**
      * The table <code>grades</code>.
      */
     public static final Grades GRADES = Grades.GRADES;
+
+    /**
+     * The table <code>managers</code>.
+     */
+    public static final Managers MANAGERS = Managers.MANAGERS;
+
+    /**
+     * The table <code>members</code>.
+     */
+    public static final Members MEMBERS = Members.MEMBERS;
+
+    /**
+     * The table <code>questions</code>.
+     */
+    public static final Questions QUESTIONS = Questions.QUESTIONS;
+
+    /**
+     * The table <code>student_examinations</code>.
+     */
+    public static final StudentExaminations STUDENT_EXAMINATIONS = StudentExaminations.STUDENT_EXAMINATIONS;
 }

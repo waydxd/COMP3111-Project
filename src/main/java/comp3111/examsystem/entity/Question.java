@@ -8,7 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Question implements HandleDatabase {
+public class Question extends Entity{
 
     private StringProperty question = new SimpleStringProperty();
     private StringProperty optionA = new SimpleStringProperty();
@@ -68,7 +68,7 @@ public class Question implements HandleDatabase {
     }
 
     public String getQuestion() {
-        return questionProperty().get();
+        return this.question_;
     }
 
     public void setQuestion(String question) {
@@ -80,7 +80,7 @@ public class Question implements HandleDatabase {
     }
 
     public String getOptionA() {
-        return optionAProperty().get();
+        return this.optionA_;
     }
 
     public void setOptionA(String optionA) {
@@ -92,7 +92,7 @@ public class Question implements HandleDatabase {
     }
 
     public String getOptionB() {
-        return optionBProperty().get();
+        return this.optionB_;
     }
 
     public void setOptionB(String optionB) {
@@ -104,7 +104,7 @@ public class Question implements HandleDatabase {
     }
 
     public String getOptionC() {
-        return optionCProperty().get();
+        return this.optionC_;
     }
 
     public void setOptionC(String optionC) {
@@ -116,7 +116,7 @@ public class Question implements HandleDatabase {
     }
 
     public String getOptionD() {
-        return optionDProperty().get();
+        return this.optionD_;
     }
 
     public void setOptionD(String optionD) {
@@ -128,7 +128,7 @@ public class Question implements HandleDatabase {
     }
 
     public String getAnswer() {
-        return answerProperty().get();
+        return this.answer_;
     }
 
     public void setAnswer(String answer) {
@@ -140,7 +140,7 @@ public class Question implements HandleDatabase {
     }
 
     public String getType() {
-        return typeProperty().get();
+        return this.type_;
     }
 
     public void setType(String type) {
@@ -160,21 +160,8 @@ public class Question implements HandleDatabase {
         return score;
     }
 
-    public String getScore() {
-        return scoreProperty().get();
+    public double getScore() {
+        return this.score_;
     }
 
-
-    @Override
-    public void Read() {
-       //Change null to database's all questions
-        questionList=null;
-    }
-
-    @Override
-    public void Write() {
-        //Change null to database's all questions
-        questionList=null;
-
-    }
 }

@@ -32,5 +32,46 @@ public class Member extends Entity{
         this.Age = Age;
         this.Department = Department;
     }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public String getGender() {
+        return Gender;
+    }
+
+    public String getAge() {
+        return Age;
+    }
+
+    public String getDepartment() {
+        return Department;
+    }
+
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+    public void setGender(String gender){
+        this.Gender = gender;
+    }
+
+    public void setAge(String age){
+        this.Age = age;
+    }
+
 }
 

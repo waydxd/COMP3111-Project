@@ -208,7 +208,7 @@ public class ExamManagementSystemController {
         ObservableList<Question> filteredQuestions = FXCollections.observableArrayList();
         for (Question question : Question.getQuestionList()) {
             if (
-                    (selectedScore== null || selectedScore.isEmpty() ||question.getScore().equals(selectedScore)) &&
+                    (selectedScore== null || selectedScore.isEmpty() ||String.valueOf(question.getScore()).equals(selectedScore)) &&
                             (selectedQuestion == null || selectedQuestion.isEmpty() ||question.getQuestion().contains(selectedQuestion)) &&
                             (selectedType == null || question.getType().equals(selectedType))) {
                 filteredQuestions.add(question);

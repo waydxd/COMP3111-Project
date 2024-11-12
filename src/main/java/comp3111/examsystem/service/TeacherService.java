@@ -8,5 +8,4 @@ public interface TeacherService {
     void addTeacher(Teacher teacher);
     Teacher getTeacher(int id);
     List<Teacher> getAllTeachers();
-
 }

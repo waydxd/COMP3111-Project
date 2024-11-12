@@ -260,7 +260,7 @@ public class QuestionBankManagementController implements Initializable {
                 .filter(q -> {
                     boolean questionFilter = selectedQuestion == null || selectedQuestion.isEmpty() || q.getQuestion().contains(selectedQuestion);
                     boolean typeFilter = selectedType == null || selectedType.equals("Type") || q.getType().equals(selectedType);
-                    boolean scoreFilter = selectedScore == null || selectedScore.isEmpty() || q.getScore().equals(selectedScore);
+                    boolean scoreFilter = selectedScore == null || selectedScore.isEmpty() || String.valueOf(q.getScore()).equals(selectedScore);
                     return questionFilter && typeFilter && scoreFilter;
                 })
                 .collect(Collectors.toList());
