@@ -28,16 +28,33 @@ public class ManagerLoginController implements Initializable {
 
     @FXML
     public void login(ActionEvent e) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ManagerMainUI.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Hi " + usernameTxt.getText() +", Welcome to HKUST Examination System");
-        try {
-            stage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        String username = usernameTxt.getText();
+        String password = passwordTxt.getText();
+
+        // Dummy authentication logic
+        if (authenticate(username, password)) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ManagerMainUI.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("Hi " + username + ", Welcome to HKUST Examination System");
+                stage.setScene(new Scene(fxmlLoader.load()));
+                stage.show();
+
+                // Close the current window
+                Stage currentStage = (Stage) ((Button) e.getSource()).getScene().getWindow();
+                currentStage.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            // Handle authentication failure (e.g., show an error message)
+            System.out.println("Authentication failed. Please check your username and password.");
         }
-        stage.show();
-        ((Stage) ((Button) e.getSource()).getScene().getWindow()).close();
+    }
+
+    private boolean authenticate(String username, String password) {
+        // Replace with actual authentication logic
+        return "admin".equals(username) && "password".equals(password);
     }
 
 }
