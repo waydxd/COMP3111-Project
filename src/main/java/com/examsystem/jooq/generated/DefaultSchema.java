@@ -4,7 +4,14 @@
 package com.examsystem.jooq.generated;
 
 
+import com.examsystem.jooq.generated.tables.Courses;
+import com.examsystem.jooq.generated.tables.Demo;
+import com.examsystem.jooq.generated.tables.Examinations;
 import com.examsystem.jooq.generated.tables.Grades;
+import com.examsystem.jooq.generated.tables.Managers;
+import com.examsystem.jooq.generated.tables.Members;
+import com.examsystem.jooq.generated.tables.Questions;
+import com.examsystem.jooq.generated.tables.StudentExaminations;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,9 +35,44 @@ public class DefaultSchema extends SchemaImpl {
     public static final DefaultSchema DEFAULT_SCHEMA = new DefaultSchema();
 
     /**
+     * The table <code>courses</code>.
+     */
+    public final Courses COURSES = Courses.COURSES;
+
+    /**
+     * The table <code>demo</code>.
+     */
+    public final Demo DEMO = Demo.DEMO;
+
+    /**
+     * The table <code>examinations</code>.
+     */
+    public final Examinations EXAMINATIONS = Examinations.EXAMINATIONS;
+
+    /**
      * The table <code>grades</code>.
      */
     public final Grades GRADES = Grades.GRADES;
+
+    /**
+     * The table <code>managers</code>.
+     */
+    public final Managers MANAGERS = Managers.MANAGERS;
+
+    /**
+     * The table <code>members</code>.
+     */
+    public final Members MEMBERS = Members.MEMBERS;
+
+    /**
+     * The table <code>questions</code>.
+     */
+    public final Questions QUESTIONS = Questions.QUESTIONS;
+
+    /**
+     * The table <code>student_examinations</code>.
+     */
+    public final StudentExaminations STUDENT_EXAMINATIONS = StudentExaminations.STUDENT_EXAMINATIONS;
 
     /**
      * No further instances allowed
@@ -48,7 +90,14 @@ public class DefaultSchema extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.asList(
-            Grades.GRADES
+            Courses.COURSES,
+            Demo.DEMO,
+            Examinations.EXAMINATIONS,
+            Grades.GRADES,
+            Managers.MANAGERS,
+            Members.MEMBERS,
+            Questions.QUESTIONS,
+            StudentExaminations.STUDENT_EXAMINATIONS
         );
     }
 }
