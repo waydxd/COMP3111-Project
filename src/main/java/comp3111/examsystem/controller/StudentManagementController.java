@@ -101,14 +101,18 @@ public class StudentManagementController implements Initializable {
     }
 
     @FXML
-    private void handleReset() {
-        filterUsernameField.clear();
-        filterNameField.clear();
-        filterDepartmentField.clear();
+    private void handleRefresh(){
         studentTable.setItems(FXCollections.observableArrayList(
                 studentService.getAllStudents()
         ));
         studentTable.refresh();
+    }
+    @FXML
+    private void handleReset() {
+        filterUsernameField.clear();
+        filterNameField.clear();
+        filterDepartmentField.clear();
+        handleRefresh();
     }
 
     @FXML
@@ -133,10 +137,7 @@ public class StudentManagementController implements Initializable {
         try{
             Integer.parseInt(ageField.getText());
             studentService.addStudent(new Student(usernameField.getText(), passwordField.getText(), nameField.getText(), genderComboBox.getValue(), (ageField.getText()), departmentField.getText()));
-            studentTable.setItems(FXCollections.observableArrayList(
-                    studentService.getAllStudents()
-            ));
-            studentTable.refresh();
+            handleRefresh();
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -157,17 +158,13 @@ public class StudentManagementController implements Initializable {
             try{
                 Integer.parseInt(ageField.getText());
                 studentService.updateStudent(id,new Student(usernameField.getText(), passwordField.getText(), nameField.getText(), genderComboBox.getValue(), (ageField.getText()), departmentField.getText()));
-                studentTable.setItems(FXCollections.observableArrayList(
-                        studentService.getAllStudents()
-                ));
-                studentTable.refresh();
+                handleRefresh();
             } catch (NumberFormatException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
                 alert.setContentText("Age must be an integer");
                 alert.showAndWait();
-                return;
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -177,4 +174,21 @@ public class StudentManagementController implements Initializable {
             alert.showAndWait();
         }
     }
+
+    @FXML
+    private void handleDelete(){
+        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
+        if (selectedStudent != null) {
+            int id = selectedStudent.getId();
+            studentService.deleteStudent(id);
+            handleRefresh();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a student to delete");
+            alert.showAndWait();
+        }
+    }
+
 }

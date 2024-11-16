@@ -31,17 +31,15 @@
   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextField?>
+
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -49,36 +47,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.TextField?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<VBox fx:controller="comp3111.examsystem.controller.StudentManagementController" prefHeight="400.0" prefWidth="640.0"
-      xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.StudentManagementController">
     <SplitPane dividerPositions="0.09681697612732096" orientation="VERTICAL" prefHeight="406.0" prefWidth="640.0">
         <items>
           <SplitPane dividerPositions="0.7766457680250783" prefHeight="160.0" prefWidth="200.0">
               <items>
                   <GridPane prefWidth="638.0">
                       <columnConstraints>
-                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       </columnConstraints>
                       <rowConstraints>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                       <children>
                           <SplitPane dividerPositions="0.2557471264367816">
                               <items>
                                   <BorderPane prefHeight="118.0" prefWidth="102.0">
                                       <center>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:"
-                                                BorderPane.alignment="CENTER"/>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" BorderPane.alignment="CENTER" />
                                       </center>
                                   </BorderPane>
                                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                                       <center>
-                                          <TextField fx:id="filterUsernameField" BorderPane.alignment="CENTER"/>
+                                          <TextField fx:id="filterUsernameField" BorderPane.alignment="CENTER" />
                                       </center>
                                   </BorderPane>
                               </items>
@@ -87,13 +80,12 @@
                               <items>
                                   <BorderPane prefHeight="118.0" prefWidth="102.0">
                                       <center>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:"
-                                                BorderPane.alignment="CENTER"/>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" BorderPane.alignment="CENTER" />
                                       </center>
                                   </BorderPane>
                                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                                       <center>
-                                          <TextField fx:id="filterNameField" BorderPane.alignment="CENTER"/>
+                                          <TextField fx:id="filterNameField" BorderPane.alignment="CENTER" />
                                       </center>
                                   </BorderPane>
                               </items>
@@ -102,39 +94,38 @@
                               <items>
                                   <BorderPane prefHeight="118.0" prefWidth="102.0">
                                       <center>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Department:"
-                                                BorderPane.alignment="CENTER"/>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" BorderPane.alignment="CENTER" />
                                       </center>
                                   </BorderPane>
                                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                                       <center>
-                                          <TextField fx:id="filterDepartmentField" BorderPane.alignment="CENTER"/>
+                                          <TextField fx:id="filterDepartmentField" BorderPane.alignment="CENTER" />
                                       </center>
                                   </BorderPane>
                               </items>
                           </SplitPane>
                       </children>
                       <opaqueInsets>
-                          <Insets/>
+                          <Insets />
                       </opaqueInsets>
                   </GridPane>
                   <GridPane>
                       <columnConstraints>
-                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       </columnConstraints>
                       <rowConstraints>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                       <children>
                           <BorderPane prefHeight="200.0" prefWidth="200.0">
                               <center>
-                                  <Button onAction="#handleReset" mnemonicParsing="false" text="Reset" BorderPane.alignment="CENTER"/>
+                                  <Button mnemonicParsing="false" onAction="#handleReset" text="Reset" BorderPane.alignment="CENTER" />
                               </center>
                           </BorderPane>
                           <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                               <center>
-                                  <Button onAction="#handleFilter" mnemonicParsing="false" text="Filter" BorderPane.alignment="CENTER"/>
+                                  <Button mnemonicParsing="false" onAction="#handleFilter" text="Filter" BorderPane.alignment="CENTER" />
                               </center>
                           </BorderPane>
                       </children>
@@ -155,67 +146,68 @@
                   </TableView>
                   <GridPane>
                       <columnConstraints>
-                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       </columnConstraints>
                       <rowConstraints>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                       <children>
                           <GridPane>
                               <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               </columnConstraints>
                               <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               </rowConstraints>
                               <children>
-                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:"/>
-                                  <TextField fx:id="usernameField" GridPane.rowIndex="1"/>
+                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
+                                  <TextField fx:id="usernameField" GridPane.rowIndex="1" />
                               </children>
                           </GridPane>
                           <GridPane GridPane.rowIndex="1">
                               <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               </columnConstraints>
                               <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               </rowConstraints>
                               <children>
-                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:"/>
-                                  <TextField fx:id="nameField" GridPane.rowIndex="1"/>
+                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+                                  <TextField fx:id="nameField" GridPane.rowIndex="1" />
                               </children>
                           </GridPane>
                           <GridPane GridPane.rowIndex="2">
                               <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               </columnConstraints>
                               <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               </rowConstraints>
                               <children>
-                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age:"/>
-                                  <TextField fx:id="ageField" GridPane.rowIndex="1"/>
+                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" />
+                                  <TextField fx:id="ageField" GridPane.rowIndex="1" />
                               </children>
                           </GridPane>
                           <GridPane GridPane.rowIndex="3">
                               <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               </columnConstraints>
                               <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               </rowConstraints>
                               <children>
-                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:"/>
+                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
                                   <ComboBox fx:id="genderComboBox" maxWidth="-Infinity" prefHeight="27.0" prefWidth="198.0" GridPane.rowIndex="1">
                                       <items>
                                           <FXCollections fx:factory="observableArrayList">
@@ -227,52 +219,72 @@
                           </GridPane>
                           <GridPane GridPane.rowIndex="4">
                               <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               </columnConstraints>
                               <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               </rowConstraints>
                               <children>
-                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Department:"/>
-                                  <TextField fx:id="departmentField" GridPane.rowIndex="1"/>
+                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" />
+                                  <TextField fx:id="departmentField" GridPane.rowIndex="1" />
                               </children>
                           </GridPane>
                           <GridPane GridPane.rowIndex="5">
                               <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               </columnConstraints>
                               <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               </rowConstraints>
                               <children>
-                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:"/>
-                                  <TextField fx:id="passwordField" GridPane.rowIndex="1"/>
+                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+                                  <TextField fx:id="passwordField" GridPane.rowIndex="1" />
                               </children>
                           </GridPane>
                           <GridPane GridPane.rowIndex="6">
                               <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               </columnConstraints>
                               <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               </rowConstraints>
                               <children>
                                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                                       <center>
-                                          <Button onAction="#handleAdd" text="Add" BorderPane.alignment="CENTER"/>
+                                          <Button onAction="#handleAdd" text="Add" BorderPane.alignment="CENTER" />
                                       </center>
                                   </BorderPane>
                                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                       <center>
-                                          <Button onAction="#handleUpdate" mnemonicParsing="false" text="Update"
-                                                  BorderPane.alignment="CENTER"/>
+                                          <Button mnemonicParsing="false" onAction="#handleUpdate" text="Update" BorderPane.alignment="CENTER" />
                                       </center>
                                   </BorderPane>
                               </children>
                           </GridPane>
+                     <GridPane GridPane.rowIndex="7">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <BorderPane prefHeight="200.0" prefWidth="200.0">
+                              <center>
+                                 <Button onAction="#handleDelete" text="Delete" BorderPane.alignment="CENTER" />
+                              </center>
+                           </BorderPane>
+                           <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                              <center>
+                                 <Button mnemonicParsing="false" onAction="#handleRefresh" text="Refresh" BorderPane.alignment="CENTER" />
+                              </center>
+                           </BorderPane>
+                        </children>
+                     </GridPane>
                       </children>
                   </GridPane>
               </items>
