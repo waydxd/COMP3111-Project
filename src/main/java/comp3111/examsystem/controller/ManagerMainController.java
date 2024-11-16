@@ -20,6 +20,16 @@ public class ManagerMainController implements Initializable {
 
     @FXML
     public void openStudentManageUI() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource
+                    ("StudentManagementUI.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Student Management");
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

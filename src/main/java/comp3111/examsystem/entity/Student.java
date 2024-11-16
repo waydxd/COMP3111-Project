@@ -7,5 +7,9 @@ public class Student extends Member {
         super(Username, Password, Name, Gender, Age, Department);
 
     }
+
+    public Student(){
+        super();
+    }
 }
 

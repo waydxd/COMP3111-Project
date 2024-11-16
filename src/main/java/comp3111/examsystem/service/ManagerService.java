@@ -12,4 +12,5 @@ public interface ManagerService {
     List<Member> getAllAccounts();
     void updateManager(Manager manager);
     void deleteManager(int id);
+    boolean login(String username, String password);
 }

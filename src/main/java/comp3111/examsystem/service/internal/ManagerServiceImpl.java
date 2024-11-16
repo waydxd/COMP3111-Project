@@ -44,4 +44,15 @@ public class ManagerServiceImpl implements ManagerService {
     public void deleteManager(int id) {
         managerDAO.deleteManager(id);
     }
+
+    /**
+     * @param username
+     * @param password
+     * @return
+     */
+    @Override
+    public boolean login(String username, String password) {
+        Manager manager = managerDAO.getManager(username);
+        return manager != null && manager.getPassword().equals(password);
+    }
 }

@@ -1,8 +1,5 @@
 package comp3111.examsystem.entity;
 
-import Interface.HandleDatabase;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -66,7 +63,8 @@ public class Question extends Entity{
         this.type_ = type;
         this.score_ = Double.parseDouble(score);
     }
-
+    public Question() {
+    }
     public String getQuestion() {
         return this.question_;
     }

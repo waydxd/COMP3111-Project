@@ -60,4 +60,10 @@ public class ManagerDAO {
         return create.selectFrom(MANAGERS)
                 .fetchInto(Manager.class);
     }
+
+    public Manager getManagerByUsername(String username) {
+        return create.selectFrom(MANAGERS)
+                .where(MANAGERS.USERNAME.eq(username))
+                .fetchOneInto(Manager.class);
+    }
 }

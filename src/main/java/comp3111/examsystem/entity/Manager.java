@@ -2,7 +2,9 @@ package comp3111.examsystem.entity;
 import java.util.ArrayList;
 import java.util.List;
 public class Manager extends Member {
-
+    public Manager() {
+        super();
+    }
     public long id;
     private String Username;
     private String Password;

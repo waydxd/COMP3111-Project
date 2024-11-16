@@ -2,6 +2,7 @@ package comp3111.examsystem.dao.internal;
 
 import comp3111.examsystem.DatabaseConnection;
 import comp3111.examsystem.entity.Member;
+import comp3111.examsystem.entity.Student;
 import comp3111.examsystem.entity.Teacher;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
@@ -24,13 +25,13 @@ public class MemberDAO {
         }
     }
     public void addMember(Member member) {
-        create.insertInto(MEMBERS, MEMBERS.USERNAME, MEMBERS.PASSWORD, MEMBERS.AGE, MEMBERS.DEPARTMENT, MEMBERS.GENDER, MEMBERS.NAME)
-                .values(member.getUsername(), member.getPassword(), member.getAge(), member.getDepartment(), member.getGender(), member.getName())
+        create.insertInto(MEMBERS, MEMBERS.USERNAME, MEMBERS.PASSWORD, MEMBERS.AGE, MEMBERS.DEPARTMENT, MEMBERS.GENDER, MEMBERS.NAME, MEMBERS.TYPE)
+                .values(member.getUsername(), member.getPassword(), member.getAge(), member.getDepartment(), member.getGender(), member.getName(), "Student")
                 .execute();
     }
     public void addTeacher(Teacher teacher) {
         create.insertInto(MEMBERS, MEMBERS.USERNAME, MEMBERS.PASSWORD, MEMBERS.AGE, MEMBERS.DEPARTMENT, MEMBERS.GENDER, MEMBERS.NAME, MEMBERS.TYPE, MEMBERS.POSITION)
-                .values(teacher.getUsername(), teacher.getPassword(), teacher.getAge(), teacher.getDepartment(), teacher.getGender(), teacher.getName(), "teacher", teacher.getPosition())
+                .values(teacher.getUsername(), teacher.getPassword(), teacher.getAge(), teacher.getDepartment(), teacher.getGender(), teacher.getName(), "Teacher", teacher.getPosition())
                 .execute();
     }
     public Member getMember(int id) {
@@ -45,13 +46,22 @@ public class MemberDAO {
     }
     public Teacher getTeacher(int id) {
         return create.selectFrom(MEMBERS)
-                .where(MEMBERS.ID.eq(id))
+                .where(MEMBERS.ID.eq(id), MEMBERS.TYPE.eq("Teacher"))
                 .fetchOneInto(Teacher.class);
+    }
+    public Student getStudent(int id) {
+        return create.selectFrom(MEMBERS)
+                .where(MEMBERS.ID.eq(id), MEMBERS.TYPE.eq("Student"))
+                .fetchOneInto(Student.class);
     }
     public void updateMember(Member member) {
         create.update(MEMBERS)
                 .set(MEMBERS.USERNAME, member.getUsername())
                 .set(MEMBERS.PASSWORD, member.getPassword())
+                .set(MEMBERS.AGE, member.getAge())
+                .set(MEMBERS.DEPARTMENT, member.getDepartment())
+                .set(MEMBERS.GENDER, member.getGender())
+                .set(MEMBERS.NAME, member.getName())
                 .where(MEMBERS.ID.eq(member.getId()))
                 .execute();
     }
@@ -66,13 +76,13 @@ public class MemberDAO {
     }
     public List<Teacher> getAllTeachers() {
         return create.selectFrom(MEMBERS)
-                .where(MEMBERS.TYPE.eq("teacher"))
+                .where(MEMBERS.TYPE.eq("Teacher"))
                 .fetchInto(Teacher.class);
     }
-    public List<Member> getAllStudents() {
+    public List<Student> getAllStudents() {
         return create.selectFrom(MEMBERS)
-                .where(MEMBERS.TYPE.eq("student"))
-                .fetchInto(Member.class);
+                .where(MEMBERS.TYPE.eq("Student"))
+                .fetchInto(Student.class);
     }
 
 }

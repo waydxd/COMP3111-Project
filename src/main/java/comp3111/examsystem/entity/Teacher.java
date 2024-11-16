@@ -15,4 +15,8 @@ public class Teacher extends Member {
     public void setPosition(String Position) {
         this.Position = Position;
     }
+
+    public Teacher(){
+        super();
+    }
 }

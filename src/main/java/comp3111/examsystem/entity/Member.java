@@ -9,6 +9,10 @@ public class Member extends Entity{
     private String Age;
     private String Department;
 
+    public Member() {
+
+    }
+
     public String getUsername() {
         return Username;
     }
@@ -71,6 +75,10 @@ public class Member extends Entity{
 
     public void setAge(String age){
         this.Age = age;
+    }
+
+    public void setDepartment(String department){
+        this.Department = department;
     }
 
 }
