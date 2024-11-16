@@ -6,16 +6,22 @@ package com.examsystem.jooq.generated.tables;
 
 import com.examsystem.jooq.generated.DefaultSchema;
 import com.examsystem.jooq.generated.Keys;
+import com.examsystem.jooq.generated.tables.Members.MembersPath;
+import com.examsystem.jooq.generated.tables.StudentExaminations.StudentExaminationsPath;
 import com.examsystem.jooq.generated.tables.records.ExaminationsRecord;
 
 import java.util.Collection;
 
 import org.jooq.Condition;
 import org.jooq.Field;
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
+import org.jooq.InverseForeignKey;
 import org.jooq.Name;
+import org.jooq.Path;
 import org.jooq.PlainSQL;
 import org.jooq.QueryPart;
+import org.jooq.Record;
 import org.jooq.SQL;
 import org.jooq.Schema;
 import org.jooq.Select;
@@ -104,6 +110,39 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
         this(DSL.name("examinations"), null);
     }
 
+    public <O extends Record> Examinations(Table<O> path, ForeignKey<O, ExaminationsRecord> childPath, InverseForeignKey<O, ExaminationsRecord> parentPath) {
+        super(path, childPath, parentPath, EXAMINATIONS);
+    }
+
+    /**
+     * A subtype implementing {@link Path} for simplified path-based joins.
+     */
+    public static class ExaminationsPath extends Examinations implements Path<ExaminationsRecord> {
+
+        private static final long serialVersionUID = 1L;
+        public <O extends Record> ExaminationsPath(Table<O> path, ForeignKey<O, ExaminationsRecord> childPath, InverseForeignKey<O, ExaminationsRecord> parentPath) {
+            super(path, childPath, parentPath);
+        }
+        private ExaminationsPath(Name alias, Table<ExaminationsRecord> aliased) {
+            super(alias, aliased);
+        }
+
+        @Override
+        public ExaminationsPath as(String alias) {
+            return new ExaminationsPath(DSL.name(alias), this);
+        }
+
+        @Override
+        public ExaminationsPath as(Name alias) {
+            return new ExaminationsPath(alias, this);
+        }
+
+        @Override
+        public ExaminationsPath as(Table<?> alias) {
+            return new ExaminationsPath(alias.getQualifiedName(), this);
+        }
+    }
+
     @Override
     public Schema getSchema() {
         return aliased() ? null : DefaultSchema.DEFAULT_SCHEMA;
@@ -117,6 +156,26 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
     @Override
     public UniqueKey<ExaminationsRecord> getPrimaryKey() {
         return Keys.EXAMINATIONS__PK_EXAMINATIONS;
+    }
+
+    private transient StudentExaminationsPath _studentExaminations;
+
+    /**
+     * Get the implicit to-many join path to the
+     * <code>student_examinations</code> table
+     */
+    public StudentExaminationsPath studentExaminations() {
+        if (_studentExaminations == null)
+            _studentExaminations = new StudentExaminationsPath(this, null, Keys.STUDENT_EXAMINATIONS__FK_STUDENT_EXAMINATIONS_PK_EXAMINATIONS.getInverseKey());
+
+        return _studentExaminations;
+    }
+
+    /**
+     * Get the implicit many-to-many join path to the <code>members</code> table
+     */
+    public MembersPath members() {
+        return studentExaminations().members();
     }
 
     @Override

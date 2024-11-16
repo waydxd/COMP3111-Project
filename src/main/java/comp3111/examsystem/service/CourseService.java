@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface CourseService {
     void addCourse(Course course);
-    void updateCourse(int courseID, String courseName, String department);
-    void deleteCourse(int courseID);
+    void updateCourse(String code, Course course);
+    void deleteCourse(String courseID);
     List<Course> filterCoursesByDepartment(String department);
+    List<Course> getAllCourses();
 }
 

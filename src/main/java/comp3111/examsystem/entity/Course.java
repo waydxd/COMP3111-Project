@@ -1,20 +1,29 @@
 package comp3111.examsystem.entity;
 
-public class Course extends Entity {
+public class Course {
     private String name;
     private String department;
+    private String courseCode;
 
     // Default constructor
     public Course() {
     }
 
     // Constructor with parameters
-    public Course(String name, String department) {
+    public Course(String courseCode ,String name, String department) {
+        this.courseCode = courseCode;
         this.name = name;
         this.department = department;
     }
 
     // Getters and Setters
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
 
     public String getName() {
         return name;
@@ -36,7 +45,7 @@ public class Course extends Entity {
     @Override
     public String toString() {
         return "Course{" +
-                "id=" + id +
+                "id=" + courseCode +
                 ", name='" + name + '\'' +
                 ", department='" + department + '\'' +
                 '}';

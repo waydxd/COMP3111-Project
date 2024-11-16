@@ -1,0 +1,116 @@
+/* General Styles */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Split Panes */
+.main-split-pane, .content-split-pane {
+    -fx-background-color: transparent;
+    -fx-box-border: transparent;
+}
+
+.split-pane-divider {
+    -fx-background-color: #ddd;
+    -fx-padding: 1;
+}
+
+/* Filter Section */
+.filter-section {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+.filter-field {
+    -fx-pref-width: 150px;
+}
+
+/* Table Styles */
+.student-table {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #eee;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 10px;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #fafafa;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #e3f2fd;
+}
+
+/* Form Section */
+.form-section {
+    -fx-background-color: white;
+    -fx-padding: 15;
+}
+
+.label-text {
+    -fx-font-size: 12px;
+    -fx-fill: #666;
+}
+
+.input-field {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4;
+    -fx-padding: 8;
+}
+
+.input-field:focused {
+    -fx-border-color: #2196F3;
+    -fx-background-color: white;
+}
+
+/* Buttons */
+.button {
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.button-primary {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+.button-primary:hover {
+    -fx-background-color: #1976D2;
+}
+
+.button-secondary {
+    -fx-background-color: #90A4AE;
+    -fx-text-fill: white;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #78909C;
+}
+
+.button-danger {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+}
+
+.button-danger:hover {
+    -fx-background-color: #d32f2f;
+}
+
+.button-reset {
+    -fx-background-color: #757575;
+    -fx-text-fill: white;
+}
+
+.button-reset:hover {
+    -fx-background-color: #616161;
+}

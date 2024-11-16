@@ -24,31 +24,51 @@ public class CourseDAO {
         }
     }
     public void addCourse(Course course) {
-        create.insertInto(com.examsystem.jooq.generated.tables.Courses.COURSES, com.examsystem.jooq.generated.tables.Courses.COURSES.NAME, COURSES.DEPARTMENT)
-                .values(course.getName(), course.getDepartment())
-                .execute();
+        try{
+            create.insertInto(COURSES, COURSES.COURSE_CODE, COURSES.NAME, COURSES.DEPARTMENT)
+                    .values(course.getCourseCode() ,course.getName(), course.getDepartment())
+                    .execute();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
-    public void updateCourse(int courseID, String courseName, String department) {
+    public void updateCourse(String code,Course course) {
         create.update(COURSES)
-                .set(COURSES.NAME, courseName)
-                .set(COURSES.DEPARTMENT, department)
-                .where(COURSES.ID.eq(courseID))
+                .set(COURSES.NAME, course.getName())
+                .set(COURSES.DEPARTMENT, course.getDepartment())
+                .set(COURSES.COURSE_CODE, course.getCourseCode())
+                .where(COURSES.COURSE_CODE.eq(code))
                 .execute();
     }
 
-    public void deleteCourse(int courseID) {
+    public void deleteCourse(String courseID) {
         create.deleteFrom(COURSES)
-                .where(COURSES.ID.eq(courseID))
+                .where(COURSES.COURSE_CODE.eq(courseID))
                 .execute();
     }
 
     public List<Course> filterCoursesByDepartment(String department) {
 
-        return create.selectFrom(COURSES)
+        return create.select(
+                        COURSES.COURSE_CODE.as("courseId"),
+                        COURSES.NAME.as("courseName"),
+                        COURSES.DEPARTMENT.as("department")
+                )
+                .from(COURSES)
                 .where(COURSES.DEPARTMENT.eq(department))
                 .fetchInto(Course.class);
 
+    }
+
+    public List<Course> getAllCourses() {
+        return create.select(
+                        COURSES.COURSE_CODE.as("course_code"),
+                        COURSES.NAME.as("name"),
+                        COURSES.DEPARTMENT.as("department")
+                )
+                .from(COURSES)
+                .fetchInto(Course.class);
     }
 
     // Additional helper methods if needed

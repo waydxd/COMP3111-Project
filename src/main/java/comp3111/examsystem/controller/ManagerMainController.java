@@ -34,10 +34,30 @@ public class ManagerMainController implements Initializable {
 
     @FXML
     public void openTeacherManageUI() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource
+                    ("TeacherManagementUI.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Teacher Management");
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void openCourseManageUI() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource
+                    ("CourseManagementUI.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Course Management");
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

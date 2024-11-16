@@ -12,7 +12,6 @@ import java.util.Collection;
 
 import org.jooq.Condition;
 import org.jooq.Field;
-import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.PlainSQL;
 import org.jooq.QueryPart;
@@ -51,9 +50,9 @@ public class Courses extends TableImpl<CoursesRecord> {
     }
 
     /**
-     * The column <code>courses.id</code>.
+     * The column <code>courses.course_code</code>.
      */
-    public final TableField<CoursesRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.identity(true), this, "");
+    public final TableField<CoursesRecord, String> COURSE_CODE = createField(DSL.name("course_code"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>courses.name</code>.
@@ -97,11 +96,6 @@ public class Courses extends TableImpl<CoursesRecord> {
     @Override
     public Schema getSchema() {
         return aliased() ? null : DefaultSchema.DEFAULT_SCHEMA;
-    }
-
-    @Override
-    public Identity<CoursesRecord, Integer> getIdentity() {
-        return (Identity<CoursesRecord, Integer>) super.getIdentity();
     }
 
     @Override

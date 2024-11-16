@@ -21,6 +21,7 @@ import com.examsystem.jooq.generated.tables.records.MembersRecord;
 import com.examsystem.jooq.generated.tables.records.QuestionsRecord;
 import com.examsystem.jooq.generated.tables.records.StudentExaminationsRecord;
 
+import org.jooq.ForeignKey;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
@@ -38,7 +39,7 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<CoursesRecord> COURSES__PK_COURSES = Internal.createUniqueKey(Courses.COURSES, DSL.name("pk_courses"), new TableField[] { Courses.COURSES.ID }, true);
+    public static final UniqueKey<CoursesRecord> COURSES__PK_COURSES = Internal.createUniqueKey(Courses.COURSES, DSL.name("pk_courses"), new TableField[] { Courses.COURSES.COURSE_CODE }, true);
     public static final UniqueKey<DemoRecord> DEMO__PK_DEMO = Internal.createUniqueKey(Demo.DEMO, DSL.name("pk_demo"), new TableField[] { Demo.DEMO.ID }, true);
     public static final UniqueKey<ExaminationsRecord> EXAMINATIONS__PK_EXAMINATIONS = Internal.createUniqueKey(Examinations.EXAMINATIONS, DSL.name("pk_examinations"), new TableField[] { Examinations.EXAMINATIONS.ID }, true);
     public static final UniqueKey<GradesRecord> GRADES__PK_GRADES = Internal.createUniqueKey(Grades.GRADES, DSL.name("pk_grades"), new TableField[] { Grades.GRADES.ID }, true);
@@ -46,4 +47,11 @@ public class Keys {
     public static final UniqueKey<MembersRecord> MEMBERS__PK_MEMBERS = Internal.createUniqueKey(Members.MEMBERS, DSL.name("pk_members"), new TableField[] { Members.MEMBERS.ID }, true);
     public static final UniqueKey<QuestionsRecord> QUESTIONS__PK_QUESTIONS = Internal.createUniqueKey(Questions.QUESTIONS, DSL.name("pk_questions"), new TableField[] { Questions.QUESTIONS.ID }, true);
     public static final UniqueKey<StudentExaminationsRecord> STUDENT_EXAMINATIONS__PK_STUDENT_EXAMINATIONS = Internal.createUniqueKey(StudentExaminations.STUDENT_EXAMINATIONS, DSL.name("pk_student_examinations"), new TableField[] { StudentExaminations.STUDENT_EXAMINATIONS.STUDENT_ID, StudentExaminations.STUDENT_EXAMINATIONS.EXAMINATION_ID }, true);
+
+    // -------------------------------------------------------------------------
+    // FOREIGN KEY definitions
+    // -------------------------------------------------------------------------
+
+    public static final ForeignKey<StudentExaminationsRecord, ExaminationsRecord> STUDENT_EXAMINATIONS__FK_STUDENT_EXAMINATIONS_PK_EXAMINATIONS = Internal.createForeignKey(StudentExaminations.STUDENT_EXAMINATIONS, DSL.name("fk_student_examinations_pk_examinations"), new TableField[] { StudentExaminations.STUDENT_EXAMINATIONS.EXAMINATION_ID }, Keys.EXAMINATIONS__PK_EXAMINATIONS, new TableField[] { Examinations.EXAMINATIONS.ID }, true);
+    public static final ForeignKey<StudentExaminationsRecord, MembersRecord> STUDENT_EXAMINATIONS__FK_STUDENT_EXAMINATIONS_PK_MEMBERS = Internal.createForeignKey(StudentExaminations.STUDENT_EXAMINATIONS, DSL.name("fk_student_examinations_pk_members"), new TableField[] { StudentExaminations.STUDENT_EXAMINATIONS.STUDENT_ID }, Keys.MEMBERS__PK_MEMBERS, new TableField[] { Members.MEMBERS.ID }, true);
 }

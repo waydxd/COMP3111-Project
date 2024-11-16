@@ -19,17 +19,17 @@ public class CoursesRecord extends UpdatableRecordImpl<CoursesRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Setter for <code>courses.id</code>.
+     * Setter for <code>courses.course_code</code>.
      */
-    public void setId(Integer value) {
+    public void setCourseCode(String value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>courses.id</code>.
+     * Getter for <code>courses.course_code</code>.
      */
-    public Integer getId() {
-        return (Integer) get(0);
+    public String getCourseCode() {
+        return (String) get(0);
     }
 
     /**
@@ -65,7 +65,7 @@ public class CoursesRecord extends UpdatableRecordImpl<CoursesRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Record1<Integer> key() {
+    public Record1<String> key() {
         return (Record1) super.key();
     }
 
@@ -83,10 +83,10 @@ public class CoursesRecord extends UpdatableRecordImpl<CoursesRecord> {
     /**
      * Create a detached, initialised CoursesRecord
      */
-    public CoursesRecord(Integer id, String name, String department) {
+    public CoursesRecord(String courseCode, String name, String department) {
         super(Courses.COURSES);
 
-        setId(id);
+        setCourseCode(courseCode);
         setName(name);
         setDepartment(department);
         resetChangedOnNotNull();

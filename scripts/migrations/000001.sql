@@ -14,10 +14,11 @@ CREATE TABLE IF NOT EXISTS managers (
 );
 
 CREATE TABLE IF NOT EXISTS courses (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    department TEXT NOT NULL
+                                       course_code TEXT PRIMARY KEY NOT NULL,
+                                       name TEXT NOT NULL,
+                                       department TEXT NOT NULL
 );
+
 CREATE TABLE IF NOT EXISTS members (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
@@ -26,7 +27,7 @@ CREATE TABLE IF NOT EXISTS members (
     gender TEXT NOT NULL,
     age TEXT NOT NULL,
     department TEXT NOT NULL,
-    position TEXT,
+    position TEXT CHECK(POSITION IN ('Professor', 'Associate Professor', 'Assistant Professor', 'Lecturer I', 'Lecturer II', 'Adjunct Professor', 'Teaching Assistant', 'Research Assistant', 'Graduate Assistant Lecturer', 'Instructional Assistant')),
     type TEXT NOT NULL CHECK (type IN ('Teacher', 'Student'))
 );
 

@@ -3,11 +3,10 @@ package comp3111.examsystem.service.internal;
 import comp3111.examsystem.dao.internal.CourseDAO;
 import comp3111.examsystem.entity.Course;
 import comp3111.examsystem.service.CourseService;
-import comp3111.examsystem.service.service;
 
 import java.util.List;
 
-public class CourseServiceImpl extends service implements CourseService {
+public class CourseServiceImpl implements CourseService {
     private final CourseDAO courseDAO = new CourseDAO();
 
     /**
@@ -15,21 +14,34 @@ public class CourseServiceImpl extends service implements CourseService {
      */
     @Override
     public void addCourse(Course course) {
-        courseDAO.addCourse(course);
+        try {
+            courseDAO.addCourse(course);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Override
-    public void updateCourse(int courseID, String courseName, String department) {
-        courseDAO.updateCourse(courseID, courseName, department);
+    public void updateCourse(String code, Course course) {
+        courseDAO.updateCourse(code, course);
     }
 
     @Override
-    public void deleteCourse(int courseID) {
+    public void deleteCourse(String courseID) {
         courseDAO.deleteCourse(courseID);
     }
 
     @Override
     public List<Course> filterCoursesByDepartment(String department) {
         return courseDAO.filterCoursesByDepartment(department);
+    }
+
+    /**
+     *
+     * @return List<Course>
+     */
+    @Override
+    public List<Course> getAllCourses() {
+        return courseDAO.getAllCourses();
     }
 }

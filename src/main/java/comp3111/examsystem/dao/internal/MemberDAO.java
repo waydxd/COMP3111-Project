@@ -55,14 +55,18 @@ public class MemberDAO {
                 .fetchOneInto(Student.class);
     }
     public void updateMember(Member member) {
-        create.update(MEMBERS)
+        var updateQuery = create.update(MEMBERS)
                 .set(MEMBERS.USERNAME, member.getUsername())
                 .set(MEMBERS.PASSWORD, member.getPassword())
                 .set(MEMBERS.AGE, member.getAge())
                 .set(MEMBERS.DEPARTMENT, member.getDepartment())
                 .set(MEMBERS.GENDER, member.getGender())
-                .set(MEMBERS.NAME, member.getName())
-                .where(MEMBERS.ID.eq(member.getId()))
+                .set(MEMBERS.NAME, member.getName());
+        if (member instanceof Teacher) {
+            updateQuery = updateQuery.set(MEMBERS.POSITION, ((Teacher) member).getPosition());
+        }
+
+        updateQuery.where(MEMBERS.ID.eq(member.getId()))
                 .execute();
     }
     public void deleteMember(int id) {
