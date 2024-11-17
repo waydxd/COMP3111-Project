@@ -68,26 +68,9 @@ public class StudentExaminations extends TableImpl<StudentExaminationsRecord> {
     public final TableField<StudentExaminationsRecord, Integer> EXAMINATION_ID = createField(DSL.name("examination_id"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
-     * @deprecated Unknown data type. If this is a qualified, user-defined type,
-     * it may have been excluded from code generation. If this is a built-in
-     * type, you can define an explicit {@link org.jooq.Binding} to specify how
-     * this type should be handled. Deprecation can be turned off using
-     * {@literal <deprecationOnUnknownTypes/>} in your code generator
-     * configuration.
+     * The column <code>student_examinations.score</code>.
      */
-    @Deprecated
-    public final TableField<StudentExaminationsRecord, Object> SCORE = createField(DSL.name("score"), org.jooq.impl.SQLDataType.OTHER, this, "");
-
-    /**
-     * @deprecated Unknown data type. If this is a qualified, user-defined type,
-     * it may have been excluded from code generation. If this is a built-in
-     * type, you can define an explicit {@link org.jooq.Binding} to specify how
-     * this type should be handled. Deprecation can be turned off using
-     * {@literal <deprecationOnUnknownTypes/>} in your code generator
-     * configuration.
-     */
-    @Deprecated
-    public final TableField<StudentExaminationsRecord, Object> REAL = createField(DSL.name("REAL"), org.jooq.impl.SQLDataType.OTHER.nullable(false), this, "");
+    public final TableField<StudentExaminationsRecord, Float> SCORE = createField(DSL.name("score"), SQLDataType.REAL.nullable(false), this, "");
 
     private StudentExaminations(Name alias, Table<StudentExaminationsRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);

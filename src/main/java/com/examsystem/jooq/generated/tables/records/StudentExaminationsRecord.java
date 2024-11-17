@@ -47,55 +47,17 @@ public class StudentExaminationsRecord extends UpdatableRecordImpl<StudentExamin
     }
 
     /**
-     * @deprecated Unknown data type. If this is a qualified, user-defined type,
-     * it may have been excluded from code generation. If this is a built-in
-     * type, you can define an explicit {@link org.jooq.Binding} to specify how
-     * this type should be handled. Deprecation can be turned off using
-     * {@literal <deprecationOnUnknownTypes/>} in your code generator
-     * configuration.
+     * Setter for <code>student_examinations.score</code>.
      */
-    @Deprecated
-    public void setScore(Object value) {
+    public void setScore(Float value) {
         set(2, value);
     }
 
     /**
-     * @deprecated Unknown data type. If this is a qualified, user-defined type,
-     * it may have been excluded from code generation. If this is a built-in
-     * type, you can define an explicit {@link org.jooq.Binding} to specify how
-     * this type should be handled. Deprecation can be turned off using
-     * {@literal <deprecationOnUnknownTypes/>} in your code generator
-     * configuration.
+     * Getter for <code>student_examinations.score</code>.
      */
-    @Deprecated
-    public Object getScore() {
-        return get(2);
-    }
-
-    /**
-     * @deprecated Unknown data type. If this is a qualified, user-defined type,
-     * it may have been excluded from code generation. If this is a built-in
-     * type, you can define an explicit {@link org.jooq.Binding} to specify how
-     * this type should be handled. Deprecation can be turned off using
-     * {@literal <deprecationOnUnknownTypes/>} in your code generator
-     * configuration.
-     */
-    @Deprecated
-    public void setReal(Object value) {
-        set(3, value);
-    }
-
-    /**
-     * @deprecated Unknown data type. If this is a qualified, user-defined type,
-     * it may have been excluded from code generation. If this is a built-in
-     * type, you can define an explicit {@link org.jooq.Binding} to specify how
-     * this type should be handled. Deprecation can be turned off using
-     * {@literal <deprecationOnUnknownTypes/>} in your code generator
-     * configuration.
-     */
-    @Deprecated
-    public Object getReal() {
-        return get(3);
+    public Float getScore() {
+        return (Float) get(2);
     }
 
     // -------------------------------------------------------------------------
@@ -121,13 +83,12 @@ public class StudentExaminationsRecord extends UpdatableRecordImpl<StudentExamin
     /**
      * Create a detached, initialised StudentExaminationsRecord
      */
-    public StudentExaminationsRecord(Integer studentId, Integer examinationId, Object score, Object real) {
+    public StudentExaminationsRecord(Integer studentId, Integer examinationId, Float score) {
         super(StudentExaminations.STUDENT_EXAMINATIONS);
 
         setStudentId(studentId);
         setExaminationId(examinationId);
         setScore(score);
-        setReal(real);
         resetChangedOnNotNull();
     }
 }

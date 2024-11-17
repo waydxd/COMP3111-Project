@@ -44,4 +44,12 @@ public class CourseServiceImpl implements CourseService {
     public List<Course> getAllCourses() {
         return courseDAO.getAllCourses();
     }
+
+    /**
+     * @return
+     */
+    @Override
+    public List<String> getAllCoursesID() {
+        return courseDAO.getAllCoursesID();
+    }
 }

@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS members (
 CREATE TABLE IF NOT EXISTS student_examinations (
     student_id INTEGER NOT NULL,
     examination_id INTEGER NOT NULL,
-    score, REAL NOT NULL,
+    score REAL NOT NULL,
     PRIMARY KEY (student_id, examination_id),
-    FOREIGN KEY (student_id) REFERENCES member(id),
-    FOREIGN KEY (examination_id) REFERENCES examination(id)
+    FOREIGN KEY (student_id) REFERENCES members(id),
+    FOREIGN KEY (examination_id) REFERENCES examinations(id)
 );
 
 CREATE TABLE IF NOT EXISTS questions (
@@ -53,9 +53,9 @@ CREATE TABLE IF NOT EXISTS questions (
 );
 
 CREATE TABLE IF NOT EXISTS examinations (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    courseID TEXT NOT NULL,
-    examTime REAL NOT NULL,
-    examName TEXT NOT NULL,
-    publish TEXT NOT NULL
+                              id INTEGER PRIMARY KEY,
+                              courseID TEXT NOT NULL,
+                              examTime REAL NOT NULL,
+                              examName TEXT NOT NULL,
+                              publish BOOLEAN NOT NULL
 );
