@@ -53,4 +53,22 @@ public class ExaminationServiceImpl implements ExaminationService {
     public void deleteExamination(int id) {
         examinationDAO.deleteExamination(id);
     }
+
+    /**
+     * @param examinationId
+     * @param questionId
+     */
+    @Override
+    public void addQuestionToExamination(int examinationId, int questionId) {
+
+    }
+
+    /**
+     * @param examinationId
+     * @param questionId
+     */
+    @Override
+    public void removeQuestionFromExamination(int examinationId, int questionId) {
+
+    }
 }

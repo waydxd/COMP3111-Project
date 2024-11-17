@@ -4,8 +4,10 @@ import comp3111.examsystem.entity.Examination;
 import comp3111.examsystem.entity.Question;
 import comp3111.examsystem.service.CourseService;
 import comp3111.examsystem.service.ExaminationService;
+import comp3111.examsystem.service.QuestionService;
 import comp3111.examsystem.service.internal.CourseServiceImpl;
 import comp3111.examsystem.service.internal.ExaminationServiceImpl;
+import comp3111.examsystem.service.internal.QuestionServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -67,6 +69,8 @@ public class ExamManagementSystemController {
 
     private final CourseService courseService = new CourseServiceImpl();
 
+    private final QuestionService questionService = new QuestionServiceImpl();
+
     @FXML
     private void initialize() {
         init_All();
@@ -76,7 +80,7 @@ public class ExamManagementSystemController {
             examinations = FXCollections.observableArrayList();
         }
         ExamTableView.setItems(examinations);
-        All_QuestionTableView.setItems(Question.getQuestionList());
+        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
         // Add a listener to the ExamTableView selection model
         ExamTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -207,7 +211,7 @@ public class ExamManagementSystemController {
 
         // Filter the questions based on the selected criteria
         ObservableList<Question> filteredQuestions = FXCollections.observableArrayList();
-        for (Question question : Question.getQuestionList()) {
+        for (Question question : questionService.getAllQuestions()) {
             if (
                     (selectedScore== null || selectedScore.isEmpty() ||String.valueOf(question.getScore()).equals(selectedScore)) &&
                             (selectedQuestion == null || selectedQuestion.isEmpty() ||question.getQuestion().contains(selectedQuestion)) &&
@@ -275,7 +279,7 @@ public class ExamManagementSystemController {
     private void refreshTable() {
         // Refresh the TableView with the updated data
         ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));
-        All_QuestionTableView.setItems(Question.getQuestionList());
+        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
         // Clear the input fields and comboboxes
         examNameTextField.clear();
@@ -361,7 +365,7 @@ public class ExamManagementSystemController {
         questionTypeComboBox.getSelectionModel().clearSelection();
         scoreTextField.clear();
 
-        All_QuestionTableView.setItems(Question.getQuestionList());
+        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
     }
     @FXML

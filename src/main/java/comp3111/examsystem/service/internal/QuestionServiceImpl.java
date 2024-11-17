@@ -25,7 +25,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public void updateQuestion(Question question) {
+    public void updateQuestion(int id, Question question) {
+        question.setId(id);
         questionDAO.updateQuestion(question);
     }
 

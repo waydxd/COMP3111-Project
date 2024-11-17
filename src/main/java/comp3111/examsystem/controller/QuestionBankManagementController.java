@@ -1,6 +1,8 @@
 package comp3111.examsystem.controller;
 
 import comp3111.examsystem.entity.Question;
+import comp3111.examsystem.service.QuestionService;
+import comp3111.examsystem.service.internal.QuestionServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -81,6 +83,7 @@ public class QuestionBankManagementController implements Initializable {
 //    private ObservableList<Question> questionList = FXCollections.observableArrayList();
 //    private ObservableList<Question> fliter_questionList = FXCollections.observableArrayList();
 
+    private final QuestionService questionService = new QuestionServiceImpl();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -88,7 +91,7 @@ public class QuestionBankManagementController implements Initializable {
 
 
 
-        questionTableView.setItems(Question.getQuestionList());
+        questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
     }
 
     void Bind_All_Columns()
@@ -170,9 +173,9 @@ public class QuestionBankManagementController implements Initializable {
         Question newQuestion = new Question(question, new String[] {optionA, optionB, optionC, optionD}, answer, type, score);
 
         // Add the new question to the questionList
-        Question.getQuestionList().add(newQuestion);
+        questionService.addQuestion(newQuestion);
 
-        questionTableView.setItems(Question.getQuestionList());
+        questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
 
     }
@@ -202,8 +205,20 @@ public class QuestionBankManagementController implements Initializable {
             }
 
 
+            // Update the selected question with the new values
+
+            questionService.updateQuestion(selectedQuestion.getId(), new Question(
+                    updatedQuestion,
+                    new String[] {updatedOptionA, updatedOptionB, updatedOptionC, updatedOptionD},
+                    updatedAnswer,
+                    updatedType,
+                    updatedScore
+            ));
             // Refresh the TableView to display the updated question
+
+            questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
             questionTableView.refresh();
+
             return;
 
         }
@@ -218,10 +233,10 @@ public class QuestionBankManagementController implements Initializable {
 
         if (selectedQuestion != null) {
             // Remove the selected question from the questionList
-            Question.getQuestionList().remove(selectedQuestion);
+            questionService.deleteQuestion(selectedQuestion.getId());
 
             // Refresh the TableView to display the updated list of questions
-            questionTableView.setItems(Question.getQuestionList());
+            questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
         }
 
     }
@@ -245,7 +260,7 @@ public class QuestionBankManagementController implements Initializable {
 
 //        questionTableView.setItems(FXCollections.observableArrayList(questionList));
 
-        questionTableView.setItems(FXCollections.observableArrayList(Question.getQuestionList()));
+        questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
     }
 
     @FXML
@@ -256,7 +271,7 @@ public class QuestionBankManagementController implements Initializable {
         String selectedScore = scoreFilterTextField.getText();
 
         // Filter the questionList based on the selected values
-        List<Question> filteredQuestions = Question.getQuestionList().stream()
+        List<Question> filteredQuestions = questionService.getAllQuestions().stream()
                 .filter(q -> {
                     boolean questionFilter = selectedQuestion == null || selectedQuestion.isEmpty() || q.getQuestion().contains(selectedQuestion);
                     boolean typeFilter = selectedType == null || selectedType.equals("Type") || q.getType().equals(selectedType);
