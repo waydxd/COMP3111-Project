@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="641.0" prefWidth="975.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.TeacherManagementController">
+<VBox prefHeight="641.0" prefWidth="975.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.TeacherManagementController">
 
     <SplitPane dividerPositions="0.09681697612732096" orientation="VERTICAL" prefHeight="406.0" prefWidth="640.0" styleClass="main-split-pane">
         <items>

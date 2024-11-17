@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="640.0" prefWidth="980.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.CourseManagementController">
+<VBox prefHeight="640.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.CourseManagementController">
     <SplitPane dividerPositions="0.15" orientation="VERTICAL" VBox.vgrow="ALWAYS" styleClass="main-split-pane">
         <VBox spacing="15" styleClass="filter-section">
             <padding>

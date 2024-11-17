@@ -8,7 +8,7 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="comp3111.examsystem.controller.StudentManagementController"
-      stylesheets="@styles.css">
+      >
 
     <SplitPane dividerPositions="0.09681697612732096" orientation="VERTICAL" prefHeight="406.0" prefWidth="640.0"
                styleClass="main-split-pane">
