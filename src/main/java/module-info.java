@@ -14,5 +14,6 @@ module comp3111.examsystem {
     exports comp3111.examsystem.controller;
     exports com.examsystem.jooq.generated.tables.records to org.jooq;
     opens com.examsystem.jooq.generated.tables to org.jooq;
+    exports comp3111.examsystem.entity;
 }
 

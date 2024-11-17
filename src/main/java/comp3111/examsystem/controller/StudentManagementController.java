@@ -49,14 +49,6 @@ public class StudentManagementController implements Initializable {
     private TableColumn<Student, String> departmentColumn;
     @FXML
     private TableColumn<Student, String> passwordColumn;
-    @FXML
-    private Button resetButton;
-    @FXML
-    private Button filterButton;
-    @FXML
-    private Button addButton;
-    @FXML
-    private Button updateButton;
 
     /**
      * The StudentService instance used to interact with the student data.

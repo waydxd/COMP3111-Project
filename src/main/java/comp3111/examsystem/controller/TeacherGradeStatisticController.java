@@ -22,7 +22,6 @@ import java.util.Set;
 import comp3111.examsystem.entity.Grade;
 
 public class TeacherGradeStatisticController implements Initializable {
-    Grade Grade = new Grade();
 
     @FXML
     protected ChoiceBox<String> courseCombox;
@@ -66,7 +65,7 @@ public class TeacherGradeStatisticController implements Initializable {
      *
      * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
      * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
-     *
+     * <p>
      * This method performs the following tasks:
      * 1. Initializes the GradeService.
      * 2. Configures the bar chart, pie chart, and line chart.
@@ -74,6 +73,7 @@ public class TeacherGradeStatisticController implements Initializable {
      * 4. Sets up the table columns with the appropriate cell value factories.
      * 5. Initializes the choice boxes with unique values.
      * 6. Refreshes the table and loads the charts with the initial data.
+     *                       <p/>
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -135,9 +135,9 @@ public class TeacherGradeStatisticController implements Initializable {
         FXCollections.sort(studentItems);
 
         // Add an empty choice as first item
-        courseItems.add(0, "");
-        examItems.add(0, "");
-        studentItems.add(0, "");
+        courseItems.addFirst("");
+        examItems.addFirst("");
+        studentItems.addFirst("");
 
         // Set items to choice boxes
         courseCombox.setItems(courseItems);
@@ -261,10 +261,7 @@ public class TeacherGradeStatisticController implements Initializable {
         ObservableList<Grade> filteredList = FXCollections.observableArrayList();
 
         for (Grade grade : gradeList) {
-            boolean matches = true;
-            if (selectedCourse != null && !selectedCourse.isEmpty() && !grade.getCourseName().equals(selectedCourse)) {
-                matches = false;
-            }
+            boolean matches = selectedCourse == null || selectedCourse.isEmpty() || grade.getCourseName().equals(selectedCourse);
             if (selectedExam != null && !selectedExam.isEmpty() && !grade.getExamName().equals(selectedExam)) {
                 matches = false;
             }

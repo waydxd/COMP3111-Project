@@ -13,84 +13,87 @@
 
 <VBox prefHeight="538.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.StudentManagementController">
 
-    <SplitPane dividerPositions="0.09681697612732096" orientation="VERTICAL" prefHeight="543.0" prefWidth="801.0" styleClass="main-split-pane">
-        <items>
-            <VBox spacing="10" styleClass="filter-section">
+    <SplitPane dividerPositions="0.09681697612732096" orientation="VERTICAL" prefHeight="543.0" prefWidth="801.0"
+               styleClass="main-split-pane">
+        <VBox spacing="10" styleClass="filter-section">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Username:"/>
+                    <TextField fx:id="filterUsernameField" styleClass="filter-field"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Name:"/>
+                    <TextField fx:id="filterNameField" styleClass="filter-field"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Department:"/>
+                    <TextField fx:id="filterDepartmentField" styleClass="filter-field"/>
+                </VBox>
+                <HBox alignment="CENTER" spacing="10">
+                    <Button mnemonicParsing="false" onAction="#handleReset" prefWidth="70.0" styleClass="button-reset"
+                            text="Reset"/>
+                    <Button mnemonicParsing="false" onAction="#handleFilter" prefWidth="70.0"
+                            styleClass="button-primary" text="Filter"/>
+                </HBox>
+            </HBox>
+        </VBox>
+
+        <SplitPane dividerPositions="0.7290362953692116" styleClass="content-split-pane">
+            <TableView fx:id="studentTable" styleClass="student-table">
+                <columns>
+                    <TableColumn fx:id="usernameColumn" prefWidth="100.0" text="Username"/>
+                    <TableColumn fx:id="nameColumn" prefWidth="120.0" text="Name"/>
+                    <TableColumn fx:id="ageColumn" prefWidth="60.0" text="Age"/>
+                    <TableColumn fx:id="genderColumn" text="Gender"/>
+                    <TableColumn fx:id="departmentColumn" prefWidth="120.0" text="Department"/>
+                    <TableColumn fx:id="passwordColumn" prefWidth="100.0" text="Password"/>
+                </columns>
+            </TableView>
+
+            <VBox spacing="10" styleClass="form-section">
                 <padding>
-                    <Insets bottom="10" left="10" right="10" top="10" />
+                    <Insets bottom="10" left="10" right="10" top="10"/>
                 </padding>
-                <HBox alignment="CENTER_LEFT" spacing="20">
-                    <VBox spacing="5">
-                        <Text styleClass="label-text" text="Username:" />
-                        <TextField fx:id="filterUsernameField" styleClass="filter-field" />
-                    </VBox>
-                    <VBox spacing="5">
-                        <Text styleClass="label-text" text="Name:" />
-                        <TextField fx:id="filterNameField" styleClass="filter-field" />
-                    </VBox>
-                    <VBox spacing="5">
-                        <Text styleClass="label-text" text="Department:" />
-                        <TextField fx:id="filterDepartmentField" styleClass="filter-field" />
-                    </VBox>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Button mnemonicParsing="false" onAction="#handleReset" prefWidth="70.0" styleClass="button-reset" text="Reset" />
-                        <Button mnemonicParsing="false" onAction="#handleFilter" prefWidth="70.0" styleClass="button-primary" text="Filter" />
-                    </HBox>
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Username:"/>
+                    <TextField fx:id="usernameField" styleClass="input-field"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Name:"/>
+                    <TextField fx:id="nameField" styleClass="input-field"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Age:"/>
+                    <TextField fx:id="ageField" styleClass="input-field"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Gender:"/>
+                    <ComboBox fx:id="genderComboBox" maxWidth="Infinity" styleClass="input-field"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Department:"/>
+                    <TextField fx:id="departmentField" styleClass="input-field"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Text styleClass="label-text" text="Password:"/>
+                    <TextField fx:id="passwordField" styleClass="input-field"/>
+                </VBox>
+                <HBox alignment="CENTER" spacing="10">
+                    <Button onAction="#handleAdd" prefHeight="26.0" prefWidth="70.0" styleClass="button-primary"
+                            text="Add"/>
+                    <Button onAction="#handleUpdate" prefHeight="26.0" prefWidth="70.0"
+                            styleClass="button-secondary" text="Update"/>
+                </HBox>
+                <HBox alignment="CENTER" spacing="10">
+                    <Button onAction="#handleDelete" prefHeight="26.0" prefWidth="70.0" styleClass="button-danger"
+                            text="Delete"/>
+                    <Button onAction="#handleRefresh" prefWidth="70.0" styleClass="button-secondary"
+                            text="Refresh"/>
                 </HBox>
             </VBox>
-
-            <SplitPane dividerPositions="0.7290362953692116" styleClass="content-split-pane">
-                <items>
-                    <TableView fx:id="studentTable" styleClass="student-table">
-                        <columns>
-                            <TableColumn fx:id="usernameColumn" prefWidth="100.0" text="Username" />
-                            <TableColumn fx:id="nameColumn" prefWidth="120.0" text="Name" />
-                            <TableColumn fx:id="ageColumn" prefWidth="60.0" text="Age" />
-                            <TableColumn fx:id="genderColumn" prefWidth="80.0" text="Gender" />
-                            <TableColumn fx:id="departmentColumn" prefWidth="120.0" text="Department" />
-                            <TableColumn fx:id="passwordColumn" prefWidth="100.0" text="Password" />
-                        </columns>
-                    </TableView>
-
-                    <VBox spacing="10" styleClass="form-section">
-                        <padding>
-                            <Insets bottom="10" left="10" right="10" top="10" />
-                        </padding>
-                        <VBox spacing="5">
-                            <Text styleClass="label-text" text="Username:" />
-                            <TextField fx:id="usernameField" styleClass="input-field" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <Text styleClass="label-text" text="Name:" />
-                            <TextField fx:id="nameField" styleClass="input-field" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <Text styleClass="label-text" text="Age:" />
-                            <TextField fx:id="ageField" styleClass="input-field" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <Text styleClass="label-text" text="Gender:" />
-                            <ComboBox fx:id="genderComboBox" maxWidth="Infinity" styleClass="input-field" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <Text styleClass="label-text" text="Department:" />
-                            <TextField fx:id="departmentField" styleClass="input-field" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <Text styleClass="label-text" text="Password:" />
-                            <TextField fx:id="passwordField" styleClass="input-field" />
-                        </VBox>
-                        <HBox alignment="CENTER" spacing="10">
-                            <Button onAction="#handleAdd" prefHeight="26.0" prefWidth="70.0" styleClass="button-primary" text="Add" />
-                            <Button onAction="#handleUpdate" prefHeight="26.0" prefWidth="70.0" styleClass="button-secondary" text="Update" />
-                        </HBox>
-                        <HBox alignment="CENTER" spacing="10">
-                            <Button onAction="#handleDelete" prefHeight="26.0" prefWidth="70.0" styleClass="button-danger" text="Delete" />
-                            <Button onAction="#handleRefresh" prefWidth="70.0" styleClass="button-secondary" text="Refresh" />
-                        </HBox>
-                    </VBox>
-                </items>
-            </SplitPane>
-        </items>
+        </SplitPane>
     </SplitPane>
 </VBox>

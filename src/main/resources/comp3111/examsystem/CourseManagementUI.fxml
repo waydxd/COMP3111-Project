@@ -37,7 +37,7 @@
         </VBox>
 
         <SplitPane dividerPositions="0.7">
-            <TableView fx:id="courseTable" styleClass="course-table" VBox.vgrow="ALWAYS">
+            <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="courseIdColumn" prefWidth="120.0" text="Course ID" />
                     <TableColumn fx:id="courseNameColumn" prefWidth="160.0" text="Course Name" />
