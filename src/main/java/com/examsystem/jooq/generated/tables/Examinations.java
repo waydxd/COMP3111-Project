@@ -15,7 +15,6 @@ import java.util.Collection;
 import org.jooq.Condition;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Identity;
 import org.jooq.InverseForeignKey;
 import org.jooq.Name;
 import org.jooq.Path;
@@ -59,7 +58,7 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
     /**
      * The column <code>examinations.id</code>.
      */
-    public final TableField<ExaminationsRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.identity(true), this, "");
+    public final TableField<ExaminationsRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER, this, "");
 
     /**
      * The column <code>examinations.courseID</code>.
@@ -79,7 +78,7 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
     /**
      * The column <code>examinations.publish</code>.
      */
-    public final TableField<ExaminationsRecord, String> PUBLISH = createField(DSL.name("publish"), SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<ExaminationsRecord, Boolean> PUBLISH = createField(DSL.name("publish"), SQLDataType.BOOLEAN.nullable(false), this, "");
 
     private Examinations(Name alias, Table<ExaminationsRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);
@@ -146,11 +145,6 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
     @Override
     public Schema getSchema() {
         return aliased() ? null : DefaultSchema.DEFAULT_SCHEMA;
-    }
-
-    @Override
-    public Identity<ExaminationsRecord, Integer> getIdentity() {
-        return (Identity<ExaminationsRecord, Integer>) super.getIdentity();
     }
 
     @Override

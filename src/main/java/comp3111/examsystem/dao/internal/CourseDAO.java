@@ -75,4 +75,12 @@ public class CourseDAO {
     public Course findByCode(String courseCode) {
         return null;
     }
+
+    public List<String> getAllCoursesID() {
+        return create.select(
+                        COURSES.COURSE_CODE.as("course_code")
+                )
+                .from(COURSES)
+                .fetchInto(String.class);
+    }
 }

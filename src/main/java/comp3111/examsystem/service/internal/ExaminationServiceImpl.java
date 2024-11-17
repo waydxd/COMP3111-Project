@@ -7,7 +7,12 @@ import comp3111.examsystem.service.ExaminationService;
 import java.util.List;
 
 public class ExaminationServiceImpl implements ExaminationService {
-    private ExaminationDAO examinationDAO;
+    private final ExaminationDAO examinationDAO;
+
+    public ExaminationServiceImpl() {
+        this.examinationDAO = new ExaminationDAO();
+    }
+
     /**
      * @param examination
      */

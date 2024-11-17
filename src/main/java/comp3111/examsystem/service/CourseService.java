@@ -10,5 +10,6 @@ public interface CourseService {
     void deleteCourse(String courseID);
     List<Course> filterCoursesByDepartment(String department);
     List<Course> getAllCourses();
+    List<String> getAllCoursesID();
 }
 
