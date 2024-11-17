@@ -2,6 +2,7 @@ package comp3111.examsystem.service.internal;
 
 import comp3111.examsystem.dao.internal.ExaminationDAO;
 import comp3111.examsystem.entity.Examination;
+import comp3111.examsystem.entity.Question;
 import comp3111.examsystem.service.ExaminationService;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class ExaminationServiceImpl implements ExaminationService {
     }
 
     /**
-     * @param examination
+     * @param examination examination to be added
      */
     @Override
     public void addExamination(Examination examination) {
@@ -22,8 +23,8 @@ public class ExaminationServiceImpl implements ExaminationService {
     }
 
     /**
-     * @param id
-     * @return
+     * @param id id of examination
+     * @return Examination with the given id
      */
     @Override
     public Examination getExamination(int id) {
@@ -31,7 +32,7 @@ public class ExaminationServiceImpl implements ExaminationService {
     }
 
     /**
-     * @return
+     * @return List of all examinations
      */
     @Override
     public List<Examination> getAllExaminations() {
@@ -39,7 +40,7 @@ public class ExaminationServiceImpl implements ExaminationService {
     }
 
     /**
-     * @param examination
+     * @param examination examination to be updated
      */
     @Override
     public void updateExamination(Examination examination) {
@@ -47,7 +48,7 @@ public class ExaminationServiceImpl implements ExaminationService {
     }
 
     /**
-     * @param id
+     * @param id id of examination
      */
     @Override
     public void deleteExamination(int id) {
@@ -55,20 +56,29 @@ public class ExaminationServiceImpl implements ExaminationService {
     }
 
     /**
-     * @param examinationId
-     * @param questionId
+     * @param examinationId id of examination
+     * @param questionId id of question to be added
      */
     @Override
     public void addQuestionToExamination(int examinationId, int questionId) {
-
+        examinationDAO.addQuestionToExamination(examinationId, questionId);
     }
 
     /**
-     * @param examinationId
-     * @param questionId
+     * @param examinationId id of examination
+     * @param questionId id of question to be removed
      */
     @Override
     public void removeQuestionFromExamination(int examinationId, int questionId) {
+        examinationDAO.removeQuestionFromExamination(examinationId, questionId);
+    }
 
+    /**
+     * @param examinationId id of examination
+     * @return List of questions in the examination
+     */
+    @Override
+    public List<Question> getQuestionsInExamination(int examinationId) {
+        return examinationDAO.getQuestionsInExamination(examinationId);
     }
 }

@@ -1,6 +1,7 @@
 package comp3111.examsystem.service;
 
 import comp3111.examsystem.entity.Examination;
+import comp3111.examsystem.entity.Question;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface ExaminationService {
     void deleteExamination(int id);
     void addQuestionToExamination(int examinationId, int questionId);
     void removeQuestionFromExamination(int examinationId, int questionId);
+    List<Question> getQuestionsInExamination(int examinationId);
 }

@@ -59,3 +59,11 @@ CREATE TABLE IF NOT EXISTS examinations (
                               examName TEXT NOT NULL,
                               publish BOOLEAN NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS examination_questions (
+    examination_id INTEGER NOT NULL,
+    question_id INTEGER NOT NULL,
+    PRIMARY KEY (examination_id, question_id),
+    FOREIGN KEY (examination_id) REFERENCES examinations(id),
+    FOREIGN KEY (question_id) REFERENCES questions(id)
+);

@@ -6,6 +6,7 @@ package com.examsystem.jooq.generated;
 
 import com.examsystem.jooq.generated.tables.Courses;
 import com.examsystem.jooq.generated.tables.Demo;
+import com.examsystem.jooq.generated.tables.ExaminationQuestions;
 import com.examsystem.jooq.generated.tables.Examinations;
 import com.examsystem.jooq.generated.tables.Grades;
 import com.examsystem.jooq.generated.tables.Managers;
@@ -14,6 +15,7 @@ import com.examsystem.jooq.generated.tables.Questions;
 import com.examsystem.jooq.generated.tables.StudentExaminations;
 import com.examsystem.jooq.generated.tables.records.CoursesRecord;
 import com.examsystem.jooq.generated.tables.records.DemoRecord;
+import com.examsystem.jooq.generated.tables.records.ExaminationQuestionsRecord;
 import com.examsystem.jooq.generated.tables.records.ExaminationsRecord;
 import com.examsystem.jooq.generated.tables.records.GradesRecord;
 import com.examsystem.jooq.generated.tables.records.ManagersRecord;
@@ -41,6 +43,7 @@ public class Keys {
 
     public static final UniqueKey<CoursesRecord> COURSES__PK_COURSES = Internal.createUniqueKey(Courses.COURSES, DSL.name("pk_courses"), new TableField[] { Courses.COURSES.COURSE_CODE }, true);
     public static final UniqueKey<DemoRecord> DEMO__PK_DEMO = Internal.createUniqueKey(Demo.DEMO, DSL.name("pk_demo"), new TableField[] { Demo.DEMO.ID }, true);
+    public static final UniqueKey<ExaminationQuestionsRecord> EXAMINATION_QUESTIONS__PK_EXAMINATION_QUESTIONS = Internal.createUniqueKey(ExaminationQuestions.EXAMINATION_QUESTIONS, DSL.name("pk_examination_questions"), new TableField[] { ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID, ExaminationQuestions.EXAMINATION_QUESTIONS.QUESTION_ID }, true);
     public static final UniqueKey<ExaminationsRecord> EXAMINATIONS__PK_EXAMINATIONS = Internal.createUniqueKey(Examinations.EXAMINATIONS, DSL.name("pk_examinations"), new TableField[] { Examinations.EXAMINATIONS.ID }, true);
     public static final UniqueKey<GradesRecord> GRADES__PK_GRADES = Internal.createUniqueKey(Grades.GRADES, DSL.name("pk_grades"), new TableField[] { Grades.GRADES.ID }, true);
     public static final UniqueKey<ManagersRecord> MANAGERS__PK_MANAGERS = Internal.createUniqueKey(Managers.MANAGERS, DSL.name("pk_managers"), new TableField[] { Managers.MANAGERS.ID }, true);
@@ -52,6 +55,8 @@ public class Keys {
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<ExaminationQuestionsRecord, ExaminationsRecord> EXAMINATION_QUESTIONS__FK_EXAMINATION_QUESTIONS_PK_EXAMINATIONS = Internal.createForeignKey(ExaminationQuestions.EXAMINATION_QUESTIONS, DSL.name("fk_examination_questions_pk_examinations"), new TableField[] { ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID }, Keys.EXAMINATIONS__PK_EXAMINATIONS, new TableField[] { Examinations.EXAMINATIONS.ID }, true);
+    public static final ForeignKey<ExaminationQuestionsRecord, QuestionsRecord> EXAMINATION_QUESTIONS__FK_EXAMINATION_QUESTIONS_PK_QUESTIONS = Internal.createForeignKey(ExaminationQuestions.EXAMINATION_QUESTIONS, DSL.name("fk_examination_questions_pk_questions"), new TableField[] { ExaminationQuestions.EXAMINATION_QUESTIONS.QUESTION_ID }, Keys.QUESTIONS__PK_QUESTIONS, new TableField[] { Questions.QUESTIONS.ID }, true);
     public static final ForeignKey<StudentExaminationsRecord, ExaminationsRecord> STUDENT_EXAMINATIONS__FK_STUDENT_EXAMINATIONS_PK_EXAMINATIONS = Internal.createForeignKey(StudentExaminations.STUDENT_EXAMINATIONS, DSL.name("fk_student_examinations_pk_examinations"), new TableField[] { StudentExaminations.STUDENT_EXAMINATIONS.EXAMINATION_ID }, Keys.EXAMINATIONS__PK_EXAMINATIONS, new TableField[] { Examinations.EXAMINATIONS.ID }, true);
     public static final ForeignKey<StudentExaminationsRecord, MembersRecord> STUDENT_EXAMINATIONS__FK_STUDENT_EXAMINATIONS_PK_MEMBERS = Internal.createForeignKey(StudentExaminations.STUDENT_EXAMINATIONS, DSL.name("fk_student_examinations_pk_members"), new TableField[] { StudentExaminations.STUDENT_EXAMINATIONS.STUDENT_ID }, Keys.MEMBERS__PK_MEMBERS, new TableField[] { Members.MEMBERS.ID }, true);
 }

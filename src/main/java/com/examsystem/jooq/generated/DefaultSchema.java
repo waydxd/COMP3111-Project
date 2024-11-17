@@ -6,6 +6,7 @@ package com.examsystem.jooq.generated;
 
 import com.examsystem.jooq.generated.tables.Courses;
 import com.examsystem.jooq.generated.tables.Demo;
+import com.examsystem.jooq.generated.tables.ExaminationQuestions;
 import com.examsystem.jooq.generated.tables.Examinations;
 import com.examsystem.jooq.generated.tables.Grades;
 import com.examsystem.jooq.generated.tables.Managers;
@@ -43,6 +44,11 @@ public class DefaultSchema extends SchemaImpl {
      * The table <code>demo</code>.
      */
     public final Demo DEMO = Demo.DEMO;
+
+    /**
+     * The table <code>examination_questions</code>.
+     */
+    public final ExaminationQuestions EXAMINATION_QUESTIONS = ExaminationQuestions.EXAMINATION_QUESTIONS;
 
     /**
      * The table <code>examinations</code>.
@@ -92,6 +98,7 @@ public class DefaultSchema extends SchemaImpl {
         return Arrays.asList(
             Courses.COURSES,
             Demo.DEMO,
+            ExaminationQuestions.EXAMINATION_QUESTIONS,
             Examinations.EXAMINATIONS,
             Grades.GRADES,
             Managers.MANAGERS,

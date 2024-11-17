@@ -1,7 +1,9 @@
 package comp3111.examsystem.dao.internal;
 
 import com.examsystem.jooq.generated.tables.Examinations;
+import com.examsystem.jooq.generated.tables.ExaminationQuestions;
 import comp3111.examsystem.DatabaseConnection;
+import comp3111.examsystem.entity.Question;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
@@ -26,7 +28,7 @@ public class ExaminationDAO {
 
     public void addExamination(Examination exam) {
         create.insertInto(EXAMINATIONS, EXAMINATIONS.COURSEID, EXAMINATIONS.EXAMTIME, EXAMINATIONS.EXAMNAME, EXAMINATIONS.PUBLISH)
-                .values(exam.getCourseID(), (float) exam.getExamTime(), exam.getExamName(), exam.getPublish())
+                .values(exam.getCourseID(), exam.getExamTime(), exam.getExamName(), exam.getPublish())
                 .execute();
     }
 
@@ -47,7 +49,7 @@ public class ExaminationDAO {
     public void updateExamination(Examination Examination){
         create.update(EXAMINATIONS)
                 .set(EXAMINATIONS.COURSEID, Examination.getCourseID())
-                .set(EXAMINATIONS.EXAMTIME, (float) Examination.getExamTime())
+                .set(EXAMINATIONS.EXAMTIME, Examination.getExamTime())
                 .set(EXAMINATIONS.EXAMNAME, Examination.getExamName())
                 .set(EXAMINATIONS.PUBLISH, Examination.getPublish())
                 .where(EXAMINATIONS.ID.eq(Examination.getId()))
@@ -57,5 +59,27 @@ public class ExaminationDAO {
         create.deleteFrom(EXAMINATIONS)
                 .where(EXAMINATIONS.ID.eq(id))
                 .execute();
+    }
+
+    public void addQuestionToExamination(int examinationId, int questionId) {
+        create.insertInto(ExaminationQuestions.EXAMINATION_QUESTIONS, ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID, ExaminationQuestions.EXAMINATION_QUESTIONS.QUESTION_ID)
+                .values(examinationId, questionId)
+                .execute();
+    }
+
+    public void removeQuestionFromExamination(int examinationId, int questionId) {
+        create.deleteFrom(ExaminationQuestions.EXAMINATION_QUESTIONS)
+                .where(ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID.eq(examinationId))
+                .and(ExaminationQuestions.EXAMINATION_QUESTIONS.QUESTION_ID.eq(questionId))
+                .execute();
+    }
+
+    public List<Question> getQuestionsInExamination(int examinationId) {
+        return create.select()
+                .from(ExaminationQuestions.EXAMINATION_QUESTIONS)
+                .join(Examinations.EXAMINATIONS)
+                .on(ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID.eq(Examinations.EXAMINATIONS.ID))
+                .where(Examinations.EXAMINATIONS.ID.eq(examinationId))
+                .fetchInto(Question.class);
     }
 }
