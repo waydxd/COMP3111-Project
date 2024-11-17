@@ -18,18 +18,28 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
+/**
+ * The controller for the manager login UI.
+ */
 public class ManagerLoginController implements Initializable {
     @FXML
     private TextField usernameTxt;
     @FXML
     private PasswordField passwordTxt;
 
+    /**
+     * The ManagerService instance used to interact with the manager data.
+     */
     private final ManagerService managerService = new ManagerServiceImpl();
+
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
+    /**
+     * Handles the login button click event.
+     * @param e The action event.
+     */
     @FXML
     public void login(ActionEvent e) {
         String username = usernameTxt.getText();
@@ -66,8 +76,13 @@ public class ManagerLoginController implements Initializable {
         }
     }
 
+    /**
+     * Authenticates the user with the given username and password.
+     * @param username The username.
+     * @param password The password.
+     * @return True if the user is authenticated, false otherwise.
+     */
     private boolean authenticate(String username, String password) {
-        // Replace with actual authentication logic
         return managerService.login(username, password);
     }
 

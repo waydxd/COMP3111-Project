@@ -61,6 +61,20 @@ public class TeacherGradeStatisticController implements Initializable {
 
     protected final ObservableList<Grade> gradeList = FXCollections.observableArrayList();
 
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     *
+     * This method performs the following tasks:
+     * 1. Initializes the GradeService.
+     * 2. Configures the bar chart, pie chart, and line chart.
+     * 3. Populates the grade list with data from the GradeService.
+     * 4. Sets up the table columns with the appropriate cell value factories.
+     * 5. Initializes the choice boxes with unique values.
+     * 6. Refreshes the table and loads the charts with the initial data.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         GradeService gradeService = new GradeServiceImpl();
@@ -73,8 +87,6 @@ public class TeacherGradeStatisticController implements Initializable {
         lineChart.setLegendVisible(false);
         categoryAxisLine.setLabel("Exam");
         numberAxisLine.setLabel("Avg. Score");
-
-//        addDummyData();
 
         gradeList.addAll(gradeService.getAllGrades());
         gradeTable.setItems(gradeList);
@@ -90,22 +102,16 @@ public class TeacherGradeStatisticController implements Initializable {
         refresh();
         loadChart();
     }
-//    private void addDummyData() {
-//
-//        Grade grade1 = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
-//        Grade grade2 = new Grade("Jane Smith", "COMP3111", "Final", 92.0F, 100.0F, 120);
-//        Grade grade3 = new Grade("Alice Johnson", "COMP2012", "Quiz 1", 78.5F, 100.0F, 30);
-//        Grade grade4 = new Grade("Bob Wilson", "COMP2012", "Midterm", 88.0F, 100.0F, 60);
-//        Grade grade5 = new Grade("Charlie Brown", "COMP1022", "Final", 95.5F, 100.0F, 90);
-//
-//        gradeService.addGrade(grade1);
-//        gradeService.addGrade(grade2);
-//        gradeService.addGrade(grade3);
-//        gradeService.addGrade(grade4);
-//        gradeService.addGrade(grade5);
-//
-//    }
 
+    /**
+     * Initializes the choice boxes with unique values.
+     * This method performs the following tasks:
+     * 1. Creates sets to store unique course names, exam names, and student names.
+     * 2. Converts the sets to sorted lists.
+     * 3. Adds an empty choice as the first item in each list.
+     * 4. Sets the items of the choice boxes to the sorted lists.
+     * 5. Sets the default values of the choice boxes to empty strings.
+     */
     private void initializeChoiceBoxes() {
         // Get unique values
         Set<String> courses = new HashSet<>();
@@ -144,12 +150,23 @@ public class TeacherGradeStatisticController implements Initializable {
         studentCombox.setValue("");
     }
 
+    /**
+     * Refreshes the table and loads the charts with the latest data.
+     */
     @FXML
     public void refresh() {
         gradeTable.refresh();
         loadChart();
     }
 
+    /**
+     * Loads the bar chart, pie chart, and line chart with the latest data.
+     * This method performs the following tasks:
+     * 1. Calculates the average score per course.
+     * 2. Populates the bar chart with the average scores.
+     * 3. Populates the pie chart with the student scores.
+     * 4. Populates the line chart with the score progression.
+     */
     private void loadChart() {
         // Bar Chart - Average score per course
         XYChart.Series<String, Number> seriesBar = new XYChart.Series<>();
@@ -183,6 +200,16 @@ public class TeacherGradeStatisticController implements Initializable {
         lineChart.getData().add(seriesLine);
     }
 
+    /**
+     * Calculates the average score per course.
+     * This method performs the following tasks:
+     * 1. Creates a map to store course names and their corresponding scores.
+     * 2. Creates a map to store course names and their corresponding averages.
+     * 3. Iterates through the grade list and populates the course scores map.
+     * 4. Iterates through the course scores map and calculates the averages.
+     *
+     * @return A map of course names and their corresponding averages.
+     */
     protected Map<String, Double> calculateCourseAverages() {
         Map<String, List<Double>> courseScores = new HashMap<>();
         Map<String, Double> averages = new HashMap<>();
@@ -204,6 +231,10 @@ public class TeacherGradeStatisticController implements Initializable {
 
         return averages;
     }
+
+    /**
+     * Resets the choice boxes and table to their initial state.
+     */
     @FXML
     public void reset() {
         courseCombox.setValue(null);
@@ -213,6 +244,14 @@ public class TeacherGradeStatisticController implements Initializable {
         loadChart();
     }
 
+    /**
+     * Queries the grade list based on the selected course, exam, and student.
+     * This method performs the following tasks:
+     * 1. Gets the selected course, exam, and student from the choice boxes.
+     * 2. Filters the grade list based on the selected values.
+     * 3. Sets the filtered list to the table.
+     * 4. Loads the charts with the filtered data.
+     */
     @FXML
     public void query() {
         String selectedCourse = courseCombox.getValue();
