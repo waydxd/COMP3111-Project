@@ -11,7 +11,7 @@ public interface ExaminationService {
     List<Examination> getAllExaminations();
     void updateExamination(Examination examination);
     void deleteExamination(int id);
-    void addQuestionToExamination(int examinationId, int questionId);
+    void addQuestionToExamination(int examinationId, int questionId) throws Exception;
     void removeQuestionFromExamination(int examinationId, int questionId);
     List<Question> getQuestionsInExamination(int examinationId);
 }

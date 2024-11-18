@@ -14,6 +14,7 @@ import java.util.List;
 
 import comp3111.examsystem.entity.Examination;
 
+import static com.examsystem.jooq.generated.Tables.QUESTIONS;
 import static com.examsystem.jooq.generated.tables.Examinations.EXAMINATIONS;
 public class ExaminationDAO {
     private DSLContext create;
@@ -61,10 +62,22 @@ public class ExaminationDAO {
                 .execute();
     }
 
-    public void addQuestionToExamination(int examinationId, int questionId) {
-        create.insertInto(ExaminationQuestions.EXAMINATION_QUESTIONS, ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID, ExaminationQuestions.EXAMINATION_QUESTIONS.QUESTION_ID)
-                .values(examinationId, questionId)
-                .execute();
+    public void addQuestionToExamination(int examinationId, int questionId) throws Exception {
+
+            Integer count = create.selectCount()
+                    .from(ExaminationQuestions.EXAMINATION_QUESTIONS)
+                    .where(ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID.eq(examinationId))
+                    .and(ExaminationQuestions.EXAMINATION_QUESTIONS.QUESTION_ID.eq(questionId))
+                    .fetchOne(0, int.class);
+
+            if (count != null && count == 0) {
+                create.insertInto(ExaminationQuestions.EXAMINATION_QUESTIONS, ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID, ExaminationQuestions.EXAMINATION_QUESTIONS.QUESTION_ID)
+                        .values(examinationId, questionId)
+                        .execute();
+            } else {
+                throw new Exception("repeated");
+            }
+
     }
 
     public void removeQuestionFromExamination(int examinationId, int questionId) {
@@ -75,11 +88,15 @@ public class ExaminationDAO {
     }
 
     public List<Question> getQuestionsInExamination(int examinationId) {
-        return create.select()
+        // Step 1: Fetch question IDs
+        List<Integer> questionIds = create.select(ExaminationQuestions.EXAMINATION_QUESTIONS.QUESTION_ID)
                 .from(ExaminationQuestions.EXAMINATION_QUESTIONS)
-                .join(Examinations.EXAMINATIONS)
-                .on(ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID.eq(Examinations.EXAMINATIONS.ID))
-                .where(Examinations.EXAMINATIONS.ID.eq(examinationId))
+                .where(ExaminationQuestions.EXAMINATION_QUESTIONS.EXAMINATION_ID.eq(examinationId))
+                .fetchInto(Integer.class);
+
+        // Step 2: Fetch questions using the question IDs
+        return create.selectFrom(QUESTIONS.QUESTIONS)
+                .where(QUESTIONS.ID.in(questionIds))
                 .fetchInto(Question.class);
     }
 }

@@ -198,8 +198,6 @@ public class ExamManagementSystemController {
         questionTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         scoreColumn_right.setCellValueFactory(new PropertyValueFactory<>("score"));
 
-
-
     }
 
 
@@ -228,24 +226,22 @@ public class ExamManagementSystemController {
 
     @FXML
     private void deleteFromLeft() {
-        // Delete the selected question from the TableView
-        Question selectedQuestion =All_QuestionTableView.getSelectionModel().getSelectedItem();
-        Examination selectedExam =ExamTableView.getSelectionModel().getSelectedItem();
-        Question deletedQuestion =LeftQuestionTableView.getSelectionModel().getSelectedItem();
-        if (selectedExam!=null&&selectedQuestion != null) {
-            if(deletedQuestion!=null)
-            {
+        Question selectedQuestion =  LeftQuestionTableView.getSelectionModel().getSelectedItem();
+        Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();
 
+        if (selectedExam != null && selectedQuestion != null) {
                 examinationService.removeQuestionFromExamination(selectedExam.getId(), selectedQuestion.getId());
-                LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getExamination(selectedExam.getId()).getQuiz()));
+                LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));
                 LeftQuestionTableView.refresh();
-                return;
+        } else {
+            String message = "Selected Exam: " + (selectedExam != null ? selectedExam.getExamName() : "None") + "\n" +
+                    "Selected Question: " + (selectedQuestion != null ? selectedQuestion.getQuestion() : "None") + "\n";
 
-            }
-
-        }
-        else{
-            ErrorPopupController.Error_Popup("Please click on questions");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Selection Details");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
         }
     }
 
@@ -257,7 +253,9 @@ public class ExamManagementSystemController {
         if (selectedExam!=null) {
 
             //Show existing quiz in exam
-            LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));
+            LeftQuestionTableView.setItems(FXCollections.observableArrayList(
+                    examinationService.getQuestionsInExamination(selectedExam.getId()))
+            );
 
             if(selectedQuestion != null)
             {
@@ -265,19 +263,23 @@ public class ExamManagementSystemController {
                 //if (!selectedExam.getQuiz().contains(selectedQuestion))
                 if (!examinationService.getQuestionsInExamination(selectedExam.getId()).contains(selectedQuestion))
                 {
-
-                    examinationService.addQuestionToExamination(selectedExam.getId(),selectedQuestion.getId());
-                    LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));
-                    return;
+                    try {
+                        examinationService.addQuestionToExamination(selectedExam.getId(),selectedQuestion.getId());
+                        LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));
+                    } catch (Exception e) {
+                        if("repeated".equals(e.getMessage())) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Error");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The question is already in the exam.");
+                            alert.showAndWait();
+                        } else {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-
             }
-
-
         }
-
-
-
     }
 
 
@@ -339,7 +341,7 @@ public class ExamManagementSystemController {
             return;
         }
 
-        //Validate the double convernsion not work
+        //Validate the double conversion not work
         try {
             float examTime = Float.parseFloat(examTimeField.getText());
         } catch (NumberFormatException e) {

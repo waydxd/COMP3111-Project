@@ -60,10 +60,13 @@ public class ExaminationServiceImpl implements ExaminationService {
      * @param questionId id of question to be added
      */
     @Override
-    public void addQuestionToExamination(int examinationId, int questionId) {
-        examinationDAO.addQuestionToExamination(examinationId, questionId);
+    public void addQuestionToExamination(int examinationId, int questionId) throws Exception {
+        try {
+            examinationDAO.addQuestionToExamination(examinationId, questionId);
+        } catch (Exception e) {
+            throw e;
+        }
     }
-
     /**
      * @param examinationId id of examination
      * @param questionId id of question to be removed

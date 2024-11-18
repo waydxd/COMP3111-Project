@@ -16,7 +16,7 @@ public class Question extends Entity{
     private String optionD;
     private String answer;
     private String type;
-    private double score;
+    private float score;
 
 
 
@@ -29,7 +29,7 @@ public class Question extends Entity{
         this.optionD = options[3];
         this.answer = answer;
         this.type = type;
-        this.score = Double.parseDouble(score);
+        this.score = Float.parseFloat(score);
     }
     public Question() {
     }
@@ -94,7 +94,7 @@ public class Question extends Entity{
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(float score) {
         this.score = score;
     }
 }
