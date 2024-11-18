@@ -7,14 +7,7 @@ import javafx.collections.ObservableList;
 
 public class Question extends Entity{
 
-//    private StringProperty question = new SimpleStringProperty();
-//    private StringProperty optionA = new SimpleStringProperty();
-//    private StringProperty optionB = new SimpleStringProperty();
-//    private StringProperty optionC = new SimpleStringProperty();
-//    private StringProperty optionD = new SimpleStringProperty();
-//    private StringProperty answer = new SimpleStringProperty();
-//    private StringProperty type = new SimpleStringProperty();
-//    private StringProperty score = new SimpleStringProperty();
+
 
     private String question;
     private String optionA;
@@ -25,23 +18,7 @@ public class Question extends Entity{
     private String type;
     private double score;
 
-//    private static ObservableList<Question> questionList = FXCollections.observableArrayList(                        new Question("Which of the following is a programming language?", new String[] {"Apple", "Java", "Banana", "Orange"}, "B", "Single", "10"),
-//            new Question("What does CPU stand for?", new String[] {"Computer Processor", "Central Processing Unit", "Computer Program", "Centralized Programming"}, "B", "Single", "10"),
-//            new Question("Which of the following is a programming language?", new String[] {"Excel", "Photoshop", "Java", "HTML"}, "C", "Single", "10"),
-//            new Question("What does RAM stand for in computing?", new String[] {"Random Access Memory", "Read-Only Memory", "Running Applications", "Remote Access Memory"}, "A", "Single", "10"),
-//            new Question("Which of the following is NOT a programming language?", new String[] {"Java", "Python", "HTML", "Photoshop"}, "D", "Single", "10"),
-//            new Question("What is the main function of a GPU?", new String[] {"Data Storage", "Graphics Rendering", "Network Connection", "Power Supply"}, "B", "Single", "10"),
-//            new Question("What does HTML stand for in web development?", new String[] {"Hyper Text Markup", "High Tech Modern", "How to Make Lists", "Home Tool Management"}, "A", "Single", "10"),
-//            new Question("Which component of a computer is often referred to as the 'brain'?", new String[] {"Hard Drive", "CPU", "Monitor", "Keyboard"}, "B", "Single", "10"),
-//            new Question("Which of the following are object-oriented programming languages?", new String[] {"Java", "Python", "C", "HTML"}, "AB", "Multiple", "20"),
-//            new Question("Which of the following are types of computer memory?", new String[] {"RAM", "ROM", "CPU", "HDD"}, "AB", "Multiple", "20"),
-//            new Question("Which of the following are essential components of a computer?", new String[] {"Motherboard", "Keyboard", "Monitor", "Mouse"}, "ABC", "Multiple", "20"),
-//            new Question("Which of the following are commonly used web browsers?", new String[] {"Google Chrome", "Photoshop", "Safari", "Microsoft Word"}, "AC", "Multiple", "20"),
-//            new Question("Which of the following are programming paradigms?", new String[] {"Imperative", "Declarative", "Procedural", "Visual Studio"}, "ABC", "Multiple", "20"));
 
-//    public static ObservableList<Question> getQuestionList() {
-//        return questionList;
-//    }
 
     public Question(String question, String[] options, String answer, String type, String score) {
 

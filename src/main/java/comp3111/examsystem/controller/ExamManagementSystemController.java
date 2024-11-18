@@ -87,7 +87,9 @@ public class ExamManagementSystemController {
             if (newValue != null) {
                 // Get the quiz questions from the selected Examination object
                 // Update the QuizTableView with the quiz questions
-                LeftQuestionTableView.setItems(FXCollections.observableArrayList(newValue.getQuiz()));
+//                LeftQuestionTableView.setItems(FXCollections.observableArrayList(newValue.getQuiz()));
+                LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(newValue.getId())));
+
             } else {
                 // Clear the QuizTableView if no exam is selected
                 LeftQuestionTableView.setItems(null);
@@ -165,7 +167,7 @@ public class ExamManagementSystemController {
 
 
 
-        filterCourseID.getItems().addAll();
+        filterCourseID.getItems().addAll(courseService.getAllCoursesID());
         filterPublish.getItems().addAll("yes","no");
 
 
@@ -230,11 +232,12 @@ public class ExamManagementSystemController {
         Question selectedQuestion =All_QuestionTableView.getSelectionModel().getSelectedItem();
         Examination selectedExam =ExamTableView.getSelectionModel().getSelectedItem();
         Question deletedQuestion =LeftQuestionTableView.getSelectionModel().getSelectedItem();
-        if (selectedExam!=null||selectedQuestion != null) {
+        if (selectedExam!=null&&selectedQuestion != null) {
             if(deletedQuestion!=null)
             {
-                selectedExam.getQuiz().remove(selectedQuestion);
-                LeftQuestionTableView.setItems(FXCollections.observableArrayList(selectedExam.getQuiz()));
+
+                examinationService.removeQuestionFromExamination(selectedExam.getId(), selectedQuestion.getId());
+                LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getExamination(selectedExam.getId()).getQuiz()));
                 LeftQuestionTableView.refresh();
                 return;
 
@@ -254,13 +257,17 @@ public class ExamManagementSystemController {
         if (selectedExam!=null) {
 
             //Show existing quiz in exam
-            LeftQuestionTableView.setItems(FXCollections.observableArrayList(selectedExam.getQuiz()));
+            LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));
+
             if(selectedQuestion != null)
             {
                 // Validate the updated values
-                if (!selectedExam.getQuiz().contains(selectedQuestion)) {
-                    selectedExam.getQuiz().add(selectedQuestion);
-                    LeftQuestionTableView.setItems(FXCollections.observableArrayList(selectedExam.getQuiz()));
+                //if (!selectedExam.getQuiz().contains(selectedQuestion))
+                if (!examinationService.getQuestionsInExamination(selectedExam.getId()).contains(selectedQuestion))
+                {
+
+                    examinationService.addQuestionToExamination(selectedExam.getId(),selectedQuestion.getId());
+                    LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));
                     return;
                 }
 
@@ -304,10 +311,12 @@ public class ExamManagementSystemController {
         Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();
         if (selectedExam != null) {
             // Update the selected exam with the new values
+
             selectedExam.setExamName(examNameField.getText());
             selectedExam.setExamTime(Float.parseFloat(examTimeField.getText()));
             selectedExam.setCourseID(courseComboBox.getValue());
             selectedExam.setPublish(publishComboBox.getValue().equals("Published"));
+            examinationService.updateExamination(selectedExam);
 
             // Refresh the ExamTableView
             ExamTableView.refresh();
