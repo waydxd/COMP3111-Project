@@ -81,15 +81,6 @@ public class StudentManagementController implements Initializable {
 
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
 
-//        studentTable.getColumns().addAll(usernameColumn, nameColumn, ageColumn, genderColumn, departmentColumn, passwordColumn);
-
-//
-//        // Example data
-//     studentTable.setItems(FXCollections.observableArrayList(
-//             new Student("user1", "John Doe", "s", "Male", "20", "password1"),
-//            new Student("user2", "Jane Smith", "s", "Female", "10", "password2")
-//        ));
-
         studentTable.setItems(FXCollections.observableArrayList(
                 studentService.getAllStudents()
         ));
@@ -132,7 +123,6 @@ public class StudentManagementController implements Initializable {
         filterUsernameField.clear();
         filterNameField.clear();
         filterDepartmentField.clear();
-        handleRefresh();
     }
 
     /**

@@ -93,7 +93,6 @@ public class CourseManagementController implements Initializable {
         courseIdFilter.clear();
         courseNameFilter.clear();
         departmentFilter.clear();
-        handleRefresh();
     }
 
     /**

@@ -126,7 +126,6 @@ public class TeacherManagementController implements Initializable {
         filterUsernameField.clear();
         filterNameField.clear();
         filterDepartmentField.clear();
-        handleRefresh();
     }
 
     /**
