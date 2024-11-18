@@ -13,6 +13,10 @@ public class GradeServiceImpl implements GradeService {
         this.gradeDAO = new GradeDAO();
     }
 
+    public GradeServiceImpl(GradeDAO gradeDAO) {
+        this.gradeDAO = gradeDAO;
+    }
+
     @Override
     public void addGrade(Grade grade) {
         gradeDAO.addGrade(grade);

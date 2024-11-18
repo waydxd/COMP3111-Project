@@ -9,8 +9,18 @@ import comp3111.examsystem.service.ManagerService;
 import java.util.List;
 
 public class ManagerServiceImpl implements ManagerService {
-    private final ManagerDAO managerDAO = new ManagerDAO();
-    private final MemberDAO memberDAO = new MemberDAO();
+    private final ManagerDAO managerDAO ;
+    private final MemberDAO memberDAO;
+
+    public ManagerServiceImpl() {
+        this.managerDAO = new ManagerDAO();
+        this.memberDAO = new MemberDAO();
+    }
+
+    public ManagerServiceImpl(ManagerDAO managerDAO, MemberDAO memberDAO) {
+        this.managerDAO = managerDAO;
+        this.memberDAO = memberDAO;
+    }
 
     @Override
     public void addManager(Manager manager) {

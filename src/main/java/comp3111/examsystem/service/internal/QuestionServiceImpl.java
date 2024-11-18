@@ -7,7 +7,15 @@ import comp3111.examsystem.service.QuestionService;
 import java.util.List;
 
 public class QuestionServiceImpl implements QuestionService {
-    private final QuestionDAO questionDAO = new QuestionDAO();
+    private final QuestionDAO questionDAO;
+
+    public QuestionServiceImpl() {
+        this.questionDAO = new QuestionDAO();
+    }
+
+    public QuestionServiceImpl(QuestionDAO questionDAO) {
+        this.questionDAO = questionDAO;
+    }
 
     @Override
     public void addQuestion(Question question) {

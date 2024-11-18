@@ -23,6 +23,8 @@ public class Examination extends Entity{
         this.examTime = examTime;
         this.examName = examName;
         quiz = questionsList;
+        this.publish = publish;
+
     }
 
     public Examination(String courseID, float examTime, String examName, boolean publish) {
@@ -39,7 +41,7 @@ public class Examination extends Entity{
     }
 
     public Examination() {
-
+        this.publish = false; // Initialize publish to false
     }
 
     public String getCourseID() {

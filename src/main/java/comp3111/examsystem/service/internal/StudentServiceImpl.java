@@ -8,8 +8,15 @@ import comp3111.examsystem.service.StudentService;
 import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
-    private final MemberDAO studentDAO = new MemberDAO();
+    private final MemberDAO studentDAO;
 
+    public StudentServiceImpl() {
+        this.studentDAO = new MemberDAO();
+    }
+
+    public StudentServiceImpl(MemberDAO studentDAO) {
+        this.studentDAO = studentDAO;
+    }
     /**
      * @param student
      */

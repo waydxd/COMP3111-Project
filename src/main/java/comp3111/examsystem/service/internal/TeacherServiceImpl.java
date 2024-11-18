@@ -7,7 +7,15 @@ import comp3111.examsystem.service.TeacherService;
 import java.util.List;
 
 public class TeacherServiceImpl implements TeacherService  {
-    private final MemberDAO teacherDAO = new MemberDAO();
+    private final MemberDAO teacherDAO;
+
+    public TeacherServiceImpl() {
+        this.teacherDAO = new MemberDAO();
+    }
+
+    public TeacherServiceImpl(MemberDAO teacherDAO) {
+        this.teacherDAO = teacherDAO;
+    }
     /**
      * @param teacher
      */

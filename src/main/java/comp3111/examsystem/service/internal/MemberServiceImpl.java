@@ -7,7 +7,14 @@ import comp3111.examsystem.service.MemberService;
 import java.util.List;
 
 public class MemberServiceImpl implements MemberService {
-    private final MemberDAO memberDAO = new MemberDAO();
+    private final MemberDAO memberDAO;
+
+    public MemberServiceImpl() {
+        this.memberDAO = new MemberDAO();
+    }
+    public MemberServiceImpl(MemberDAO memberDAO) {
+        this.memberDAO = memberDAO;
+    }
 
     @Override
     public void addMember(Member member) {

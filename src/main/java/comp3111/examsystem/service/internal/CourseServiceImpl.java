@@ -7,8 +7,14 @@ import comp3111.examsystem.service.CourseService;
 import java.util.List;
 
 public class CourseServiceImpl implements CourseService {
-    private final CourseDAO courseDAO = new CourseDAO();
+    private final CourseDAO courseDAO;
 
+    public CourseServiceImpl() {
+        courseDAO = new CourseDAO();
+    }
+    public CourseServiceImpl(CourseDAO courseDAO) {
+        this.courseDAO = courseDAO;
+    }
     /**
      * @param course
      */

@@ -13,6 +13,14 @@ CREATE TABLE IF NOT EXISTS managers (
     password TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS examinations (
+                              id INTEGER PRIMARY KEY,
+                              courseID TEXT NOT NULL,
+                              examTime REAL NOT NULL,
+                              examName TEXT NOT NULL,
+                              publish BOOLEAN NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS courses (
                                        course_code TEXT PRIMARY KEY NOT NULL,
                                        name TEXT NOT NULL,
@@ -52,13 +60,6 @@ CREATE TABLE IF NOT EXISTS questions (
     score REAL NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS examinations (
-                              id INTEGER PRIMARY KEY,
-                              courseID TEXT NOT NULL,
-                              examTime REAL NOT NULL,
-                              examName TEXT NOT NULL,
-                              publish BOOLEAN NOT NULL
-);
 
 CREATE TABLE IF NOT EXISTS examination_questions (
     examination_id INTEGER NOT NULL,

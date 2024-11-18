@@ -14,6 +14,9 @@ public class ExaminationServiceImpl implements ExaminationService {
         this.examinationDAO = new ExaminationDAO();
     }
 
+    public ExaminationServiceImpl(ExaminationDAO examinationDAO) {
+        this.examinationDAO = examinationDAO;
+    }
     /**
      * @param examination examination to be added
      */

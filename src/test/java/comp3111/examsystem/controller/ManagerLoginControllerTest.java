@@ -17,7 +17,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.*;
 
-
 @ExtendWith(MockitoExtension.class)
 class ManagerLoginControllerTest {
 
@@ -33,43 +32,52 @@ class ManagerLoginControllerTest {
     @InjectMocks
     private ManagerLoginController managerLoginController;
 
+    @BeforeAll
+    public static void initJFX() {
+        Platform.startup(() -> {});
+    }
+
     @Test
     void testLoginSuccess() {
-        // Arrange
-        when(usernameTxt.getText()).thenReturn("validUsername");
-        when(passwordTxt.getText()).thenReturn("validPassword");
-        when(managerService.login("validUsername", "validPassword")).thenReturn(true);
+        Platform.runLater(() -> {
+            // Arrange
+            when(usernameTxt.getText()).thenReturn("validUsername");
+            when(passwordTxt.getText()).thenReturn("validPassword");
+            when(managerService.login("validUsername", "validPassword")).thenReturn(true);
 
-        Button mockButton = mock(Button.class);
-        Scene mockScene = mock(Scene.class);
-        Stage mockStage = mock(Stage.class);
-        ActionEvent mockEvent = mock(ActionEvent.class);
+            Button mockButton = mock(Button.class);
+            Scene mockScene = mock(Scene.class);
+            Stage mockStage = mock(Stage.class);
+            ActionEvent mockEvent = mock(ActionEvent.class);
 
-        when(mockEvent.getSource()).thenReturn(mockButton);
-        when(mockButton.getScene()).thenReturn(mockScene);
-        when(mockScene.getWindow()).thenReturn(mockStage);
+            when(mockEvent.getSource()).thenReturn(mockButton);
+            when(mockButton.getScene()).thenReturn(mockScene);
+            when(mockScene.getWindow()).thenReturn(mockStage);
 
-        // Act
-        managerLoginController.login(mockEvent);
+            // Act
+            managerLoginController.login(mockEvent);
 
-        // Assert
-        verify(managerService).login("validUsername", "validPassword");
-        verify(mockStage).close();
+            // Assert
+            verify(managerService).login("validUsername", "validPassword");
+            verify(mockStage).close();
+        });
     }
 
     @Test
     void testLoginFailure() {
-        // Arrange
-        when(usernameTxt.getText()).thenReturn("invalidUsername");
-        when(passwordTxt.getText()).thenReturn("invalidPassword");
-        when(managerService.login("invalidUsername", "invalidPassword")).thenReturn(false);
+        Platform.runLater(() -> {
+            // Arrange
+            when(usernameTxt.getText()).thenReturn("invalidUsername");
+            when(passwordTxt.getText()).thenReturn("invalidPassword");
+            when(managerService.login("invalidUsername", "invalidPassword")).thenReturn(false);
 
-        ActionEvent mockEvent = mock(ActionEvent.class);
+            ActionEvent mockEvent = mock(ActionEvent.class);
 
-        // Act
-        managerLoginController.login(mockEvent);
+            // Act
+            managerLoginController.login(mockEvent);
 
-        // Assert
-        verify(managerService).login("invalidUsername", "invalidPassword");
+            // Assert
+            verify(managerService).login("invalidUsername", "invalidPassword");
+        });
     }
 }
