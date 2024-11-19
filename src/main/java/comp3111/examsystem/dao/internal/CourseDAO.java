@@ -32,19 +32,34 @@ public class CourseDAO {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Constructor
+     * <p>
+     *     This constructor initializes the DSLContext for interacting with the database
+     *     using the SQLite dialect. It attempts to establish a connection to the database
+     *     and sets up the DSLContext for executing SQL queries.
+     *     If a SQLException occurs while attempting to establish the connection, the stack trace
+     *     of the exception is printed.
+     *     </p>
+     * @param conn connection to the database
+     * */
+    public CourseDAO(Connection conn) {
+        try {
+            this.create = DSL.using(conn, SQLDialect.SQLITE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Adds a course to the database.
      * @param course course to be added
      * @throws Exception when course cannot be added
      */
     public void addCourse(Course course) throws Exception {
-        try{
-            create.insertInto(COURSES, COURSES.COURSE_CODE, COURSES.NAME, COURSES.DEPARTMENT)
-                    .values(course.getCourseCode() ,course.getName(), course.getDepartment())
-                    .execute();
-        } catch (Exception e) {
-            throw e;
-        }
+        create.insertInto(COURSES, COURSES.COURSE_CODE, COURSES.NAME, COURSES.DEPARTMENT)
+                .values(course.getCourseCode() ,course.getName(), course.getDepartment())
+                .execute();
     }
 
     /**

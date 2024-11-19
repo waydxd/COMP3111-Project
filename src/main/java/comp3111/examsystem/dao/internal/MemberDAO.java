@@ -33,6 +33,22 @@ public class MemberDAO {
     }
 
     /**
+     * Constructor
+     * <p>
+     *     This constructor initializes the DSLContext for interacting with the database
+     *     using the SQLite dialect. It attempts to establish a connection to the database
+     *     and sets up the DSLContext for executing SQL queries.
+     *     </p>
+     * @param conn connection to the database
+     */
+    public MemberDAO(Connection conn) {
+        try {
+            this.create = DSL.using(conn, SQLDialect.SQLITE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
      * Adds a member to the database.
      * @param member member to be added
      */
@@ -54,7 +70,7 @@ public class MemberDAO {
 
     /**
      * Retrieves a member from the database using the member ID.
-     * @param id
+     * @param id the ID of the member to be retrieved
      * @return the member with the given ID
      */
     public Member getMember(int id) {
@@ -71,7 +87,7 @@ public class MemberDAO {
 
     /**
      * Retrieves a teacher from the database using the teacher ID.
-     * @param id
+     * @param id the ID of the teacher to be retrieved
      * @return the teacher with the given ID
      */
     public Teacher getTeacher(int id) {
@@ -82,7 +98,7 @@ public class MemberDAO {
 
     /**
      * Retrieves a student from the database using the student ID.
-     * @param id
+     * @param id the ID of the student to be retrieved
      * @return the student with the given ID
      */
     public Student getStudent(int id) {
