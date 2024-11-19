@@ -7,6 +7,10 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+	/**
+	 * Start the application
+	 * @param primaryStage the primary stage
+	 */
 	public void start(Stage primaryStage) {
 		try {
 			String cssPath = getClass().getResource("cupertino-light.css").toExternalForm();
@@ -19,7 +23,10 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Main function
+	 * @param args arguments
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

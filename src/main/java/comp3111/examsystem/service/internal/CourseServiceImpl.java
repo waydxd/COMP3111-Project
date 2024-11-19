@@ -9,17 +9,24 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
     private final CourseDAO courseDAO;
 
+    /**
+     * Constructor
+     */
     public CourseServiceImpl() {
         courseDAO = new CourseDAO();
     }
+    /**
+     * Constructor
+     * @param courseDAO self-defined CourseDAO object for testing
+     */
     public CourseServiceImpl(CourseDAO courseDAO) {
         this.courseDAO = courseDAO;
     }
     /**
-     * @param course
+     * @param course course to be added
      */
     @Override
-    public void addCourse(Course course) {
+    public void addCourse(Course course) throws Exception {
         try {
             courseDAO.addCourse(course);
         } catch (Exception e) {
@@ -27,16 +34,33 @@ public class CourseServiceImpl implements CourseService {
         }
     }
 
+    /**
+     * @param code code of course
+     * <p>
+     *             Update the course with the given code and the new course object
+     *             </p>
+     */
     @Override
     public void updateCourse(String code, Course course) {
         courseDAO.updateCourse(code, course);
     }
 
+    /**
+     * @param courseID courseID of course
+     * <p>
+     *             delete the course with the given courseID
+     *             </p>
+     *
+     */
     @Override
     public void deleteCourse(String courseID) {
         courseDAO.deleteCourse(courseID);
     }
 
+    /**
+     * @param department filterCoursesByDepartment
+     * @return Course with the given courseID
+     */
     @Override
     public List<Course> filterCoursesByDepartment(String department) {
         return courseDAO.filterCoursesByDepartment(department);
@@ -44,7 +68,7 @@ public class CourseServiceImpl implements CourseService {
 
     /**
      *
-     * @return List<Course>
+     * @return List of Courses
      */
     @Override
     public List<Course> getAllCourses() {
@@ -52,7 +76,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     /**
-     * @return
+     * @return List of all courses' ID
      */
     @Override
     public List<String> getAllCoursesID() {

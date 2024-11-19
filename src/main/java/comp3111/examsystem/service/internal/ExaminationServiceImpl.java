@@ -10,10 +10,17 @@ import java.util.List;
 public class ExaminationServiceImpl implements ExaminationService {
     private final ExaminationDAO examinationDAO;
 
+    /**
+     * Constructor
+     */
     public ExaminationServiceImpl() {
         this.examinationDAO = new ExaminationDAO();
     }
 
+    /**
+     * Constructor
+     * @param examinationDAO self-defined examinationDAO to be used (e.g. mocked class)
+     */
     public ExaminationServiceImpl(ExaminationDAO examinationDAO) {
         this.examinationDAO = examinationDAO;
     }
