@@ -137,8 +137,6 @@ public class TeacherGradeStatisticController implements Initializable {
 
         // Add an empty choice as first item
         courseItems.addFirst("");
-        examItems.addFirst("");
-        studentItems.addFirst("");
 
 
         // Set items to choice boxes

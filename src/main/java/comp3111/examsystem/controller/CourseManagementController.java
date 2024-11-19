@@ -150,6 +150,8 @@ public class CourseManagementController implements Initializable {
             } else {
                 throw e;
             }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
