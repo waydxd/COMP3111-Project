@@ -7,6 +7,12 @@ import java.util.ResourceBundle;
 
 import comp3111.examsystem.Main;
 import comp3111.examsystem.entity.Manager;
+import comp3111.examsystem.entity.Member;
+import comp3111.examsystem.entity.Teacher;
+import comp3111.examsystem.service.QuestionService;
+import comp3111.examsystem.service.TeacherService;
+import comp3111.examsystem.service.internal.QuestionServiceImpl;
+import comp3111.examsystem.service.internal.TeacherServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,18 +32,54 @@ public class TeacherLoginController implements Initializable {
     private PasswordField passwordTxt;
 
     public static Stage registerstage;
+
+    private final TeacherService teacherService = new TeacherServiceImpl();
+
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
+    public boolean account_exist(String user)
+    {
+        for(Teacher member: teacherService.getAllTeachers())
+        {
+            if(member.getUsername().equals(user))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public Teacher getTeacherbyUserName(String username) {
+        for (Teacher teacher : teacherService.getAllTeachers()) {
+            if (teacher.getUsername().equals(username)) {
+                return teacher;
+            }
+        }
+        return null; // 如果未找到匹配的教师,返回 null
+    }
+
+
     public boolean Check_login()
     {
 
+//        //检查账户是否存在
+//        if(getAccountManager().account_exist(usernameTxt.getText()))
+//        {
+//            //检查账户密码是否正确
+//            if(getAccountManager().getTeacherbyUserName(usernameTxt.getText()).Check_password(passwordTxt.getText()))
+//            {
+//
+//                return true;
+//            }
+//
+//
+//        }
         //检查账户是否存在
-        if(getAccountManager().account_exist(usernameTxt.getText()))
+        if(account_exist(usernameTxt.getText()))
         {
             //检查账户密码是否正确
-            if(getAccountManager().getTeacherbyUserName(usernameTxt.getText()).Check_password(passwordTxt.getText()))
+            if(getTeacherbyUserName(usernameTxt.getText()).Check_password(passwordTxt.getText()))
             {
 
                 return true;

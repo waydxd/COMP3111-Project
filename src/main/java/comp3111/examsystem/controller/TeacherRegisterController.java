@@ -3,6 +3,8 @@ package comp3111.examsystem.controller;
 import comp3111.examsystem.Main;
 import comp3111.examsystem.entity.Manager;
 import comp3111.examsystem.entity.Teacher;
+import comp3111.examsystem.service.TeacherService;
+import comp3111.examsystem.service.internal.TeacherServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +52,7 @@ public class TeacherRegisterController implements Initializable {
     private PasswordField passwordConfirmTxt;
     private TeacherLoginController teacherLoginController;
     private int testcount=0;
+    private final TeacherService teacherService =new TeacherServiceImpl();
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,7 +63,7 @@ public class TeacherRegisterController implements Initializable {
         // Add options to the Gender ChoiceBox
         Gender.getItems().addAll("Male", "Female", "Other");
         // Add options to the Position ChoiceBox
-        Position.getItems().addAll("Teacher", "Administrator", "Manager");
+        Position.getItems().addAll("Professor", "Associate Professor", "Assistant Professor", "Lecturer I", "Lecturer II", "Adjunct Professor", "Teaching Assistant", "Research Assistant", "Graduate Assistant Lecturer", "Instructional Assistant");
 
 
         teacherLoginController=new TeacherLoginController();
@@ -164,7 +167,8 @@ public class TeacherRegisterController implements Initializable {
             );
 
             // Add the account to the account manager
-            getAccountManager().addAccount(teacher);
+//            getAccountManager().addAccount(teacher);
+            teacherService.addTeacher(teacher);
 
             teacherLoginController.getRegisterStage().close();
         }
