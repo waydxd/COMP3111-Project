@@ -6,6 +6,7 @@ package com.examsystem.jooq.generated;
 
 import com.examsystem.jooq.generated.tables.Courses;
 import com.examsystem.jooq.generated.tables.Demo;
+import com.examsystem.jooq.generated.tables.ExaminationQuestions;
 import com.examsystem.jooq.generated.tables.Examinations;
 import com.examsystem.jooq.generated.tables.Grades;
 import com.examsystem.jooq.generated.tables.Managers;
@@ -29,6 +30,11 @@ public class Tables {
      * The table <code>demo</code>.
      */
     public static final Demo DEMO = Demo.DEMO;
+
+    /**
+     * The table <code>examination_questions</code>.
+     */
+    public static final ExaminationQuestions EXAMINATION_QUESTIONS = ExaminationQuestions.EXAMINATION_QUESTIONS;
 
     /**
      * The table <code>examinations</code>.

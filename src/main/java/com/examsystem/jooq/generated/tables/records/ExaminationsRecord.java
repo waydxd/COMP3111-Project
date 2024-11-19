@@ -77,15 +77,15 @@ public class ExaminationsRecord extends UpdatableRecordImpl<ExaminationsRecord> 
     /**
      * Setter for <code>examinations.publish</code>.
      */
-    public void setPublish(String value) {
+    public void setPublish(Boolean value) {
         set(4, value);
     }
 
     /**
      * Getter for <code>examinations.publish</code>.
      */
-    public String getPublish() {
-        return (String) get(4);
+    public Boolean getPublish() {
+        return (Boolean) get(4);
     }
 
     // -------------------------------------------------------------------------
@@ -111,7 +111,7 @@ public class ExaminationsRecord extends UpdatableRecordImpl<ExaminationsRecord> 
     /**
      * Create a detached, initialised ExaminationsRecord
      */
-    public ExaminationsRecord(Integer id, String courseid, Float examtime, String examname, String publish) {
+    public ExaminationsRecord(Integer id, String courseid, Float examtime, String examname, Boolean publish) {
         super(Examinations.EXAMINATIONS);
 
         setId(id);

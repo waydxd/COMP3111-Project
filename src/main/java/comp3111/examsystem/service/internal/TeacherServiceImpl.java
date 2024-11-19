@@ -7,9 +7,24 @@ import comp3111.examsystem.service.TeacherService;
 import java.util.List;
 
 public class TeacherServiceImpl implements TeacherService  {
-    private final MemberDAO teacherDAO = new MemberDAO();
+    private final MemberDAO teacherDAO;
+
     /**
-     * @param teacher
+     * Constructor
+     */
+    public TeacherServiceImpl() {
+        this.teacherDAO = new MemberDAO();
+    }
+
+    /**
+     * Constructor
+     * @param teacherDAO self-defined MemberDAO object for testing
+     */
+    public TeacherServiceImpl(MemberDAO teacherDAO) {
+        this.teacherDAO = teacherDAO;
+    }
+    /**
+     * @param teacher teacher to be added
      */
     @Override
     public void addTeacher(Teacher teacher) {
@@ -17,8 +32,8 @@ public class TeacherServiceImpl implements TeacherService  {
     }
 
     /**
-     * @param id
-     * @return
+     * @param id id of teacher
+     * @return Teacher with the given id
      */
     @Override
     public Teacher getTeacher(int id) {
@@ -26,7 +41,7 @@ public class TeacherServiceImpl implements TeacherService  {
     }
 
     /**
-     * @return
+     * @return List of all teachers
      */
     @Override
     public List<Teacher> getAllTeachers() {
@@ -34,8 +49,8 @@ public class TeacherServiceImpl implements TeacherService  {
     }
 
     /**
-     * @param id
-     * @param teacher
+     * @param id id of teacher
+     * @param teacher teacher to be updated
      */
     @Override
     public void updateTeacher(int id, Teacher teacher) {
@@ -44,7 +59,7 @@ public class TeacherServiceImpl implements TeacherService  {
     }
 
     /**
-     * @param id
+     * @param id id of teacher to be deleted
      */
     @Override
     public void deleteTeacher(int id) {

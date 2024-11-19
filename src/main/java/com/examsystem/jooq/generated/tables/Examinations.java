@@ -6,7 +6,9 @@ package com.examsystem.jooq.generated.tables;
 
 import com.examsystem.jooq.generated.DefaultSchema;
 import com.examsystem.jooq.generated.Keys;
+import com.examsystem.jooq.generated.tables.ExaminationQuestions.ExaminationQuestionsPath;
 import com.examsystem.jooq.generated.tables.Members.MembersPath;
+import com.examsystem.jooq.generated.tables.Questions.QuestionsPath;
 import com.examsystem.jooq.generated.tables.StudentExaminations.StudentExaminationsPath;
 import com.examsystem.jooq.generated.tables.records.ExaminationsRecord;
 
@@ -15,7 +17,6 @@ import java.util.Collection;
 import org.jooq.Condition;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Identity;
 import org.jooq.InverseForeignKey;
 import org.jooq.Name;
 import org.jooq.Path;
@@ -59,7 +60,7 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
     /**
      * The column <code>examinations.id</code>.
      */
-    public final TableField<ExaminationsRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.identity(true), this, "");
+    public final TableField<ExaminationsRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER, this, "");
 
     /**
      * The column <code>examinations.courseID</code>.
@@ -79,7 +80,7 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
     /**
      * The column <code>examinations.publish</code>.
      */
-    public final TableField<ExaminationsRecord, String> PUBLISH = createField(DSL.name("publish"), SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<ExaminationsRecord, Boolean> PUBLISH = createField(DSL.name("publish"), SQLDataType.BOOLEAN.nullable(false), this, "");
 
     private Examinations(Name alias, Table<ExaminationsRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);
@@ -149,13 +150,21 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
     }
 
     @Override
-    public Identity<ExaminationsRecord, Integer> getIdentity() {
-        return (Identity<ExaminationsRecord, Integer>) super.getIdentity();
-    }
-
-    @Override
     public UniqueKey<ExaminationsRecord> getPrimaryKey() {
         return Keys.EXAMINATIONS__PK_EXAMINATIONS;
+    }
+
+    private transient ExaminationQuestionsPath _examinationQuestions;
+
+    /**
+     * Get the implicit to-many join path to the
+     * <code>examination_questions</code> table
+     */
+    public ExaminationQuestionsPath examinationQuestions() {
+        if (_examinationQuestions == null)
+            _examinationQuestions = new ExaminationQuestionsPath(this, null, Keys.EXAMINATION_QUESTIONS__FK_EXAMINATION_QUESTIONS_PK_EXAMINATIONS.getInverseKey());
+
+        return _examinationQuestions;
     }
 
     private transient StudentExaminationsPath _studentExaminations;
@@ -169,6 +178,14 @@ public class Examinations extends TableImpl<ExaminationsRecord> {
             _studentExaminations = new StudentExaminationsPath(this, null, Keys.STUDENT_EXAMINATIONS__FK_STUDENT_EXAMINATIONS_PK_EXAMINATIONS.getInverseKey());
 
         return _studentExaminations;
+    }
+
+    /**
+     * Get the implicit many-to-many join path to the <code>questions</code>
+     * table
+     */
+    public QuestionsPath questions() {
+        return examinationQuestions().questions();
     }
 
     /**

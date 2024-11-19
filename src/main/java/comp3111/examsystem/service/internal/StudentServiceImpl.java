@@ -8,10 +8,24 @@ import comp3111.examsystem.service.StudentService;
 import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
-    private final MemberDAO studentDAO = new MemberDAO();
+    private final MemberDAO studentDAO;
 
     /**
-     * @param student
+     * default Constructor
+     */
+    public StudentServiceImpl() {
+        this.studentDAO = new MemberDAO();
+    }
+
+    /**
+     * Conversion Constructor
+     * @param studentDAO self-defined MemberDAO object for testing
+     */
+    public StudentServiceImpl(MemberDAO studentDAO) {
+        this.studentDAO = studentDAO;
+    }
+    /**
+     * @param student student to be added
      */
     @Override
     public void addStudent(Student student) {
@@ -20,8 +34,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     /**
-     * @param id
-     * @return
+     * @param id id of student
+     * @return student with the given id
      */
     @Override
     public Student getStudent(int id) {
@@ -29,7 +43,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     /**
-     * @return
+     * @return List of all students
      */
     @Override
     public List<Student> getAllStudents() {
@@ -37,7 +51,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     /**
-     * @param student
+     * @param student student with new content to be updated
+     * @param id id of the student to be updated
      */
     @Override
     public void updateStudent(int id, Student student) {
@@ -47,7 +62,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     /**
-     * @param id
+     * @param id id of student to be deleted
      */
     @Override
     public void deleteStudent(int id) {
@@ -55,13 +70,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     /**
-     * @param username
-     * @param password
-     * @return
+     * @param username username
+     * @param password password
+     * @return true if login is successful, false otherwise
      */
     @Override
     public boolean login(String username, String password) {
-        // Not implemented
+        for (Member member : studentDAO.getAllMembers()) {
+            if (member.getUsername().equals(username) && member.getPassword().equals(password)) {
+                return true;
+            }
+        }
         return false;
     }
 

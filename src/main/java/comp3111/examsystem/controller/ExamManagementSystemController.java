@@ -2,14 +2,22 @@ package comp3111.examsystem.controller;
 
 import comp3111.examsystem.entity.Examination;
 import comp3111.examsystem.entity.Question;
+import comp3111.examsystem.service.CourseService;
+import comp3111.examsystem.service.ExaminationService;
+import comp3111.examsystem.service.QuestionService;
+import comp3111.examsystem.service.internal.CourseServiceImpl;
+import comp3111.examsystem.service.internal.ExaminationServiceImpl;
+import comp3111.examsystem.service.internal.QuestionServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.beans.property.SimpleFloatProperty;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ExamManagementSystemController {
@@ -38,7 +46,7 @@ public class ExamManagementSystemController {
     @FXML
     private TableColumn<Examination, String> courseIdColumn;
     @FXML
-    private TableColumn<Examination, Integer> examTimeColumn;
+    private TableColumn<Examination, Float> examTimeColumn;
     @FXML
     private TableColumn<Examination, String> publishColumn;
 
@@ -47,9 +55,9 @@ public class ExamManagementSystemController {
     @FXML
     private TableColumn<Question, String> typeColumn;
     @FXML
-    private TableColumn<Question, Double> scoreColumn_left;
+    private TableColumn<Question, Float> scoreColumn_left;
     @FXML
-    private TableColumn<Question, Double> scoreColumn_right;
+    private TableColumn<Question, Float> scoreColumn_right;
     @FXML
     private TableColumn<Question, String> questionTextColumn;
     @FXML
@@ -57,25 +65,31 @@ public class ExamManagementSystemController {
 
     private static int init_flag=0;
 
+    private final ExaminationService examinationService = new ExaminationServiceImpl();
 
+    private final CourseService courseService = new CourseServiceImpl();
+
+    private final QuestionService questionService = new QuestionServiceImpl();
 
     @FXML
     private void initialize() {
-
-
         init_All();
-        // Set the initial data in the TableView
-        ExamTableView.setItems(Examination.get_examlist());
-        All_QuestionTableView.setItems(Question.getQuestionList());
-
+        // Ensure the list is not null
+        ObservableList<Examination> examinations = FXCollections.observableArrayList(examinationService.getAllExaminations());
+        if (examinations == null) {
+            examinations = FXCollections.observableArrayList();
+        }
+        ExamTableView.setItems(examinations);
+        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
         // Add a listener to the ExamTableView selection model
         ExamTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 // Get the quiz questions from the selected Examination object
-
                 // Update the QuizTableView with the quiz questions
-                LeftQuestionTableView.setItems(newValue.getQuiz());
+//                LeftQuestionTableView.setItems(FXCollections.observableArrayList(newValue.getQuiz()));
+                LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(newValue.getId())));
+
             } else {
                 // Clear the QuizTableView if no exam is selected
                 LeftQuestionTableView.setItems(null);
@@ -93,81 +107,73 @@ public class ExamManagementSystemController {
     private void init_Exam()
     {
 
-        if(init_flag++==0) {
-
-
-            Examination exam1 = new Examination(
-                    "COMP3111",
-                    1,
-                    30.0,
-                    "quiz1",
-                    true
-            );
-
-            Examination exam2 = new Examination(
-                    "COMP3111",
-                    2,
-                    30.0,
-                    "quiz2",
-                    true
-            );
-
-            Examination exam3 = new Examination(
-                    "COMP3111",
-                    3,
-                    40.0,
-                    "quiz3",
-                    false
-            );
-
-            Examination exam4 = new Examination(
-                    "COMP5111",
-                    1,
-                    30.0,
-                    "quiz1",
-                    true
-            );
-
-            Examination exam5 = new Examination(
-                    "COMP5111",
-                    2,
-                    30.0,
-                    "quiz2",
-                    true
-            );
-
-            Examination exam6 = new Examination(
-                    "COMP5111",
-                    3,
-                    60.0,
-                    "final",
-                    false
-            );
-
-            Examination exam7 = new Examination(
-                    "COMP3111",
-                    4,
-                    200.0,
-                    "quiz4",
-                    true
-            );
-
-            // Add the exams to the static examination list
-            Examination.get_examlist().addAll(exam1, exam2, exam3, exam4, exam5, exam6, exam7);
-
-
-        }
+//        if(init_flag++==0) {
+//
+//
+//            Examination exam1 = new Examination(
+//                    "COMP3111",
+//                    30.0F,
+//                    "quiz1",
+//                    true
+//            );
+//
+//            Examination exam2 = new Examination(
+//                    "COMP3111",
+//                    30.0F,
+//                    "quiz2",
+//                    true
+//            );
+//
+//            Examination exam3 = new Examination(
+//                    "COMP3111",
+//                    40.0F,
+//                    "quiz3",
+//                    false
+//            );
+//
+//            Examination exam4 = new Examination(
+//                    "COMP5111",
+//                    30.0F,
+//                    "quiz1",
+//                    true
+//            );
+//
+//            Examination exam5 = new Examination(
+//                    "COMP5111",
+//                    30.0F,
+//                    "quiz2",
+//                    true
+//            );
+//
+//            Examination exam6 = new Examination(
+//                    "COMP5111",
+//                    60.0F,
+//                    "final",
+//                    false
+//            );
+//
+//            Examination exam7 = new Examination(
+//                    "COMP3111",
+//                    200.0F,
+//                    "quiz4",
+//                    true
+//            );
+//
+//            // Add the exams to the static examination list
+//            examinationService.getAllExaminations().addAll(Arrays.asList(exam1, exam2, exam3, exam4, exam5, exam6, exam7));
+//
+//        }
 
 
 
 
-        filterCourseID.getItems().addAll("COMP3111","COMP5111");
+        filterCourseID.getItems().addAll(courseService.getAllCoursesID());
         filterPublish.getItems().addAll("yes","no");
 
 
         questionTypeComboBox.getItems().addAll("Single","Multiple");
 
-        courseComboBox.getItems().addAll("COMP3111","COMP5111");
+        courseComboBox.getItems().addAll(courseService.getAllCoursesID());
         publishComboBox.getItems().addAll("yes","no");
 
     }
@@ -178,7 +184,8 @@ public class ExamManagementSystemController {
         // Initialize the TableView columns
         examNameColumn.setCellValueFactory(new PropertyValueFactory<>("examName"));
         courseIdColumn.setCellValueFactory(new PropertyValueFactory<>("courseID"));
-        examTimeColumn.setCellValueFactory(new PropertyValueFactory<>("examTime"));
+        examTimeColumn.setCellValueFactory(cellData ->
+                new SimpleFloatProperty(cellData.getValue().getExamTime()).asObject());
         publishColumn.setCellValueFactory(new PropertyValueFactory<>("publish"));
 
         //Question in exam
@@ -189,9 +196,7 @@ public class ExamManagementSystemController {
         //All questions
         questionTextColumn.setCellValueFactory(new PropertyValueFactory<>("question"));
         questionTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-        scoreColumn_right   .setCellValueFactory(new PropertyValueFactory<>("score"));
-
-
+        scoreColumn_right.setCellValueFactory(new PropertyValueFactory<>("score"));
 
     }
 
@@ -206,7 +211,7 @@ public class ExamManagementSystemController {
 
         // Filter the questions based on the selected criteria
         ObservableList<Question> filteredQuestions = FXCollections.observableArrayList();
-        for (Question question : Question.getQuestionList()) {
+        for (Question question : questionService.getAllQuestions()) {
             if (
                     (selectedScore== null || selectedScore.isEmpty() ||String.valueOf(question.getScore()).equals(selectedScore)) &&
                             (selectedQuestion == null || selectedQuestion.isEmpty() ||question.getQuestion().contains(selectedQuestion)) &&
@@ -221,23 +226,22 @@ public class ExamManagementSystemController {
 
     @FXML
     private void deleteFromLeft() {
-        // Delete the selected question from the TableView
-        Question selectedQuestion =All_QuestionTableView.getSelectionModel().getSelectedItem();
-        Examination selectedExam =ExamTableView.getSelectionModel().getSelectedItem();
-        Question deletedQuestion =LeftQuestionTableView.getSelectionModel().getSelectedItem();
-        if (selectedExam!=null||selectedQuestion != null) {
-            if(deletedQuestion!=null)
-            {
-                selectedExam.getQuiz().remove(selectedQuestion);
-                LeftQuestionTableView.setItems(selectedExam.getQuiz());
+        Question selectedQuestion =  LeftQuestionTableView.getSelectionModel().getSelectedItem();
+        Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();
+
+        if (selectedExam != null && selectedQuestion != null) {
+                examinationService.removeQuestionFromExamination(selectedExam.getId(), selectedQuestion.getId());
+                LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));
                 LeftQuestionTableView.refresh();
-                return;
+        } else {
+            String message = "Selected Exam: " + (selectedExam != null ? selectedExam.getExamName() : "None") + "\n" +
+                    "Selected Question: " + (selectedQuestion != null ? selectedQuestion.getQuestion() : "None") + "\n";
 
-            }
-
-        }
-        else{
-            ErrorPopupController.Error_Popup("Please click on questions");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Selection Details");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
         }
     }
 
@@ -249,23 +253,33 @@ public class ExamManagementSystemController {
         if (selectedExam!=null) {
 
             //Show existing quiz in exam
-            LeftQuestionTableView.setItems(selectedExam.getQuiz());
+            LeftQuestionTableView.setItems(FXCollections.observableArrayList(
+                    examinationService.getQuestionsInExamination(selectedExam.getId()))
+            );
+
             if(selectedQuestion != null)
             {
                 // Validate the updated values
-                if (!selectedExam.getQuiz().contains(selectedQuestion)) {
-                    selectedExam.getQuiz().add(selectedQuestion);
-                    LeftQuestionTableView.setItems(selectedExam.getQuiz());
-                    return;
+                //if (!selectedExam.getQuiz().contains(selectedQuestion))
+                if (!examinationService.getQuestionsInExamination(selectedExam.getId()).contains(selectedQuestion))
+                {
+                    try {
+                        examinationService.addQuestionToExamination(selectedExam.getId(),selectedQuestion.getId());
+                        LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));
+                    } catch (Exception e) {
+                        if("repeated".equals(e.getMessage())) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Error");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The question is already in the exam.");
+                            alert.showAndWait();
+                        } else {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-
             }
-
-
         }
-
-
-
     }
 
 
@@ -273,8 +287,8 @@ public class ExamManagementSystemController {
     @FXML
     private void refreshTable() {
         // Refresh the TableView with the updated data
-        ExamTableView.setItems(Examination.get_examlist());
-        All_QuestionTableView.setItems(Question.getQuestionList());
+        ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));
+        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
         // Clear the input fields and comboboxes
         examNameTextField.clear();
@@ -299,10 +313,12 @@ public class ExamManagementSystemController {
         Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();
         if (selectedExam != null) {
             // Update the selected exam with the new values
+
             selectedExam.setExamName(examNameField.getText());
-            selectedExam.setExamTime(Double.parseDouble(examTimeField.getText()));
+            selectedExam.setExamTime(Float.parseFloat(examTimeField.getText()));
             selectedExam.setCourseID(courseComboBox.getValue());
             selectedExam.setPublish(publishComboBox.getValue().equals("Published"));
+            examinationService.updateExamination(selectedExam);
 
             // Refresh the ExamTableView
             ExamTableView.refresh();
@@ -325,28 +341,27 @@ public class ExamManagementSystemController {
             return;
         }
 
-        //Validate the double convernsion not work
+        //Validate the double conversion not work
         try {
-            double examTime = Double.parseDouble(examTimeField.getText());
+            float examTime = Float.parseFloat(examTimeField.getText());
         } catch (NumberFormatException e) {
             ErrorPopupController.Error_Popup("Invalid exam time format. Please enter a valid number.");
             return;
         }
-        boolean publish = publishComboBox.getValue().equals("Published");
-        double examTime = Double.parseDouble(examTimeField.getText());
+        boolean publish = publishComboBox.getValue().equals("yes");
+        float examTime = Float.parseFloat(examTimeField.getText());
 
         // Create a new Examination object
         Examination newExam = new Examination(
                 courseID,
-                Examination.get_examlist().size() + 1, // Assuming a unique exam number
                 examTime,
                 examName,
                 publish
         );
 
         // Add the new exam to the ExamTableView
-        Examination.get_examlist().add(newExam);
-        ExamTableView.setItems(Examination.get_examlist());
+        examinationService.addExamination(newExam);
+        ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));
 
         // Clear the input fields
         examNameField.clear();
@@ -361,7 +376,7 @@ public class ExamManagementSystemController {
         questionTypeComboBox.getSelectionModel().clearSelection();
         scoreTextField.clear();
 
-        All_QuestionTableView.setItems(Question.getQuestionList());
+        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
     }
     @FXML
@@ -370,7 +385,7 @@ public class ExamManagementSystemController {
         examNameTextField.clear();
         filterCourseID.getSelectionModel().clearSelection();
         filterPublish.getSelectionModel().clearSelection();
-        ExamTableView.setItems(Examination.get_examlist());
+        ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));
     }
     @FXML
     public void filterExams(ActionEvent actionEvent) {
@@ -378,12 +393,13 @@ public class ExamManagementSystemController {
         String selectedCourseId = filterCourseID.getValue();
         String selectedPublish = filterPublish.getValue();
         String selectedExamName = examNameTextField.getText();
-
         // Filter the exams based on the selected criteria
         ObservableList<Examination> filteredExams = FXCollections.observableArrayList();
-        for (Examination exam : Examination.get_examlist()) {
+        for (Examination exam : examinationService.getAllExaminations()) {
             if ((selectedCourseId == null || selectedCourseId.isEmpty() || exam.getCourseID().equals(selectedCourseId)) &&
-                    (selectedPublish == null || selectedPublish.isEmpty() || exam.getPublish().equals(selectedPublish)) &&
+                    (selectedPublish == null || selectedPublish.isEmpty() ||
+                    // selected value is "yes" or "no" while exam.getPublish() returns true or false
+                    ((selectedPublish.equals("yes") && exam.getPublish()) || (selectedPublish.equals("no") && !exam.getPublish()))) &&
                     (selectedExamName == null || selectedExamName.isEmpty() || exam.getExamName().contains(selectedExamName))) {
                 filteredExams.add(exam);
             }
@@ -399,10 +415,10 @@ public class ExamManagementSystemController {
 
         if (selectedExam != null) {
             // Remove the selected exam from the static exam list
-            Examination.get_examlist().remove(selectedExam);
+            examinationService.deleteExamination(selectedExam.getId());
 
             // Refresh the ExamTableView
-            ExamTableView.setItems(Examination.get_examlist());
+            ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));
         } else {
             // Display an error message or alert if no exam is selected
             ErrorPopupController.Error_Popup("No exam selected for deletion.");
