@@ -34,6 +34,24 @@ public class QuestionDAO {
             e.printStackTrace();
         }
     }
+    /**
+     * Constructor
+     * <p>
+     *     This constructor initializes the DSLContext for interacting with the database
+     *     using the SQLite dialect. It attempts to establish a connection to the database
+     *     and sets up the DSLContext for executing SQL queries.
+     *     If a SQLException occurs while attempting to establish the connection, the stack trace
+     *     of the exception is printed.
+     *     </p>
+     * @param conn connection to the database
+     * */
+    public QuestionDAO(Connection conn) {
+        try {
+            this.create = DSL.using(conn, SQLDialect.SQLITE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Adds a question to the database.
