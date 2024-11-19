@@ -13,7 +13,9 @@ import java.util.ResourceBundle;
 import comp3111.examsystem.service.StudentService;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
+/**
+ * The controller for the student management UI.
+ */
 public class StudentManagementController implements Initializable {
     @FXML
     private TextField filterUsernameField;
@@ -47,17 +49,22 @@ public class StudentManagementController implements Initializable {
     private TableColumn<Student, String> departmentColumn;
     @FXML
     private TableColumn<Student, String> passwordColumn;
-    @FXML
-    private Button resetButton;
-    @FXML
-    private Button filterButton;
-    @FXML
-    private Button addButton;
-    @FXML
-    private Button updateButton;
 
+    /**
+     * The StudentService instance used to interact with the student data.
+     */
     private final StudentService studentService = new StudentServiceImpl();
 
+    /**
+     * Initializes the student management UI.
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object was not localized.
+     *                  <p>
+     *                  The method does the following:
+     *                  1. Initializes the student table with the student data.
+     *                  2. Adds a listener to the student table to update the student details when a student is selected.
+     *                  </p>
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         genderComboBox.setItems(FXCollections.observableArrayList("Male", "Female", "Other"));
@@ -73,15 +80,6 @@ public class StudentManagementController implements Initializable {
         departmentColumn.setCellValueFactory(new PropertyValueFactory<>("department"));
 
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
-
-//        studentTable.getColumns().addAll(usernameColumn, nameColumn, ageColumn, genderColumn, departmentColumn, passwordColumn);
-
-//
-//        // Example data
-//     studentTable.setItems(FXCollections.observableArrayList(
-//             new Student("user1", "John Doe", "s", "Male", "20", "password1"),
-//            new Student("user2", "Jane Smith", "s", "Female", "10", "password2")
-//        ));
 
         studentTable.setItems(FXCollections.observableArrayList(
                 studentService.getAllStudents()
@@ -100,6 +98,12 @@ public class StudentManagementController implements Initializable {
         });
     }
 
+    /**
+     * Handles the refresh button click event.
+     * <p>
+     *     This method refreshes the studentTable with the list of all students.
+     * </p>
+     */
     @FXML
     private void handleRefresh(){
         studentTable.setItems(FXCollections.observableArrayList(
@@ -107,14 +111,29 @@ public class StudentManagementController implements Initializable {
         ));
         studentTable.refresh();
     }
+
+    /**
+     * Handles the reset button click event.
+     * <p>
+     *     This method clears the filter fields and refreshes the studentTable with the list of all students.
+     * </p>
+     */
     @FXML
     private void handleReset() {
         filterUsernameField.clear();
         filterNameField.clear();
         filterDepartmentField.clear();
-        handleRefresh();
     }
 
+    /**
+     * Handles the filter button click event.
+     * <p>
+     *     This method filters the studentTable based on the values in the filter fields.
+     *     The studentTable is then refreshed.
+     *     The filter is case-insensitive.
+     *     The filter is applied to the username, name, and department fields.
+     * </p>
+     */
     @FXML
     private void handleFilter() {
         String filterUsername = filterUsernameField.getText() != null ? filterUsernameField.getText().toLowerCase() : "";
@@ -131,10 +150,20 @@ public class StudentManagementController implements Initializable {
         studentTable.refresh();
     }
 
+    /**
+     * Handles the add button click event.
+     * <p>
+     *     This method adds a new student to the studentTable based on the values in the text fields.
+     *     ageField must be an integer but then stored as a string in the database.
+     *     If any field is empty, an error alert is shown.
+     *     If ageField is not an integer, an error alert is shown.
+     *     If the student is successfully added, the studentTable is refreshed.
+     * </p>
+     */
     @FXML
     private void handleAdd() {
-        // Implement add logic here
-        try{
+        if (checkNull()) return;
+        try {
             Integer.parseInt(ageField.getText());
             studentService.addStudent(new Student(usernameField.getText(), passwordField.getText(), nameField.getText(), genderComboBox.getValue(), (ageField.getText()), departmentField.getText()));
             handleRefresh();
@@ -144,18 +173,52 @@ public class StudentManagementController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Age must be an integer");
             alert.showAndWait();
-            return;
         }
     }
 
+    /**
+     * Checks if any of the fields are empty.
+     * <p>
+     *     If any of the fields are empty, an error alert is shown.
+     * </p>
+     * @return true if any of the fields are empty, false otherwise.
+     */
+    private boolean checkNull() {
+        if (usernameField.getText() == null || usernameField.getText().isEmpty() ||
+                passwordField.getText() == null || passwordField.getText().isEmpty() ||
+                nameField.getText() == null || nameField.getText().isEmpty() ||
+                genderComboBox.getValue() == null ||
+                ageField.getText() == null || ageField.getText().isEmpty() ||
+                departmentField.getText() == null || departmentField.getText().isEmpty()) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("All fields must be filled");
+            alert.showAndWait();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Handles the update button click event.
+     * <p>
+     *     This method updates the selected student in the studentTable based on the values in the text fields.
+     *     ageField must be an integer but then stored as a string in the database.
+     *     If any field is empty, an error alert is shown.
+     *     If ageField is not an integer, an error alert is shown.
+     *     If no student is selected, an error alert is shown.
+     *     If the student is successfully updated, the studentTable is refreshed.
+     * </p>
+     */
     @FXML
     private void handleUpdate() {
-        // Implement update logic here
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
+        if (checkNull()) return;
         if (selectedStudent != null) {
             int id = selectedStudent.getId();
-            // Implement update logic here using the id
-            try{
+            try {
                 Integer.parseInt(ageField.getText());
                 studentService.updateStudent(id,new Student(usernameField.getText(), passwordField.getText(), nameField.getText(), genderComboBox.getValue(), (ageField.getText()), departmentField.getText()));
                 handleRefresh();
@@ -174,7 +237,14 @@ public class StudentManagementController implements Initializable {
             alert.showAndWait();
         }
     }
-
+    /**
+     * Handles the delete button click event.
+     * <p>
+     *     This method deletes the selected student from the studentTable.
+     *     If no student is selected, an error alert is shown.
+     *     If the student is successfully deleted, the studentTable is refreshed.
+     * </p>
+     */
     @FXML
     private void handleDelete(){
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
