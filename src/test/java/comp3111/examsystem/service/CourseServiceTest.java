@@ -30,7 +30,7 @@ class CourseServiceTest {
     }
 
     @Test
-    void addCourse() {
+    void addCourse() throws Exception {
         Course course = new Course("COMP1111", "Introduction to Programming", "CS");
 
         courseService.addCourse(course);
