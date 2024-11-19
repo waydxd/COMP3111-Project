@@ -1,6 +1,7 @@
 package comp3111.examsystem.service;
 
 import comp3111.examsystem.dao.internal.MemberDAO;
+import comp3111.examsystem.entity.Member;
 import comp3111.examsystem.entity.Student;
 import comp3111.examsystem.service.internal.StudentServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -81,7 +82,24 @@ class StudentServiceTest {
 
     @Test
     void login() {
-        // Not implemented in StudentServiceImpl
-        assertFalse(studentService.login("user1", "password1"));
+        // Mock data
+        Member mockMember = new Member("user1", "password1", "John Doe", "Male", "25", "CS");
+        List<Member> mockMembers = Arrays.asList(mockMember);
+        when(studentDAO.getAllMembers()).thenReturn(mockMembers);
+
+        // Test for correct credentials
+        boolean result = studentService.login("user1", "password1");
+        verify(studentDAO).getAllMembers();
+        assertTrue(result);
+
+        // Test for incorrect credentials
+        boolean falseResult = studentService.login("user1", "wrongpassword");
+        verify(studentDAO, times(2)).getAllMembers();
+        assertFalse(falseResult);
+
+        // Test for non-existing user
+        boolean nonExistingUserResult = studentService.login("nonuser", "password1");
+        verify(studentDAO, times(3)).getAllMembers();
+        assertFalse(nonExistingUserResult);
     }
 }

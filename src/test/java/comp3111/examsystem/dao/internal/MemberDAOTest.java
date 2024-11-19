@@ -40,6 +40,12 @@ class MemberDAOTest {
     }
 
     @Test
+    void defaultConstructor() {
+        MemberDAO defaultMemberDAO = new MemberDAO();
+        assertNotNull(defaultMemberDAO);
+    }
+
+    @Test
     void addMember() {
         Member member = new Member("user1", "pass1", "John Doe", "Male", "20", "CS");
         memberDAO.addMember(member);
@@ -101,13 +107,39 @@ class MemberDAOTest {
         Member member = new Member("user1", "pass1", "John Doe", "Male", "20", "CS");
         memberDAO.addMember(member);
 
-        int memberId = memberDAO.getAllMembers().getFirst().getId();
+        int memberId = memberDAO.getAllMembers().get(0).getId();
         member.setId(memberId);
         member.setPassword("newpass");
         memberDAO.updateMember(member);
 
         Member updatedMember = memberDAO.getMember(memberId);
         assertEquals("newpass", updatedMember.getPassword());
+        assertEquals("user1", updatedMember.getUsername());
+        assertEquals("John Doe", updatedMember.getName());
+        assertEquals("Male", updatedMember.getGender());
+        assertEquals("20", updatedMember.getAge());
+        assertEquals("CS", updatedMember.getDepartment());
+    }
+
+    @Test
+    void updateMember_WithTeacher_ShouldUpdatePosition() {
+        Teacher teacher = new Teacher("teacher1", "pass1", "Jane Doe", "Female", "30", "CS", "Professor");
+        memberDAO.addTeacher(teacher);
+
+        int teacherId = memberDAO.getAllTeachers().get(0).getId();
+        teacher.setId(teacherId);
+        teacher.setPassword("newpass");
+        teacher.setPosition("Associate Professor");
+        memberDAO.updateMember(teacher);
+
+        Teacher updatedTeacher = memberDAO.getTeacher(teacherId);
+        assertEquals("newpass", updatedTeacher.getPassword());
+        assertEquals("teacher1", updatedTeacher.getUsername());
+        assertEquals("Jane Doe", updatedTeacher.getName());
+        assertEquals("Female", updatedTeacher.getGender());
+        assertEquals("30", updatedTeacher.getAge());
+        assertEquals("CS", updatedTeacher.getDepartment());
+        assertEquals("Associate Professor", updatedTeacher.getPosition());
     }
 
     @Test

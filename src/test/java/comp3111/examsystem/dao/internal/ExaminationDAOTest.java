@@ -213,4 +213,26 @@ class ExaminationDAOTest {
         List<Question> questions = examinationDAO.getQuestionsInExamination(1);
         assertEquals(2, questions.size());
     }
+
+    @Test
+    void addQuestionToExamination_ShouldThrowExceptionWhenQuestionIsRepeated() throws Exception {
+        Examination exam = new Examination();
+        exam.setCourseID("COMP3111");
+        exam.setExamTime(2023.12f);
+        exam.setExamName("Final Exam");
+        exam.setPublish(true);
+
+        examinationDAO.addExamination(exam);
+
+        Question question = new Question("What is Java?", new String[]{"A", "B", "C", "D"}, "A", "MCQ", "10");
+        questionDAO.addQuestion(question);
+
+        examinationDAO.addQuestionToExamination(1, 1);
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            examinationDAO.addQuestionToExamination(1, 1);
+        });
+
+        assertEquals("repeated", exception.getMessage());
+    }
 }

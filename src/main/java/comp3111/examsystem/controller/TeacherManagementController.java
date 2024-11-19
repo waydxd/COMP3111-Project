@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 /**
  * The controller for the teacher management UI.
@@ -51,6 +52,24 @@ public class TeacherManagementController implements Initializable {
     private TableColumn<Teacher, String> passwordColumn;
     @FXML
     private TableColumn<Teacher, String> positionColumn;
+
+    public static class AlertHelper {
+        public static Optional<ButtonType> showConfirmation(String message) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            return alert.showAndWait();
+        }
+
+        public static void showError(String message) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.show();
+        }
+    }
 
     /**
      * The TeacherService instance used to interact with the teacher data.
@@ -108,7 +127,7 @@ public class TeacherManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleRefresh() {
+    public void handleRefresh() {
 
         teacherTable.setItems(FXCollections.observableArrayList(teacherService.getAllTeachers()));
         teacherTable.refresh();
@@ -122,7 +141,7 @@ public class TeacherManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleReset() {
+    public void handleReset() {
         filterUsernameField.clear();
         filterNameField.clear();
         filterDepartmentField.clear();
@@ -157,8 +176,11 @@ public class TeacherManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleAdd() {
-        if (checkNull()) return;
+    public void handleAdd() {
+        if (checkNull()) {
+            AlertHelper.showError("Please fill in all fields");
+            return;
+        }
         try {
             Integer.parseInt(ageField.getText());
             teacherService.addTeacher(new Teacher(usernameField.getText(), passwordField.getText(), nameField.getText(), genderComboBox.getValue(), ageField.getText(), departmentField.getText(), positionComboBox.getValue()));
@@ -179,27 +201,23 @@ public class TeacherManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleUpdate() {
+    public void handleUpdate() {
         Teacher selectedTeacher = teacherTable.getSelectionModel().getSelectedItem();
+        if (selectedTeacher == null) {
+            AlertHelper.showError("Please select a teacher to update");
+            return;
+        }
         if (checkNull()) return;
-        if (selectedTeacher != null) {
-            int id = selectedTeacher.getId();
-            try {
-                Integer.parseInt(ageField.getText());
-                teacherService.updateTeacher(id, new Teacher(usernameField.getText(), passwordField.getText(), nameField.getText(), genderComboBox.getValue(), ageField.getText(), departmentField.getText(), positionComboBox.getValue()));
-                handleRefresh();
-            } catch (NumberFormatException e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Age must be an integer");
-                alert.showAndWait();
-            }
-        } else {
+        int id = selectedTeacher.getId();
+        try {
+            Integer.parseInt(ageField.getText());
+            teacherService.updateTeacher(id, new Teacher(usernameField.getText(), passwordField.getText(), nameField.getText(), genderComboBox.getValue(), ageField.getText(), departmentField.getText(), positionComboBox.getValue()));
+            handleRefresh();
+        } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please select a teacher to update");
+            alert.setContentText("Age must be an integer");
             alert.showAndWait();
         }
     }
@@ -209,7 +227,7 @@ public class TeacherManagementController implements Initializable {
      *
      * @return true if any of the text fields are empty, false otherwise.
      */
-    private boolean checkNull() {
+    public boolean checkNull() {
         if(usernameField.getText().isEmpty() || passwordField.getText().isEmpty() || nameField.getText().isEmpty() || genderComboBox.getValue() == null || ageField.getText().isEmpty() || departmentField.getText().isEmpty() || positionComboBox.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -228,18 +246,14 @@ public class TeacherManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleDelete() {
+    public void handleDelete() {
         Teacher selectedTeacher = teacherTable.getSelectionModel().getSelectedItem();
         if (selectedTeacher != null) {
-            int id = selectedTeacher.getId();
-            teacherService.deleteTeacher(id);
-            handleRefresh();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select a teacher to delete");
-            alert.showAndWait();
+            Optional<ButtonType> result = AlertHelper.showConfirmation("Are you sure you want to delete this teacher?");
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                teacherService.deleteTeacher(selectedTeacher.getId());
+                teacherTable.refresh();
+            }
         }
     }
 }
