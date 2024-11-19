@@ -33,6 +33,23 @@ public class ManagerDAO {
     }
 
     /**
+     * Constructor
+     * <p>
+     *     This constructor initializes the DSLContext for interacting with the database
+     *     using the SQLite dialect. It attempts to establish a connection to the database
+     *     and sets up the DSLContext for executing SQL queries.
+     *     </p>
+     * @param conn connection to the database
+     * */
+    public ManagerDAO(Connection conn) {
+        try {
+            this.create = DSL.using(conn, SQLDialect.SQLITE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Adds a manager to the database.
      * @param manager manager to be added
      */

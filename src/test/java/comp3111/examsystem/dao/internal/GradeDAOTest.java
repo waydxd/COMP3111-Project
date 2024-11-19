@@ -1,6 +1,5 @@
 package comp3111.examsystem.dao.internal;
 
-import comp3111.examsystem.DatabaseConnection;
 import comp3111.examsystem.entity.Grade;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
@@ -20,8 +19,7 @@ public class GradeDAOTest {
 
     @BeforeEach
     public void setUp() throws SQLException {
-        DatabaseConnection.setUrl("jdbc:sqlite:./test.db");
-        connection = DriverManager.getConnection("jdbc:sqlite:./test.db");
+        connection = DriverManager.getConnection("jdbc:sqlite::memory:");
         DSLContext create = DSL.using(connection, SQLDialect.SQLITE);
         create.execute("CREATE TABLE IF NOT EXISTS grades (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -32,7 +30,7 @@ public class GradeDAOTest {
                 "full_score REAL NOT NULL, " +
                 "time_spent REAL NOT NULL)");
 
-        gradeDAO = new GradeDAO();
+        gradeDAO = new GradeDAO(connection);
     }
 
     @AfterEach
