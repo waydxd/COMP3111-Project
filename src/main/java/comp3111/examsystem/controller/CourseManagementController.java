@@ -77,7 +77,7 @@ public class CourseManagementController implements Initializable {
      */
     @FXML
     private void handleRefresh() {
-        courseTable.setItems(FXCollections.observableArrayList(courseService.getAllCourses()));
+        handleFilter();
         courseTable.refresh();
     }
 
@@ -111,12 +111,8 @@ public class CourseManagementController implements Initializable {
         String filterDepartment = departmentFilter.getText() != null ? departmentFilter.getText().toLowerCase() : "";
 
         // Filter the fetched courses based on the filter text fields
-        courseTable.setItems(FXCollections.observableArrayList(
-                courseService.getAllCourses().stream()
-                        .filter(course -> filterCourseId.isEmpty() || course.getCourseCode().toLowerCase().contains(filterCourseId))
-                        .filter(course -> filterCourseName.isEmpty() || course.getName().toLowerCase().contains(filterCourseName))
-                        .filter(course -> filterDepartment.isEmpty() || course.getDepartment().toLowerCase().contains(filterDepartment))
-                        .toList()
+        courseTable.setItems( FXCollections.observableArrayList(
+                        courseService.filterCourses(filterCourseId, filterCourseName, filterDepartment)
         ));
         courseTable.refresh();
     }

@@ -58,13 +58,29 @@ public class CourseServiceImpl implements CourseService {
     }
 
     /**
-     * @param department filterCoursesByDepartment
-     * @return Course with the given courseID
+     * @param courseCode
+     * @param courseName
+     * @param department
+     * @return
      */
     @Override
-    public List<Course> filterCoursesByDepartment(String department) {
-        return courseDAO.filterCoursesByDepartment(department);
+    public List<Course> filterCourses(String courseCode, String courseName, String department) {
+        List<Course> course = courseDAO.getAllCourses();
+        return course.stream()
+                .filter(Course -> (courseCode.isEmpty()|| Course.getCourseCode().toLowerCase().contains(courseCode)))
+                .filter(Course -> (courseName.isEmpty() || Course.getName().toLowerCase().contains(courseName)))
+                .filter(Course -> (department.isEmpty() || Course.getDepartment().toLowerCase().contains(department)))
+                .toList();
     }
+
+//    /**
+//     * @param department filterCoursesByDepartment
+//     * @return Course with the given courseID
+//     */
+//    @Override
+//    public List<Course> filterCoursesByDepartment(String department) {
+//        return courseDAO.filterCoursesByDepartment(department);
+//    }
 
     /**
      *

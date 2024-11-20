@@ -1,6 +1,7 @@
 package comp3111.examsystem.service;
 
 import comp3111.examsystem.dao.internal.MemberDAO;
+import comp3111.examsystem.entity.Student;
 import comp3111.examsystem.entity.Teacher;
 import comp3111.examsystem.service.internal.TeacherServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -77,5 +78,46 @@ class TeacherServiceTest {
         teacherService.deleteTeacher(1);
 
         verify(teacherDAO).deleteMember(1);
+    }
+
+    @Test
+    void filterTeachers() {
+        List<Teacher> sampleTeachers = Arrays.asList(
+                new Teacher("user1", "password1", "John Doe", "Male", "25", "CS", "Professor"),
+                new Teacher("user2", "password1", "Grimes", "Female", "25", "CS", "Lecturer I"),
+                new Teacher("user3", "password1", "Alice Smith", "Female", "30", "Math", "Lecturer II")
+        );
+
+        when(teacherDAO.getAllTeachers()).thenReturn(sampleTeachers);
+
+        // Test with all filters
+        List<Teacher> result = teacherService.filterTeachers("user2", "grimes", "cs");
+        assertEquals(1, result.size());
+        assertEquals("user2", result.get(0).getUsername());
+
+        // Test with empty username
+        result = teacherService.filterTeachers("", "grimes", "cs");
+        assertEquals(1, result.size());
+        assertEquals("user2", result.get(0).getUsername());
+
+        // Test with empty name
+        result = teacherService.filterTeachers("user2", "", "cs");
+        assertEquals(1, result.size());
+        assertEquals("user2", result.get(0).getUsername());
+
+        // Test with empty department
+        result = teacherService.filterTeachers("user2", "grimes", "");
+        assertEquals(1, result.size());
+        assertEquals("user2", result.get(0).getUsername());
+
+        // Test with all empty filters
+        result = teacherService.filterTeachers("", "", "");
+        assertEquals(3, result.size());
+
+        // Test with no matches
+        result = teacherService.filterTeachers("nonexistent", "nonexistent", "nonexistent");
+        assertTrue(result.isEmpty());
+
+        verify(teacherDAO, times(6)).getAllTeachers();
     }
 }

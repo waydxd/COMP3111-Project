@@ -55,20 +55,6 @@ class CourseServiceTest {
     }
 
     @Test
-    void filterCoursesByDepartment() {
-        List<Course> mockCourses = Arrays.asList(
-                new Course("COMP1111", "Introduction to Programming", "CS"),
-                new Course("COMP2222", "Data Structures", "CS")
-        );
-        when(courseDAO.filterCoursesByDepartment("CS")).thenReturn(mockCourses);
-
-        List<Course> result = courseService.filterCoursesByDepartment("CS");
-
-        verify(courseDAO).filterCoursesByDepartment("CS");
-        assertEquals(mockCourses, result);
-    }
-
-    @Test
     void getAllCourses() {
         List<Course> mockCourses = Arrays.asList(
                 new Course("COMP1111", "Introduction to Programming", "CS"),
@@ -91,5 +77,46 @@ class CourseServiceTest {
 
         verify(courseDAO).getAllCoursesID();
         assertEquals(mockCourseIDs, result);
+    }
+
+    @Test
+    void filterCourses() {
+        List<Course> sampleCourses = Arrays.asList(
+                new Course("COMP1111", "Introduction to Programming", "CS"),
+                new Course("CS102", "Data Structures", "Computer Science"),
+                new Course("MATH101", "Calculus I", "Math")
+        );
+
+        when(courseDAO.getAllCourses()).thenReturn(sampleCourses);
+
+        // Test with all filters
+        List<Course> result = courseService.filterCourses("comp1111", "introduction to programming", "cs");
+        assertEquals(1, result.size());
+        assertEquals("COMP1111", result.get(0).getCourseCode());
+
+        // Test with empty course code
+        result = courseService.filterCourses("", "introduction to programming", "cs");
+        assertEquals(1, result.size());
+        assertEquals("COMP1111", result.get(0).getCourseCode());
+
+        // Test with empty course name
+        result = courseService.filterCourses("comp1111", "", "cs");
+        assertEquals(1, result.size());
+        assertEquals("COMP1111", result.get(0).getCourseCode());
+
+        // Test with empty department
+        result = courseService.filterCourses("comp1111", "introduction to programming", "");
+        assertEquals(1, result.size());
+        assertEquals("COMP1111", result.get(0).getCourseCode());
+
+        // Test with all empty filters
+        result = courseService.filterCourses("", "", "");
+        assertEquals(3, result.size());
+
+        // Test with no matches
+        result = courseService.filterCourses("nonexistent", "nonexistent", "nonexistent");
+        assertTrue(result.isEmpty());
+
+        verify(courseDAO, times(6)).getAllCourses();
     }
 }

@@ -10,4 +10,5 @@ public interface TeacherService {
     List<Teacher> getAllTeachers();
     void updateTeacher(int id, Teacher teacher);
     void deleteTeacher(int id);
+    List<Teacher> filterTeachers(String username, String name, String department);
 }

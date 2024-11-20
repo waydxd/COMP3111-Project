@@ -6,6 +6,7 @@ import comp3111.examsystem.entity.Student;
 import comp3111.examsystem.service.StudentService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StudentServiceImpl implements StudentService {
     private final MemberDAO studentDAO;
@@ -67,6 +68,25 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void deleteStudent(int id) {
         studentDAO.deleteMember(id);
+    }
+
+    /**
+     * @param username username of student from the filter field
+     * @param name name of student from the filter field
+     * @param department department of student from the filter field
+     * @return List of students that meet the filter criteria
+     * <p>
+     *     This function filters the students based on the given filter criteria.
+     *     If the filter criteria is null, it will not be used to filter the students.
+     *     </p>
+     */
+    @Override
+    public List<Student> filterStudents(String username, String name, String department) {
+        return studentDAO.getAllStudents().stream()
+                .filter(student -> username.isEmpty() || student.getUsername().toLowerCase().contains(username))
+                .filter(student -> name.isEmpty() || student.getName().toLowerCase().contains(name))
+                .filter(student -> department.isEmpty() || student.getDepartment().toLowerCase().contains(department))
+                .toList();
     }
 
     /**

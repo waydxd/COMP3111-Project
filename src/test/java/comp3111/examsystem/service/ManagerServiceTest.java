@@ -108,9 +108,30 @@ class ManagerServiceTest {
         mockManager.setPassword("password");
         when(managerDAO.getManager("admin")).thenReturn(mockManager);
 
+        // Test for correct credentials
         boolean result = managerService.login("admin", "password");
-
         verify(managerDAO).getManager("admin");
         assertTrue(result);
+
+        // Test for incorrect credentials
+        boolean falseResult = managerService.login("admin", "wrongpassword");
+        verify(managerDAO, times(2)).getManager("admin");
+        assertFalse(falseResult);
+
+        // Test for non-existent manager
+        when(managerDAO.getManager("nonexistent")).thenReturn(null);
+        boolean nonExistentResult = managerService.login("nonexistent", "password");
+        verify(managerDAO).getManager("nonexistent");
+        assertFalse(nonExistentResult);
+
+        // Test for null username
+//        boolean nullUsernameResult = managerService.login(null, "password");
+//        verify(managerDAO, never()).getManager(null);
+//        assertFalse(nullUsernameResult);
+
+//        // Test for null password
+//        boolean nullPasswordResult = managerService.login("admin", null);
+//        verify(managerDAO).getManager("admin");
+//        assertFalse(nullPasswordResult);
     }
 }
