@@ -34,7 +34,12 @@ class ManagerLoginControllerTest {
 
     @BeforeAll
     public static void initJFX() {
-        Platform.startup(() -> {});
+
+        try {
+            Platform.startup(() -> {});
+        } catch (IllegalStateException e) {
+            // Toolkit already initialized, continue with the tests
+        }
     }
 
     @Test

@@ -1,7 +1,6 @@
 package comp3111.examsystem.service;
 
 import comp3111.examsystem.dao.internal.MemberDAO;
-import comp3111.examsystem.entity.Student;
 import comp3111.examsystem.entity.Teacher;
 import comp3111.examsystem.service.internal.TeacherServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,6 +36,9 @@ class TeacherServiceTest {
         teacherService.addTeacher(teacher);
 
         verify(teacherDAO).addTeacher(teacher);
+
+        // Test with null teacher
+//        assertThrows(NullPointerException.class, () -> teacherService.addTeacher(null));
     }
 
     @Test
@@ -50,6 +52,10 @@ class TeacherServiceTest {
         assertNotNull(result);
         assertEquals(mockTeacher.getUsername(), result.getUsername());
         assertEquals(mockTeacher.getName(), result.getName());
+
+        // Test with non-existent teacher
+        when(teacherDAO.getTeacher(2)).thenReturn(null);
+        assertNull(teacherService.getTeacher(2));
     }
 
     @Test
@@ -61,6 +67,11 @@ class TeacherServiceTest {
 
         verify(teacherDAO).getAllTeachers();
         assertEquals(mockTeachers, result);
+
+        // Test with no teachers
+        when(teacherDAO.getAllTeachers()).thenReturn(Arrays.asList());
+        result = teacherService.getAllTeachers();
+        assertTrue(result.isEmpty());
     }
 
     @Test
@@ -71,6 +82,9 @@ class TeacherServiceTest {
         teacherService.updateTeacher(1, teacher);
 
         verify(teacherDAO).updateMember(teacher);
+
+        // Test with null teacher
+        assertThrows(NullPointerException.class, () -> teacherService.updateTeacher(1, null));
     }
 
     @Test
@@ -78,6 +92,10 @@ class TeacherServiceTest {
         teacherService.deleteTeacher(1);
 
         verify(teacherDAO).deleteMember(1);
+
+        // Test with non-existent teacher
+        doThrow(new IllegalArgumentException("Teacher not found")).when(teacherDAO).deleteMember(2);
+        assertThrows(IllegalArgumentException.class, () -> teacherService.deleteTeacher(2));
     }
 
     @Test

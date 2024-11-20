@@ -6,6 +6,8 @@ import javafx.application.Platform;
 import javafx.scene.control.*;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.stage.Stage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,11 +25,17 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class TeacherManagementControllerTest {
 
     @BeforeAll
-    static void startJavaFXRuntime() {
-        Platform.startup(() -> {});
+    public static void startJavaFXRuntime() {
+
+        try {
+            Platform.startup(() -> {});
+        } catch (IllegalStateException e) {
+            // Toolkit already initialized, continue with the tests
+        }
     }
 
     // Helper class to run code on JavaFX thread
@@ -99,8 +107,11 @@ class TeacherManagementControllerTest {
     @Mock
     private TableView.TableViewSelectionModel<Teacher> selectionModel;
 
+    private AutoCloseable mocks;
+
     @BeforeEach
     void setUp() throws Exception {
+        mocks = mockStatic(TeacherManagementController.AlertHelper.class);
         MockitoAnnotations.openMocks(this);
         when(teacherTable.getSelectionModel()).thenReturn(selectionModel);
         when(selectionModel.selectedItemProperty()).thenAnswer((Answer<ReadOnlyObjectProperty<Teacher>>) invocation -> {
@@ -110,7 +121,18 @@ class TeacherManagementControllerTest {
 
         // Initialize JavaFX components on FX thread
         new FXBlock(() -> {
-            controller.initialize(null,null);
+            controller.initialize(null, null);
+        }).run();
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        mocks.close();
+        new FXBlock(() -> {
+            Stage stage = (Stage) teacherTable.getScene().getWindow();
+            if (stage != null) {
+                Platform.runLater(stage::close);
+            }
         }).run();
     }
 

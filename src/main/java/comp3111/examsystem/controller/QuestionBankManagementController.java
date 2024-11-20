@@ -152,7 +152,7 @@ public class QuestionBankManagementController implements Initializable {
 //    }
 
     @FXML
-    private void handleAddButton() {
+    public void handleAddButton() {
         // Add logic to handle adding a new question
         // Retrieve the values from the form fields
         String question = questionTextField.getText();
@@ -181,7 +181,7 @@ public class QuestionBankManagementController implements Initializable {
     }
 
     @FXML
-    private void handleUpdateButton() {
+    public void handleUpdateButton() {
         // Add logic to handle updating an existing question
         // Retrieve the currently selected question from the TableView
         Question selectedQuestion = questionTableView.getSelectionModel().getSelectedItem();
@@ -226,7 +226,7 @@ public class QuestionBankManagementController implements Initializable {
     }
 
     @FXML
-    private void handleDeleteButton() {
+    public void handleDeleteButton() {
         // Add logic to handle deleting a question
         // Retrieve the currently selected question from the TableView
         Question selectedQuestion = questionTableView.getSelectionModel().getSelectedItem();
@@ -242,7 +242,7 @@ public class QuestionBankManagementController implements Initializable {
     }
 
     @FXML
-    private void handleRefreshButton() {
+    public void handleRefreshButton() {
         // Reset the filter values to their default state
         questionFilter.clear();
         typeTextField.getSelectionModel().select(0);
@@ -264,7 +264,7 @@ public class QuestionBankManagementController implements Initializable {
     }
 
     @FXML
-    private void handleFilterButton() {
+    public void handleFilterButton() {
         // Add logic to handle filtering the question table
         String selectedQuestion = questionFilter.getText();
         String selectedType =  typeFilterTextField.getValue();
@@ -285,7 +285,7 @@ public class QuestionBankManagementController implements Initializable {
     }
 
     @FXML
-    private void handleResetButton() {
+    public void handleResetButton() {
 
         // Reset the filter values to their default state
         questionFilter.clear();

@@ -30,7 +30,11 @@ public class TeacherGradeStatisticControllerTest {
 
     @BeforeAll
     public static void startJavaFXRuntime() {
-        Platform.startup(() -> {});
+        try {
+                Platform.startup(() -> {});
+        } catch (IllegalStateException e) {
+            // Toolkit already initialized, continue with the tests
+        }
     }
     // Helper class to run code on JavaFX thread
     static class FXBlock {

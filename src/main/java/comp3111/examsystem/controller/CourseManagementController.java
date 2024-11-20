@@ -104,7 +104,7 @@ public class CourseManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleFilter() {
+    public void handleFilter() {
         // Get the filter text fields and check if they are null
         String filterCourseId = courseIdFilter.getText() != null ? courseIdFilter.getText().toLowerCase() : "";
         String filterCourseName = courseNameFilter.getText() != null ? courseNameFilter.getText().toLowerCase() : "";
@@ -127,7 +127,7 @@ public class CourseManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleAdd() {
+    public void handleAdd() {
         // Check if any of the text fields are empty
         if (nullCheck()) return;
         try {
@@ -161,7 +161,7 @@ public class CourseManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleUpdate() {
+    public void handleUpdate() {
         // Get the selected course from listener
         Course selectedCourse = courseTable.getSelectionModel().getSelectedItem();
         // Check if any of the text fields are empty
@@ -184,7 +184,7 @@ public class CourseManagementController implements Initializable {
      * Checks if any of the text fields are empty.
      * @return true if any of the text fields are empty, false otherwise.
      */
-    private boolean nullCheck() {
+    public boolean nullCheck() {
         if (courseId.getText().isEmpty() || courseName.getText().isEmpty() || department.getText().isEmpty() ||
                 courseId == null || courseName == null || department == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -207,7 +207,7 @@ public class CourseManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleDelete() {
+    public void handleDelete() {
         // Get the selected course from listener
         Course selectedCourse = courseTable.getSelectionModel().getSelectedItem();
         if (selectedCourse != null) {

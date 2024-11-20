@@ -88,4 +88,19 @@ public class GradeDAOTest {
         Grade retrievedGrade = gradeDAO.getGrade(1);
         assertNull(retrievedGrade);
     }
+
+    @Test
+    public void testAddGradeWithMissingFields() {
+        Grade grade = new Grade(null, "COMP3111", "Midterm", 85.5F, 100.0F, 45);
+        assertThrows(Exception.class, () -> gradeDAO.addGrade(grade));
+    }
+
+
+
+
+    @Test
+    public void testGetNonExistingGrade() {
+        Grade retrievedGrade = gradeDAO.getGrade(999); // Non-existing ID
+        assertNull(retrievedGrade);
+    }
 }

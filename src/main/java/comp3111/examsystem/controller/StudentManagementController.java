@@ -105,7 +105,7 @@ public class StudentManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleRefresh(){
+    public void handleRefresh(){
         handleFilter();
         studentTable.refresh();
     }
@@ -117,7 +117,7 @@ public class StudentManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleReset() {
+    public void handleReset() {
         filterUsernameField.clear();
         filterNameField.clear();
         filterDepartmentField.clear();
@@ -133,7 +133,7 @@ public class StudentManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleFilter() {
+    public void handleFilter() {
         String filterUsername = filterUsernameField.getText() != null ? filterUsernameField.getText().toLowerCase() : "";
         String filterName = filterNameField.getText() != null ? filterNameField.getText().toLowerCase() : "";
         String filterDepartment = filterDepartmentField.getText() != null ? filterDepartmentField.getText().toLowerCase() : "";
@@ -155,7 +155,7 @@ public class StudentManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleAdd() {
+    public void handleAdd() {
         if (checkNull()) return;
         try {
             Integer.parseInt(ageField.getText());
@@ -177,7 +177,7 @@ public class StudentManagementController implements Initializable {
      * </p>
      * @return true if any of the fields are empty, false otherwise.
      */
-    private boolean checkNull() {
+    public boolean checkNull() {
         if (usernameField.getText() == null || usernameField.getText().isEmpty() ||
                 passwordField.getText() == null || passwordField.getText().isEmpty() ||
                 nameField.getText() == null || nameField.getText().isEmpty() ||
@@ -207,7 +207,7 @@ public class StudentManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleUpdate() {
+    public void handleUpdate() {
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
         if (checkNull()) return;
         if (selectedStudent != null) {
@@ -240,7 +240,7 @@ public class StudentManagementController implements Initializable {
      * </p>
      */
     @FXML
-    private void handleDelete(){
+    public void handleDelete(){
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
         if (selectedStudent != null) {
             int id = selectedStudent.getId();
