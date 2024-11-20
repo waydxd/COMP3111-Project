@@ -35,13 +35,20 @@ public class TeacherLoginController implements Initializable {
 
     private final TeacherService teacherService = new TeacherServiceImpl();
 
+    private List<Teacher> teacherList=teacherService.getAllTeachers();
+
+    public void setTeacherList(List<Teacher> teacherList) {
+        this.teacherList = teacherList;
+    }
+
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
+
     public boolean account_exist(String user)
     {
-        for(Teacher member: teacherService.getAllTeachers())
+        for(Teacher member: teacherList)
         {
             if(member.getUsername().equals(user))
             {
@@ -51,7 +58,7 @@ public class TeacherLoginController implements Initializable {
         return false;
     }
     public Teacher getTeacherbyUserName(String username) {
-        for (Teacher teacher : teacherService.getAllTeachers()) {
+        for (Teacher teacher :  teacherList) {
             if (teacher.getUsername().equals(username)) {
                 return teacher;
             }
