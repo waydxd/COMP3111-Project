@@ -116,24 +116,17 @@ public class TeacherGradeStatisticController implements Initializable {
     private void initializeChoiceBoxes() {
         // Get unique values
         Set<String> courses = new HashSet<>();
-        Set<String> exams = new HashSet<>();
-        Set<String> students = new HashSet<>();
+
 
         gradeList.forEach(grade -> {
             courses.add(grade.getCourseName());
-            exams.add(grade.getExamName());
-            students.add(grade.getStudentName());
         });
 
         // Convert sets to sorted lists
         ObservableList<String> courseItems = FXCollections.observableArrayList(courses);
-//        ObservableList<String> examItems = FXCollections.observableArrayList(exams);
-//        ObservableList<String> studentItems = FXCollections.observableArrayList(students);
 
         // Sort the lists
         FXCollections.sort(courseItems);
-//        FXCollections.sort(examItems);
-//        FXCollections.sort(studentItems);
 
         // Add an empty choice as first item
         courseItems.addFirst("");
@@ -241,8 +234,6 @@ public class TeacherGradeStatisticController implements Initializable {
         courseCombox.setValue(null);
         examTextField.setText("");
         studentTextField.setText("");
-//        gradeTable.setItems(gradeList);
-//        loadChart(gradeList);
     }
 
   /**

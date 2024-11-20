@@ -106,9 +106,7 @@ public class StudentManagementController implements Initializable {
      */
     @FXML
     private void handleRefresh(){
-        studentTable.setItems(FXCollections.observableArrayList(
-                studentService.getAllStudents()
-        ));
+        handleFilter();
         studentTable.refresh();
     }
 
@@ -141,11 +139,7 @@ public class StudentManagementController implements Initializable {
         String filterDepartment = filterDepartmentField.getText() != null ? filterDepartmentField.getText().toLowerCase() : "";
 
         studentTable.setItems(FXCollections.observableArrayList(
-                studentService.getAllStudents().stream()
-                        .filter(student -> filterUsername.isEmpty() || student.getUsername().toLowerCase().contains(filterUsername))
-                        .filter(student -> filterName.isEmpty() || student.getName().toLowerCase().contains(filterName))
-                        .filter(student -> filterDepartment.isEmpty() || student.getDepartment().toLowerCase().contains(filterDepartment))
-                        .toList()
+                studentService.filterStudents(filterUsername, filterName, filterDepartment)
         ));
         studentTable.refresh();
     }
@@ -209,7 +203,7 @@ public class StudentManagementController implements Initializable {
      *     If any field is empty, an error alert is shown.
      *     If ageField is not an integer, an error alert is shown.
      *     If no student is selected, an error alert is shown.
-     *     If the student is successfully updated, the studentTable is refreshed.
+     *     If the student object updates, the studentTable is refreshed.
      * </p>
      */
     @FXML

@@ -10,5 +10,6 @@ public interface StudentService{
     List<Student> getAllStudents();
     void updateStudent(int id ,Student student);
     void deleteStudent(int id);
+    List<Student> filterStudents(String username, String name, String department);
     boolean login(String username, String password);
 }

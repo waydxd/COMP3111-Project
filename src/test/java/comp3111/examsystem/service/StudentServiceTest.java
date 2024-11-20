@@ -1,6 +1,7 @@
 package comp3111.examsystem.service;
 
 import comp3111.examsystem.dao.internal.MemberDAO;
+import comp3111.examsystem.entity.Course;
 import comp3111.examsystem.entity.Member;
 import comp3111.examsystem.entity.Student;
 import comp3111.examsystem.service.internal.StudentServiceImpl;
@@ -101,5 +102,46 @@ class StudentServiceTest {
         boolean nonExistingUserResult = studentService.login("nonuser", "password1");
         verify(studentDAO, times(3)).getAllMembers();
         assertFalse(nonExistingUserResult);
+    }
+
+    @Test
+    void filterStudents() {
+        List<Student> sampleStudents = Arrays.asList(
+                new Student("user1", "password1", "John Doe", "Male", "25", "CS"),
+                new Student("user2", "password1", "Grimes", "Female", "25", "CS"),
+                new Student("user3", "password1", "Alice Smith", "Female", "30", "Math")
+        );
+
+        when(studentDAO.getAllStudents()).thenReturn(sampleStudents);
+
+        // Test with all filters
+        List<Student> result = studentService.filterStudents("user2", "grimes", "cs");
+        assertEquals(1, result.size());
+        assertEquals("user2", result.getFirst().getUsername());
+
+        // Test with empty username
+        result = studentService.filterStudents("", "grimes", "cs");
+        assertEquals(1, result.size());
+        assertEquals("user2", result.getFirst().getUsername());
+
+        // Test with empty name
+        result = studentService.filterStudents("user2", "", "cs");
+        assertEquals(1, result.size());
+        assertEquals("user2", result.getFirst().getUsername());
+
+        // Test with empty department
+        result = studentService.filterStudents("user2", "grimes", "");
+        assertEquals(1, result.size());
+        assertEquals("user2", result.getFirst().getUsername());
+
+        // Test with all empty filters
+        result = studentService.filterStudents("", "", "");
+        assertEquals(3, result.size());
+
+        // Test with no matches
+        result = studentService.filterStudents("nonexistent", "nonexistent", "nonexistent");
+        assertTrue(result.isEmpty());
+
+        verify(studentDAO, times(6)).getAllStudents();
     }
 }

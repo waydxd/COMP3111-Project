@@ -117,5 +117,21 @@ class ManagerServiceTest {
         boolean falseResult = managerService.login("admin", "wrongpassword");
         verify(managerDAO, times(2)).getManager("admin");
         assertFalse(falseResult);
+
+        // Test for non-existent manager
+        when(managerDAO.getManager("nonexistent")).thenReturn(null);
+        boolean nonExistentResult = managerService.login("nonexistent", "password");
+        verify(managerDAO).getManager("nonexistent");
+        assertFalse(nonExistentResult);
+
+        // Test for null username
+//        boolean nullUsernameResult = managerService.login(null, "password");
+//        verify(managerDAO, never()).getManager(null);
+//        assertFalse(nullUsernameResult);
+
+//        // Test for null password
+//        boolean nullPasswordResult = managerService.login("admin", null);
+//        verify(managerDAO).getManager("admin");
+//        assertFalse(nullPasswordResult);
     }
 }

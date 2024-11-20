@@ -5,6 +5,7 @@ import comp3111.examsystem.entity.Teacher;
 import comp3111.examsystem.service.TeacherService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TeacherServiceImpl implements TeacherService  {
     private final MemberDAO teacherDAO;
@@ -64,5 +65,23 @@ public class TeacherServiceImpl implements TeacherService  {
     @Override
     public void deleteTeacher(int id) {
         teacherDAO.deleteMember(id);
+    }
+
+    /**
+     * @param username username of teacher
+     * @param name name of teacher
+     * @param department department of teacher
+     *        <p>
+     * This method filters the teacherTable based on the given values.
+     * If the value is empty, it will not be used as a filter.
+     *       </p>
+     */
+    @Override
+    public List<Teacher> filterTeachers(String username, String name, String department) {
+        return teacherDAO.getAllTeachers().stream()
+                .filter(teacher -> username.isEmpty() || teacher.getUsername().toLowerCase().contains(username))
+                .filter(teacher -> name.isEmpty() || teacher.getName().toLowerCase().contains(name))
+                .filter(teacher -> department.isEmpty() || teacher.getDepartment().toLowerCase().contains(department))
+                .collect(Collectors.toList());
     }
 }

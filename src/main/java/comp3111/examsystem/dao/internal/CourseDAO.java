@@ -87,24 +87,6 @@ public class CourseDAO {
     }
 
     /**
-     * Filters courses by department.
-     * @param department department to be filtered
-     * @return list of filtered courses
-     */
-    public List<Course> filterCoursesByDepartment(String department) {
-
-        return create.select(
-                        COURSES.COURSE_CODE.as("courseId"),
-                        COURSES.NAME.as("courseName"),
-                        COURSES.DEPARTMENT.as("department")
-                )
-                .from(COURSES)
-                .where(COURSES.DEPARTMENT.eq(department))
-                .fetchInto(Course.class);
-
-    }
-
-    /**
      * Get all courses from the database.
      * @return list of all courses
      */

@@ -128,8 +128,7 @@ public class TeacherManagementController implements Initializable {
      */
     @FXML
     public void handleRefresh() {
-
-        teacherTable.setItems(FXCollections.observableArrayList(teacherService.getAllTeachers()));
+        handleFilter();
         teacherTable.refresh();
 
     }
@@ -160,11 +159,7 @@ public class TeacherManagementController implements Initializable {
         String filterDepartment = filterDepartmentField.getText() != null ? filterDepartmentField.getText().toLowerCase() : "";
 
         teacherTable.setItems(FXCollections.observableArrayList(
-                teacherService.getAllTeachers().stream()
-                        .filter(teacher -> filterUsername.isEmpty() || teacher.getUsername().toLowerCase().contains(filterUsername))
-                        .filter(teacher -> filterName.isEmpty() || teacher.getName().toLowerCase().contains(filterName))
-                        .filter(teacher -> filterDepartment.isEmpty() || teacher.getDepartment().toLowerCase().contains(filterDepartment))
-                        .toList()
+                teacherService.filterTeachers(filterUsername, filterName, filterDepartment)
         ));
         teacherTable.refresh();
     }
@@ -173,6 +168,8 @@ public class TeacherManagementController implements Initializable {
      * Handles the add button click event.
      * <p>
      * This method adds a new teacher to the teacherTable based on the values in the text fields.
+     * If any of the text fields are empty, an error message will be shown.
+     * If the age field is not an integer, an error message will be shown.
      * </p>
      */
     @FXML
@@ -198,6 +195,9 @@ public class TeacherManagementController implements Initializable {
      * Handles the update button click event.
      * <p>
      * This method updates the selected teacher in the teacherTable based on the values in the text fields.
+     * If no teacher is selected, an error message will be shown.
+     * If any of the text fields are empty, an error message will be shown.
+     * If age field is not an integer, an error message will be shown.
      * </p>
      */
     @FXML

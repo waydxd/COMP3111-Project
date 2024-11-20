@@ -78,18 +78,18 @@ class CourseDAOTest {
                 .orElse(null);
         assertNull(deletedCourse);
     }
-
-    @Test
-    void filterCoursesByDepartment() throws Exception {
-        courseDAO.addCourse(new Course("COMP1111", "Introduction to Programming", "CS"));
-        courseDAO.addCourse(new Course("COMP2222", "Programming", "CS"));
-        List<Course> courses = courseDAO.filterCoursesByDepartment("CS");
-
-        // Verify that the courses were filtered correctly
-        assertNotNull(courses);
-        assertFalse(courses.isEmpty());
-        assertTrue(courses.stream().allMatch(c -> c.getDepartment().equals("CS")));
-    }
+//
+//    @Test
+//    void filterCoursesByDepartment() throws Exception {
+//        courseDAO.addCourse(new Course("COMP1111", "Introduction to Programming", "CS"));
+//        courseDAO.addCourse(new Course("COMP2222", "Programming", "CS"));
+//        List<Course> courses = courseDAO.filterCoursesByDepartment("CS");
+//
+//        // Verify that the courses were filtered correctly
+//        assertNotNull(courses);
+//        assertFalse(courses.isEmpty());
+//        assertTrue(courses.stream().allMatch(c -> c.getDepartment().equals("CS")));
+//    }
 
     @Test
     void getAllCourses() throws Exception {

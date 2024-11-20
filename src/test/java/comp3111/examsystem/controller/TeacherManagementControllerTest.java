@@ -3,7 +3,6 @@ package comp3111.examsystem.controller;
 import comp3111.examsystem.entity.Teacher;
 import comp3111.examsystem.service.TeacherService;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
