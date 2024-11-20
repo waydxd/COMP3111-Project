@@ -1,6 +1,7 @@
 package comp3111.examsystem.entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Examination extends Entity{
@@ -12,7 +13,7 @@ public class Examination extends Entity{
 
 
 //    private static List<Examination> exam_list;
-    private List<Question> quiz;
+    private List<Question> quiz=new ArrayList<>();
 
     public Examination(String courseID, float examTime, String examName, List<Question> questionsList, float time, boolean publish) {
         setCourseID(courseID);

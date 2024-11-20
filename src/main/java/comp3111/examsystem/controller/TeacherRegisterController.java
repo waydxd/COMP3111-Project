@@ -60,10 +60,10 @@ public class TeacherRegisterController implements Initializable {
 
 
 
-        // Add options to the Gender ChoiceBox
-        Gender.getItems().addAll("Male", "Female", "Other");
-        // Add options to the Position ChoiceBox
-        Position.getItems().addAll("Professor", "Associate Professor", "Assistant Professor", "Lecturer I", "Lecturer II", "Adjunct Professor", "Teaching Assistant", "Research Assistant", "Graduate Assistant Lecturer", "Instructional Assistant");
+//        // Add options to the Gender ChoiceBox
+//        Gender.getItems().addAll("Male", "Female", "Other");
+//        // Add options to the Position ChoiceBox
+//        Position.getItems().addAll("Professor", "Associate Professor", "Assistant Professor", "Lecturer I", "Lecturer II", "Adjunct Professor", "Teaching Assistant", "Research Assistant", "Graduate Assistant Lecturer", "Instructional Assistant");
 
 
         teacherLoginController=new TeacherLoginController();
@@ -173,32 +173,8 @@ public class TeacherRegisterController implements Initializable {
             teacherLoginController.getRegisterStage().close();
         }
 
-        if (testcount == 0) {
-            test();
-            testcount++;
-        }
+
     }
 
-    public static void test()
-    {
-        String Username = "";
-        String Password = "";
-        String Name =     "";
-        String Gender_ =  "";
-        String Age =      "";
-        String Department="";
-        String Position_ ="";
-
-        Teacher teacher = new Teacher(
-                Username,
-                Password,
-                Name,
-                Gender_,
-                Age,
-                Department,
-                Position_
-        );
-        getAccountManager().addAccount(teacher);
-    }
 
 }

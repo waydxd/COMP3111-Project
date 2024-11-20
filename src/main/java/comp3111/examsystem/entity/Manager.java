@@ -63,6 +63,15 @@ public class Manager extends Member {
             }
             return null; // 如果未找到匹配的学生,返回 null
         }
+
+        public Manager getManagerbyUserName(String username) {
+            for (Manager manager : manager_accounts) {
+                if (manager.getUsername().equals(username)) {
+                    return manager;
+                }
+            }
+            return null; // If no matching manager is found, return null
+        }
     }
     private static final AccountManager accountManager=new AccountManager();
     public  static AccountManager getAccountManager() {
