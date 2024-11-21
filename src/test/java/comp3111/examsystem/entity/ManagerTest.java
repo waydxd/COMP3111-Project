@@ -38,6 +38,10 @@ class ManagerTest {
         Assertions.assertNotNull(accountManager.getManagerbyUserName("manager1"));
         Assertions.assertNotNull(accountManager.getTeacherbyUserName("teacher1"));
         Assertions.assertNotNull(accountManager.getStudentbyUserName("student1"));
+
+        Assertions.assertNull(accountManager.getManagerbyUserName("manager2"));
+        Assertions.assertNull(accountManager.getTeacherbyUserName("teacher2"));
+        Assertions.assertNull(accountManager.getStudentbyUserName("student2"));
     }
 
     @Test

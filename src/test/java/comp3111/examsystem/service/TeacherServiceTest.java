@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -137,5 +138,37 @@ class TeacherServiceTest {
         assertTrue(result.isEmpty());
 
         verify(teacherDAO, times(6)).getAllTeachers();
+    }
+    @Test
+    void testAccountExist() {
+        List<Teacher> allTeachers = new ArrayList<>();
+        allTeachers.add(new Teacher("existingUsername", "testPassword", "Existing Teacher", "Male", "30", "Professor", "Computer Science"));
+        allTeachers.add(new Teacher("testUsername", "testPassword", "Test Teacher", "Female", "35", "Associate Professor", "Mathematics"));
+
+        when(teacherService.getAllTeachers()).thenReturn(allTeachers);
+
+        boolean accountExists = teacherService.account_exist("existingUsername");
+        assertTrue(accountExists);
+
+        accountExists = teacherService.account_exist("nonExistingUsername");
+        assertFalse(accountExists);
+    }
+
+    @Test
+    void testGetTeacherByUserName() {
+        List<Teacher> allTeachers = new ArrayList<>();
+        Teacher existingTeacher = new Teacher("existingUsername", "testPassword", "Existing Teacher", "Male", "30", "Professor", "Computer Science");
+        existingTeacher.setId(1);
+        allTeachers.add(existingTeacher);
+        allTeachers.add(new Teacher("testUsername", "testPassword", "Test Teacher", "Female", "35", "Associate Professor", "Mathematics"));
+
+        when(teacherService.getAllTeachers()).thenReturn(allTeachers);
+
+        Teacher foundTeacher = teacherService.getTeacherbyUserName("existingUsername");
+        assertNotNull(foundTeacher);
+        assertEquals("existingUsername", foundTeacher.getUsername());
+
+        foundTeacher = teacherService.getTeacherbyUserName("nonExistingUsername");
+        assertNull(foundTeacher);
     }
 }

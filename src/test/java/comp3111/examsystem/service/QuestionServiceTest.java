@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -77,4 +78,26 @@ class QuestionServiceTest {
 
         verify(questionDAO).deleteQuestion(1);
     }
+    @Test
+    void getAllQuestionsEmpty() {
+        when(questionDAO.getAllQuestions()).thenReturn(Collections.emptyList());
+
+        List<Question> result = questionService.getAllQuestions();
+
+        verify(questionDAO).getAllQuestions();
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void getQuestionNotFound() {
+        when(questionDAO.getQuestion(1)).thenReturn(null);
+
+        Question result = questionService.getQuestion(1);
+
+        verify(questionDAO).getQuestion(1);
+        assertNull(result);
+    }
+
+
+
 }
