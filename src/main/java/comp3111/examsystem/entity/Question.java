@@ -31,17 +31,6 @@
             this.type = type;
             this.score = Float.parseFloat(score);
         }
-        public Question(String question, String[] options, String answer, String type, float score) {
-
-            this.question = question;
-            this.optionA = options[0];
-            this.optionB = options[1];
-            this.optionC = options[2];
-            this.optionD = options[3];
-            this.answer = answer;
-            this.type = type;
-            this.score = score;
-        }
         public Question() {
         }
 
