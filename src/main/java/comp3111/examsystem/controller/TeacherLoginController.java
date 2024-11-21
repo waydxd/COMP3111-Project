@@ -6,12 +6,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import comp3111.examsystem.Main;
-import comp3111.examsystem.entity.Manager;
-import comp3111.examsystem.entity.Member;
 import comp3111.examsystem.entity.Teacher;
-import comp3111.examsystem.service.QuestionService;
 import comp3111.examsystem.service.TeacherService;
-import comp3111.examsystem.service.internal.QuestionServiceImpl;
 import comp3111.examsystem.service.internal.TeacherServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,9 +19,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static comp3111.examsystem.entity.Manager.*;
-
+/**
+ * The `TeacherLoginController` class manages the teacher login functionality within the Exam Management System.
+ * It handles user authentication by verifying the teacher's credentials and managing the transition
+ * to the main user interface upon successful login.
+ */
 public class TeacherLoginController implements Initializable {
+
     @FXML
     private TextField usernameTxt;
     @FXML
@@ -34,106 +34,105 @@ public class TeacherLoginController implements Initializable {
     public static Stage registerstage;
 
     private final TeacherService teacherService = new TeacherServiceImpl();
+    private List<Teacher> teacherList = teacherService.getAllTeachers();
 
-    private List<Teacher> teacherList=teacherService.getAllTeachers();
-
+    /**
+     * Sets the list of teachers.
+     *
+     * @param teacherList A list of Teacher objects to set.
+     */
     public void setTeacherList(List<Teacher> teacherList) {
         this.teacherList = teacherList;
     }
 
+    /**
+     * Initializes the controller. This method is called after the FXML file has been loaded.
+     *
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object is not localized.
+     */
     public void initialize(URL location, ResourceBundle resources) {
-
+        // Initialization logic can go here if needed
     }
 
-
-    public boolean account_exist(String user)
-    {
-        for(Teacher member: teacherList)
-        {
-            if(member.getUsername().equals(user))
-            {
+    /**
+     * Checks if a teacher account exists based on the provided username.
+     *
+     * @param user The username to check.
+     * @return True if the account exists, false otherwise.
+     */
+    public boolean account_exist(String user) {
+        for (Teacher member : teacherList) {
+            if (member.getUsername().equals(user)) {
                 return true;
             }
         }
         return false;
     }
+
+    /**
+     * Retrieves a Teacher object based on the provided username.
+     *
+     * @param username The username of the teacher to retrieve.
+     * @return The Teacher object if found, or null if not found.
+     */
     public Teacher getTeacherbyUserName(String username) {
-        for (Teacher teacher :  teacherList) {
+        for (Teacher teacher : teacherList) {
             if (teacher.getUsername().equals(username)) {
                 return teacher;
             }
         }
-        return null; // 如果未找到匹配的教师,返回 null
+        return null; // Return null if no matching teacher is found
     }
 
-
-    public boolean Check_login()
-    {
-
-//        //检查账户是否存在
-//        if(getAccountManager().account_exist(usernameTxt.getText()))
-//        {
-//            //检查账户密码是否正确
-//            if(getAccountManager().getTeacherbyUserName(usernameTxt.getText()).Check_password(passwordTxt.getText()))
-//            {
-//
-//                return true;
-//            }
-//
-//
-//        }
-        //检查账户是否存在
-        if(account_exist(usernameTxt.getText()))
-        {
-            //检查账户密码是否正确
-            if(getTeacherbyUserName(usernameTxt.getText()).Check_password(passwordTxt.getText()))
-            {
-
+    /**
+     * Validates the login credentials of a teacher.
+     *
+     * @return True if the login is successful (account exists and password is correct), false otherwise.
+     */
+    public boolean Check_login() {
+        if (account_exist(usernameTxt.getText())) {
+            if (getTeacherbyUserName(usernameTxt.getText()).Check_password(passwordTxt.getText())) {
                 return true;
             }
-
-
         }
-
-
-
         return false;
     }
+
+    /**
+     * Handles the login action triggered by the user.
+     *
+     * @param e The action event triggered by the login button.
+     */
     @FXML
     public void login(ActionEvent e) {
         try {
-            //登录成功
-            if(Check_login())
-            {
+            // Proceed if login is successful
+            if (Check_login()) {
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("TeacherMainUI.fxml"));
                 Stage stage = new Stage();
-                stage.setTitle("Hi " + usernameTxt.getText() +", Welcome to HKUST Examination System");
+                stage.setTitle("Hi " + usernameTxt.getText() + ", Welcome to HKUST Examination System");
                 stage.setScene(new Scene(fxmlLoader.load()));
                 stage.show();
                 ((Stage) ((Button) e.getSource()).getScene().getWindow()).close();
-            }
-            //登录失败
-            else
-            {
-                //错误弹窗
+            } else {
+                // Show error popup on login failure
                 ErrorPopupController.Error_Popup();
-
             }
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-
     }
 
+    /**
+     * Opens the teacher registration window.
+     */
     @FXML
     public void register() {
         try {
-            if(registerstage==null)
-            {
+            if (registerstage == null) {
                 registerstage = new Stage();
             }
-
-
 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("TeacherRegisterUI.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
@@ -143,13 +142,14 @@ public class TeacherLoginController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-    public Stage getRegisterStage()
-    {
+
+    /**
+     * Retrieves the registration stage.
+     *
+     * @return The stage for teacher registration.
+     */
+    public Stage getRegisterStage() {
         return registerstage;
     }
-
-
-
 }

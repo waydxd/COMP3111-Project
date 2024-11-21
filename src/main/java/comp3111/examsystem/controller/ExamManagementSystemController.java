@@ -19,7 +19,11 @@ import javafx.beans.property.SimpleFloatProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * The `ExamManagementSystemController` class is responsible for managing the user interface of the Exam Management System.
+ * It handles user interactions, such as creating and updating examinations, adding and removing questions from examinations,
+ * and filtering examinations and questions based on various criteria.
+ */
 public class ExamManagementSystemController {
         @FXML private TextField examNameTextField;
         @FXML private ComboBox<String> filterCourseID;
@@ -70,7 +74,9 @@ public class ExamManagementSystemController {
     private final CourseService courseService = new CourseServiceImpl();
 
     private final QuestionService questionService = new QuestionServiceImpl();
-
+    /**
+     * Initializes the controller by setting up the table views, populating the combo boxes, and adding a listener to the ExamTableView selection.
+     */
     @FXML
     void initialize() {
         init_All();
@@ -107,62 +113,6 @@ public class ExamManagementSystemController {
     private void init_Exam()
     {
 
-//        if(init_flag++==0) {
-//
-//
-//            Examination exam1 = new Examination(
-//                    "COMP3111",
-//                    30.0F,
-//                    "quiz1",
-//                    true
-//            );
-//
-//            Examination exam2 = new Examination(
-//                    "COMP3111",
-//                    30.0F,
-//                    "quiz2",
-//                    true
-//            );
-//
-//            Examination exam3 = new Examination(
-//                    "COMP3111",
-//                    40.0F,
-//                    "quiz3",
-//                    false
-//            );
-//
-//            Examination exam4 = new Examination(
-//                    "COMP5111",
-//                    30.0F,
-//                    "quiz1",
-//                    true
-//            );
-//
-//            Examination exam5 = new Examination(
-//                    "COMP5111",
-//                    30.0F,
-//                    "quiz2",
-//                    true
-//            );
-//
-//            Examination exam6 = new Examination(
-//                    "COMP5111",
-//                    60.0F,
-//                    "final",
-//                    false
-//            );
-//
-//            Examination exam7 = new Examination(
-//                    "COMP3111",
-//                    200.0F,
-//                    "quiz4",
-//                    true
-//            );
-//
-//            // Add the exams to the static examination list
-//            examinationService.getAllExaminations().addAll(Arrays.asList(exam1, exam2, exam3, exam4, exam5, exam6, exam7));
-//
-//        }
 
 
 
@@ -200,7 +150,9 @@ public class ExamManagementSystemController {
 
     }
 
-
+    /**
+     * Filters the questions displayed in the All_QuestionTableView based on the input criteria from the user.
+     */
     @FXML
     private void filterQuestions() {
 
@@ -223,7 +175,9 @@ public class ExamManagementSystemController {
 
         All_QuestionTableView.setItems(filteredQuestions);
     }
-
+    /**
+     * Deletes the selected question from the LeftQuestionTableView and the associated examination.
+     */
     @FXML
     private void deleteFromLeft() {
         Question selectedQuestion =  LeftQuestionTableView.getSelectionModel().getSelectedItem();
@@ -244,7 +198,9 @@ public class ExamManagementSystemController {
             alert.showAndWait();
         }
     }
-
+    /**
+     * Adds the selected question from All_QuestionTableView to the selected examination in LeftQuestionTableView.
+     */
     @FXML
     void addToLeft() {
         // Add a new question to the TableView
@@ -283,7 +239,9 @@ public class ExamManagementSystemController {
     }
 
 
-
+    /**
+     * Refreshes all table views and clears all input fields.
+     */
     @FXML
     private void refreshTable() {
         // Refresh the TableView with the updated data
@@ -305,7 +263,11 @@ public class ExamManagementSystemController {
         filterPublish.getSelectionModel().clearSelection();
 
     }
-
+    /**
+     * Updates the selected examination with new values from the input fields.
+     *
+     * @param actionEvent The action event triggered by the user.
+     */
 
     @FXML
     public void UpdateExam(ActionEvent actionEvent) {
@@ -325,6 +287,11 @@ public class ExamManagementSystemController {
         }
 
     }
+    /**
+     * Adds a new examination based on the input values from the user.
+     *
+     * @param actionEvent The action event triggered by the user.
+     */
     @FXML
     public void AddExam(ActionEvent actionEvent) {
 
@@ -370,6 +337,11 @@ public class ExamManagementSystemController {
         publishComboBox.getSelectionModel().clearSelection();
 
     }
+    /**
+     * Resets the fields related to questions to their default state.
+     *
+     * @param actionEvent The action event triggered by the user.
+     */
     @FXML
     public void resetQuestionFields(ActionEvent actionEvent) {
         questionTextField.clear();
@@ -379,6 +351,11 @@ public class ExamManagementSystemController {
         All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
     }
+    /**
+     * Resets the fields related to exams to their default state.
+     *
+     * @param actionEvent The action event triggered by the user.
+     */
     @FXML
     public void resetExamFields(ActionEvent actionEvent) {
         // Clear the input fields
@@ -387,6 +364,12 @@ public class ExamManagementSystemController {
         filterPublish.getSelectionModel().clearSelection();
         ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));
     }
+
+    /**
+     * Filters the examinations displayed in the ExamTableView based on the input criteria from the user.
+     *
+     * @param actionEvent The action event triggered by the user.
+     */
     @FXML
     public void filterExams(ActionEvent actionEvent) {
         // Get the selected values from the filter controls
@@ -408,7 +391,11 @@ public class ExamManagementSystemController {
         // Update the ExamTableView with the filtered exams
         ExamTableView.setItems(filteredExams);
     }
-
+    /**
+     * Deletes the selected examination from the ExamTableView.
+     *
+     * @param actionEvent The action event triggered by the user.
+     */
     public void deleteExam(ActionEvent actionEvent) {
         // Get the selected exam from the ExamTableView
         Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();

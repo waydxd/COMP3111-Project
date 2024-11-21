@@ -24,7 +24,10 @@ import java.util.ResourceBundle;
 
 import static comp3111.examsystem.entity.Manager.*;
 
-
+/**
+ * The TeacherRegisterController class is responsible for handling the registration of new teachers in the exam system.
+ * It provides methods for validating user input, creating a new teacher account, and managing the registration process.
+ */
 public class TeacherRegisterController implements Initializable {
 
     @FXML
@@ -53,7 +56,12 @@ public class TeacherRegisterController implements Initializable {
     private TeacherLoginController teacherLoginController;
     private int testcount=0;
     private final TeacherService teacherService =new TeacherServiceImpl();
-
+    /**
+     * Initializes the controller by setting up the necessary components and services.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object was not localized.
+     */
 
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -69,7 +77,11 @@ public class TeacherRegisterController implements Initializable {
         teacherLoginController=new TeacherLoginController();
 
     }
-
+    /**
+     * Handles the login button click event, opening the teacher registration UI.
+     *
+     * @param e The ActionEvent object representing the button click.
+     */
     @FXML
     public void login(ActionEvent e) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("TeacherRegisterUI.fxml"));
@@ -84,6 +96,11 @@ public class TeacherRegisterController implements Initializable {
         stage.show();
         ((Stage) ((Button) e.getSource()).getScene().getWindow()).close();
     }
+    /**
+     * Handles the close button click event, closing the teacher registration stage.
+     *
+     * @param e The ActionEvent object representing the button click.
+     */
     @FXML
     public void close(ActionEvent e)
     {
@@ -91,6 +108,13 @@ public class TeacherRegisterController implements Initializable {
         teacherLoginController.getRegisterStage().close();
 
     }
+    /**
+     * Handles the registration of a new teacher.
+     * This method validates the user input, creates a new teacher account, and adds it to the teacher service.
+     *
+     * @param e The ActionEvent object representing the button click.
+     */
+
     @FXML
     public void register(ActionEvent e) {
         boolean register_success = true;

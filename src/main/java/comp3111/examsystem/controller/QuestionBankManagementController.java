@@ -84,6 +84,13 @@ public class QuestionBankManagementController implements Initializable {
 //    private ObservableList<Question> fliter_questionList = FXCollections.observableArrayList();
 
     private final QuestionService questionService = new QuestionServiceImpl();
+
+    /**
+     * Initializes the `QuestionBankManagementController` with the necessary setup.
+     *
+     * @param url            the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the resources used to localize the root object, or null if the root object was not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -94,6 +101,10 @@ public class QuestionBankManagementController implements Initializable {
         questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
     }
 
+    /**
+     * Binds the table columns to the properties of the `Question` class.
+     * This method sets the cell value factories for each column in the `questionTableView`.
+     */
     void Bind_All_Columns()
     {
         // Populate the question table view
@@ -107,6 +118,10 @@ public class QuestionBankManagementController implements Initializable {
         ScoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
     }
 
+    /**
+     * Initializes the choice boxes for the question type filter and the question type in the form.
+     * This method adds the available options to the choice boxes and sets the default selection.
+     */
     void init_ChoiceBox()
     {
         // Initialize question filter choice box
@@ -116,41 +131,24 @@ public class QuestionBankManagementController implements Initializable {
         typeFilterTextField.getItems().addAll("Type","Single","Multiple");
         typeFilterTextField.getSelectionModel().select(0);
     }
+
+    /**
+     * Initializes the entire application by calling the `Bind_All_Columns()` and `init_ChoiceBox()` methods.
+     */
     void Init_ALL()
     {
         // Populate the question table view
         Bind_All_Columns();
 
-//        // Add  sample questions
-//        init_questionlist();
-
         // Initialize question filter choice box
         init_ChoiceBox();
-
-
     }
 
-//    private void init_questionlist()
-//    {
-//
-//                questionList.addAll(
-//                        new Question("Which of the following is a programming language?", new String[] {"Apple", "Java", "Banana", "Orange"}, "B", "Single", "10"),
-//                        new Question("What does CPU stand for?", new String[] {"Computer Processor", "Central Processing Unit", "Computer Program", "Centralized Programming"}, "B", "Single", "10"),
-//                        new Question("Which of the following is a programming language?", new String[] {"Excel", "Photoshop", "Java", "HTML"}, "C", "Single", "10"),
-//                        new Question("What does RAM stand for in computing?", new String[] {"Random Access Memory", "Read-Only Memory", "Running Applications", "Remote Access Memory"}, "A", "Single", "10"),
-//                        new Question("Which of the following is NOT a programming language?", new String[] {"Java", "Python", "HTML", "Photoshop"}, "D", "Single", "10"),
-//                        new Question("What is the main function of a GPU?", new String[] {"Data Storage", "Graphics Rendering", "Network Connection", "Power Supply"}, "B", "Single", "10"),
-//                        new Question("What does HTML stand for in web development?", new String[] {"Hyper Text Markup", "High Tech Modern", "How to Make Lists", "Home Tool Management"}, "A", "Single", "10"),
-//                        new Question("Which component of a computer is often referred to as the 'brain'?", new String[] {"Hard Drive", "CPU", "Monitor", "Keyboard"}, "B", "Single", "10"),
-//                        new Question("Which of the following are object-oriented programming languages?", new String[] {"Java", "Python", "C", "HTML"}, "AB", "Multiple", "20"),
-//                        new Question("Which of the following are types of computer memory?", new String[] {"RAM", "ROM", "CPU", "HDD"}, "AB", "Multiple", "20"),
-//                        new Question("Which of the following are essential components of a computer?", new String[] {"Motherboard", "Keyboard", "Monitor", "Mouse"}, "ABC", "Multiple", "20"),
-//                        new Question("Which of the following are commonly used web browsers?", new String[] {"Google Chrome", "Photoshop", "Safari", "Microsoft Word"}, "AC", "Multiple", "20"),
-//                        new Question("Which of the following are programming paradigms?", new String[] {"Imperative", "Declarative", "Procedural", "Visual Studio"}, "ABC", "Multiple", "20")
-//                );
-//
-//    }
-
+    /**
+     * Handles the addition of a new question to the question bank.
+     * This method retrieves the values from the form fields, validates the input, creates a new `Question` object,
+     * and adds it to the question service.
+     */
     @FXML
     public void handleAddButton() {
         // Add logic to handle adding a new question
@@ -177,10 +175,13 @@ public class QuestionBankManagementController implements Initializable {
         questionService.addQuestion(newQuestion);
 
         questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
-
-
     }
 
+    /**
+     * Handles the update of an existing question in the question bank.
+     * This method retrieves the currently selected question from the table view, retrieves the updated values from the form fields,
+     * validates the input, and updates the selected question in the question service.
+     */
     @FXML
     void handleUpdateButton() {
         // Add logic to handle updating an existing question
@@ -205,9 +206,7 @@ public class QuestionBankManagementController implements Initializable {
                 throw new RuntimeException("Please fill in all the required fields.");
             }
 
-
             // Update the selected question with the new values
-
             questionService.updateQuestion(selectedQuestion.getId(), new Question(
                     updatedQuestion,
                     new String[] {updatedOptionA, updatedOptionB, updatedOptionC, updatedOptionD},
@@ -215,13 +214,12 @@ public class QuestionBankManagementController implements Initializable {
                     updatedType,
                     updatedScore
             ));
-            // Refresh the TableView to display the updated question
 
+            // Refresh the TableView to display the updated question
             questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
             questionTableView.refresh();
 
             return;
-
         }
         else {
             // Throw a RuntimeException if no question is selected
@@ -230,6 +228,10 @@ public class QuestionBankManagementController implements Initializable {
         }
     }
 
+    /**
+     * Handles the deletion of a question from the question bank.
+     * This method retrieves the currently selected question from the table view and removes it from the question service.
+     */
     @FXML
     void handleDeleteButton() {
         // Add logic to handle deleting a question
@@ -247,9 +249,12 @@ public class QuestionBankManagementController implements Initializable {
             // Throw a RuntimeException if no question is selected
             throw new RuntimeException("No question selected for deletion.");
         }
-
     }
 
+    /**
+     * Handles the refresh button click, resetting the filter values and the question form fields.
+     * This method also updates the table view with the complete list of questions.
+     */
     @FXML
     private void handleRefreshButton() {
         // Reset the filter values to their default state
@@ -267,11 +272,14 @@ public class QuestionBankManagementController implements Initializable {
         typeTextField.getSelectionModel().selectFirst();
         scoreTextField.clear();
 
-//        questionTableView.setItems(FXCollections.observableArrayList(questionList));
-
+        // Update the TableView with the complete list of questions
         questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
     }
 
+    /**
+     * Handles the filter button click, filtering the question table based on the selected filter values.
+     * This method retrieves the filter values, validates the input, and updates the table view with the filtered questions.
+     */
     @FXML
     private void handleFilterButton() {
         // Add logic to handle filtering the question table
@@ -304,9 +312,11 @@ public class QuestionBankManagementController implements Initializable {
         questionTableView.setItems(FXCollections.observableArrayList(filteredQuestions));
     }
 
+    /**
+     * Handles the reset button click, resetting the filter values to their default state.
+     */
     @FXML
     private void handleResetButton() {
-
         // Reset the filter values to their default state
         questionFilter.clear();
         typeFilterTextField.getSelectionModel().select(0);
