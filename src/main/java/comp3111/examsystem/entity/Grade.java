@@ -8,7 +8,9 @@ public class Grade extends Entity {
     private float fullScore;
     private float timeSpent;
 
-    // Default constructor with default values
+    /**
+     * Default constructor with default values
+     */
     public Grade() {
         this.id = 0;
         this.studentName = "Default Student";
@@ -18,6 +20,16 @@ public class Grade extends Entity {
         this.fullScore = 100.0F;
         this.timeSpent = 0;
     }
+
+    /**
+     * Constructor with parameters
+     * @param studentName student name
+     * @param courseName course name
+     * @param examName exam name
+     * @param score score
+     * @param fullScore full score
+     * @param timeSpent time spent
+     */
     public Grade(String studentName, String courseName, String examName, float score, float fullScore, float timeSpent) {
         this.studentName = studentName;
         this.courseName = courseName;
@@ -26,50 +38,87 @@ public class Grade extends Entity {
         this.fullScore = fullScore;
         this.timeSpent = timeSpent;
     }
+
+    /**
+     * @return student name
+     */
     public String getStudentName() {
         return studentName;
     }
 
+    /**
+     * @return full score
+     */
     public float getFullScore() {
         return fullScore;
     }
 
+    /**
+     * @return score
+     */
     public float getScore() {
         return score;
     }
 
+    /**
+     * @return time spent
+     */
     public float getTimeSpent() {
         return timeSpent;
     }
 
+    /**
+     * @return course name
+     */
     public String getCourseName() {
         return courseName;
     }
 
+    /**
+     * @return exam name
+     */
     public String getExamName() {
         return examName;
     }
 
+    /**
+     * @param studentName student name
+     */
     public void setStudentName(String studentName) {
         this.studentName = studentName;
     }
 
+    /**
+     * @param courseName course name
+     */
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
 
+    /**
+     * @param examName exam name
+     */
     public void setExamName(String examName) {
         this.examName = examName;
     }
 
+    /**
+     * @param score score
+     */
     public void setScore(float score) {
         this.score = score;
     }
 
+    /**
+     * @param fullScore full score
+     */
     public void setFullScore(float fullScore) {
         this.fullScore = fullScore;
     }
 
+    /**
+     * @param timeSpent time spent
+     */
     public void setTimeSpent(float timeSpent) {
         this.timeSpent = timeSpent;
     }
