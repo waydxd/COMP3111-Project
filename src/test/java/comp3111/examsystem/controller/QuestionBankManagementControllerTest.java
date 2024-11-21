@@ -2,9 +2,14 @@ package comp3111.examsystem.controller;
 
 import comp3111.examsystem.entity.Question;
 import comp3111.examsystem.service.QuestionService;
+import comp3111.examsystem.service.internal.QuestionServiceImpl;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +19,7 @@ import java.lang.reflect.Field;
 import java.util.concurrent.CountDownLatch;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 class QuestionBankManagementControllerTest {
 
@@ -23,7 +29,7 @@ class QuestionBankManagementControllerTest {
     @BeforeAll
     public static void startJavaFXRuntime() {
         try {
-                Platform.startup(() -> {});
+            Platform.startup(() -> {});
         } catch (IllegalStateException e) {
             // Toolkit already initialized, continue with the tests
         }
@@ -53,11 +59,24 @@ class QuestionBankManagementControllerTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        questionService = Mockito.mock(QuestionService.class);
+        questionService = Mockito.mock(QuestionServiceImpl.class);
         controller = new QuestionBankManagementController();
 
         new FXBlock(() -> {
             try {
+                setPrivateField(controller, "mainBorderPane", new BorderPane());
+                setPrivateField(controller, "questionTableView", new TableView<>());
+                setPrivateField(controller, "QuestionColumn", new TableColumn<>());
+                setPrivateField(controller, "OptionAColumn", new TableColumn<>());
+                setPrivateField(controller, "OptionBColumn", new TableColumn<>());
+                setPrivateField(controller, "OptionCColumn", new TableColumn<>());
+                setPrivateField(controller, "OptionDColumn", new TableColumn<>());
+                setPrivateField(controller, "AnswerColumn", new TableColumn<>());
+                setPrivateField(controller, "TypeColumn", new TableColumn<>());
+                setPrivateField(controller, "ScoreColumn", new TableColumn<>());
+                setPrivateField(controller, "questionFilter", new TextField());
+                setPrivateField(controller, "typeFilterTextField", new ChoiceBox<>());
+                setPrivateField(controller, "scoreFilterTextField", new TextField());
                 setPrivateField(controller, "questionTextField", new TextField());
                 setPrivateField(controller, "optionATextField", new TextField());
                 setPrivateField(controller, "optionBTextField", new TextField());
@@ -66,8 +85,7 @@ class QuestionBankManagementControllerTest {
                 setPrivateField(controller, "answerTextField", new TextField());
                 setPrivateField(controller, "typeTextField", new ChoiceBox<>());
                 setPrivateField(controller, "scoreTextField", new TextField());
-                setPrivateField(controller, "questionTableView", new TableView<>());
-                setPrivateField(controller, "questionService", questionService);
+                setPrivateField(controller, "questionService", new QuestionServiceImpl());
                 controller.initialize(null, null);
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -82,7 +100,7 @@ class QuestionBankManagementControllerTest {
     }
 
     @Test
-    void testHandleAddButton() throws Exception {
+    void testHandleAddButton_validInput() throws Exception {
         new FXBlock(() -> {
             try {
                 TextField questionTextField = (TextField) getPrivateField(controller, "questionTextField");
@@ -94,17 +112,16 @@ class QuestionBankManagementControllerTest {
                 ChoiceBox<String> typeTextField = (ChoiceBox<String>) getPrivateField(controller, "typeTextField");
                 TextField scoreTextField = (TextField) getPrivateField(controller, "scoreTextField");
 
-                questionTextField.setText("Sample Question");
-                optionATextField.setText("Option A");
-                optionBTextField.setText("Option B");
-                optionCTextField.setText("Option C");
-                optionDTextField.setText("Option D");
+                questionTextField.setText("What is the capital of France?");
+                optionATextField.setText("Paris");
+                optionBTextField.setText("London");
+                optionCTextField.setText("Berlin");
+                optionDTextField.setText("Rome");
                 answerTextField.setText("A");
-                typeTextField.setValue("Single");
+                typeTextField.getSelectionModel().select("Single");
                 scoreTextField.setText("10");
 
                 // Act
-
                 controller.handleAddButton();
 
                 // Assert
@@ -116,7 +133,37 @@ class QuestionBankManagementControllerTest {
     }
 
     @Test
-    void testHandleUpdateButton() throws Exception {
+    void testHandleAddButton_invalidInput() throws Exception {
+        new FXBlock(() -> {
+            try {
+                TextField questionTextField = (TextField) getPrivateField(controller, "questionTextField");
+                TextField optionATextField = (TextField) getPrivateField(controller, "optionATextField");
+                TextField optionBTextField = (TextField) getPrivateField(controller, "optionBTextField");
+                TextField optionCTextField = (TextField) getPrivateField(controller, "optionCTextField");
+                TextField optionDTextField = (TextField) getPrivateField(controller, "optionDTextField");
+                TextField answerTextField = (TextField) getPrivateField(controller, "answerTextField");
+                ChoiceBox<String> typeTextField = (ChoiceBox<String>) getPrivateField(controller, "typeTextField");
+                TextField scoreTextField = (TextField) getPrivateField(controller, "scoreTextField");
+
+                questionTextField.clear();
+                optionATextField.clear();
+                optionBTextField.clear();
+                optionCTextField.clear();
+                optionDTextField.clear();
+                answerTextField.clear();
+                typeTextField.getSelectionModel().select("Type");
+                scoreTextField.clear();
+
+                // Act and Assert
+                assertThrows(RuntimeException.class, () -> controller.handleAddButton());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).run();
+    }
+
+    @Test
+    void testHandleUpdateButton_validInput() throws Exception {
         new FXBlock(() -> {
             try {
                 TableView<Question> questionTableView = (TableView<Question>) getPrivateField(controller, "questionTableView");
@@ -129,24 +176,71 @@ class QuestionBankManagementControllerTest {
                 ChoiceBox<String> typeTextField = (ChoiceBox<String>) getPrivateField(controller, "typeTextField");
                 TextField scoreTextField = (TextField) getPrivateField(controller, "scoreTextField");
 
-                Question question = new Question("Sample Question", new String[]{"Option A", "Option B", "Option C", "Option D"}, "A", "Single", "10");
-                questionTableView.setItems(FXCollections.observableArrayList(question));
-                questionTableView.getSelectionModel().select(question);
+                Question selectedQuestion = new Question(
+                        "What is the capital of France?",
+                        new String[]{"Paris", "London", "Berlin", "Rome"},
+                        "A",
+                        "Single",
+                        "10"
+                );
+                questionTableView.setItems(FXCollections.observableArrayList(selectedQuestion));
+                questionTableView.getSelectionModel().select(selectedQuestion);
 
-                questionTextField.setText("Updated Question");
-                optionATextField.setText("Updated Option A");
-                optionBTextField.setText("Updated Option B");
-                optionCTextField.setText("Updated Option C");
-                optionDTextField.setText("Updated Option D");
-                answerTextField.setText("B");
-                typeTextField.setValue("Multiple");
-                scoreTextField.setText("20");
+                questionTextField.setText("What is the capital of Italy?");
+                optionATextField.setText("Paris");
+                optionBTextField.setText("London");
+                optionCTextField.setText("Rome");
+                optionDTextField.setText("Berlin");
+                answerTextField.setText("C");
+                typeTextField.getSelectionModel().select("Single");
+                scoreTextField.setText("15");
 
                 // Act
                 controller.handleUpdateButton();
 
                 // Assert
-                Mockito.verify(questionService).updateQuestion(Mockito.eq(question.getId()), Mockito.any(Question.class));
+                Mockito.verify(questionService).updateQuestion(Mockito.eq(selectedQuestion.getId()), Mockito.any(Question.class));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).run();
+    }
+
+    @Test
+    void testHandleUpdateButton_invalidInput() throws Exception {
+        new FXBlock(() -> {
+            try {
+                TableView<Question> questionTableView = (TableView<Question>) getPrivateField(controller, "questionTableView");
+                TextField questionTextField = (TextField) getPrivateField(controller, "questionTextField");
+                TextField optionATextField = (TextField) getPrivateField(controller, "optionATextField");
+                TextField optionBTextField = (TextField) getPrivateField(controller, "optionBTextField");
+                TextField optionCTextField = (TextField) getPrivateField(controller, "optionCTextField");
+                TextField optionDTextField = (TextField) getPrivateField(controller, "optionDTextField");
+                TextField answerTextField = (TextField) getPrivateField(controller, "answerTextField");
+                ChoiceBox<String> typeTextField = (ChoiceBox<String>) getPrivateField(controller, "typeTextField");
+                TextField scoreTextField = (TextField) getPrivateField(controller, "scoreTextField");
+
+                Question selectedQuestion = new Question(
+                        "What is the capital of France?",
+                        new String[]{"Paris", "London", "Berlin", "Rome"},
+                        "A",
+                        "Single",
+                        "10"
+                );
+                questionTableView.setItems(FXCollections.observableArrayList(selectedQuestion));
+                questionTableView.getSelectionModel().select(selectedQuestion);
+
+                questionTextField.clear();
+                optionATextField.clear();
+                optionBTextField.clear();
+                optionCTextField.clear();
+                optionDTextField.clear();
+                answerTextField.clear();
+                typeTextField.getSelectionModel().select("Type");
+                scoreTextField.clear();
+
+                // Act and Assert
+                assertThrows(RuntimeException.class, () -> controller.handleUpdateButton());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -159,20 +253,27 @@ class QuestionBankManagementControllerTest {
             try {
                 TableView<Question> questionTableView = (TableView<Question>) getPrivateField(controller, "questionTableView");
 
-                Question question = new Question("Sample Question", new String[]{"Option A", "Option B", "Option C", "Option D"}, "A", "Single", "10");
-                questionTableView.setItems(FXCollections.observableArrayList(question));
-                questionTableView.getSelectionModel().select(question);
+                Question selectedQuestion = new Question(
+                        "What is the capital of France?",
+                        new String[]{"Paris", "London", "Berlin", "Rome"},
+                        "A",
+                        "Single",
+                        "10"
+                );
+                questionTableView.setItems(FXCollections.observableArrayList(selectedQuestion));
+                questionTableView.getSelectionModel().select(selectedQuestion);
 
                 // Act
                 controller.handleDeleteButton();
 
                 // Assert
-                Mockito.verify(questionService).deleteQuestion(Mockito.eq(question.getId()));
+                Mockito.verify(questionService).deleteQuestion(Mockito.eq(selectedQuestion.getId()));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }).run();
     }
+
 
     private Object getPrivateField(Object object, String fieldName) throws Exception {
         Field field = object.getClass().getDeclaredField(fieldName);

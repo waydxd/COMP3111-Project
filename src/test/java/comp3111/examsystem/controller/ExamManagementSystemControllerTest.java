@@ -4,12 +4,15 @@ import comp3111.examsystem.entity.Examination;
 import comp3111.examsystem.entity.Question;
 import comp3111.examsystem.service.ExaminationService;
 import comp3111.examsystem.service.QuestionService;
+import comp3111.examsystem.service.internal.ExaminationServiceImpl;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -81,8 +84,18 @@ class ExamManagementSystemControllerTest {
                 setPrivateField(controller, "ExamTableView", new TableView<>());
                 setPrivateField(controller, "LeftQuestionTableView", new TableView<>());
                 setPrivateField(controller, "All_QuestionTableView", new TableView<>());
-                invokePrivateMethod(controller, "initialize");
-                invokePrivateMethod(controller, "deleteFromLeft");
+
+                setPrivateField(controller, "examNameColumn", new TableColumn<>());
+                setPrivateField(controller, "courseIdColumn", new TableColumn<>());
+                setPrivateField(controller, "examTimeColumn", new TableColumn<>());
+                setPrivateField(controller, "publishColumn", new TableColumn<>());
+                setPrivateField(controller, "questionColumn", new TableColumn<>());
+                setPrivateField(controller, "typeColumn", new TableColumn<>());
+                setPrivateField(controller, "scoreColumn_left", new TableColumn<>());
+                setPrivateField(controller, "scoreColumn_right", new TableColumn<>());
+                setPrivateField(controller, "questionTextColumn", new TableColumn<>());
+                setPrivateField(controller, "questionTypeColumn", new TableColumn<>());
+                controller.initialize();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -329,6 +342,28 @@ class ExamManagementSystemControllerTest {
                 throw new RuntimeException(e);
             }
         }).run();
+    }
+    @Test
+    void testAddQuestionToExam() throws Exception {
+        // Arrange
+        try {
+            Examination exam = new Examination("COMP3111", 60.0f, "Test Exam", true);
+            examinationService.addExamination(exam);
+
+            Question question = new Question("What is the capital of France?", new String[]{"A", "B", "C", "D"}, "A", "Single", 5.0f);
+            examinationService.addQuestionToExamination(exam.getId(), question.getId());
+
+            // Act
+            controller.addToLeft();
+
+            // Assert
+                Mockito.verify(examinationService).addQuestionToExamination(exam.getId(), question.getId());
+//            List<Question> questionsInExam = examinationService.getQuestionsInExamination(exam.getId());
+//            Assertions.assertTrue(questionsInExam.contains(question));
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private Object getPrivateField(Object object, String fieldName) throws Exception {

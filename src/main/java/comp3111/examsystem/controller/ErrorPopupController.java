@@ -1,6 +1,7 @@
 package comp3111.examsystem.controller;
 
 import comp3111.examsystem.Main;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,10 +20,8 @@ import java.util.ResourceBundle;
 
 public class ErrorPopupController implements Initializable  {
 
-    @FXML
-    private static Labeled errorLabel=new Label();
 
-    private static Stage errorWindow;
+    static Stage errorWindow;
 
     @FXML
     public void close(ActionEvent event) {
@@ -54,21 +53,27 @@ public class ErrorPopupController implements Initializable  {
         }
     }
     public static void Error_Popup(String text) {
-        try {
-            if(errorWindow==null)
-            {
-                errorWindow = new Stage();
-            }
 
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ErrorUI.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
+
+        Platform.runLater(() -> {
+            try {
+                // 创建 Stage 和加载 FXML 的代码
+                if(errorWindow==null)
+                {
+                    errorWindow = new Stage();
+                }
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ErrorUI.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
 //            errorLabel.setText(text);
-            errorWindow.setTitle("Error");
-            errorWindow.setScene(scene);
-            errorWindow.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                errorWindow.setTitle("Error");
+                errorWindow.setScene(scene);
+                errorWindow.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     public void close(javafx.event.ActionEvent actionEvent) {

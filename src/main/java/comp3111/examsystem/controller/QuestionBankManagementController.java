@@ -167,7 +167,8 @@ public class QuestionBankManagementController implements Initializable {
         if (question.isEmpty() || optionA.isEmpty() || optionB.isEmpty() || optionC.isEmpty() || optionD.isEmpty() || answer.isEmpty() || type == null || type.equals("Type") || score.isEmpty()) {
             // Display an error message or show a dialog to the user
             ErrorPopupController.Error_Popup();
-            return;
+            // Throw a RuntimeException with an appropriate error message
+            throw new RuntimeException("Please fill in all the required fields.");
         }
         // Create a new Question object with the entered data
         Question newQuestion = new Question(question, new String[] {optionA, optionB, optionC, optionD}, answer, type, score);
@@ -181,7 +182,7 @@ public class QuestionBankManagementController implements Initializable {
     }
 
     @FXML
-    public void handleUpdateButton() {
+    void handleUpdateButton() {
         // Add logic to handle updating an existing question
         // Retrieve the currently selected question from the TableView
         Question selectedQuestion = questionTableView.getSelectionModel().getSelectedItem();
@@ -201,7 +202,7 @@ public class QuestionBankManagementController implements Initializable {
             if (updatedQuestion.isEmpty() || updatedOptionA.isEmpty() || updatedOptionB.isEmpty() || updatedOptionC.isEmpty() || updatedOptionD.isEmpty() || updatedAnswer.isEmpty() || updatedType == null || updatedType.equals("Type") || updatedScore.isEmpty()) {
                 // Display an error message or show a dialog to the user
                 ErrorPopupController.Error_Popup();
-                return;
+                throw new RuntimeException("Please fill in all the required fields.");
             }
 
 
@@ -222,11 +223,15 @@ public class QuestionBankManagementController implements Initializable {
             return;
 
         }
-        ErrorPopupController.Error_Popup();
+        else {
+            // Throw a RuntimeException if no question is selected
+            ErrorPopupController.Error_Popup();
+            throw new RuntimeException("No question selected for update.");
+        }
     }
 
     @FXML
-    public void handleDeleteButton() {
+    void handleDeleteButton() {
         // Add logic to handle deleting a question
         // Retrieve the currently selected question from the TableView
         Question selectedQuestion = questionTableView.getSelectionModel().getSelectedItem();
@@ -238,11 +243,15 @@ public class QuestionBankManagementController implements Initializable {
             // Refresh the TableView to display the updated list of questions
             questionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
         }
+        else {
+            // Throw a RuntimeException if no question is selected
+            throw new RuntimeException("No question selected for deletion.");
+        }
 
     }
 
     @FXML
-    public void handleRefreshButton() {
+    private void handleRefreshButton() {
         // Reset the filter values to their default state
         questionFilter.clear();
         typeTextField.getSelectionModel().select(0);
@@ -264,12 +273,23 @@ public class QuestionBankManagementController implements Initializable {
     }
 
     @FXML
-    public void handleFilterButton() {
+    private void handleFilterButton() {
         // Add logic to handle filtering the question table
         String selectedQuestion = questionFilter.getText();
         String selectedType =  typeFilterTextField.getValue();
         String selectedScore = scoreFilterTextField.getText();
+        // Validate the filter inputs
+        if (selectedQuestion == null || selectedQuestion.isEmpty()) {
+            throw new RuntimeException("Question filter cannot be empty.");
+        }
 
+        if (selectedType == null || selectedType.equals("Type")) {
+            throw new RuntimeException("Type filter cannot be empty.");
+        }
+
+        if (selectedScore == null || selectedScore.isEmpty()) {
+            throw new RuntimeException("Score filter cannot be empty.");
+        }
         // Filter the questionList based on the selected values
         List<Question> filteredQuestions = questionService.getAllQuestions().stream()
                 .filter(q -> {
@@ -285,7 +305,7 @@ public class QuestionBankManagementController implements Initializable {
     }
 
     @FXML
-    public void handleResetButton() {
+    private void handleResetButton() {
 
         // Reset the filter values to their default state
         questionFilter.clear();

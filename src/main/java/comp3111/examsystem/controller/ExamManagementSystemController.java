@@ -21,47 +21,47 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ExamManagementSystemController {
-    @FXML private TextField examNameTextField;
-    @FXML private ComboBox<String> filterCourseID;
-    @FXML private ComboBox<String> filterPublish;
-    @FXML private TextField questionTextField;
-    @FXML private ComboBox<String> questionTypeComboBox;
-    @FXML private TextField scoreTextField;
-    @FXML
-    private TextField examNameField;
-    @FXML
-    private TextField examTimeField;
-    @FXML
-    private  ComboBox<String> courseComboBox;
-    @FXML
-    private  ComboBox<String> publishComboBox;
-    @FXML
-    private TableView<Examination> ExamTableView;
-    @FXML
-    private TableView<Question> LeftQuestionTableView;
-    @FXML
-    private TableView<Question> All_QuestionTableView;
-    @FXML
-    private TableColumn<Examination, String> examNameColumn;
-    @FXML
-    private TableColumn<Examination, String> courseIdColumn;
-    @FXML
-    private TableColumn<Examination, Float> examTimeColumn;
-    @FXML
-    private TableColumn<Examination, String> publishColumn;
+        @FXML private TextField examNameTextField;
+        @FXML private ComboBox<String> filterCourseID;
+        @FXML private ComboBox<String> filterPublish;
+        @FXML private TextField questionTextField;
+        @FXML private ComboBox<String> questionTypeComboBox;
+        @FXML private TextField scoreTextField;
+        @FXML
+        private TextField examNameField;
+        @FXML
+        private TextField examTimeField;
+        @FXML
+        private  ComboBox<String> courseComboBox;
+        @FXML
+        private  ComboBox<String> publishComboBox;
+        @FXML
+        private TableView<Examination> ExamTableView;
+        @FXML
+        private TableView<Question> LeftQuestionTableView;
+        @FXML
+        private TableView<Question> All_QuestionTableView;
+        @FXML
+        private TableColumn<Examination, String> examNameColumn;
+        @FXML
+        private TableColumn<Examination, String> courseIdColumn;
+        @FXML
+        private TableColumn<Examination, Float> examTimeColumn;
+        @FXML
+        private TableColumn<Examination, String> publishColumn;
 
-    @FXML
-    private TableColumn<Question, String> questionColumn;
-    @FXML
-    private TableColumn<Question, String> typeColumn;
-    @FXML
-    private TableColumn<Question, Float> scoreColumn_left;
-    @FXML
-    private TableColumn<Question, Float> scoreColumn_right;
-    @FXML
-    private TableColumn<Question, String> questionTextColumn;
-    @FXML
-    private TableColumn<Question, String> questionTypeColumn;
+        @FXML
+        private TableColumn<Question, String> questionColumn;
+        @FXML
+        private TableColumn<Question, String> typeColumn;
+        @FXML
+        private TableColumn<Question, Float> scoreColumn_left;
+        @FXML
+        private TableColumn<Question, Float> scoreColumn_right;
+        @FXML
+        private TableColumn<Question, String> questionTextColumn;
+        @FXML
+        private TableColumn<Question, String> questionTypeColumn;
 
     private static int init_flag=0;
 
@@ -72,7 +72,7 @@ public class ExamManagementSystemController {
     private final QuestionService questionService = new QuestionServiceImpl();
 
     @FXML
-    private void initialize() {
+    void initialize() {
         init_All();
         // Ensure the list is not null
         ObservableList<Examination> examinations = FXCollections.observableArrayList(examinationService.getAllExaminations());
@@ -246,7 +246,7 @@ public class ExamManagementSystemController {
     }
 
     @FXML
-    private void addToLeft() {
+    void addToLeft() {
         // Add a new question to the TableView
         Question selectedQuestion =All_QuestionTableView.getSelectionModel().getSelectedItem();
         Examination selectedExam =ExamTableView.getSelectionModel().getSelectedItem();
