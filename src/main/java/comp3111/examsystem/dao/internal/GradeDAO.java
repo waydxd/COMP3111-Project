@@ -88,6 +88,9 @@ public class GradeDAO {
      * @param grade grade to be updated
      */
     public void updateGrade(Grade grade) {
+        if(getGrade(grade.getId()) == null) {
+            throw new IllegalArgumentException("Grade not found with ID: " + grade.getId());
+        }
         create.update(GRADES)
                 .set(GRADES.STUDENT_NAME, grade.getStudentName())
                 .set(GRADES.COURSE_NAME, grade.getCourseName())
@@ -104,6 +107,9 @@ public class GradeDAO {
      * @param id the ID of the grade to be deleted
      */
     public void deleteGrade(int id) {
+        if(getGrade(id) == null) {
+            throw new IllegalArgumentException("Grade not found with ID: " + id);
+        }
         create.deleteFrom(GRADES)
                 .where(GRADES.ID.eq(id))
                 .execute();

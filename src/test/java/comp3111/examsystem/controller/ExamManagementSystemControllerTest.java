@@ -350,7 +350,7 @@ class ExamManagementSystemControllerTest {
             Examination exam = new Examination("COMP3111", 60.0f, "Test Exam", true);
             examinationService.addExamination(exam);
 
-            Question question = new Question("What is the capital of France?", new String[]{"A", "B", "C", "D"}, "A", "Single", 5.0f);
+            Question question = new Question("What is the capital of France?", new String[]{"A", "B", "C", "D"}, "A", "Single", "5.0");
             examinationService.addQuestionToExamination(exam.getId(), question.getId());
 
             // Act

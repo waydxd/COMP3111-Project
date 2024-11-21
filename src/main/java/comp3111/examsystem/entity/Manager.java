@@ -16,6 +16,10 @@ public class Manager extends Member {
         private List<Student> student_accounts;
         private List<Manager> manager_accounts;
         public void addAccount(Member account) {
+            if(account==null)
+            {
+                throw new NullPointerException("Account cannot be null");
+            }
             all_accounts.add(account);
             // 判断账户类型,并分别添加到相应的列表中
             if (account instanceof Teacher) {

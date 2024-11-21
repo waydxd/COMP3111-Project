@@ -39,24 +39,7 @@ class TeacherServiceTest {
         verify(teacherDAO).addTeacher(teacher);
 
         // Test with null teacher
-//        assertThrows(NullPointerException.class, () -> teacherService.addTeacher(null));
-    }
-
-    @Test
-    void getTeacher() {
-        Teacher mockTeacher = new Teacher("user1", "password1", "John Doe", "Male", "35", "Math", "Professor");
-        when(teacherDAO.getTeacher(1)).thenReturn(mockTeacher);
-
-        Teacher result = teacherService.getTeacher(1);
-
-        verify(teacherDAO).getTeacher(1);
-        assertNotNull(result);
-        assertEquals(mockTeacher.getUsername(), result.getUsername());
-        assertEquals(mockTeacher.getName(), result.getName());
-
-        // Test with non-existent teacher
-        when(teacherDAO.getTeacher(2)).thenReturn(null);
-        assertNull(teacherService.getTeacher(2));
+        assertThrows(NullPointerException.class, () -> teacherService.addTeacher(null));
     }
 
     @Test
@@ -73,30 +56,6 @@ class TeacherServiceTest {
         when(teacherDAO.getAllTeachers()).thenReturn(Arrays.asList());
         result = teacherService.getAllTeachers();
         assertTrue(result.isEmpty());
-    }
-
-    @Test
-    void updateTeacher() {
-        Teacher teacher = new Teacher("user1", "password1", "John Doe", "Male", "35", "Math", "Professor");
-        teacher.setId(1);
-
-        teacherService.updateTeacher(1, teacher);
-
-        verify(teacherDAO).updateMember(teacher);
-
-        // Test with null teacher
-        assertThrows(NullPointerException.class, () -> teacherService.updateTeacher(1, null));
-    }
-
-    @Test
-    void deleteTeacher() {
-        teacherService.deleteTeacher(1);
-
-        verify(teacherDAO).deleteMember(1);
-
-        // Test with non-existent teacher
-        doThrow(new IllegalArgumentException("Teacher not found")).when(teacherDAO).deleteMember(2);
-        assertThrows(IllegalArgumentException.class, () -> teacherService.deleteTeacher(2));
     }
 
     @Test
@@ -119,6 +78,11 @@ class TeacherServiceTest {
         assertEquals(1, result.size());
         assertEquals("user2", result.get(0).getUsername());
 
+        // Test with non-empty username
+        result = teacherService.filterTeachers("user1", "john", "cs");
+        assertEquals(1, result.size());
+        assertEquals("user1", result.get(0).getUsername());
+
         // Test with empty name
         result = teacherService.filterTeachers("user2", "", "cs");
         assertEquals(1, result.size());
@@ -137,7 +101,160 @@ class TeacherServiceTest {
         result = teacherService.filterTeachers("nonexistent", "nonexistent", "nonexistent");
         assertTrue(result.isEmpty());
 
-        verify(teacherDAO, times(6)).getAllTeachers();
+        // Test with null username
+        assertThrows(NullPointerException.class, () -> teacherService.filterTeachers(null, "grimes", "cs"));
+
+        // Test with null name
+        assertThrows(NullPointerException.class, () -> teacherService.filterTeachers("user2", null, "cs"));
+
+        // Test with null department
+        assertThrows(NullPointerException.class, () -> teacherService.filterTeachers("user2", "grimes", null));
+
+        verify(teacherDAO, times(7)).getAllTeachers();
+    }
+//
+//    @Test
+//    void getTeacher() {
+//        Teacher mockTeacher = new Teacher("user1", "password1", "John Doe", "Male", "35", "Math", "Professor");
+//        when(teacherDAO.getTeacher(1)).thenReturn(mockTeacher);
+//
+//        // Test with valid ID
+//        Teacher result = teacherService.getTeacher(1);
+//        verify(teacherDAO).getTeacher(1);
+//        assertNotNull(result);
+//        assertEquals(mockTeacher.getUsername(), result.getUsername());
+//        assertEquals(mockTeacher.getName(), result.getName());
+//
+//        // Test with non-existent teacher
+//        when(teacherDAO.getTeacher(2)).thenReturn(null);
+//        assertNull(teacherService.getTeacher(2));
+//
+//        // Test with invalid ID
+//        assertThrows(IllegalArgumentException.class, () -> teacherService.getTeacher(-1));
+//
+//        // Test with zero ID
+//        assertThrows(IllegalArgumentException.class, () -> teacherService.getTeacher(0));
+//    }
+
+//    @Test
+//    void updateTeacher() {
+//        Teacher teacher = new Teacher("user1", "password1", "John Doe", "Male", "35", "Math", "Professor");
+//        teacher.setId(1);
+//
+//        // Test with valid ID and teacher
+//        teacherService.updateTeacher(1, teacher);
+//        verify(teacherDAO).updateMember(teacher);
+//
+//        // Test with null teacher
+//        assertThrows(NullPointerException.class, () -> teacherService.updateTeacher(1, null));
+//
+//        // Test with invalid ID
+//        assertThrows(IllegalArgumentException.class, () -> teacherService.updateTeacher(-1, teacher));
+//
+//        // Test with zero ID
+//        assertThrows(IllegalArgumentException.class, () -> teacherService.updateTeacher(0, teacher));
+//    }
+
+//    @Test
+//    void deleteTeacher() {
+//        // Test with valid ID
+//        teacherService.deleteTeacher(1);
+//        verify(teacherDAO).deleteMember(1);
+//
+//        // Test with non-existent teacher
+//        doThrow(new IllegalArgumentException("Teacher not found")).when(teacherDAO).deleteMember(2);
+//        assertThrows(IllegalArgumentException.class, () -> teacherService.deleteTeacher(2));
+//
+//        // Test with invalid ID
+//        assertThrows(IllegalArgumentException.class, () -> teacherService.deleteTeacher(-1));
+//
+//        // Test with zero ID
+//        assertThrows(IllegalArgumentException.class, () -> teacherService.deleteTeacher(0));
+//    }
+
+    @Test
+    public void testGetTeacher_ValidId_ReturnsTeacher() {
+        // Arrange
+        int id = 1;
+        Teacher expectedTeacher = new Teacher();
+        expectedTeacher.setId(id);
+        when(teacherDAO.getTeacher(id)).thenReturn(expectedTeacher);
+
+        // Act
+        Teacher result = teacherService.getTeacher(id);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(id, result.getId());
+        verify(teacherDAO).getTeacher(id);
+    }
+
+    @Test
+    public void testGetTeacher_InvalidId_ThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> teacherService.getTeacher(0));
+    }
+
+    @Test
+    public void testGetTeacher_NonexistentId_ThrowsException() {
+        when(teacherDAO.getTeacher(anyInt())).thenReturn(null);
+        assertThrows(IllegalStateException.class, () -> teacherService.getTeacher(1));
+    }
+
+    // Tests for updateTeacher
+    @Test
+    public void testUpdateTeacher_ValidTeacher_UpdatesSuccessfully() {
+        // Arrange
+        int id = 1;
+        Teacher teacher = new Teacher();
+        when(teacherDAO.getTeacher(id)).thenReturn(teacher);
+
+        // Act
+        teacherService.updateTeacher(id, teacher);
+
+        // Assert
+        verify(teacherDAO).updateMember(teacher);
+        assertEquals(id, teacher.getId());
+    }
+
+    @Test
+    public void testUpdateTeacher_InvalidId_ThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> teacherService.updateTeacher(0, new Teacher()));
+    }
+
+    @Test
+    public void testUpdateTeacher_NullTeacher_ThrowsException() {
+        assertThrows(NullPointerException.class, () -> teacherService.updateTeacher(1, null));
+    }
+
+    @Test
+    public void testUpdateTeacher_NonexistentTeacher_ThrowsException() {
+        when(teacherDAO.getTeacher(anyInt())).thenReturn(null);
+        assertThrows(IllegalStateException.class, () -> teacherService.updateTeacher(1, new Teacher()));
+    }
+
+    // Tests for deleteTeacher
+    @Test
+    public void testDeleteTeacher_ValidId_DeletesSuccessfully() {
+        // Arrange
+        int id = 1;
+        when(teacherDAO.getTeacher(id)).thenReturn(new Teacher());
+
+        // Act
+        teacherService.deleteTeacher(id);
+
+        // Assert
+        verify(teacherDAO).deleteMember(id);
+    }
+
+    @Test
+    public void testDeleteTeacher_InvalidId_ThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> teacherService.deleteTeacher(0));
+    }
+
+    @Test
+    public void testDeleteTeacher_NonexistentTeacher_ThrowsException() {
+        when(teacherDAO.getTeacher(anyInt())).thenReturn(null);
+        assertThrows(IllegalStateException.class, () -> teacherService.deleteTeacher(1));
     }
     @Test
     void testAccountExist() {

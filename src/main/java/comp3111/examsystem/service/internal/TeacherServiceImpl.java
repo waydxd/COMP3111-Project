@@ -29,6 +29,9 @@ public class TeacherServiceImpl implements TeacherService  {
      */
     @Override
     public void addTeacher(Teacher teacher) {
+        if(teacher == null) {
+            throw new NullPointerException("Teacher cannot be null");
+        }
         teacherDAO.addTeacher(teacher);
     }
 
@@ -38,7 +41,14 @@ public class TeacherServiceImpl implements TeacherService  {
      */
     @Override
     public Teacher getTeacher(int id) {
-        return teacherDAO.getTeacher(id);
+        if(id <= 0) {
+            throw new IllegalArgumentException("Invalid ID: ID must be positive");
+        }
+        Teacher teacher = teacherDAO.getTeacher(id);
+        if(teacher == null) {
+            throw new IllegalStateException("Teacher not found with ID: " + id);
+        }
+        return teacher;
     }
 
     /**
@@ -55,6 +65,15 @@ public class TeacherServiceImpl implements TeacherService  {
      */
     @Override
     public void updateTeacher(int id, Teacher teacher) {
+        if(id <= 0) {
+            throw new IllegalArgumentException("Invalid ID: ID must be positive");
+        }
+        if(teacher == null) {
+            throw new NullPointerException("Teacher cannot be null");
+        }
+        if(teacherDAO.getTeacher(id) == null) {
+            throw new IllegalStateException("Teacher not found with ID: " + id);
+        }
         teacher.setId(id);
         teacherDAO.updateMember(teacher);
     }
@@ -64,6 +83,12 @@ public class TeacherServiceImpl implements TeacherService  {
      */
     @Override
     public void deleteTeacher(int id) {
+        if(id <= 0) {
+            throw new IllegalArgumentException("Invalid ID: ID must be positive");
+        }
+        if(teacherDAO.getTeacher(id) == null) {
+            throw new IllegalStateException("Teacher not found with ID: " + id);
+        }
         teacherDAO.deleteMember(id);
     }
 
@@ -78,6 +103,9 @@ public class TeacherServiceImpl implements TeacherService  {
      */
     @Override
     public List<Teacher> filterTeachers(String username, String name, String department) {
+        if(username == null || name == null || department == null) {
+            throw new NullPointerException("Filter criteria cannot be null");
+        }
         return teacherDAO.getAllTeachers().stream()
                 .filter(teacher -> username.isEmpty() || teacher.getUsername().toLowerCase().contains(username))
                 .filter(teacher -> name.isEmpty() || teacher.getName().toLowerCase().contains(name))

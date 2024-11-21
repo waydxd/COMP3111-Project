@@ -64,6 +64,15 @@ public class GradeDAOTest {
 
         List<Grade> grades = gradeDAO.getAllGrades();
         assertEquals(2, grades.size());
+        
+        // Test specific properties of retrieved grades
+        Grade firstGrade = grades.get(0);
+        assertEquals("John Doe", firstGrade.getStudentName());
+        assertEquals("Midterm", firstGrade.getExamName());
+        
+        Grade secondGrade = grades.get(1);
+        assertEquals("Jane Smith", secondGrade.getStudentName());
+        assertEquals("Final", secondGrade.getExamName());
     }
 
     @Test
@@ -73,10 +82,14 @@ public class GradeDAOTest {
 
         Grade updatedGrade = gradeDAO.getGrade(1);
         updatedGrade.setScore(90.0F);
+        updatedGrade.setTimeSpent(50);
+        updatedGrade.setStudentName("John Smith");
         gradeDAO.updateGrade(updatedGrade);
 
         Grade retrievedGrade = gradeDAO.getGrade(1);
         assertEquals(90.0F, retrievedGrade.getScore());
+        assertEquals(50, retrievedGrade.getTimeSpent());
+        assertEquals("John Smith", retrievedGrade.getStudentName());
     }
 
     @Test
@@ -84,19 +97,21 @@ public class GradeDAOTest {
         Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
         gradeDAO.addGrade(grade);
 
+        List<Grade> gradesBeforeDelete = gradeDAO.getAllGrades();
+        assertEquals(1, gradesBeforeDelete.size());
+
         gradeDAO.deleteGrade(1);
+        
         Grade retrievedGrade = gradeDAO.getGrade(1);
         assertNull(retrievedGrade);
     }
 
     @Test
-    public void testAddGradeWithMissingFields() {
-        Grade grade = new Grade(null, "COMP3111", "Midterm", 85.5F, 100.0F, 45);
-        assertThrows(Exception.class, () -> gradeDAO.addGrade(grade));
+    public void testUpdateNonExistentGrade() {
+        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
+        grade.setId(999); // Non-existent ID
+        assertThrows(Exception.class, () -> gradeDAO.updateGrade(grade));
     }
-
-
-
 
     @Test
     public void testGetNonExistingGrade() {

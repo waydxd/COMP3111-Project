@@ -69,4 +69,37 @@ class ManagerTest {
         Assertions.assertTrue(accountManager.account_exist("manager1"));
         Assertions.assertFalse(accountManager.account_exist("non_existing_user"));
     }
+
+    @Test
+    void testGetNonExistingManagerByUsername() {
+        // Act
+        Manager retrievedManager = accountManager.getManagerbyUserName("non_existing_user");
+
+        // Assert
+        Assertions.assertNull(retrievedManager);
+    }
+
+    @Test
+    void testGetNonExistingTeacherByUsername() {
+        // Act
+        Teacher retrievedTeacher = accountManager.getTeacherbyUserName("non_existing_user");
+
+        // Assert
+        Assertions.assertNull(retrievedTeacher);
+    }
+
+    @Test
+    void testGetNonExistingStudentByUsername() {
+        // Act
+        Student retrievedStudent = accountManager.getStudentbyUserName("non_existing_user");
+
+        // Assert
+        Assertions.assertNull(retrievedStudent);
+    }
+
+    @Test
+    void testAddNullAccount() {
+        // Act and Assert
+        Assertions.assertThrows(NullPointerException.class, () -> accountManager.addAccount(null));
+    }
 }
