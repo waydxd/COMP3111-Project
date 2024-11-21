@@ -222,6 +222,41 @@ class TeacherRegisterControllerTest {
             }
         }).run();
     }
+    @Test
+    void testRegisterWithExistingUsername() throws Exception {
+        new FXBlock(() -> {
+            try {
+                TextField usernameTxt = (TextField) getPrivateField(controller, "usernameTxt");
+                PasswordField passwordTxt = (PasswordField) getPrivateField(controller, "passwordTxt");
+                TextField nameTxt = (TextField) getPrivateField(controller, "nameTxt");
+                ChoiceBox<String> Gender = (ChoiceBox<String>) getPrivateField(controller, "Gender");
+                TextField ageTxt = (TextField) getPrivateField(controller, "ageTxt");
+                ChoiceBox<String> Position = (ChoiceBox<String>) getPrivateField(controller, "Position");
+                TextField departmentTxt = (TextField) getPrivateField(controller, "departmentTxt");
+                PasswordField passwordConfirmTxt = (PasswordField) getPrivateField(controller, "passwordConfirmTxt");
+
+                usernameTxt.setText("existinguser");
+                passwordTxt.setText("testpassword");
+                nameTxt.setText("Test User");
+                Gender.setValue("Male");
+                ageTxt.setText("30");
+                Position.setValue("Professor");
+                departmentTxt.setText("Computer Science");
+                passwordConfirmTxt.setText("testpassword");
+
+                when(teacherService.account_exist(Mockito.anyString())).thenReturn(true);
+
+                // Act
+                controller.register(new ActionEvent());
+
+                // Assert
+                Mockito.verify(teacherService, Mockito.never()).addTeacher(Mockito.any(Teacher.class));
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).run();
+    }
 
     private Object getPrivateField(Object object, String fieldName) throws Exception {
         Field field = object.getClass().getDeclaredField(fieldName);

@@ -84,4 +84,25 @@ public class TeacherServiceImpl implements TeacherService  {
                 .filter(teacher -> department.isEmpty() || teacher.getDepartment().toLowerCase().contains(department))
                 .collect(Collectors.toList());
     }
+
+    public boolean account_exist(String user)
+    {
+        for(Teacher member: getAllTeachers())
+        {
+            if(member.getUsername().equals(user))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public Teacher getTeacherbyUserName(String username) {
+        for (Teacher teacher :  getAllTeachers()) {
+            if (teacher.getUsername().equals(username)) {
+                return teacher;
+            }
+        }
+        return null; // 如果未找到匹配的教师,返回 null
+    }
+
 }

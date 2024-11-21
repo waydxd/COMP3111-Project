@@ -11,4 +11,7 @@ public interface TeacherService {
     void updateTeacher(int id, Teacher teacher);
     void deleteTeacher(int id);
     List<Teacher> filterTeachers(String username, String name, String department);
+    public boolean account_exist(String user);
+    public Teacher getTeacherbyUserName(String username);
+
 }
