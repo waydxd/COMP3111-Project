@@ -114,4 +114,15 @@ public class GradeDAO {
                 .where(GRADES.ID.eq(id))
                 .execute();
     }
+
+    /**
+     * Retrieves all grades from the database for a given user.
+     * @param username the username of the user
+     * @return the list of all grades for the user
+     */
+    public List<Grade> getGradesForUser(String username) {
+        return create.selectFrom(GRADES)
+                .where(GRADES.STUDENT_NAME.eq(username))
+                .fetchInto(Grade.class);
+    }
 }

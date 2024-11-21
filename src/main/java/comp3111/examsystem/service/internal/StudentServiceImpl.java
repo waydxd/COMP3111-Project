@@ -92,16 +92,16 @@ public class StudentServiceImpl implements StudentService {
     /**
      * @param username username
      * @param password password
-     * @return true if login is successful, false otherwise
+     * @return studentID if login is successful, -1 otherwise
      */
     @Override
-    public boolean login(String username, String password) {
+    public int login(String username, String password) {
         for (Member member : studentDAO.getAllMembers()) {
             if (member.getUsername().equals(username) && member.getPassword().equals(password)) {
-                return true;
+                return member.getId();
             }
         }
-        return false;
+        return -1;
     }
 
 }

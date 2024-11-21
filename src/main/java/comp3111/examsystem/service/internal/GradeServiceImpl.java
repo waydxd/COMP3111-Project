@@ -59,5 +59,14 @@ public class GradeServiceImpl implements GradeService {
     public void deleteGrade(int id) {
         gradeDAO.deleteGrade(id);
     }
+
+    /**
+     * @param username username of the user
+     * @return List of grades with the given username
+     */
+    @Override
+    public List<Grade> getGradesForUser(String username) {
+        return gradeDAO.getGradesForUser(username);
+    }
 }
 

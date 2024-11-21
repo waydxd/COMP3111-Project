@@ -10,4 +10,5 @@ public interface GradeService {
     List<Grade> getAllGrades();
     void updateGrade(Grade grade);
     void deleteGrade(int id);
+    List<Grade> getGradesForUser(String username);
 }

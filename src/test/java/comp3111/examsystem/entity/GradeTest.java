@@ -16,7 +16,7 @@ class GradeTest {
         float timeSpent = 60.0f;
 
         // Act
-        Grade grade = new Grade(studentName, courseName, examName, score, fullScore, timeSpent);
+        Grade grade = new Grade(studentName, courseName, examName, score, fullScore, timeSpent,"1");
 
         // Assert
         Assertions.assertEquals(studentName, grade.getStudentName());

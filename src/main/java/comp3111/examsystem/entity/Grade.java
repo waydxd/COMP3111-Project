@@ -2,6 +2,7 @@ package comp3111.examsystem.entity;
 
 public class Grade extends Entity {
     private String studentName;
+    private String userName;
     private String courseName;
     private String examName;
     private float score;
@@ -19,6 +20,7 @@ public class Grade extends Entity {
         this.score = 0.0F;
         this.fullScore = 100.0F;
         this.timeSpent = 0;
+        this.userName = "Default User";
     }
 
     /**
@@ -30,13 +32,14 @@ public class Grade extends Entity {
      * @param fullScore full score
      * @param timeSpent time spent
      */
-    public Grade(String studentName, String courseName, String examName, float score, float fullScore, float timeSpent) {
+    public Grade(String studentName, String courseName, String examName, float score, float fullScore, float timeSpent, String userName) {
         this.studentName = studentName;
         this.courseName = courseName;
         this.examName = examName;
         this.score = score;
         this.fullScore = fullScore;
         this.timeSpent = timeSpent;
+        this.userName = userName;
     }
 
     /**
@@ -121,6 +124,20 @@ public class Grade extends Entity {
      */
     public void setTimeSpent(float timeSpent) {
         this.timeSpent = timeSpent;
+    }
+
+    /**
+     * @return user name
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * @param userName user name
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
 }

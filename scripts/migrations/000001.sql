@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS grades (
                                       exam_name TEXT NOT NULL,
                                       score REAL NOT NULL,
                                       full_score REAL NOT NULL,
-                                      time_spent REAL NOT NULL
+                                      time_spent REAL NOT NULL,
+                                      username TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS managers (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

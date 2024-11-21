@@ -42,7 +42,7 @@ public class GradeDAOTest {
 
     @Test
     public void testAddGrade() {
-        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
+        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45,"1");
         gradeDAO.addGrade(grade);
 
         Grade retrievedGrade = gradeDAO.getGrade(1);
@@ -57,8 +57,8 @@ public class GradeDAOTest {
 
     @Test
     public void testGetAllGrades() {
-        Grade grade1 = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
-        Grade grade2 = new Grade("Jane Smith", "COMP3111", "Final", 92.0F, 100.0F, 120);
+        Grade grade1 = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45,"1");
+        Grade grade2 = new Grade("Jane Smith", "COMP3111", "Final", 92.0F, 100.0F, 120,"1");
         gradeDAO.addGrade(grade1);
         gradeDAO.addGrade(grade2);
 
@@ -77,7 +77,7 @@ public class GradeDAOTest {
 
     @Test
     public void testUpdateGrade() {
-        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
+        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45,"1");
         gradeDAO.addGrade(grade);
 
         Grade updatedGrade = gradeDAO.getGrade(1);
@@ -94,7 +94,7 @@ public class GradeDAOTest {
 
     @Test
     public void testDeleteGrade() {
-        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
+        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45,"1");
         gradeDAO.addGrade(grade);
 
         List<Grade> gradesBeforeDelete = gradeDAO.getAllGrades();
@@ -108,7 +108,7 @@ public class GradeDAOTest {
 
     @Test
     public void testUpdateNonExistentGrade() {
-        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45);
+        Grade grade = new Grade("John Doe", "COMP3111", "Midterm", 85.5F, 100.0F, 45,"1");
         grade.setId(999); // Non-existent ID
         assertThrows(Exception.class, () -> gradeDAO.updateGrade(grade));
     }

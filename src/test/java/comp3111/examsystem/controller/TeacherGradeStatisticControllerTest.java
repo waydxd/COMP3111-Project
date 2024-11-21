@@ -81,9 +81,9 @@ public class TeacherGradeStatisticControllerTest {
     @Test
     void calculateCourseAverages_WithValidGrades_ShouldReturnCorrectAverages() {
         List<Grade> grades = Arrays.asList(
-                new Grade("Student1", "Math", "Exam1", 90.0F, 100.0F, 60),
-                new Grade("Student2", "Math", "Exam2", 80.0F, 100.0F, 70),
-                new Grade("Student3", "Physics", "Exam1", 85.0F, 100.0F, 60)
+                new Grade("Student1", "Math", "Exam1", 90.0F, 100.0F, 60, "1"),
+                new Grade("Student2", "Math", "Exam2", 80.0F, 100.0F, 70,"2"),
+                new Grade("Student3", "Physics", "Exam1", 85.0F, 100.0F, 60,"3")
         );
 
         Map<String, Double> averages = controller.calculateCourseAverages(grades);
@@ -104,7 +104,7 @@ public class TeacherGradeStatisticControllerTest {
     @Test
     void calculateCourseAverages_WithSingleGrade_ShouldReturnSingleAverage() {
         List<Grade> grades = Collections.singletonList(
-                new Grade("Student1", "Math", "Exam1", 90.0F, 100.0F, 60)
+                new Grade("Student1", "Math", "Exam1", 90.0F, 100.0F, 60,"1")
         );
 
         Map<String, Double> averages = controller.calculateCourseAverages(grades);
@@ -115,9 +115,9 @@ public class TeacherGradeStatisticControllerTest {
     @Test
     void calculateCourseAverages_WithMultipleGradesSameCourse_ShouldReturnCorrectAverage() {
         List<Grade> grades = Arrays.asList(
-                new Grade("Student1", "Math", "Exam1", 70.0F, 100.0F, 60),
-                new Grade("Student2", "Math", "Exam2", 80.0F, 100.0F, 70),
-                new Grade("Student3", "Math", "Exam3", 90.0F, 100.0F, 60)
+                new Grade("Student1", "Math", "Exam1", 70.0F, 100.0F, 60,"1"),
+                new Grade("Student2", "Math", "Exam2", 80.0F, 100.0F, 70,"2"),
+                new Grade("Student3", "Math", "Exam3", 90.0F, 100.0F, 60,"3")
         );
 
         Map<String, Double> averages = controller.calculateCourseAverages(grades);
@@ -181,9 +181,9 @@ public class TeacherGradeStatisticControllerTest {
 
         new FXBlock(() -> {
             // Setup test data
-            Grade grade1 = new Grade("Student1", "Math", "Midterm", 90.0F, 100.0F, 60);
-            Grade grade2 = new Grade("Student2", "Physics", "Final", 85.0F, 100.0F, 60);
-            Grade grade3 = new Grade("Student3", "Math", "Final", 75.0F, 100.0F, 60);
+            Grade grade1 = new Grade("Student1", "Math", "Midterm", 90.0F, 100.0F, 60,"1");
+            Grade grade2 = new Grade("Student2", "Physics", "Final", 85.0F, 100.0F, 60,"2");
+            Grade grade3 = new Grade("Student3", "Math", "Final", 75.0F, 100.0F, 60,"3");
             controller.gradeList.addAll(grade1, grade2, grade3);
 
             // Test course filter
