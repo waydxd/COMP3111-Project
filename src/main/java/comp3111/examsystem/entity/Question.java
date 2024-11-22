@@ -101,7 +101,7 @@
             this.type = type;
         }
 
-        public double getScore() {
+        public float getScore() {
             return score;
         }
 

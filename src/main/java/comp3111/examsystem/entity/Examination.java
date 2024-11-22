@@ -10,12 +10,7 @@ public class Examination extends Entity{
     private String courseID;
     private float examTime;
     private String examName;
-
-    /**
-     * List of questions in the examination
-     */
-//    private static List<Examination> exam_list;
-    private List<Question> quiz=new ArrayList<>();
+    private List<Question> quiz = new ArrayList<>();
 
     public Examination(String courseID, float examTime, String examName, List<Question> questionsList, float time, boolean publish) {
         setCourseID(courseID);
@@ -128,4 +123,15 @@ public class Examination extends Entity{
         this.publish = publish;
     }
 
+    /**
+     * @return total score of the examination
+     */
+    public float getTotalScore() {
+        if(quiz == null) return 0;
+        float totalScore = 0;
+        for (Question q : quiz) {
+            totalScore += q.getScore();
+        }
+        return totalScore;
+    }
 }
