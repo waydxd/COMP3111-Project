@@ -24,6 +24,7 @@ public class ExaminationServiceImpl implements ExaminationService {
     public ExaminationServiceImpl(ExaminationDAO examinationDAO) {
         this.examinationDAO = examinationDAO;
     }
+
     /**
      * @param examination examination to be added
      */
@@ -35,6 +36,9 @@ public class ExaminationServiceImpl implements ExaminationService {
     /**
      * @param id id of examination
      * @return Examination with the given id
+     * <p>
+     *     The returned examination object do not contain a list of questions linked to it.
+     * </p>
      */
     @Override
     public Examination getExamination(int id) {
@@ -43,6 +47,9 @@ public class ExaminationServiceImpl implements ExaminationService {
 
     /**
      * @return List of all examinations
+     * <p>
+     * the returned examination objects do not contain any questions linked to it.
+     * <p/>
      */
     @Override
     public List<Examination> getAllExaminations() {

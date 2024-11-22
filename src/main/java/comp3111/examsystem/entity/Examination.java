@@ -10,7 +10,7 @@ public class Examination extends Entity{
     private String courseID;
     private float examTime;
     private String examName;
-    private List<Question> quiz = new ArrayList<>();
+    private List<Question> quiz;
 
     public Examination(String courseID, float examTime, String examName, List<Question> questionsList, float time, boolean publish) {
         setCourseID(courseID);
@@ -124,7 +124,19 @@ public class Examination extends Entity{
     }
 
     /**
+     * Set list of questions in the examination
+     * @param quiz list of questions
+     */
+    public void setQuiz(List<Question> quiz) {
+        this.quiz = quiz;
+    }
+
+    /**
      * @return total score of the examination
+     * <p>
+     *     This function calculates the total score of the examination by summing the scores of all questions in the examination.
+     *     You should specify the quiz array before calling this function. Otherwise, it will always return 0.
+     * <p/>
      */
     public float getTotalScore() {
         if(quiz == null) return 0;
