@@ -68,10 +68,10 @@ public class TeacherRegisterController implements Initializable {
 
 
 
-//        // Add options to the Gender ChoiceBox
-//        Gender.getItems().addAll("Male", "Female", "Other");
-//        // Add options to the Position ChoiceBox
-//        Position.getItems().addAll("Professor", "Associate Professor", "Assistant Professor", "Lecturer I", "Lecturer II", "Adjunct Professor", "Teaching Assistant", "Research Assistant", "Graduate Assistant Lecturer", "Instructional Assistant");
+        // Add options to the Gender ChoiceBox
+        Gender.getItems().addAll("Male", "Female", "Other");
+        // Add options to the Position ChoiceBox
+        Position.getItems().addAll("Professor", "Associate Professor", "Assistant Professor", "Lecturer I", "Lecturer II", "Adjunct Professor", "Teaching Assistant", "Research Assistant", "Graduate Assistant Lecturer", "Instructional Assistant");
 
 
         teacherLoginController=new TeacherLoginController();
