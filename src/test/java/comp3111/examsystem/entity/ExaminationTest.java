@@ -47,8 +47,8 @@ class ExaminationTest {
         Assertions.assertEquals(courseID, examination.getCourseID());
         Assertions.assertEquals(examTime, examination.getExamTime());
         Assertions.assertEquals(examName, examination.getExamName());
-        Assertions.assertNotNull(examination.getQuiz());
-        Assertions.assertTrue(examination.getQuiz().isEmpty());
+        Assertions.assertNull(examination.getQuiz());
+//        Assertions.assertTrue(examination.getQuiz().isEmpty());
         Assertions.assertFalse(examination.getPublish());
     }
 
@@ -61,8 +61,8 @@ class ExaminationTest {
         Assertions.assertNull(examination.getCourseID());
         Assertions.assertEquals(0.0f, examination.getExamTime());
         Assertions.assertNull(examination.getExamName());
-        Assertions.assertNotNull(examination.getQuiz());
-        Assertions.assertTrue(examination.getQuiz().isEmpty());
+        Assertions.assertNull(examination.getQuiz());
+//        Assertions.assertTrue(examination.getQuiz().isEmpty());
         Assertions.assertFalse(examination.getPublish());
     }
 

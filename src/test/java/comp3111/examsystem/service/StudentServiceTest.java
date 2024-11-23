@@ -89,19 +89,19 @@ class StudentServiceTest {
         when(studentDAO.getAllMembers()).thenReturn(mockMembers);
 
         // Test for correct credentials
-        boolean result = studentService.login("user1", "password1");
+        int result = studentService.login("user1", "password1");
         verify(studentDAO).getAllMembers();
-        assertTrue(result);
+        assertTrue(result>=0);
 
         // Test for incorrect credentials
-        boolean falseResult = studentService.login("user1", "wrongpassword");
+        int falseResult = studentService.login("user1", "wrongpassword");
         verify(studentDAO, times(2)).getAllMembers();
-        assertFalse(falseResult);
+        assertFalse(falseResult>=0);
 
         // Test for non-existing user
-        boolean nonExistingUserResult = studentService.login("nonuser", "password1");
+        int nonExistingUserResult = studentService.login("nonuser", "password1");
         verify(studentDAO, times(3)).getAllMembers();
-        assertFalse(nonExistingUserResult);
+        assertFalse(nonExistingUserResult>=0);
     }
 
     @Test
