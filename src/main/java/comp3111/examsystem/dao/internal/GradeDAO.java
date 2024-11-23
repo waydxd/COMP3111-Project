@@ -53,10 +53,27 @@ public class GradeDAO {
     /**
      * Adds a grade to the database.
      * @param grade grade to be added
+     *              <p>
+     *              This function adds a grade to the database. It first checks if the username exists in the members table.
+     *              If the username does not exist, an IllegalArgumentException is thrown. Otherwise, the grade is inserted
+     *              into the grades table.
+     *              </p>
      */
     public void addGrade(Grade grade) {
-        create.insertInto(GRADES, GRADES.STUDENT_NAME, GRADES.COURSE_NAME, GRADES.EXAM_NAME, GRADES.SCORE, GRADES.FULL_SCORE, GRADES.TIME_SPENT)
-                .values(grade.getStudentName(), grade.getCourseName(), grade.getExamName(), grade.getScore(), grade.getFullScore(), grade.getTimeSpent())
+        // Check if the username exists in the members table
+        boolean usernameExists = create.fetchExists(
+                create.selectOne()
+                        .from("members")
+                        .where("username = ?", grade.getUserName())
+        );
+
+        if (!usernameExists) {
+            throw new IllegalArgumentException("Username not found: " + grade.getUserName());
+        }
+
+        // Insert the grade if the username is valid
+        create.insertInto(GRADES, GRADES.STUDENT_NAME, GRADES.COURSE_NAME, GRADES.EXAM_NAME, GRADES.SCORE, GRADES.FULL_SCORE, GRADES.TIME_SPENT, GRADES.USERNAME)
+                .values(grade.getStudentName(), grade.getCourseName(), grade.getExamName(), grade.getScore(), grade.getFullScore(), grade.getTimeSpent(), grade.getUserName())
                 .execute();
     }
 
@@ -90,6 +107,9 @@ public class GradeDAO {
     public void updateGrade(Grade grade) {
         if(getGrade(grade.getId()) == null) {
             throw new IllegalArgumentException("Grade not found with ID: " + grade.getId());
+        }
+        if(grade.getScore()<0 || grade.getFullScore()<0 || grade.getTimeSpent()<0){
+            throw new IllegalArgumentException("Score, Full Score or Time Spent cannot be negative");
         }
         create.update(GRADES)
                 .set(GRADES.STUDENT_NAME, grade.getStudentName())
