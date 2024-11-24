@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import static java.lang.Float.parseFloat;
 
 
 public class QuestionBankManagementController implements Initializable {
@@ -303,9 +304,11 @@ public class QuestionBankManagementController implements Initializable {
                 .filter(q -> {
                     boolean questionFilter = selectedQuestion == null || selectedQuestion.isEmpty() || q.getQuestion().contains(selectedQuestion);
                     boolean typeFilter = selectedType == null || selectedType.equals("Type") || q.getType().equals(selectedType);
-                    boolean scoreFilter = selectedScore == null || selectedScore.isEmpty() || String.valueOf(q.getScore()).equals(selectedScore);
+                    boolean scoreFilter = selectedScore == null || selectedScore.isEmpty() || parseFloat(String.valueOf(q.getScore()))==parseFloat(selectedScore);
                     return questionFilter && typeFilter && scoreFilter;
+
                 })
+
                 .collect(Collectors.toList());
 
         // Update the TableView with the filtered questions

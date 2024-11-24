@@ -91,7 +91,7 @@ public class TeacherLoginController implements Initializable {
      * @return True if the login is successful (account exists and password is correct), false otherwise.
      */
     public boolean Check_login() {
-        if (account_exist(usernameTxt.getText())) {
+        if (teacherService.account_exist(usernameTxt.getText())) {
             if (getTeacherbyUserName(usernameTxt.getText()).Check_password(passwordTxt.getText())) {
                 return true;
             }

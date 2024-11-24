@@ -153,7 +153,7 @@ public class TeacherRegisterController implements Initializable {
         }
 
         // Case I: Existing username
-        if (getAccountManager().account_exist(usernameTxt.getText())) {
+        if (teacherService.account_exist(usernameTxt.getText())) {
             register_success = false;
 
             // Error popup
