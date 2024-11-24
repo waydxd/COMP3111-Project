@@ -124,6 +124,7 @@ public class TeacherServiceImpl implements TeacherService  {
         }
         return false;
     }
+
     public Teacher getTeacherbyUserName(String username) {
         for (Teacher teacher :  getAllTeachers()) {
             if (teacher.getUsername().equals(username)) {
