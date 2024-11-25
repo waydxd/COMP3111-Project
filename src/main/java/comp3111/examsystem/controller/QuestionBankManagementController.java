@@ -171,9 +171,22 @@ public class QuestionBankManagementController implements Initializable {
 //            throw new RuntimeException("Please fill in all the required fields.");
         }
         //Validate the option
-        if(!answer.matches("[ABCD]*") && !answer.equals("ALL"))
+        if(!answer.matches("[ABCD]*") )
         {
-            ErrorPopupController.Error_Popup("Please fill in the answer with ABCD or ALL");
+            ErrorPopupController.Error_Popup("Please fill in the answer with Upper letter ABCD ");
+        }
+
+        if (type.equals("Single")) {
+            if (answer.length() != 1 || !answer.matches("[ABCD]")) {
+                ErrorPopupController.Error_Popup("For 'Single' type, the answer should be one of the letters ABCD.");
+                return;
+            }
+        }
+        if (type.equals("Multiple")) {
+            if (!answer.matches("[ABCD]*")) {
+                ErrorPopupController.Error_Popup("For 'Multiple' type, the answer should be a subset of ABCD without any duplicate letters.");
+                return;
+            }
         }
         // Validate the score
         try {
@@ -184,7 +197,7 @@ public class QuestionBankManagementController implements Initializable {
 //                throw new RuntimeException("Please enter a numeric score.");
         }
         // Create a new Question object with the entered data
-        Question newQuestion = new Question(question, new String[] {optionA, optionB, optionC, optionD}, answer, type, score);
+        Question newQuestion = new Question(question, new String[] {optionA, optionB, optionC, optionD}, answer.toUpperCase(), type, score);
 
         // Add the new question to the questionList
         questionService.addQuestion(newQuestion);
@@ -230,12 +243,24 @@ public class QuestionBankManagementController implements Initializable {
                 return;
 //                throw new RuntimeException("Please enter a numeric score.");
             }
+            if (updatedType.equals("Single")) {
+                if (updatedAnswer.length() != 1 || !updatedAnswer.matches("[ABCD]")) {
+                    ErrorPopupController.Error_Popup("For 'Single' type, the answer should be one of the letters ABCD.");
+                    return;
+                }
+            }
+            if (updatedType.equals("Multiple")) {
+                if (!updatedAnswer.matches("[ABCD]*")) {
+                    ErrorPopupController.Error_Popup("For 'Multiple' type, the answer should be a subset of ABCD without any duplicate letters.");
+                    return;
+                }
+            }
 
             // Update the selected question with the new values
             questionService.updateQuestion(selectedQuestion.getId(), new Question(
                     updatedQuestion,
                     new String[] {updatedOptionA, updatedOptionB, updatedOptionC, updatedOptionD},
-                    updatedAnswer,
+                    updatedAnswer.toUpperCase(),
                     updatedType,
                     updatedScore
             ));
