@@ -254,6 +254,8 @@ public class TeacherManagementController implements Initializable {
                 teacherService.deleteTeacher(selectedTeacher.getId());
                 teacherTable.refresh();
             }
+        } else {
+            AlertHelper.showError("Please select a teacher to delete");
         }
     }
 }
