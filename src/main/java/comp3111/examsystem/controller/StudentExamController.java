@@ -25,6 +25,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,6 +67,16 @@ public class StudentExamController {
     private Button submitButton;
     @FXML
     private SplitPane splitPane;
+
+    @FXML
+    private CheckBox optionACheckBox;
+    @FXML
+    private CheckBox optionBCheckBox;
+    @FXML
+    private CheckBox optionCCheckBox;
+    @FXML
+    private CheckBox optionDCheckBox;
+
 
     private ExaminationService examinationService;
     private QuestionService questionService;
@@ -195,16 +206,46 @@ public class StudentExamController {
             questionNumberLabel.setText("Question " + (index + 1));
             questionVBox.getChildren().clear();
             questionVBox.getChildren().add(new Text(question.getQuestion()));
-            optionARadioButton.setText(question.getOptionA());
-            optionBRadioButton.setText(question.getOptionB());
-            optionCRadioButton.setText(question.getOptionC());
-            optionDRadioButton.setText(question.getOptionD());
 
-            RadioButton selectedRadioButton = selectedChoices.get(index);
-            if (selectedRadioButton != null) {
-                selectedRadioButton.setSelected(true);
+            if (question.getType().equals("Multiple")) {
+                optionARadioButton.setVisible(false);
+                optionBRadioButton.setVisible(false);
+                optionCRadioButton.setVisible(false);
+                optionDRadioButton.setVisible(false);
+                optionACheckBox.setVisible(true);
+                optionBCheckBox.setVisible(true);
+                optionCCheckBox.setVisible(true);
+                optionDCheckBox.setVisible(true);
+                optionACheckBox.setText(question.getOptionA());
+                optionBCheckBox.setText(question.getOptionB());
+                optionCCheckBox.setText(question.getOptionC());
+                optionDCheckBox.setText(question.getOptionD());
+
+                boolean[] selected = selectedMultipleChoices.getOrDefault(index, new boolean[4]);
+                optionACheckBox.setSelected(selected[0]);
+                optionBCheckBox.setSelected(selected[1]);
+                optionCCheckBox.setSelected(selected[2]);
+                optionDCheckBox.setSelected(selected[3]);
             } else {
-                optionsToggleGroup.selectToggle(null);
+                optionARadioButton.setVisible(true);
+                optionBRadioButton.setVisible(true);
+                optionCRadioButton.setVisible(true);
+                optionDRadioButton.setVisible(true);
+                optionACheckBox.setVisible(false);
+                optionBCheckBox.setVisible(false);
+                optionCCheckBox.setVisible(false);
+                optionDCheckBox.setVisible(false);
+                optionARadioButton.setText(question.getOptionA());
+                optionBRadioButton.setText(question.getOptionB());
+                optionCRadioButton.setText(question.getOptionC());
+                optionDRadioButton.setText(question.getOptionD());
+
+                RadioButton selectedRadioButton = selectedChoices.get(index);
+                if (selectedRadioButton != null) {
+                    selectedRadioButton.setSelected(true);
+                } else {
+                    optionsToggleGroup.selectToggle(null);
+                }
             }
         }
     }
@@ -244,13 +285,28 @@ public class StudentExamController {
         for (int i = 0; i < questions.size(); i++) {
             Question question = questions.get(i);
             String correctAnswer = question.getAnswer();
-            RadioButton selectedRadioButton = selectedChoices.get(i);
-            if (selectedRadioButton != null) {
-                if ((selectedRadioButton == optionARadioButton && correctAnswer.equals("A")) ||
-                        (selectedRadioButton == optionBRadioButton && correctAnswer.equals("B")) ||
-                        (selectedRadioButton == optionCRadioButton && correctAnswer.equals("C")) ||
-                        (selectedRadioButton == optionDRadioButton && correctAnswer.equals("D"))) {
-                    correctAnswers.incrementAndGet();
+            if (question.getType().equals("Multiple")) {
+                boolean isCorrect = true;
+                if (correctAnswer.equals("ALL")) {
+                    if (!optionACheckBox.isSelected() || !optionBCheckBox.isSelected() || !optionCCheckBox.isSelected() || !optionDCheckBox.isSelected()) {
+                        isCorrect = false;
+                    }
+                } else {
+                    if (correctAnswer.contains("A") != optionACheckBox.isSelected()) isCorrect = false;
+                    if (correctAnswer.contains("B") != optionBCheckBox.isSelected()) isCorrect = false;
+                    if (correctAnswer.contains("C") != optionCCheckBox.isSelected()) isCorrect = false;
+                    if (correctAnswer.contains("D") != optionDCheckBox.isSelected()) isCorrect = false;
+                }
+                if (isCorrect) correctAnswers.incrementAndGet();
+            } else {
+                RadioButton selectedRadioButton = selectedChoices.get(i);
+                if (selectedRadioButton != null) {
+                    if ((selectedRadioButton == optionARadioButton && correctAnswer.equals("A")) ||
+                            (selectedRadioButton == optionBRadioButton && correctAnswer.equals("B")) ||
+                            (selectedRadioButton == optionCRadioButton && correctAnswer.equals("C")) ||
+                            (selectedRadioButton == optionDRadioButton && correctAnswer.equals("D"))) {
+                        correctAnswers.incrementAndGet();
+                    }
                 }
             }
         }
@@ -272,10 +328,27 @@ public class StudentExamController {
     /**
      * Saves the selected choice for the current question.
      */
+    private Map<Integer, boolean[]> selectedMultipleChoices = new HashMap<>();
+
     private void saveSelectedChoice() {
-        RadioButton selectedRadioButton = (RadioButton) optionsToggleGroup.getSelectedToggle();
-        if (selectedRadioButton != null) {
-            selectedChoices.put(currentQuestionIndex, selectedRadioButton);
+        Question currentQuestion = questions.get(currentQuestionIndex);
+        if (currentQuestion.getType().equals("Multiple")) {
+            boolean[] selected = new boolean[4];
+            selected[0] = optionACheckBox.isSelected();
+            selected[1] = optionBCheckBox.isSelected();
+            selected[2] = optionCCheckBox.isSelected();
+            selected[3] = optionDCheckBox.isSelected();
+            selectedMultipleChoices.put(currentQuestionIndex, selected);
+        } else {
+            RadioButton selectedRadioButton = (RadioButton) optionsToggleGroup.getSelectedToggle();
+            if (selectedRadioButton != null) {
+                selectedChoices.put(currentQuestionIndex, selectedRadioButton);
+            }
+        }
+        // Print the selectedMultipleChoices map
+        System.out.println("Selected Single Choices: " + selectedChoices);
+        for (Map.Entry<Integer, boolean[]> entry : selectedMultipleChoices.entrySet()) {
+            System.out.println("Question Index: " + entry.getKey() + ", Selections: " + Arrays.toString(entry.getValue()));
         }
     }
 

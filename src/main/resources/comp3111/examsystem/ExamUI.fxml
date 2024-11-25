@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -28,6 +29,10 @@
             <RadioButton fx:id="optionBRadioButton" text="Option B" />
             <RadioButton fx:id="optionCRadioButton" text="Option C" />
             <RadioButton fx:id="optionDRadioButton" text="Option D" />
+            <CheckBox fx:id="optionACheckBox" text="Option A" visible="false"/>
+            <CheckBox fx:id="optionBCheckBox" text="Option B" visible="false"/>
+            <CheckBox fx:id="optionCCheckBox" text="Option C" visible="false"/>
+            <CheckBox fx:id="optionDCheckBox" text="Option D" visible="false"/>
             <Button fx:id="previousButton" text="Previous" onAction="#handlePreviousButton" />
             <Button fx:id="nextButton" text="Next" onAction="#handleNextButton" />
             <Button fx:id="submitButton" text="Submit" onAction="#handleSubmitButton" />
