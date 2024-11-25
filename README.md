@@ -84,7 +84,2624 @@ Note that the tests only fully covered `comp3111.examsystem.dao`, `comp3111.exam
 [index.html](javadocs/index.html)
 
 ## Screenshots
-<html><head><meta content="text/html; charset=UTF-8" http-equiv="content-type"><style type="text/css">.lst-kix_briso1kq9hi9-5>li:before{content:"\0025a0   "}.lst-kix_briso1kq9hi9-7>li:before{content:"\0025cb   "}.lst-kix_briso1kq9hi9-4>li:before{content:"\0025cb   "}.lst-kix_briso1kq9hi9-8>li:before{content:"\0025a0   "}.lst-kix_briso1kq9hi9-6>li:before{content:"\0025cf   "}ul.lst-kix_briso1kq9hi9-7{list-style-type:none}ul.lst-kix_briso1kq9hi9-6{list-style-type:none}ul.lst-kix_briso1kq9hi9-5{list-style-type:none}ul.lst-kix_briso1kq9hi9-4{list-style-type:none}.lst-kix_briso1kq9hi9-0>li:before{content:"\0025cf   "}ul.lst-kix_briso1kq9hi9-3{list-style-type:none}ul.lst-kix_briso1kq9hi9-2{list-style-type:none}ul.lst-kix_briso1kq9hi9-1{list-style-type:none}ul.lst-kix_briso1kq9hi9-0{list-style-type:none}.lst-kix_briso1kq9hi9-1>li:before{content:"\0025cb   "}.lst-kix_briso1kq9hi9-3>li:before{content:"\0025cf   "}.lst-kix_briso1kq9hi9-2>li:before{content:"\0025a0   "}ul.lst-kix_briso1kq9hi9-8{list-style-type:none}.lst-kix_4l0qof3n0l0z-0>li:before{content:"\0025cf   "}.lst-kix_4l0qof3n0l0z-1>li:before{content:"\0025cb   "}.lst-kix_4l0qof3n0l0z-2>li:before{content:"\0025a0   "}.lst-kix_4l0qof3n0l0z-4>li:before{content:"\0025cb   "}.lst-kix_4l0qof3n0l0z-3>li:before{content:"\0025cf   "}.lst-kix_4l0qof3n0l0z-6>li:before{content:"\0025cf   "}.lst-kix_4l0qof3n0l0z-8>li:before{content:"\0025a0   "}ul.lst-kix_4l0qof3n0l0z-8{list-style-type:none}.lst-kix_4l0qof3n0l0z-5>li:before{content:"\0025a0   "}ul.lst-kix_4l0qof3n0l0z-5{list-style-type:none}ul.lst-kix_4l0qof3n0l0z-4{list-style-type:none}ul.lst-kix_4l0qof3n0l0z-7{list-style-type:none}ul.lst-kix_4l0qof3n0l0z-6{list-style-type:none}ul.lst-kix_4l0qof3n0l0z-1{list-style-type:none}ul.lst-kix_4l0qof3n0l0z-0{list-style-type:none}ul.lst-kix_4l0qof3n0l0z-3{list-style-type:none}ul.lst-kix_4l0qof3n0l0z-2{list-style-type:none}.lst-kix_4l0qof3n0l0z-7>li:before{content:"\0025cb   "}ol{margin:0;padding:0}table td,table th{padding:0}.c0{padding-top:0pt;padding-bottom:3pt;line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left;height:11pt}.c6{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:26pt;font-family:"Times New Roman";font-style:normal}.c3{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Times New Roman";font-style:normal}.c5{padding-top:0pt;padding-bottom:16pt;line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.c4{padding-top:0pt;padding-bottom:3pt;line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.c1{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c12{padding-top:4pt;padding-bottom:0pt;line-height:1.15;orphans:2;widows:2;text-align:right;margin-right:7pt}.c2{padding-top:0pt;padding-bottom:0pt;line-height:1.15;orphans:2;widows:2;text-align:left}.c16{color:#000000;font-weight:400;font-size:26pt;font-family:"Arial"}.c7{font-size:15pt;font-family:"Times New Roman";color:#666666;font-weight:400}.c9{text-decoration:none;vertical-align:baseline;font-style:normal}.c13{background-color:#ffffff;max-width:451.4pt;padding:72pt 72pt 72pt 72pt}.c17{font-weight:700;font-family:"Times New Roman"}.c10{font-weight:400;font-family:"Times New Roman"}.c18{color:#bcbec4;font-size:10pt}.c11{color:#000000;font-size:20pt}.c8{height:11pt}.c14{background-color:#1e1f22}.c15{font-size:20pt}.title{padding-top:0pt;color:#000000;font-size:26pt;padding-bottom:3pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.subtitle{padding-top:0pt;color:#666666;font-size:15pt;padding-bottom:16pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}li{color:#000000;font-size:11pt;font-family:"Arial"}p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}h1{padding-top:20pt;color:#000000;font-size:20pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h2{padding-top:18pt;color:#000000;font-size:16pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h3{padding-top:16pt;color:#434343;font-size:14pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h4{padding-top:14pt;color:#666666;font-size:12pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h5{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h6{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;font-style:italic;orphans:2;widows:2;text-align:left}</style></head><body class="c13 doc-content"><div><p class="c2 c8"><span class="c1"></span></p></div><p class="c12 subtitle" id="h.cr52oen6jr4r"><span class="c7 c9">Team 9</span></p><p class="c2 c14"><span class="c10">&#12289;</span></p><p class="c2 c8"><span class="c3"></span></p><p class="c4 title" id="h.vwk5ut6lj0r5"><span class="c17">Screenshots</span></p><p class="c4 title" id="h.9e3me1ey1q7w"><span class="c10 c15">Task 1: Student Portal</span></p><p class="c4 title" id="h.6z8x33m6tsbe"><span class="c9 c10 c11">Task 1.1: Student Registration &amp; Login &nbsp;</span></p><p class="c2"><span>Select Student Login</span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 467.91px; height: 367.08px;"><img alt="" src="images/image41.png" style="width: 467.91px; height: 367.08px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 445.50px; height: 297.00px;"><img alt="" src="images/image60.png" style="width: 445.50px; height: 468.83px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2"><span class="c1">Select Register: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 445.85px; height: 424.10px;"><img alt="" src="images/image58.png" style="width: 445.85px; height: 474.44px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2"><span class="c1">Fill in credentials &amp; click Register: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 397.70px; height: 417.50px;"><img alt="" src="images/image20.png" style="width: 397.70px; height: 417.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span>Fill in login credentials: <br></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 602.00px; height: 405.60px;"><img alt="" src="images/image18.png" style="width: 602.00px; height: 637.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2"><span class="c1">Click Login: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 602.00px; height: 452.00px;"><img alt="" src="images/image4.png" style="width: 602.00px; height: 635.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c1">Click OK and head to main page:</span></p><p class="c2"><span>&nbsp;</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 472.42px; height: 499.10px;"><img alt="" src="images/image66.png" style="width: 472.42px; height: 499.10px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c0 title" id="h.4ag9s9mj4nu0"><span class="c9 c10 c11"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c0 title" id="h.5h0qnmddod4f"><span class="c9 c10 c11"></span></p><p class="c0 title" id="h.vueh7t77u77a"><span class="c9 c10 c11"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c0 title" id="h.isx63mxfvzy8"><span class="c9 c10 c11"></span></p><p class="c0 title" id="h.tcvimagy1bz3"><span class="c9 c10 c11"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c4 title" id="h.trlia02svoyq"><span class="c9 c10 c11">Task 1.2: Student Examination</span></p><p class="c2"><span class="c1">Select exam: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 396.29px; height: 419.84px;"><img alt="" src="images/image42.png" style="width: 396.29px; height: 419.84px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 404.51px; height: 426.50px;"><img alt="" src="images/image36.png" style="width: 404.51px; height: 426.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c1">Click Start to head to start page of the selected exam: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 356.56px; height: 376.10px;"><img alt="" src="images/image55.png" style="width: 356.56px; height: 376.10px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c1">Click Start Exam to head to exam page: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 502.50px; height: 371.45px;"><img alt="" src="images/image76.png" style="width: 502.50px; height: 371.45px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2"><span class="c1">Click Next to go to next question: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 473.50px; height: 349.43px;"><img alt="" src="images/image19.png" style="width: 473.50px; height: 349.43px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2"><span class="c1">Click Previous to go to previous question: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 439.94px; height: 322.28px;"><img alt="" src="images/image79.png" style="width: 439.94px; height: 322.28px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2"><span class="c1">Select answers and submit quiz: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 473.63px; height: 350.10px;"><img alt="" src="images/image77.png" style="width: 473.63px; height: 350.10px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c1">Click Submit and view results: </span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 549.90px; height: 404.93px;"><img alt="" src="images/image22.png" style="width: 549.90px; height: 404.93px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span>Click Start Exam again for the same exam: </span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image72.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c0 title" id="h.o822qbt3nj03"><span class="c9 c10 c11"></span></p><p class="c0 title" id="h.riqyfw71tkbu"><span class="c9 c10 c11"></span></p><p class="c0 title" id="h.49beb1fg5744"><span class="c9 c10 c11"></span></p><p class="c0 title" id="h.c3q0wy50d287"><span class="c9 c10 c11"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c0 title" id="h.vgnfucm6g37v"><span class="c9 c10 c11"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c2 c8"><span class="c1"></span></p><p class="c4 title" id="h.6ulr7fu3qc5d"><span class="c9 c10 c11">Task 1.3: Student Grade Statistics </span></p><p class="c2"><span class="c1">Click on Grade Statistics:</span></p><p class="c2"><span>&nbsp;</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 410.43px; height: 428.84px;"><img alt="" src="images/image49.png" style="width: 410.43px; height: 428.84px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span>View all exams taken for logged in student: <br></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 558.53px; height: 474.10px;"><img alt="" src="images/image67.png" style="width: 558.53px; height: 474.10px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c4 title" id="h.40rdhyagv7xp"><span class="c9 c10 c11">Task 2: Teacher Portal</span></p><p class="c4 title" id="h.mvob8d7pvfa2"><span class="c6">TASK 2.1: Handling the teacher&#39;s login</span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 552.50px; height: 435.94px;"><img alt="" src="images/image27.png" style="width: 552.50px; height: 435.94px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 629.33px;"><img alt="" src="images/image93.png" style="width: 601.70px; height: 629.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 369.33px;"><img alt="" src="images/image12.png" style="width: 601.70px; height: 369.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c4 title" id="h.j7h6d2m47xmq"><span class="c6">TASK 2.2: Handling the teacher&#39;s registration</span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 552.50px; height: 435.94px;"><img alt="" src="images/image27.png" style="width: 552.50px; height: 435.94px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 629.33px;"><img alt="" src="images/image14.png" style="width: 601.70px; height: 629.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 629.33px;"><img alt="" src="images/image57.png" style="width: 601.70px; height: 629.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 629.33px;"><img alt="" src="images/image63.png" style="width: 601.70px; height: 629.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 629.33px;"><img alt="" src="images/image25.png" style="width: 601.70px; height: 629.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 369.33px;"><img alt="" src="images/image39.png" style="width: 601.70px; height: 369.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c4 title" id="h.uei81staajp8"><span class="c6">TASK 2.3: Implementing the Question Bank Management</span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 369.33px;"><img alt="" src="images/image83.png" style="width: 601.70px; height: 369.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image31.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c3"></span></p><p class="c5 subtitle" id="h.qsc6jgxdi2ma"><span class="c7 c9">TASK 2.3.1: Add</span></p><p class="c5 subtitle" id="h.z3y8k9y50mdr"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image88.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image81.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image9.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.jixfqn6n8i0o"><span class="c10">TASK 2.3.2: Filter</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image54.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image38.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.uxm6frnm8l30"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image85.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.7x6qlca481nx"><span class="c10">TASK 2.3.3: Update</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image94.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.dxr7s7u8n5ze"><span class="c7 c9">TASK 2.3.4: Delete</span></p><p class="c5 subtitle" id="h.xivgp31atnqk"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 346.67px;"><img alt="" src="images/image75.png" style="width: 601.70px; height: 346.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 346.67px;"><img alt="" src="images/image45.png" style="width: 601.70px; height: 346.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.7ttrancx6dj7"><span class="c7 c9">TASK 2.3.5: Refresh</span></p><p class="c5 subtitle" id="h.ab388gt2relp"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 346.67px;"><img alt="" src="images/image40.png" style="width: 601.70px; height: 346.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 346.67px;"><img alt="" src="images/image16.png" style="width: 601.70px; height: 346.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 346.67px;"><img alt="" src="images/image10.png" style="width: 601.70px; height: 346.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 346.67px;"><img alt="" src="images/image43.png" style="width: 601.70px; height: 346.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.jh0dvs6osh6d"><span class="c7 c9">TASK 2.3.6: Reset</span></p><p class="c4 title" id="h.6h577wpoiwha"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image64.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image62.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 314.67px;"><img alt="" src="images/image33.png" style="width: 601.70px; height: 314.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c4 title" id="h.xp67nhs1ioj9"><span class="c6">TASK 2.4: Implementing the Exam Management System</span></p><p class="c4 title" id="h.pn3t9anofiwx"><span class="c6">TASK 2.4.1: ExamUIHandle</span></p><p class="c5 subtitle" id="h.8kswz1licynr"><span class="c10">TASK 2.4.1.1: Add</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image48.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image17.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.8309jyeiw78y"><span class="c7 c9">TASK 2.4.1.2: Delete</span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image46.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image6.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.z3ndd9wmfy11"><span class="c10">TASK 2.4.1.3: Filter</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image6.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image69.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.surxgb97h53x"><span class="c10">TASK 2.4.1.4: Reset</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image37.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image8.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.s8p9c4bm7mht"><span class="c7 c9">TASK 2.4.1.5: Update</span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image3.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 290.67px;"><img alt="" src="images/image29.png" style="width: 601.70px; height: 290.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c7">TASK 2.4.1.5: Refresh</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image5.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image26.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image7.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c0 title" id="h.bdli4oubflb4"><span class="c6"></span></p><p class="c0 title" id="h.dvg928hy1nk4"><span class="c6"></span></p><p class="c4 title" id="h.3irbdfk4sbvt"><span class="c6">TASK 2.4.2: QuestionUIHandle</span></p><p class="c5 subtitle" id="h.qajcaf8ltw89"><span class="c10">TASK 2.4.2.1: Filter</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image2.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image35.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.asvhfwssjd1j"><span class="c7 c9">TASK 2.4.2.2: Reset</span></p><p class="c4 title" id="h.43h7j157zgy3"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image73.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image78.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c4 title" id="h.kej6uhlr0v2u"><span class="c6">TASK 2.4.3: ExamQuestionUIInteraction</span></p><p class="c5 subtitle" id="h.239i2qdixlzi"><span class="c10">TASK 2.4.3.1: AddtoLeft</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image21.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image28.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c5 subtitle" id="h.prwn4l2iz2ra"><span class="c10">TASK 2.4.3.2: Deletefromleft</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image82.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;"><img alt="" src="images/image51.png" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c3"></span></p><p class="c2 c8"><span class="c3"></span></p><p class="c4 title" id="h.7bsyv783slsd"><span class="c10">Task 3.1: Teacher view grade statistics</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 501.33px;"><img alt="" src="images/image13.png" style="width: 601.70px; height: 501.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">View grade with filtering course, using a combo box</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 501.33px;"><img alt="" src="images/image15.png" style="width: 601.70px; height: 501.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">View grade by filtering students, using text field.</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 501.33px;"><img alt="" src="images/image34.png" style="width: 601.70px; height: 501.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">View grade by filtering exams, using text field.</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 501.33px;"><img alt="" src="images/image11.png" style="width: 601.70px; height: 501.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2 c8"><span class="c3"></span></p><p class="c4 title" id="h.154vhkx2bvgx"><span class="c6">Task 3.2 :Handling Manager Login</span></p><p class="c2"><span class="c10"><br>Enter Manager username and password</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 626.67px;"><img alt="" src="images/image24.png" style="width: 601.70px; height: 626.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Management dashboard</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 384.00px;"><img alt="" src="images/image89.png" style="width: 601.70px; height: 384.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><hr style="page-break-before:always;display:none;"><p class="c0 title" id="h.gre9hgp5bxm"><span class="c6"></span></p><p class="c4 title" id="h.wz8heaszlk3n"><span class="c10">Task 3.3.1 Student Management</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image53.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Filter function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image44.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image30.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span class="c10">Add Student function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image70.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image50.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c3">Update Student function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image61.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image68.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Delete Student function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image80.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 446.67px;"><img alt="" src="images/image32.png" style="width: 601.70px; height: 446.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c4 title" id="h.ilefq3m19qvy"><span class="c10">Task 3.3.2: Teacher Management</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 418.67px;"><img alt="" src="images/image65.png" style="width: 601.70px; height: 418.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Filter function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 418.67px;"><img alt="" src="images/image91.png" style="width: 601.70px; height: 418.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Add Teacher function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 418.67px;"><img alt="" src="images/image23.png" style="width: 601.70px; height: 418.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 418.67px;"><img alt="" src="images/image56.png" style="width: 601.70px; height: 418.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Update function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 418.67px;"><img alt="" src="images/image59.png" style="width: 601.70px; height: 418.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 418.67px;"><img alt="" src="images/image56.png" style="width: 601.70px; height: 418.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Delete function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 418.67px;"><img alt="" src="images/image92.png" style="width: 601.70px; height: 418.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 418.67px;"><img alt="" src="images/image47.png" style="width: 601.70px; height: 418.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c4 title" id="h.rflx53yepz40"><span class="c6">Task 3.3.3: Course Management</span></p><p class="c2"><span class="c10"><br>Sample output with no filtering<br></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 429.33px;"><img alt="" src="images/image86.png" style="width: 601.70px; height: 429.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span class="c3">Output with all filters.</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 426.04px;"><img alt="" src="images/image87.png" style="width: 601.70px; height: 426.04px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Add Course function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 429.33px;"><img alt="" src="images/image84.png" style="width: 601.70px; height: 429.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 429.33px;"><img alt="" src="images/image1.png" style="width: 601.70px; height: 429.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c2"><span class="c10">Update course function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 429.33px;"><img alt="" src="images/image71.png" style="width: 601.70px; height: 429.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 429.33px;"><img alt="" src="images/image52.png" style="width: 601.70px; height: 429.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span class="c3">&nbsp; &nbsp;</span></p><p class="c2"><span class="c10">Delete Course function</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 429.33px;"><img alt="" src="images/image90.png" style="width: 601.70px; height: 429.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 429.33px;"><img alt="" src="images/image74.png" style="width: 601.70px; height: 429.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c0 title" id="h.jv5oopxbyur7"><span class="c6"></span></p></body></html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  </head>
+  <body class="c13 doc-content">
+    <div>
+      <p class="c2 c8"><span class="c1"></span></p>
+    </div>
+    <p class="c12 subtitle" id="h.cr52oen6jr4r">
+      <span class="c7 c9">Team 9</span>
+    </p>
+    <p class="c2 c14"><span class="c10">&#12289;</span></p>
+    <p class="c2 c8"><span class="c3"></span></p>
+    <p class="c4 title" id="h.vwk5ut6lj0r5">
+      <span class="c17">Screenshots</span>
+    </p>
+    <p class="c4 title" id="h.9e3me1ey1q7w">
+      <span class="c10 c15">Task 1: Student Portal</span>
+    </p>
+    <p class="c4 title" id="h.6z8x33m6tsbe">
+      <span class="c9 c10 c11"
+        >Task 1.1: Student Registration &amp; Login &nbsp;</span
+      >
+    </p>
+    <p class="c2"><span>Select Student Login</span></p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 467.91px;
+          height: 367.08px;
+        "
+        ><img
+          alt=""
+          src="images/image41.png"
+          style="
+            width: 467.91px;
+            height: 367.08px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 445.5px;
+          height: 297px;
+        "
+        ><img
+          alt=""
+          src="images/image60.png"
+          style="
+            width: 445.5px;
+            height: 468.83px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2"><span class="c1">Select Register: </span></p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 445.85px;
+          height: 424.1px;
+        "
+        ><img
+          alt=""
+          src="images/image58.png"
+          style="
+            width: 445.85px;
+            height: 474.44px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2">
+      <span class="c1">Fill in credentials &amp; click Register: </span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 397.7px;
+          height: 417.5px;
+        "
+        ><img
+          alt=""
+          src="images/image20.png"
+          style="
+            width: 397.7px;
+            height: 417.5px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span>Fill in login credentials: <br /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 602px;
+          height: 405.6px;
+        "
+        ><img
+          alt=""
+          src="images/image18.png"
+          style="
+            width: 602px;
+            height: 637px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2"><span class="c1">Click Login: </span></p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 602px;
+          height: 452px;
+        "
+        ><img
+          alt=""
+          src="images/image4.png"
+          style="
+            width: 602px;
+            height: 635px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2"><span class="c1">Click OK and head to main page:</span></p>
+    <p class="c2">
+      <span>&nbsp;</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 472.42px;
+          height: 499.1px;
+        "
+        ><img
+          alt=""
+          src="images/image66.png"
+          style="
+            width: 472.42px;
+            height: 499.1px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c0 title" id="h.4ag9s9mj4nu0"><span class="c9 c10 c11"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c0 title" id="h.5h0qnmddod4f"><span class="c9 c10 c11"></span></p>
+    <p class="c0 title" id="h.vueh7t77u77a"><span class="c9 c10 c11"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c0 title" id="h.isx63mxfvzy8"><span class="c9 c10 c11"></span></p>
+    <p class="c0 title" id="h.tcvimagy1bz3"><span class="c9 c10 c11"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c4 title" id="h.trlia02svoyq">
+      <span class="c9 c10 c11">Task 1.2: Student Examination</span>
+    </p>
+    <p class="c2"><span class="c1">Select exam: </span></p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 396.29px;
+          height: 419.84px;
+        "
+        ><img
+          alt=""
+          src="images/image42.png"
+          style="
+            width: 396.29px;
+            height: 419.84px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 404.51px;
+          height: 426.5px;
+        "
+        ><img
+          alt=""
+          src="images/image36.png"
+          style="
+            width: 404.51px;
+            height: 426.5px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c1"
+        >Click Start to head to start page of the selected exam:
+      </span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 356.56px;
+          height: 376.1px;
+        "
+        ><img
+          alt=""
+          src="images/image55.png"
+          style="
+            width: 356.56px;
+            height: 376.1px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c1">Click Start Exam to head to exam page: </span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 502.5px;
+          height: 371.45px;
+        "
+        ><img
+          alt=""
+          src="images/image76.png"
+          style="
+            width: 502.5px;
+            height: 371.45px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2">
+      <span class="c1">Click Next to go to next question: </span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 473.5px;
+          height: 349.43px;
+        "
+        ><img
+          alt=""
+          src="images/image19.png"
+          style="
+            width: 473.5px;
+            height: 349.43px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2">
+      <span class="c1">Click Previous to go to previous question: </span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 439.94px;
+          height: 322.28px;
+        "
+        ><img
+          alt=""
+          src="images/image79.png"
+          style="
+            width: 439.94px;
+            height: 322.28px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2"><span class="c1">Select answers and submit quiz: </span></p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 473.63px;
+          height: 350.1px;
+        "
+        ><img
+          alt=""
+          src="images/image77.png"
+          style="
+            width: 473.63px;
+            height: 350.1px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2"><span class="c1">Click Submit and view results: </span></p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 549.9px;
+          height: 404.93px;
+        "
+        ><img
+          alt=""
+          src="images/image22.png"
+          style="
+            width: 549.9px;
+            height: 404.93px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span>Click Start Exam again for the same exam: </span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image72.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c0 title" id="h.o822qbt3nj03"><span class="c9 c10 c11"></span></p>
+    <p class="c0 title" id="h.riqyfw71tkbu"><span class="c9 c10 c11"></span></p>
+    <p class="c0 title" id="h.49beb1fg5744"><span class="c9 c10 c11"></span></p>
+    <p class="c0 title" id="h.c3q0wy50d287"><span class="c9 c10 c11"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c0 title" id="h.vgnfucm6g37v"><span class="c9 c10 c11"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c2 c8"><span class="c1"></span></p>
+    <p class="c4 title" id="h.6ulr7fu3qc5d">
+      <span class="c9 c10 c11">Task 1.3: Student Grade Statistics </span>
+    </p>
+    <p class="c2"><span class="c1">Click on Grade Statistics:</span></p>
+    <p class="c2">
+      <span>&nbsp;</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 410.43px;
+          height: 428.84px;
+        "
+        ><img
+          alt=""
+          src="images/image49.png"
+          style="
+            width: 410.43px;
+            height: 428.84px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span>View all exams taken for logged in student: <br /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 558.53px;
+          height: 474.1px;
+        "
+        ><img
+          alt=""
+          src="images/image67.png"
+          style="
+            width: 558.53px;
+            height: 474.1px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c4 title" id="h.40rdhyagv7xp">
+      <span class="c9 c10 c11">Task 2: Teacher Portal</span>
+    </p>
+    <p class="c4 title" id="h.mvob8d7pvfa2">
+      <span class="c6">TASK 2.1: Handling the teacher&#39;s login</span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 552.5px;
+          height: 435.94px;
+        "
+        ><img
+          alt=""
+          src="images/image27.png"
+          style="
+            width: 552.5px;
+            height: 435.94px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 629.33px;
+        "
+        ><img
+          alt=""
+          src="images/image93.png"
+          style="
+            width: 601.7px;
+            height: 629.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 369.33px;
+        "
+        ><img
+          alt=""
+          src="images/image12.png"
+          style="
+            width: 601.7px;
+            height: 369.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c4 title" id="h.j7h6d2m47xmq">
+      <span class="c6">TASK 2.2: Handling the teacher&#39;s registration</span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 552.5px;
+          height: 435.94px;
+        "
+        ><img
+          alt=""
+          src="images/image27.png"
+          style="
+            width: 552.5px;
+            height: 435.94px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 629.33px;
+        "
+        ><img
+          alt=""
+          src="images/image14.png"
+          style="
+            width: 601.7px;
+            height: 629.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 629.33px;
+        "
+        ><img
+          alt=""
+          src="images/image57.png"
+          style="
+            width: 601.7px;
+            height: 629.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 629.33px;
+        "
+        ><img
+          alt=""
+          src="images/image63.png"
+          style="
+            width: 601.7px;
+            height: 629.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 629.33px;
+        "
+        ><img
+          alt=""
+          src="images/image25.png"
+          style="
+            width: 601.7px;
+            height: 629.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 369.33px;
+        "
+        ><img
+          alt=""
+          src="images/image39.png"
+          style="
+            width: 601.7px;
+            height: 369.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c4 title" id="h.uei81staajp8">
+      <span class="c6"
+        >TASK 2.3: Implementing the Question Bank Management</span
+      >
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 369.33px;
+        "
+        ><img
+          alt=""
+          src="images/image83.png"
+          style="
+            width: 601.7px;
+            height: 369.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image31.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c3"></span></p>
+    <p class="c5 subtitle" id="h.qsc6jgxdi2ma">
+      <span class="c7 c9">TASK 2.3.1: Add</span>
+    </p>
+    <p class="c5 subtitle" id="h.z3y8k9y50mdr">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image88.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image81.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image9.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.jixfqn6n8i0o">
+      <span class="c10">TASK 2.3.2: Filter</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image54.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image38.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.uxm6frnm8l30">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image85.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.7x6qlca481nx">
+      <span class="c10">TASK 2.3.3: Update</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image94.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.dxr7s7u8n5ze">
+      <span class="c7 c9">TASK 2.3.4: Delete</span>
+    </p>
+    <p class="c5 subtitle" id="h.xivgp31atnqk">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 346.67px;
+        "
+        ><img
+          alt=""
+          src="images/image75.png"
+          style="
+            width: 601.7px;
+            height: 346.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 346.67px;
+        "
+        ><img
+          alt=""
+          src="images/image45.png"
+          style="
+            width: 601.7px;
+            height: 346.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.7ttrancx6dj7">
+      <span class="c7 c9">TASK 2.3.5: Refresh</span>
+    </p>
+    <p class="c5 subtitle" id="h.ab388gt2relp">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 346.67px;
+        "
+        ><img
+          alt=""
+          src="images/image40.png"
+          style="
+            width: 601.7px;
+            height: 346.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 346.67px;
+        "
+        ><img
+          alt=""
+          src="images/image16.png"
+          style="
+            width: 601.7px;
+            height: 346.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 346.67px;
+        "
+        ><img
+          alt=""
+          src="images/image10.png"
+          style="
+            width: 601.7px;
+            height: 346.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 346.67px;
+        "
+        ><img
+          alt=""
+          src="images/image43.png"
+          style="
+            width: 601.7px;
+            height: 346.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.jh0dvs6osh6d">
+      <span class="c7 c9">TASK 2.3.6: Reset</span>
+    </p>
+    <p class="c4 title" id="h.6h577wpoiwha">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image64.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image62.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 314.67px;
+        "
+        ><img
+          alt=""
+          src="images/image33.png"
+          style="
+            width: 601.7px;
+            height: 314.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c4 title" id="h.xp67nhs1ioj9">
+      <span class="c6">TASK 2.4: Implementing the Exam Management System</span>
+    </p>
+    <p class="c4 title" id="h.pn3t9anofiwx">
+      <span class="c6">TASK 2.4.1: ExamUIHandle</span>
+    </p>
+    <p class="c5 subtitle" id="h.8kswz1licynr">
+      <span class="c10">TASK 2.4.1.1: Add</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image48.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image17.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.8309jyeiw78y">
+      <span class="c7 c9">TASK 2.4.1.2: Delete</span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image46.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image6.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.z3ndd9wmfy11">
+      <span class="c10">TASK 2.4.1.3: Filter</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image6.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image69.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.surxgb97h53x">
+      <span class="c10">TASK 2.4.1.4: Reset</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image37.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image8.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.s8p9c4bm7mht">
+      <span class="c7 c9">TASK 2.4.1.5: Update</span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image3.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 290.67px;
+        "
+        ><img
+          alt=""
+          src="images/image29.png"
+          style="
+            width: 601.7px;
+            height: 290.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c7">TASK 2.4.1.5: Refresh</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image5.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image26.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image7.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c0 title" id="h.bdli4oubflb4"><span class="c6"></span></p>
+    <p class="c0 title" id="h.dvg928hy1nk4"><span class="c6"></span></p>
+    <p class="c4 title" id="h.3irbdfk4sbvt">
+      <span class="c6">TASK 2.4.2: QuestionUIHandle</span>
+    </p>
+    <p class="c5 subtitle" id="h.qajcaf8ltw89">
+      <span class="c10">TASK 2.4.2.1: Filter</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image2.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image35.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.asvhfwssjd1j">
+      <span class="c7 c9">TASK 2.4.2.2: Reset</span>
+    </p>
+    <p class="c4 title" id="h.43h7j157zgy3">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image73.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image78.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c4 title" id="h.kej6uhlr0v2u">
+      <span class="c6">TASK 2.4.3: ExamQuestionUIInteraction</span>
+    </p>
+    <p class="c5 subtitle" id="h.239i2qdixlzi">
+      <span class="c10">TASK 2.4.3.1: AddtoLeft</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image21.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image28.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c5 subtitle" id="h.prwn4l2iz2ra">
+      <span class="c10">TASK 2.4.3.2: Deletefromleft</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image82.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 270.67px;
+        "
+        ><img
+          alt=""
+          src="images/image51.png"
+          style="
+            width: 601.7px;
+            height: 270.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c3"></span></p>
+    <p class="c2 c8"><span class="c3"></span></p>
+    <p class="c4 title" id="h.7bsyv783slsd">
+      <span class="c10">Task 3.1: Teacher view grade statistics</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 501.33px;
+        "
+        ><img
+          alt=""
+          src="images/image13.png"
+          style="
+            width: 601.7px;
+            height: 501.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10"
+        >View grade with filtering course, using a combo box</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 501.33px;
+        "
+        ><img
+          alt=""
+          src="images/image15.png"
+          style="
+            width: 601.7px;
+            height: 501.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10"
+        >View grade by filtering students, using text field.</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 501.33px;
+        "
+        ><img
+          alt=""
+          src="images/image34.png"
+          style="
+            width: 601.7px;
+            height: 501.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">View grade by filtering exams, using text field.</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 501.33px;
+        "
+        ><img
+          alt=""
+          src="images/image11.png"
+          style="
+            width: 601.7px;
+            height: 501.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2 c8"><span class="c3"></span></p>
+    <p class="c4 title" id="h.154vhkx2bvgx">
+      <span class="c6">Task 3.2 :Handling Manager Login</span>
+    </p>
+    <p class="c2">
+      <span class="c10"><br />Enter Manager username and password</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 626.67px;
+        "
+        ><img
+          alt=""
+          src="images/image24.png"
+          style="
+            width: 601.7px;
+            height: 626.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Management dashboard</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 384px;
+        "
+        ><img
+          alt=""
+          src="images/image89.png"
+          style="
+            width: 601.7px;
+            height: 384px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <hr style="page-break-before: always; display: none" />
+    <p class="c0 title" id="h.gre9hgp5bxm"><span class="c6"></span></p>
+    <p class="c4 title" id="h.wz8heaszlk3n">
+      <span class="c10">Task 3.3.1 Student Management</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image53.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Filter function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image44.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image30.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span class="c10">Add Student function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image70.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image50.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c3">Update Student function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image61.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image68.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Delete Student function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image80.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 446.67px;
+        "
+        ><img
+          alt=""
+          src="images/image32.png"
+          style="
+            width: 601.7px;
+            height: 446.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c4 title" id="h.ilefq3m19qvy">
+      <span class="c10">Task 3.3.2: Teacher Management</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 418.67px;
+        "
+        ><img
+          alt=""
+          src="images/image65.png"
+          style="
+            width: 601.7px;
+            height: 418.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Filter function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 418.67px;
+        "
+        ><img
+          alt=""
+          src="images/image91.png"
+          style="
+            width: 601.7px;
+            height: 418.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Add Teacher function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 418.67px;
+        "
+        ><img
+          alt=""
+          src="images/image23.png"
+          style="
+            width: 601.7px;
+            height: 418.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 418.67px;
+        "
+        ><img
+          alt=""
+          src="images/image56.png"
+          style="
+            width: 601.7px;
+            height: 418.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Update function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 418.67px;
+        "
+        ><img
+          alt=""
+          src="images/image59.png"
+          style="
+            width: 601.7px;
+            height: 418.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 418.67px;
+        "
+        ><img
+          alt=""
+          src="images/image56.png"
+          style="
+            width: 601.7px;
+            height: 418.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Delete function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 418.67px;
+        "
+        ><img
+          alt=""
+          src="images/image92.png"
+          style="
+            width: 601.7px;
+            height: 418.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 418.67px;
+        "
+        ><img
+          alt=""
+          src="images/image47.png"
+          style="
+            width: 601.7px;
+            height: 418.67px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c4 title" id="h.rflx53yepz40">
+      <span class="c6">Task 3.3.3: Course Management</span>
+    </p>
+    <p class="c2">
+      <span class="c10"><br />Sample output with no filtering<br /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 429.33px;
+        "
+        ><img
+          alt=""
+          src="images/image86.png"
+          style="
+            width: 601.7px;
+            height: 429.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span class="c3">Output with all filters.</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 426.04px;
+        "
+        ><img
+          alt=""
+          src="images/image87.png"
+          style="
+            width: 601.7px;
+            height: 426.04px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Add Course function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 429.33px;
+        "
+        ><img
+          alt=""
+          src="images/image84.png"
+          style="
+            width: 601.7px;
+            height: 429.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 429.33px;
+        "
+        ><img
+          alt=""
+          src="images/image1.png"
+          style="
+            width: 601.7px;
+            height: 429.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c2">
+      <span class="c10">Update course function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 429.33px;
+        "
+        ><img
+          alt=""
+          src="images/image71.png"
+          style="
+            width: 601.7px;
+            height: 429.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 429.33px;
+        "
+        ><img
+          alt=""
+          src="images/image52.png"
+          style="
+            width: 601.7px;
+            height: 429.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span class="c3">&nbsp; &nbsp;</span>
+    </p>
+    <p class="c2">
+      <span class="c10">Delete Course function</span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 429.33px;
+        "
+        ><img
+          alt=""
+          src="images/image90.png"
+          style="
+            width: 601.7px;
+            height: 429.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title="" /></span
+      ><span
+        style="
+          overflow: hidden;
+          display: inline-block;
+          margin: 0px 0px;
+          border: 0px solid #000000;
+          transform: rotate(0rad) translateZ(0px);
+          -webkit-transform: rotate(0rad) translateZ(0px);
+          width: 601.7px;
+          height: 429.33px;
+        "
+        ><img
+          alt=""
+          src="images/image74.png"
+          style="
+            width: 601.7px;
+            height: 429.33px;
+            margin-left: 0px;
+            margin-top: 0px;
+            transform: rotate(0rad) translateZ(0px);
+            -webkit-transform: rotate(0rad) translateZ(0px);
+          "
+          title=""
+      /></span>
+    </p>
+    <p class="c0 title" id="h.jv5oopxbyur7"><span class="c6"></span></p>
+  </body>
+</html>
+
 
 ## Contributing
 
