@@ -43,7 +43,7 @@ The project is organized into the following main packages:
 - `comp3111.examsystem.dao`: Contains the Data Access Object (DAO) classes for interacting with the database.
 - `comp3111.examsystem.entity`: Contains the entity classes representing the data models.
 - `comp3111.examsystem.service`: Contains the service classes that implement the business logic of the application.
-- `comp3111.examsystem.util`: Contains utility classes and helper methods.
+- `com.examsystem.jooq.generated`: Contains the JOOQ generated code allowing DAO classes to interact with our SQLite database.
 
 ## How to Run the Project
 
@@ -69,6 +69,7 @@ To run the tests, use the following Maven command:
 ```sh
 mvn test
 ```
+Note that tests only fully covered `comp3111.examsystem.dao`, `comp3111.examsystem.entity`, `comp3111.examsystem.service`. `comp3111.examsystem.controller` is partially covered but will give out errors during build. However, we are required to test data-related logics only.
 
 ## Contributing
 
