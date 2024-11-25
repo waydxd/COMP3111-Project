@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.StudentExamStartController" alignment="CENTER" spacing="10.0" prefHeight="600" prefWidth="600">
+    <Label fx:id="courseLabel" text="Course" style="-fx-font-size: 25px; -fx-font-weight: bold;" maxWidth="Infinity" alignment="CENTER"  />
+    <Label fx:id="examNameLabel" text="Exam" style="-fx-font-size: 25px; -fx-font-weight: bold;" maxWidth="Infinity" alignment="CENTER" />
+    <Label fx:id="numberOfQuestionsLabel" text="Number of Questions: 0" />
+    <Label fx:id="fullScoreLabel" text="Full Score: 0" />
+    <Label fx:id="examTimeLabel" text="Time: 0 minutes" />
+    <Button text="Start Exam" onAction="#startExam" />
+</VBox>

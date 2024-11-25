@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -25,6 +26,10 @@ public class StudentLoginController implements Initializable {
     private TextField usernameTxt;
     @FXML
     private PasswordField passwordTxt;
+    @FXML
+    private Button loginBtn; // Added missing field
+    @FXML
+    private Label errorLabel; // Added missing field
 
     private int studentid;
 
@@ -33,7 +38,6 @@ public class StudentLoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    //
     public boolean accountExists(String username) {
         for (Student student : studentService.getAllStudents()) {
             if (student.getUsername().equals(username)) {
@@ -62,15 +66,14 @@ public class StudentLoginController implements Initializable {
         return false;
     }
 
-
     @FXML
     public void login(ActionEvent e) {
         if (checkLogin()) {
+            SuccessPopupController.Success_Popup("Login successful!");
             studentid = studentService.login(usernameTxt.getText(), passwordTxt.getText());
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("StudentMainUI.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Hi " + usernameTxt.getText() + ", Welcome to HKUST Examination System");
-
 
             try {
                 stage.setScene(new Scene(fxmlLoader.load()));
@@ -83,8 +86,7 @@ public class StudentLoginController implements Initializable {
 
             stage.show();
             ((Stage) ((Button) e.getSource()).getScene().getWindow()).close();
-        }
-        else {
+        } else {
             ErrorPopupController.Error_Popup("Username/Password incorrect.");
         }
     }

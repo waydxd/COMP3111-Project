@@ -1,4 +1,5 @@
 package comp3111.examsystem.entity;
+import java.lang.String;
 
 public class Student extends Member {
     private Examination[] exams;

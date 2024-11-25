@@ -18,6 +18,7 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Option">
                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
                         <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
                     </items>
                 </Menu>

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.text.Text;
@@ -29,8 +30,6 @@ public class ErrorPopupController implements Initializable  {
         errorWindow.close();
     }
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -52,28 +51,13 @@ public class ErrorPopupController implements Initializable  {
             e.printStackTrace();
         }
     }
-    public static void Error_Popup(String text) {
 
-
-        Platform.runLater(() -> {
-            try {
-                // 创建 Stage 和加载 FXML 的代码
-                if(errorWindow==null)
-                {
-                    errorWindow = new Stage();
-                }
-
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ErrorUI.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-//            errorLabel.setText(text);
-                errorWindow.setTitle("Error");
-                errorWindow.setScene(scene);
-                errorWindow.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
+    public static void Error_Popup(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public void close(javafx.event.ActionEvent actionEvent) {

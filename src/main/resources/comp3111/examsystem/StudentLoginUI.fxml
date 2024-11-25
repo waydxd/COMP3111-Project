@@ -42,6 +42,7 @@
             <children>
                 <Button mnemonicParsing="false" onAction="#register" text="Register"/>
                 <Button mnemonicParsing="false" onAction="#login" text="Login"/>
+                <Button mnemonicParsing="false" onAction="#backToMain" text="Back"/>
             </children>
         </HBox>
     </children>

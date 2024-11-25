@@ -14,4 +14,5 @@ public interface ExaminationService {
     void addQuestionToExamination(int examinationId, int questionId) throws Exception;
     void removeQuestionFromExamination(int examinationId, int questionId);
     List<Question> getQuestionsInExamination(int examinationId);
+    float getTotalScoreOfExamination(int examinationId);
 }

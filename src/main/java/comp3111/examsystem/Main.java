@@ -1,9 +1,13 @@
 package comp3111.examsystem;
 
+import comp3111.examsystem.entity.Manager;
+import comp3111.examsystem.entity.Member;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 
 public class Main extends Application {

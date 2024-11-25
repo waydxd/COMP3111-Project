@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.StudentExamController" fx:id="splitPane">
+    <items>
+        <ScrollPane fitToWidth="true" fitToHeight="true">
+            <VBox>
+                <ListView fx:id="questionListView" />
+            </VBox>
+        </ScrollPane>
+        <VBox alignment="CENTER" spacing="10.0" prefHeight="600" prefWidth="600">
+            <Label fx:id="quizNameLabel" text="Quiz Name" style="-fx-font-size: 25px; -fx-font-weight: bold;" maxWidth="Infinity" alignment="CENTER" />
+            <Label fx:id="totalQuestionsLabel" text="Total Questions: 0" />
+            <Label fx:id="timerLabel" text="Time: 0 minutes" />
+            <Label fx:id="questionNumberLabel" text="Question 1" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+            <VBox fx:id="questionVBox" prefHeight="100" style="-fx-padding: 10px; -fx-border-color: black; -fx-border-width: 1px;">
+                <!-- Question content will be added dynamically -->
+            </VBox>
+            <RadioButton fx:id="optionARadioButton" text="Option A" />
+            <RadioButton fx:id="optionBRadioButton" text="Option B" />
+            <RadioButton fx:id="optionCRadioButton" text="Option C" />
+            <RadioButton fx:id="optionDRadioButton" text="Option D" />
+            <Button fx:id="previousButton" text="Previous" onAction="#handlePreviousButton" />
+            <Button fx:id="nextButton" text="Next" onAction="#handleNextButton" />
+            <Button fx:id="submitButton" text="Submit" onAction="#handleSubmitButton" />
+        </VBox>
+    </items>
+</SplitPane>

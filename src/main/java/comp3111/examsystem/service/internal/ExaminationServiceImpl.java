@@ -101,4 +101,15 @@ public class ExaminationServiceImpl implements ExaminationService {
     public List<Question> getQuestionsInExamination(int examinationId) {
         return examinationDAO.getQuestionsInExamination(examinationId);
     }
+
+    @Override
+    public float getTotalScoreOfExamination(int examinationId) {
+        List<Question> questions = getQuestionsInExamination(examinationId);
+        float totalScore = 0;
+        for (Question question : questions) {
+            totalScore += question.getScore();
+        }
+        return totalScore;
+    }
+
 }
