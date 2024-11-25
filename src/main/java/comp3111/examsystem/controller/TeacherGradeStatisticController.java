@@ -74,7 +74,7 @@ public class TeacherGradeStatisticController implements Initializable {
      * 4. Sets up the table columns with the appropriate cell value factories.
      * 5. Initializes the choice boxes with unique values.
      * 6. Refreshes the table and loads the charts with the initial data.
-     *                       <p/>
+     *                       </p>
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

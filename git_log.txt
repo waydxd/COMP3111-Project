@@ -1,18 +1,37 @@
-* 998ba7a - Wayd, 14 minutes ago : generate javadocs
-* d4768e4 - Wayd, 47 minutes ago : fix: gradeService returning wrong grade list
-* 935e9f1 - Weicheng YE, 57 minutes ago : #Improve Alert_pop_up on Exammanagement and QuestionBankManagementController and TeacherRegister
-* 3c4f295 - yxqxq, 2 hours ago : hs
-* fbf8f24 - yxqxq, 2 hours ago : Added StudentLoginControllerTest
-* d62c587 - yxqxq, 86 minutes ago : hs
-* b7bcdee - yxqxq, 16 hours ago : Update Login and Main for Student
-* 444bece - Wayd, 3 hours ago : Upload screenshots for task 3
-* f9843c8 - Jens?n, 4 hours ago : Update README.md
-* c3682bf - Jens?n, 4 hours ago : Update README.md
-* 59e4b8b - Wayd, 4 hours ago : Update README.md fix: pom.xml for some deprecated options that is causing build failure
-* a8e0acb - Weicheng YE, 7 hours ago : #Fix Bugs on Exammanagement and QuestionBankManagementController and TeacherRegister
-* 8621168 - Weicheng YE, 9 hours ago : #Update Javadoc on AccountManager
-* c2ad622 - Wayd, 21 hours ago : refactor: remove redundant identifiers
-* 5489989 - Weicheng YE, 21 hours ago : #Update TeacherRegisterController
+* c261f55 - yxqxq, 8 minutes ago : Fixed multiple choice functions
+* b08ba9c - yxqxq, 30 minutes ago : Added multiple choice questions functions
+* 0b2425c - Jens?n, 37 minutes ago : Update README.md
+* 78777ed - Jens?n, 41 minutes ago : Update README.md
+*   2185a05 - Wayd, 49 minutes ago : Merge remote-tracking branch 'origin/main'
+|\  
+| *   bf3421b - Weicheng YE, 68 minutes ago : Merge remote-tracking branch 'origin/main'
+| |\  
+| * | 5f33b20 - Weicheng YE, 69 minutes ago : #Fix bugs on Multiple and Single type on QuestionBankManagementController
+* | | 25a7b95 - Wayd, 49 minutes ago : Update README.md
+| |/  
+|/|   
+* | d4db851 - Wayd, 80 minutes ago : Update README.md
+|/  
+* 98dbe40 - yxqxq, 3 hours ago : Added Javadoc for StudentMainController, StudentLoginController, StudentExamController, StudentExamStartController, StudentGradeStatisticsController, StudentRegisterController, ErrorPopupController, SuccessPopupController
+* e5da498 - Wayd, 3 hours ago : misc
+* c9bee82 - Wayd, 3 hours ago : upload Coverage report and git log
+* 71e4f86 - Wayd, 3 hours ago : fix: GradeDAOTest
+* 64f4341 - Wayd, 3 hours ago : misc changes
+* 998ba7a - Wayd, 4 hours ago : generate javadocs
+* d4768e4 - Wayd, 5 hours ago : fix: gradeService returning wrong grade list
+* 935e9f1 - Weicheng YE, 5 hours ago : #Improve Alert_pop_up on Exammanagement and QuestionBankManagementController and TeacherRegister
+* 3c4f295 - yxqxq, 6 hours ago : hs
+* fbf8f24 - yxqxq, 6 hours ago : Added StudentLoginControllerTest
+* d62c587 - yxqxq, 6 hours ago : hs
+* b7bcdee - yxqxq, 20 hours ago : Update Login and Main for Student
+* 444bece - Wayd, 7 hours ago : Upload screenshots for task 3
+* f9843c8 - Jens?n, 8 hours ago : Update README.md
+* c3682bf - Jens?n, 8 hours ago : Update README.md
+* 59e4b8b - Wayd, 8 hours ago : Update README.md fix: pom.xml for some deprecated options that is causing build failure
+* a8e0acb - Weicheng YE, 11 hours ago : #Fix Bugs on Exammanagement and QuestionBankManagementController and TeacherRegister
+* 8621168 - Weicheng YE, 13 hours ago : #Update Javadoc on AccountManager
+* c2ad622 - Wayd, 25 hours ago : refactor: remove redundant identifiers
+* 5489989 - Weicheng YE, 25 hours ago : #Update TeacherRegisterController
 * 304cb16 - Wayd, 2 days ago : rewrote some test
 * a17ba7a - Wayd, 2 days ago : regenerated jooq code
 * c679f06 - Wayd, 3 days ago : Altered some javadoc due to previous commit. feat: mutator of quiz in Examination.
@@ -82,9 +101,9 @@
 * b08ac9b - Wayd, 9 days ago : Implemented Task 3.2 Added StudentService interfaces Edited some Service functions
 * 2d4258f - Wayd, 13 days ago : Implemented Teacher Member Course Examination Question DAO and Service
 * 280eefe - Wayd, 13 days ago : Implemented Exam DAO and service Database table updated
-* f1da3b7 - Wayd, 13 days ago : Start implementing Manager Login
-* 887260e - Weicheng YE, 13 days ago : s
-* c8be493 - Weicheng YE, 13 days ago : #Add Interface: HandleDatabase #Please complete the read and write function in class "Exmination", "Manager" and “Question”
+* f1da3b7 - Wayd, 2 weeks ago : Start implementing Manager Login
+* 887260e - Weicheng YE, 2 weeks ago : s
+* c8be493 - Weicheng YE, 2 weeks ago : #Add Interface: HandleDatabase #Please complete the read and write function in class "Exmination", "Manager" and “Question”
 * a50cb67 - Weicheng YE, 3 weeks ago : #Task_2_ALL_Done
 * 7979e5c - Weicheng YE, 3 weeks ago : #Question_Bank_Improve_2
 * a36a377 - Weicheng YE, 3 weeks ago : #Question_Bank_Improve

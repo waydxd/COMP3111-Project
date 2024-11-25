@@ -136,7 +136,7 @@ public class Examination extends Entity{
      * <p>
      *     This function calculates the total score of the examination by summing the scores of all questions in the examination.
      *     You should specify the quiz array before calling this function. Otherwise, it will always return 0.
-     * <p/>
+     * </p>
      */
     public float getTotalScore() {
         if(quiz == null) return 0;

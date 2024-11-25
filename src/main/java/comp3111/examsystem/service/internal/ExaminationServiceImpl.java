@@ -49,7 +49,7 @@ public class ExaminationServiceImpl implements ExaminationService {
      * @return List of all examinations
      * <p>
      * the returned examination objects do not contain any questions linked to it.
-     * <p/>
+     * </p>
      */
     @Override
     public List<Examination> getAllExaminations() {
