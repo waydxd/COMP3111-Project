@@ -145,10 +145,10 @@ public class GradeDAOTest {
         gradeDAO.addGrade(grade1);
         gradeDAO.addGrade(grade2);
 
-        List<Grade> grades = gradeDAO.getGradesForUser("John Doe");
+        List<Grade> grades = gradeDAO.getGradesForUser("1");
         assertEquals(2, grades.size());
 
-        Grade firstGrade = grades.get(0);
+        Grade firstGrade = grades.getFirst();
         assertEquals("John Doe", firstGrade.getStudentName());
         assertEquals("Midterm", firstGrade.getExamName());
 
