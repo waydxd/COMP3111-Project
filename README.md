@@ -77,6 +77,12 @@ Note that the tests only fully covered `comp3111.examsystem.dao`, `comp3111.exam
 ## Git commit log
 [git_log.txt](git_log.txt)
 
+## Coverage Report
+[index.html](htmlReport/index.html)
+
+## JavaDoc
+[index.html](javadocs/index.html)
+
 ## Contributing
 
 1. Fork the repository.
