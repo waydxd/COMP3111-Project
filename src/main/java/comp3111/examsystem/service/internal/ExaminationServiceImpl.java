@@ -102,6 +102,12 @@ public class ExaminationServiceImpl implements ExaminationService {
         return examinationDAO.getQuestionsInExamination(examinationId);
     }
 
+    /**
+     * Calculates the total score of an examination by summing the scores of all questions in the examination.
+     *
+     * @param examinationId the ID of the examination
+     * @return the total score of the examination
+     */
     @Override
     public float getTotalScoreOfExamination(int examinationId) {
         List<Question> questions = getQuestionsInExamination(examinationId);

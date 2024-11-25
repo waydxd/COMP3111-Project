@@ -110,6 +110,7 @@ public class TeacherLoginController implements Initializable {
         try {
             // Proceed if login is successful
             if (Check_login()) {
+                SuccessPopupController.Success_Popup("Login successful!");
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("TeacherMainUI.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("Hi " + usernameTxt.getText() + ", Welcome to HKUST Examination System");

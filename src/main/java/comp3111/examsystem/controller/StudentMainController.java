@@ -18,6 +18,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * The `StudentMainController` class manages the main UI for students.
+ * It allows students to view and select published exams, open the exam UI, view grade statistics, and log out.
+ */
 public class StudentMainController implements Initializable {
     @FXML
     private ComboBox<Examination> examCombox;
@@ -29,16 +33,32 @@ public class StudentMainController implements Initializable {
 
     private String username;
 
+    /**
+     * Sets the username of the student.
+     *
+     * @param username the username of the student
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
     private int studentid;
 
+    /**
+     * Sets the ID of the student.
+     *
+     * @param studentid the ID of the student
+     */
     public void setID(int studentid) {
         this.studentid = studentid;
     }
 
+    /**
+     * Initializes the controller. This method is called after the FXML file has been loaded.
+     *
+     * @param location  the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resources the resources used to localize the root object, or null if the root object is not localized
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadPublishedExams();
@@ -68,6 +88,9 @@ public class StudentMainController implements Initializable {
         });
     }
 
+    /**
+     * Loads the published exams into the ComboBox.
+     */
     @FXML
     private void loadPublishedExams() {
         List<Examination> exams = examinationService.getAllExaminations();
@@ -78,7 +101,9 @@ public class StudentMainController implements Initializable {
     }
 
 
-
+    /**
+     * Opens the exam UI for the selected exam.
+     */
     @FXML
     private void openExamUI() {
         Examination selectedExam = examCombox.getSelectionModel().getSelectedItem();
@@ -102,6 +127,9 @@ public class StudentMainController implements Initializable {
         }
     }
 
+    /**
+     * Opens the grade statistics UI.
+     */
     @FXML
     public void openGradeStatistic() {
         try {
@@ -120,6 +148,9 @@ public class StudentMainController implements Initializable {
         }
     }
 
+    /**
+     * Logs out the student and returns to the login UI.
+     */
     @FXML
     public void logout() {
         try {
@@ -136,6 +167,9 @@ public class StudentMainController implements Initializable {
         }
     }
 
+    /**
+     * Exits the application.
+     */
     @FXML
     public void exit() {
         System.exit(0);

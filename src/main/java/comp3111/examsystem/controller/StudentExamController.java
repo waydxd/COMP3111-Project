@@ -30,6 +30,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * The `StudentExamController` class manages the exam-taking process for students.
+ * It handles displaying questions, tracking answers, timing the exam, and submitting results.
+ */
 public class StudentExamController {
 
     @FXML
@@ -74,21 +78,30 @@ public class StudentExamController {
 
     private String username;
 
+    /**
+     * Sets the username of the student.
+     *
+     * @param username the username of the student
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
     private int studentid;
 
+    /**
+     * Sets the ID of the student.
+     *
+     * @param studentid the ID of the student
+     */
     public void setID(int studentid) {
         this.studentid = studentid;
     }
 
-    /*public void setCurrentExam(Examination exam) {
-        this.currentExam = exam;
-        loadExamData();
-    }*/
-
+    /**
+     * Constructor for `StudentExamController`.
+     * Initializes the service implementations.
+     */
     public StudentExamController() {
         this.examinationService = new ExaminationServiceImpl();
         this.questionService = new QuestionServiceImpl();
@@ -96,6 +109,9 @@ public class StudentExamController {
         this.studentService = new StudentServiceImpl();
     }
 
+    /**
+     * Initializes the controller. This method is called after the FXML file has been loaded.
+     */
     @FXML
     private void initialize() {
         optionsToggleGroup = new ToggleGroup();
@@ -126,6 +142,9 @@ public class StudentExamController {
         });
     }
 
+    /**
+     * Loads the exam data and initializes the UI with the exam details.
+     */
     private void loadExamData() {
         if (currentExam != null) {
             quizNameLabel.setText(currentExam.getCourseID() + " - " + currentExam.getExamName());
@@ -143,6 +162,11 @@ public class StudentExamController {
         displayQuestion(0);
     }
 
+    /**
+     * Starts the exam timer with the given duration.
+     *
+     * @param initialDuration the initial duration of the exam in minutes
+     */
     private void startTimer(float initialDuration) {
         final float[] duration = {initialDuration * 60};
         Timeline timeline = new Timeline();
@@ -159,6 +183,11 @@ public class StudentExamController {
         timeline.play();
     }
 
+    /**
+     * Displays the question at the given index.
+     *
+     * @param index the index of the question to display
+     */
     void displayQuestion(int index) {
         if (index >= 0 && index < questions.size()) {
             currentQuestionIndex = index;
@@ -180,6 +209,10 @@ public class StudentExamController {
         }
     }
 
+    /**
+     * Handles the action of the previous button.
+     * Displays the previous question.
+     */
     @FXML
     void handlePreviousButton() {
         if (currentQuestionIndex > 0) {
@@ -188,6 +221,10 @@ public class StudentExamController {
         }
     }
 
+    /**
+     * Handles the action of the next button.
+     * Displays the next question.
+     */
     @FXML
     private void handleNextButton() {
         if (currentQuestionIndex < questions.size() - 1) {
@@ -196,6 +233,10 @@ public class StudentExamController {
         }
     }
 
+    /**
+     * Handles the action of the submit button.
+     * Submits the exam and displays the result.
+     */
     @FXML
     private void handleSubmitButton() {
         saveSelectedChoice();
@@ -228,6 +269,9 @@ public class StudentExamController {
         saveGrade(correctAnswers.get(), questions.size());
     }
 
+    /**
+     * Saves the selected choice for the current question.
+     */
     private void saveSelectedChoice() {
         RadioButton selectedRadioButton = (RadioButton) optionsToggleGroup.getSelectedToggle();
         if (selectedRadioButton != null) {
@@ -235,6 +279,12 @@ public class StudentExamController {
         }
     }
 
+    /**
+     * Saves the grade of the student after the exam is submitted.
+     *
+     * @param correctAnswers the number of correct answers
+     * @param totalQuestions the total number of questions
+     */
     private void saveGrade(int correctAnswers, int totalQuestions) {
         float score = (float) correctAnswers;
         float fullScore = (float) totalQuestions;
@@ -244,19 +294,23 @@ public class StudentExamController {
         Student student = studentService.getStudent(studentid);
         String studentName = student.getName();
 
-        //System.out.println("SaveGrade Username: " + username);
         Grade grade = new Grade();
-        grade.setStudentName(studentName); // Replace with actual student name
+        grade.setStudentName(studentName);
         grade.setCourseName(currentExam.getCourseID());
         grade.setExamName(currentExam.getExamName());
         grade.setScore(score);
         grade.setFullScore(fullScore);
         grade.setTimeSpent(timeSpent);
-        grade.setUserName(username); // Replace with actual username
+        grade.setUserName(username);
 
         gradeService.addGrade(grade);
     }
 
+    /**
+     * Checks if the exam has already been completed by the student.
+     *
+     * @return true if the exam is completed, false otherwise
+     */
     private boolean isExamCompleted() {
         List<Grade> grades = gradeService.getGradesForUser(username);
         for (Grade grade : grades) {
@@ -267,6 +321,11 @@ public class StudentExamController {
         return false;
     }
 
+    /**
+     * Sets the current exam and loads the exam data if the exam is not completed.
+     *
+     * @param exam the examination object containing the exam details
+     */
     public void setCurrentExam(Examination exam) {
         this.currentExam = exam;
         if (isExamCompleted()) {
@@ -281,7 +340,6 @@ public class StudentExamController {
                 stage.close();
             });
         } else {
-            //System.out.println("Exam is not completed. Loading exam data.");
             loadExamData();
         }
     }

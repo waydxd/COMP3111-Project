@@ -193,7 +193,7 @@ public class TeacherRegisterController implements Initializable {
             // Add the account to the account manager
 //            getAccountManager().addAccount(teacher);
             teacherService.addTeacher(teacher);
-
+            SuccessPopupController.Success_Popup("Registration successful!");
             teacherLoginController.getRegisterStage().close();
         }
 

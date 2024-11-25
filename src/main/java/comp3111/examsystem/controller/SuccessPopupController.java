@@ -9,16 +9,28 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/**
+ * The `SuccessPopupController` class manages the success popup functionality within the Exam Management System.
+ * It provides methods to display success messages to the user.
+ */
 public class SuccessPopupController {
 
     static Stage successWindow;
 
+    /**
+     * Closes the success popup window.
+     */
     @FXML
     public void close() {
         // Code to close the success popup window
         successWindow.close();
     }
 
+    /**
+     * Displays a success popup window with a predefined UI.
+     * If the success window is not already created, it initializes and shows it.
+     */
     public static void Success_Popup() {
         try {
             if(successWindow == null) {
@@ -35,6 +47,11 @@ public class SuccessPopupController {
         }
     }
 
+    /**
+     * Displays a success popup window with a custom message.
+     *
+     * @param message The success message to be displayed in the popup.
+     */
     public static void Success_Popup(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");

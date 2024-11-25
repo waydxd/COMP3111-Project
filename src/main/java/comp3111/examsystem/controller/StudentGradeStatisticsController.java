@@ -21,6 +21,10 @@ import java.util.ResourceBundle;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The `StudentGradeStatisticsController` class manages the grade statistics view for students.
+ * It displays the grades in a table and a bar chart, and allows filtering by course.
+ */
 public class StudentGradeStatisticsController implements Initializable {
 
     @FXML
@@ -50,12 +54,23 @@ public class StudentGradeStatisticsController implements Initializable {
 
     private GradeService gradeService = new GradeServiceImpl();
 
+    /**
+     * Sets the username of the student and loads the grades.
+     *
+     * @param username the username of the student
+     */
     public void setUsername(String username) {
         this.username = username;
         System.out.println("GetGrades Username: " + username);
         loadGrades();
     }
 
+    /**
+     * Initializes the controller. This method is called after the FXML file has been loaded.
+     *
+     * @param url the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the resources used to localize the root object, or null if the root object is not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         barChart.setLegendVisible(false);
@@ -67,10 +82,11 @@ public class StudentGradeStatisticsController implements Initializable {
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
         fullScoreColumn.setCellValueFactory(new PropertyValueFactory<>("fullScore"));
         timeSpendColumn.setCellValueFactory(new PropertyValueFactory<>("timeSpent"));
-
-
     }
 
+    /**
+     * Loads the grades for the current user and updates the table and chart.
+     */
     private void loadGrades() {
         gradeList.clear();
         gradeList.addAll(gradeService.getGradesForUser(username));
@@ -79,6 +95,9 @@ public class StudentGradeStatisticsController implements Initializable {
         loadChart(gradeList);
     }
 
+    /**
+     * Initializes the course choice box with the list of courses.
+     */
     private void initializeChoiceBoxes() {
         Set<String> courses = new HashSet<>();
         gradeList.forEach(grade -> courses.add(grade.getCourseName()));
@@ -91,12 +110,20 @@ public class StudentGradeStatisticsController implements Initializable {
         courseCombox.setValue("");
     }
 
+    /**
+     * Refreshes the grade data and updates the table and chart.
+     */
     @FXML
     public void refresh() {
         loadGrades();
         query();
     }
 
+    /**
+     * Loads the chart with the average scores for each course.
+     *
+     * @param grades the list of grades to be displayed in the chart
+     */
     private void loadChart(List<Grade> grades) {
         XYChart.Series<String, Number> seriesBar = new XYChart.Series<>();
         Map<String, Double> courseAverages = calculateCourseAverages(grades);
@@ -108,6 +135,12 @@ public class StudentGradeStatisticsController implements Initializable {
         barChart.getData().add(seriesBar);
     }
 
+    /**
+     * Calculates the average scores for each course.
+     *
+     * @param grades the list of grades
+     * @return a map of course names to average scores
+     */
     protected Map<String, Double> calculateCourseAverages(List<Grade> grades) {
         Map<String, List<Double>> courseScores = new HashMap<>();
         Map<String, Double> averages = new HashMap<>();
@@ -130,11 +163,17 @@ public class StudentGradeStatisticsController implements Initializable {
         return averages;
     }
 
+    /**
+     * Resets the course choice box to its default value.
+     */
     @FXML
     public void reset() {
         courseCombox.setValue(null);
     }
 
+    /**
+     * Filters the grades based on the selected course and updates the table and chart.
+     */
     @FXML
     public void query() {
         String selectedCourse = courseCombox.getValue();

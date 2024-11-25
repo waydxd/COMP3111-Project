@@ -5,40 +5,40 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ErrorPopupController implements Initializable  {
-
+/**
+ * The `ErrorPopupController` class manages the error popup window.
+ * It provides methods to display error messages and close the error popup.
+ */
+public class ErrorPopupController implements Initializable {
 
     static Stage errorWindow;
 
-    @FXML
-    public void close(ActionEvent event) {
-        // Code to close the error popup window
-        errorWindow.close();
-    }
 
+
+    /**
+     * Initializes the controller. This method is called after the FXML file has been loaded.
+     *
+     * @param url the location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the resources used to localize the root object, or null if the root object is not localized
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-
+    /**
+     * Displays an error popup window with a predefined layout.
+     */
     public static void Error_Popup() {
         try {
-            if(errorWindow==null)
-            {
+            if (errorWindow == null) {
                 errorWindow = new Stage();
             }
 
@@ -52,6 +52,11 @@ public class ErrorPopupController implements Initializable  {
         }
     }
 
+    /**
+     * Displays an error popup with a custom error message.
+     *
+     * @param message the error message to display
+     */
     public static void Error_Popup(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -60,6 +65,11 @@ public class ErrorPopupController implements Initializable  {
         alert.showAndWait();
     }
 
+    /**
+     * Closes the error popup window.
+     *
+     * @param actionEvent the action event triggered by the close button
+     */
     public void close(javafx.event.ActionEvent actionEvent) {
         errorWindow.close();
     }

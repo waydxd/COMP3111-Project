@@ -15,6 +15,11 @@ import java.util.ResourceBundle;
 
 import static comp3111.examsystem.entity.Manager.getAccountManager;
 
+/**
+ * The `StudentRegisterController` class manages the student registration functionality within the Exam Management System.
+ * It handles the registration process by collecting user input, validating it, and creating a new student account.
+ */
+
 public class StudentRegisterController implements Initializable {
     @FXML
     private TextField usernameTxt;
@@ -33,11 +38,22 @@ public class StudentRegisterController implements Initializable {
 
     private final StudentService studentService = new StudentServiceImpl();
 
+    /**
+     * Initializes the controller. This method is called after the FXML file has been loaded.
+     *
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object is not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Gender.getItems().addAll("Male", "Female", "Other");
     }
 
+
+    /**
+     * Handles the registration process. This method collects user input, validates it, and creates a new student account.
+     * If any validation fails, an error popup is displayed.
+     */
     @FXML
     public void register() {
         String username = usernameTxt.getText();
@@ -84,7 +100,9 @@ public class StudentRegisterController implements Initializable {
         close();
     }
 
-
+    /**
+     * Closes the registration window.
+     */
     @FXML
     public void close() {
         Stage stage = (Stage) usernameTxt.getScene().getWindow();

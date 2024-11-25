@@ -21,6 +21,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The `StudentLoginController` class manages the student login functionality within the Exam Management System.
+ * It handles user authentication by verifying the student's credentials and managing the transition
+ * to the main user interface upon successful login.
+ */
 public class StudentLoginController implements Initializable {
     @FXML
     private TextField usernameTxt;
@@ -35,9 +40,21 @@ public class StudentLoginController implements Initializable {
 
     private final StudentService studentService = new StudentServiceImpl();
 
+    /**
+     * Initializes the controller. This method is called after the FXML file has been loaded.
+     *
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object is not localized.
+     */
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    /**
+     * Checks if a student account exists based on the provided username.
+     *
+     * @param username The username to check.
+     * @return True if the account exists, false otherwise.
+     */
     public boolean accountExists(String username) {
         for (Student student : studentService.getAllStudents()) {
             if (student.getUsername().equals(username)) {
@@ -47,6 +64,12 @@ public class StudentLoginController implements Initializable {
         return false;
     }
 
+    /**
+     * Retrieves a Student object based on the provided username.
+     *
+     * @param username The username of the student to retrieve.
+     * @return The Student object if found, or null if not found.
+     */
     public Student getStudentByUsername(String username) {
         for (Student student : studentService.getAllStudents()) {
             if (student.getUsername().equals(username)) {
@@ -56,6 +79,11 @@ public class StudentLoginController implements Initializable {
         return null;
     }
 
+    /**
+     * Validates the login credentials of a student.
+     *
+     * @return True if the login is successful (account exists and password is correct), false otherwise.
+     */
     public boolean checkLogin() {
         if (accountExists(usernameTxt.getText())) {
             Student student = getStudentByUsername(usernameTxt.getText());
@@ -66,6 +94,12 @@ public class StudentLoginController implements Initializable {
         return false;
     }
 
+
+    /**
+     * Handles the login action triggered by the user.
+     *
+     * @param e The action event triggered by the login button.
+     */
     @FXML
     public void login(ActionEvent e) {
         if (checkLogin()) {
@@ -91,6 +125,9 @@ public class StudentLoginController implements Initializable {
         }
     }
 
+    /**
+     * Opens the student registration window.
+     */
     @FXML
     public void register() {
         try {
@@ -105,19 +142,5 @@ public class StudentLoginController implements Initializable {
         }
     }
 
-    @FXML
-    public void backToMain() {
-        try {
-            Stage currentStage = (Stage) usernameTxt.getScene().getWindow();
-            currentStage.close();
 
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginUI.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Select Login");
-            stage.setScene(new Scene(fxmlLoader.load()));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
