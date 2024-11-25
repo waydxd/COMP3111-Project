@@ -1,0 +1,145 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Teacher</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.entity</a>
+</div>
+
+<h1>Coverage Summary for Class: Teacher (comp3111.examsystem.entity)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Teacher</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.entity;
+&nbsp;
+&nbsp;public class Teacher extends Member {
+&nbsp;    private String Position;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor using super class constructor
+&nbsp;     * @param Username username
+&nbsp;     * @param Password password
+&nbsp;     * @param Name name
+&nbsp;     * @param Gender gender
+&nbsp;     * @param Age age
+&nbsp;     * @param Department department
+&nbsp;     * @param position position
+&nbsp;     */
+&nbsp;    public Teacher(String Username, String Password, String Name, String Gender, String Age, String Department,String position) {
+<b class="fc">&nbsp;        super(Username, Password, Name, Gender, Age, Department);</b>
+<b class="fc">&nbsp;        Position=position;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return position
+&nbsp;     */
+&nbsp;    public String getPosition() {
+<b class="fc">&nbsp;        return Position;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param Position position
+&nbsp;     */
+&nbsp;    public void setPosition(String Position) {
+<b class="fc">&nbsp;        this.Position = Position;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Default constructor with no values
+&nbsp;     */
+&nbsp;    public Teacher(){
+<b class="fc">&nbsp;        super();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>

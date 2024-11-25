@@ -1,0 +1,264 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > GradeDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.dao.internal</a>
+</div>
+
+<h1>Coverage Summary for Class: GradeDAO (comp3111.examsystem.dao.internal)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GradeDAO</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (6/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    55.6%
+  </span>
+  <span class="absValue">
+    (40/72)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (18/45)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.dao.internal;
+&nbsp;
+&nbsp;import comp3111.examsystem.DatabaseConnection;
+&nbsp;import comp3111.examsystem.entity.Grade;
+&nbsp;import org.jooq.DSLContext;
+&nbsp;import org.jooq.SQLDialect;
+&nbsp;import org.jooq.impl.DSL;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.SQLException;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static com.examsystem.jooq.generated.tables.Grades.GRADES;
+&nbsp;
+&nbsp;public class GradeDAO {
+&nbsp;    private DSLContext create;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     * &lt;p&gt;
+&nbsp;     *     This constructor initializes the DSLContext for interacting with the database
+&nbsp;     *     using the SQLite dialect. It attempts to establish a connection to the database
+&nbsp;     *     and sets up the DSLContext for executing SQL queries.
+&nbsp;     *     If a SQLException occurs while attempting to establish the connection, the stack trace
+&nbsp;     *     of the exception is printed.
+&nbsp;     *     &lt;/p&gt;
+&nbsp;     */
+<b class="nc">&nbsp;    public GradeDAO() {</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            Connection conn = DatabaseConnection.getConnection();</b>
+<b class="nc">&nbsp;            this.create = DSL.using(conn, SQLDialect.SQLITE);</b>
+&nbsp;        } catch (SQLException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     * &lt;p&gt;
+&nbsp;     *     This constructor initializes the DSLContext for interacting with the database
+&nbsp;     *     using the SQLite dialect. It attempts to establish a connection to the database
+&nbsp;     *     and sets up the DSLContext for executing SQL queries.
+&nbsp;     *     If a SQLException occurs while attempting to establish the connection, the stack trace
+&nbsp;     *     of the exception is printed.
+&nbsp;     *     &lt;/p&gt;
+&nbsp;     * @param conn connection to the database
+&nbsp;     * */
+<b class="fc">&nbsp;    public GradeDAO(Connection conn) {</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            this.create = DSL.using(conn, SQLDialect.SQLITE);</b>
+&nbsp;        } catch (Exception e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Adds a grade to the database.
+&nbsp;     * @param grade grade to be added
+&nbsp;     *              &lt;p&gt;
+&nbsp;     *              This function adds a grade to the database. It first checks if the username exists in the members table.
+&nbsp;     *              If the username does not exist, an IllegalArgumentException is thrown. Otherwise, the grade is inserted
+&nbsp;     *              into the grades table.
+&nbsp;     *              &lt;/p&gt;
+&nbsp;     */
+&nbsp;    public void addGrade(Grade grade) {
+&nbsp;        // Check if the username exists in the members table
+<b class="fc">&nbsp;        boolean usernameExists = create.fetchExists(</b>
+<b class="fc">&nbsp;                create.selectOne()</b>
+<b class="fc">&nbsp;                        .from(&quot;members&quot;)</b>
+<b class="nc">&nbsp;                        .where(&quot;username = ?&quot;, grade.getUserName())</b>
+&nbsp;        );
+&nbsp;
+<b class="fc">&nbsp;        if (!usernameExists) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Username not found: &quot; + grade.getUserName());</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Insert the grade if the username is valid
+<b class="fc">&nbsp;        create.insertInto(GRADES, GRADES.STUDENT_NAME, GRADES.COURSE_NAME, GRADES.EXAM_NAME, GRADES.SCORE, GRADES.FULL_SCORE, GRADES.TIME_SPENT, GRADES.USERNAME)</b>
+<b class="fc">&nbsp;                .values(grade.getStudentName(), grade.getCourseName(), grade.getExamName(), grade.getScore(), grade.getFullScore(), grade.getTimeSpent(), grade.getUserName())</b>
+<b class="fc">&nbsp;                .execute();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves a grade from the database using the grade ID.
+&nbsp;     * &lt;p&gt;
+&nbsp;     * This function fetches a grade from the database using the given grade ID.
+&nbsp;     * &lt;/p&gt;
+&nbsp;     * @param id the ID of the grade to be retrieved
+&nbsp;     * @return the grade with the given ID
+&nbsp;     */
+&nbsp;    public Grade getGrade(int id) {
+<b class="fc">&nbsp;        return create.selectFrom(GRADES)</b>
+<b class="fc">&nbsp;                .where(GRADES.ID.eq(id))</b>
+<b class="fc">&nbsp;                .fetchOneInto(Grade.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves all grades from the database.
+&nbsp;     * @return the list of all grades
+&nbsp;     */
+&nbsp;    public List&lt;Grade&gt; getAllGrades() {
+<b class="pc">&nbsp;        return create.selectFrom(GRADES)</b>
+<b class="fc">&nbsp;                .fetchInto(Grade.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Updates a grade in the database.
+&nbsp;     * @param grade grade to be updated
+&nbsp;     */
+&nbsp;    public void updateGrade(Grade grade) {
+<b class="pc">&nbsp;        if(getGrade(grade.getId()) == null) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Grade not found with ID: &quot; + grade.getId());</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(grade.getScore()&lt;0 || grade.getFullScore()&lt;0 || grade.getTimeSpent()&lt;0){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Score, Full Score or Time Spent cannot be negative&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        create.update(GRADES)</b>
+<b class="nc">&nbsp;                .set(GRADES.STUDENT_NAME, grade.getStudentName())</b>
+<b class="nc">&nbsp;                .set(GRADES.COURSE_NAME, grade.getCourseName())</b>
+<b class="nc">&nbsp;                .set(GRADES.EXAM_NAME, grade.getExamName())</b>
+<b class="nc">&nbsp;                .set(GRADES.SCORE, grade.getScore())</b>
+<b class="nc">&nbsp;                .set(GRADES.FULL_SCORE, grade.getFullScore())</b>
+<b class="nc">&nbsp;                .set(GRADES.TIME_SPENT, grade.getTimeSpent())</b>
+<b class="nc">&nbsp;                .where(GRADES.ID.eq(grade.getId()))</b>
+<b class="nc">&nbsp;                .execute();</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Deletes a grade from the database.
+&nbsp;     * @param id the ID of the grade to be deleted
+&nbsp;     */
+&nbsp;    public void deleteGrade(int id) {
+<b class="pc">&nbsp;        if(getGrade(id) == null) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Grade not found with ID: &quot; + id);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        create.deleteFrom(GRADES)</b>
+<b class="nc">&nbsp;                .where(GRADES.ID.eq(id))</b>
+<b class="nc">&nbsp;                .execute();</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves all grades from the database for a given user.
+&nbsp;     * @param username the username of the user
+&nbsp;     * @return the list of all grades for the user
+&nbsp;     */
+&nbsp;    public List&lt;Grade&gt; getGradesForUser(String username) {
+<b class="nc">&nbsp;        return create.selectFrom(GRADES)</b>
+<b class="nc">&nbsp;                .where(GRADES.USERNAME.eq(username))</b>
+<b class="nc">&nbsp;                .fetchInto(Grade.class);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>

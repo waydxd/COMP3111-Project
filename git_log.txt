@@ -1,0 +1,117 @@
+* 998ba7a - Wayd, 14 minutes ago : generate javadocs
+* d4768e4 - Wayd, 47 minutes ago : fix: gradeService returning wrong grade list
+* 935e9f1 - Weicheng YE, 57 minutes ago : #Improve Alert_pop_up on Exammanagement and QuestionBankManagementController and TeacherRegister
+* 3c4f295 - yxqxq, 2 hours ago : hs
+* fbf8f24 - yxqxq, 2 hours ago : Added StudentLoginControllerTest
+* d62c587 - yxqxq, 86 minutes ago : hs
+* b7bcdee - yxqxq, 16 hours ago : Update Login and Main for Student
+* 444bece - Wayd, 3 hours ago : Upload screenshots for task 3
+* f9843c8 - Jens?n, 4 hours ago : Update README.md
+* c3682bf - Jens?n, 4 hours ago : Update README.md
+* 59e4b8b - Wayd, 4 hours ago : Update README.md fix: pom.xml for some deprecated options that is causing build failure
+* a8e0acb - Weicheng YE, 7 hours ago : #Fix Bugs on Exammanagement and QuestionBankManagementController and TeacherRegister
+* 8621168 - Weicheng YE, 9 hours ago : #Update Javadoc on AccountManager
+* c2ad622 - Wayd, 21 hours ago : refactor: remove redundant identifiers
+* 5489989 - Weicheng YE, 21 hours ago : #Update TeacherRegisterController
+* 304cb16 - Wayd, 2 days ago : rewrote some test
+* a17ba7a - Wayd, 2 days ago : regenerated jooq code
+* c679f06 - Wayd, 3 days ago : Altered some javadoc due to previous commit. feat: mutator of quiz in Examination.
+* dd23fea - Wayd, 3 days ago : feat: added getTotalScore for Examination
+* 00286cd - Weicheng YE, 3 days ago : #Update TeacherRegisterController
+* 66f702e - Wayd, 4 days ago : feat: added getGradesForUser and update login function to return student id
+* b7aba82 - Wayd, 4 days ago : rewrote some test to have coverage > 65%
+* 3e63661 - Weicheng YE, 4 days ago : #Update JavaDoc on TeacherLoginController,Teacherregister, ExaminationManager,Questionbank
+* 97dbff9 - Weicheng YE, 4 days ago : #Update controller test on tearcherLogin
+* 723d3d9 - Weicheng YE, 4 days ago : #Update some controller test
+* a24d165 - Weicheng YE, 4 days ago : #Update some controller test
+*   5008a1b - Weicheng YE, 4 days ago : Merge remote-tracking branch 'origin/main'
+|\  
+| * cf0f656 - Wayd, 4 days ago : javadocs html
+| * 48cba74 - Wayd, 4 days ago : added javadocs for entities
+* | bca5dc2 - Weicheng YE, 4 days ago : #Add Test on some Controller,Exam,Question,Tearchlogin
+|/  
+* 34a57c2 - Wayd, 5 days ago : Test for controllers
+*   42b88f1 - Jens?n, 5 days ago : Merge pull request #3 from waydxd/task3-test
+|\  
+| *   01a15dc - Jens?n, 5 days ago : Merge branch 'main' into task3-test
+| |\  
+| |/  
+|/|   
+* | 8c95c0f - Weicheng YE, 5 days ago : #Add Test on all Entity and some Controller
+* |   7530c6c - Jens?n, 6 days ago : Merge pull request #2 from waydxd/task3-test
+|\ \  
+| | * 5ddb0a7 - Wayd, 5 days ago : Refactor: Moved filter logic to service layer, and added test for them.
+| | * 38be9b3 - Wayd, 6 days ago : Test: rewrote test for all DAO to make sure branch coverage > 65%
+| |/  
+| *   f1a3dd7 - Wayd, 6 days ago : Merge remote-tracking branch 'origin/task3-test' into task3-test
+| |\  
+| | * c077084 - Wayd, 6 days ago : Test: Wrote test for all DAO, Refactor: Added a conversion constructor for all DAO for testing with memory database.
+| * | 52f3f80 - Wayd, 6 days ago : Test: Wrote test for all DAO, Refactor: Added a conversion constructor for all DAO for testing with memory database.
+|/ /  
+* / 71d764b - Weicheng YE, 6 days ago : #Task 2 Teacher_Login Done
+|/  
+* d2ba138 - Wayd, 6 days ago : fix: merge conflicts
+* 291439b - Wayd, 6 days ago : update db
+*   2513c77 - Jens?n, 6 days ago : Merge pull request #1 from waydxd/Task3
+|\  
+| *   9bccc25 - Jens?n, 6 days ago : Merge branch 'main' into Task3
+| |\  
+| |/  
+|/|   
+* | ca667da - Wayd, 6 days ago : Updated TeacherViewGradeUI to use text fields Wrote javadocs for all implemented function in DAO and service
+* | 7aa57a7 - Wayd, 6 days ago : Wrote test for CourseService
+* | 85f0227 - Wayd, 7 days ago : Wrote JUnit test for service layers
+* | 1618b7d - Wayd, 7 days ago : fix: ExaminationDAO.getQuestionsInExamination not returning proper data ExamManagementSystemController delete and add question functionality
+* | 28cf1ec - Wayd, 7 days ago : Implementing test
+* | 31a77c3 - Weicheng YE, 7 days ago : #Exammanagement DatabaseHandlement (-_- 0)
+* | d2043f2 - Wayd, 8 days ago : feat: Added exam quiz relationship
+* | f5a3ba1 - Wayd, 8 days ago : Fix: JOOQ cannot map Question.java class to database
+* | 4c61510 - Wayd, 8 days ago : Fix: JOOQ cannot map Question.java class to database
+* | c434122 - Wayd, 8 days ago : Fix: JOOQ cannot map Examination.java class to database
+* | fde8715 - Wayd, 8 days ago : added dummy values
+| * f553980 - Wayd, 7 days ago : feat: handleReset will no longer refresh table
+| * 3507220 - Wayd, 8 days ago : Refactor: Wrote javadocs and code reviewed
+| * 7e78fe3 - Wayd, 8 days ago : Refactor: Wrote javadocs and code reviewed
+| * 7bce7ec - Wayd, 8 days ago : Wrote javadocs
+|/  
+* fec9b5a - Wayd, 8 days ago : Theme
+* 79fa966 - Wayd, 9 days ago : Misc
+* 6beff7e - Wayd, 9 days ago : UI for task 3
+* ca822b0 - Wayd, 9 days ago : feat: Implemented whole Task 3 fix: courseDAO, Member related DAO
+* 0a086e6 - Wayd, 9 days ago : Implemented Task 3.3 - Delete and Refresh
+* b08ac9b - Wayd, 9 days ago : Implemented Task 3.2 Added StudentService interfaces Edited some Service functions
+* 2d4258f - Wayd, 13 days ago : Implemented Teacher Member Course Examination Question DAO and Service
+* 280eefe - Wayd, 13 days ago : Implemented Exam DAO and service Database table updated
+* f1da3b7 - Wayd, 13 days ago : Start implementing Manager Login
+* 887260e - Weicheng YE, 13 days ago : s
+* c8be493 - Weicheng YE, 13 days ago : #Add Interface: HandleDatabase #Please complete the read and write function in class "Exmination", "Manager" and “Question”
+* a50cb67 - Weicheng YE, 3 weeks ago : #Task_2_ALL_Done
+* 7979e5c - Weicheng YE, 3 weeks ago : #Question_Bank_Improve_2
+* a36a377 - Weicheng YE, 3 weeks ago : #Question_Bank_Improve
+* a232479 - Weicheng YE, 3 weeks ago : #Question_Bank_Done
+* 688693d - Weicheng YE, 3 weeks ago : #Task2_update
+* 55bcf6d - Wayd, 3 weeks ago : Wrote unit test for GradeDAO
+* d566611 - waydxd, 3 weeks ago : fix: JOOQ exported and opened in module-info.java
+*   aa64563 - waydxd, 3 weeks ago : Merge remote-tracking branch 'origin/main'
+|\  
+| *   3119842 - Wayd, 3 weeks ago : Merge remote-tracking branch 'origin/main'
+| |\  
+| * | c58a936 - Wayd, 3 weeks ago : Added service interfaces
+* | | 898000f - waydxd, 3 weeks ago : Setting up JOOQ
+| |/  
+|/|   
+* | da05958 - waydxd, 4 weeks ago : Setting up JOOQ
+|/  
+* 5c3389d - Wayd, 4 weeks ago : Task 3.1: Teacher grade statistics, DAO implementation not yet done
+* 6577213 - Wayd, 4 weeks ago : Task 3.1: Teacher grade statistics, DAO implementation not yet done
+* 7856bf6 - Wayd, 4 weeks ago : Task 3: added some class to Entity
+* a8a0a87 - Jens?n, 5 weeks ago : Update README.md
+* 7dd9fe0 - YE Weicheng, 5 weeks ago : Update README.md
+* 854b226 - YE Weicheng, 5 weeks ago : Update README.md
+* ea91648 - YE Weicheng, 5 weeks ago : Update README.md
+* b6d90fa - YE Weicheng, 5 weeks ago : Create test
+* 5ef5e67 - YE Weicheng, 5 weeks ago : Create Screenshot
+* 28d51f5 - Wayd, 6 weeks ago : Skeleton code
+* 96b623b - Wayd, 6 weeks ago : Tools in canvas
+* 802cc68 - Wayd, 6 weeks ago : IDE settings
+* f99e0a8 - Wing Yu Chan, 9 weeks ago : Initial commit

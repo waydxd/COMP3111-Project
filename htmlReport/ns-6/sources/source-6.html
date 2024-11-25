@@ -1,0 +1,232 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > QuestionDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.dao.internal</a>
+</div>
+
+<h1>Coverage Summary for Class: QuestionDAO (comp3111.examsystem.dao.internal)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">QuestionDAO</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (40/50)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.4%
+  </span>
+  <span class="absValue">
+    (27/32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.dao.internal;
+&nbsp;
+&nbsp;import comp3111.examsystem.DatabaseConnection;
+&nbsp;import comp3111.examsystem.entity.Question;
+&nbsp;import org.jooq.DSLContext;
+&nbsp;import org.jooq.SQLDialect;
+&nbsp;import org.jooq.impl.DSL;
+&nbsp;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.SQLException;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static com.examsystem.jooq.generated.Tables.QUESTIONS;
+&nbsp;
+&nbsp;public class QuestionDAO {
+&nbsp;    private DSLContext create;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     * &lt;p&gt;
+&nbsp;     *     This constructor initializes the DSLContext for interacting with the database
+&nbsp;     *     using the SQLite dialect. It attempts to establish a connection to the database
+&nbsp;     *     and sets up the DSLContext for executing SQL queries.
+&nbsp;     *     If a SQLException occurs while attempting to establish the connection, the stack trace
+&nbsp;     *     of the exception is printed.
+&nbsp;     *     &lt;/p&gt;
+&nbsp;     *
+&nbsp;     */
+<b class="nc">&nbsp;    public QuestionDAO() {</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            Connection conn = DatabaseConnection.getConnection();</b>
+<b class="nc">&nbsp;            this.create = DSL.using(conn, SQLDialect.SQLITE);</b>
+&nbsp;        } catch (SQLException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     * &lt;p&gt;
+&nbsp;     *     This constructor initializes the DSLContext for interacting with the database
+&nbsp;     *     using the SQLite dialect. It attempts to establish a connection to the database
+&nbsp;     *     and sets up the DSLContext for executing SQL queries.
+&nbsp;     *     If a SQLException occurs while attempting to establish the connection, the stack trace
+&nbsp;     *     of the exception is printed.
+&nbsp;     *     &lt;/p&gt;
+&nbsp;     * @param conn connection to the database
+&nbsp;     * */
+<b class="fc">&nbsp;    public QuestionDAO(Connection conn) {</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            this.create = DSL.using(conn, SQLDialect.SQLITE);</b>
+&nbsp;        } catch (Exception e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Adds a question to the database.
+&nbsp;     * @param question question to be added
+&nbsp;     */
+&nbsp;    public void addQuestion(Question question) {
+<b class="pc">&nbsp;    create.insertInto(QUESTIONS, QUESTIONS.QUESTION, QUESTIONS.OPTIONA, QUESTIONS.OPTIONB, QUESTIONS.OPTIONC, QUESTIONS.OPTIOND, QUESTIONS.ANSWER, QUESTIONS.TYPE, QUESTIONS.SCORE)</b>
+<b class="fc">&nbsp;                .values(question.getQuestion(), question.getOptionA(), question.getOptionB(),question.getOptionC(), question.getOptionD(), question.getAnswer(), question.getType(), (float) question.getScore())</b>
+<b class="fc">&nbsp;                .execute();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves a question from the database using the question ID.
+&nbsp;     * &lt;p&gt;
+&nbsp;     * This function fetches a question from the database using the given question ID.
+&nbsp;     * &lt;/p&gt;
+&nbsp;     * @param id the ID of the question to be retrieved
+&nbsp;     * @return the question with the given ID
+&nbsp;     */
+&nbsp;    public Question getQuestion(int id) {
+<b class="pc">&nbsp;        return create.selectFrom(QUESTIONS)</b>
+<b class="fc">&nbsp;                .where(QUESTIONS.ID.eq(id))</b>
+<b class="fc">&nbsp;                .fetchOneInto(Question.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Updates a question in the database.
+&nbsp;     * @param question question to be updated
+&nbsp;     */
+&nbsp;    public void updateQuestion(Question question) {
+<b class="pc">&nbsp;        create.update(QUESTIONS)</b>
+<b class="fc">&nbsp;                .set(QUESTIONS.QUESTION, question.getQuestion())</b>
+<b class="fc">&nbsp;                .set(QUESTIONS.OPTIONA, question.getOptionA())</b>
+<b class="fc">&nbsp;                .set(QUESTIONS.OPTIONB, question.getOptionB())</b>
+<b class="fc">&nbsp;                .set(QUESTIONS.OPTIONC, question.getOptionC())</b>
+<b class="fc">&nbsp;                .set(QUESTIONS.OPTIOND, question.getOptionD())</b>
+<b class="fc">&nbsp;                .set(QUESTIONS.ANSWER, question.getAnswer())</b>
+<b class="fc">&nbsp;                .set(QUESTIONS.TYPE, question.getType())</b>
+<b class="fc">&nbsp;                .set(QUESTIONS.SCORE, (float) question.getScore())</b>
+<b class="fc">&nbsp;                .where(QUESTIONS.ID.eq(question.getId()))</b>
+<b class="fc">&nbsp;                .execute();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Deletes a question from the database.
+&nbsp;     * @param id the ID of the question to be deleted
+&nbsp;     */
+&nbsp;    public void deleteQuestion(int id) {
+<b class="pc">&nbsp;        create.deleteFrom(QUESTIONS)</b>
+<b class="fc">&nbsp;                .where(QUESTIONS.ID.eq(id))</b>
+<b class="fc">&nbsp;                .execute();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Get all questions from the database.
+&nbsp;     * @return list of all questions.
+&nbsp;     */
+&nbsp;    public List&lt;Question&gt; getAllQuestions() {
+<b class="pc">&nbsp;        return create.selectFrom(QUESTIONS)</b>
+<b class="fc">&nbsp;                .fetchInto(Question.class);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>

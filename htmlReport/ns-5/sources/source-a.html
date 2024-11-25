@@ -1,0 +1,273 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > StudentGradeStatisticsController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: StudentGradeStatisticsController (comp3111.examsystem.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StudentGradeStatisticsController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/60)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.controller;
+&nbsp;
+&nbsp;import comp3111.examsystem.entity.Grade;
+&nbsp;import comp3111.examsystem.service.GradeService;
+&nbsp;import comp3111.examsystem.service.internal.GradeServiceImpl;
+&nbsp;import javafx.collections.FXCollections;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.Initializable;
+&nbsp;import javafx.scene.chart.*;
+&nbsp;import javafx.scene.control.ChoiceBox;
+&nbsp;import javafx.scene.control.TableColumn;
+&nbsp;import javafx.scene.control.TableView;
+&nbsp;import javafx.scene.control.cell.PropertyValueFactory;
+&nbsp;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.Set;
+&nbsp;
+<b class="nc">&nbsp;public class StudentGradeStatisticsController implements Initializable {</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    protected ChoiceBox&lt;String&gt; courseCombox;
+&nbsp;    @FXML
+&nbsp;    protected TableView&lt;Grade&gt; gradeTable;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; courseColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; examColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; scoreColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; fullScoreColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; timeSpendColumn;
+&nbsp;    @FXML
+&nbsp;    BarChart&lt;String, Number&gt; barChart;
+&nbsp;    @FXML
+&nbsp;    CategoryAxis categoryAxisBar;
+&nbsp;    @FXML
+&nbsp;    NumberAxis numberAxisBar;
+&nbsp;
+<b class="nc">&nbsp;    protected final ObservableList&lt;Grade&gt; gradeList = FXCollections.observableArrayList();</b>
+&nbsp;
+&nbsp;    private String username;
+&nbsp;
+<b class="nc">&nbsp;    private GradeService gradeService = new GradeServiceImpl();</b>
+&nbsp;
+&nbsp;    public void setUsername(String username) {
+<b class="nc">&nbsp;        this.username = username;</b>
+<b class="nc">&nbsp;        System.out.println(&quot;GetGrades Username: &quot; + username);</b>
+<b class="nc">&nbsp;        loadGrades();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc">&nbsp;        barChart.setLegendVisible(false);</b>
+<b class="nc">&nbsp;        categoryAxisBar.setLabel(&quot;Course&quot;);</b>
+<b class="nc">&nbsp;        numberAxisBar.setLabel(&quot;Avg. Score&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        courseColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;courseName&quot;));</b>
+<b class="nc">&nbsp;        examColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;examName&quot;));</b>
+<b class="nc">&nbsp;        scoreColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;score&quot;));</b>
+<b class="nc">&nbsp;        fullScoreColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;fullScore&quot;));</b>
+<b class="nc">&nbsp;        timeSpendColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;timeSpent&quot;));</b>
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    private void loadGrades() {
+<b class="nc">&nbsp;        gradeList.clear();</b>
+<b class="nc">&nbsp;        gradeList.addAll(gradeService.getGradesForUser(username));</b>
+<b class="nc">&nbsp;        gradeTable.setItems(gradeList);</b>
+<b class="nc">&nbsp;        initializeChoiceBoxes();</b>
+<b class="nc">&nbsp;        loadChart(gradeList);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void initializeChoiceBoxes() {
+<b class="nc">&nbsp;        Set&lt;String&gt; courses = new HashSet&lt;&gt;();</b>
+<b class="nc">&nbsp;        gradeList.forEach(grade -&gt; courses.add(grade.getCourseName()));</b>
+&nbsp;
+<b class="nc">&nbsp;        ObservableList&lt;String&gt; courseItems = FXCollections.observableArrayList(courses);</b>
+<b class="nc">&nbsp;        FXCollections.sort(courseItems);</b>
+<b class="nc">&nbsp;        courseItems.add(0, &quot;&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        courseCombox.setItems(courseItems);</b>
+<b class="nc">&nbsp;        courseCombox.setValue(&quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void refresh() {
+<b class="nc">&nbsp;        loadGrades();</b>
+<b class="nc">&nbsp;        query();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void loadChart(List&lt;Grade&gt; grades) {
+<b class="nc">&nbsp;        XYChart.Series&lt;String, Number&gt; seriesBar = new XYChart.Series&lt;&gt;();</b>
+<b class="nc">&nbsp;        Map&lt;String, Double&gt; courseAverages = calculateCourseAverages(grades);</b>
+<b class="nc">&nbsp;        seriesBar.getData().clear();</b>
+<b class="nc">&nbsp;        barChart.getData().clear();</b>
+<b class="nc">&nbsp;        courseAverages.forEach((course, avg) -&gt;</b>
+<b class="nc">&nbsp;                seriesBar.getData().add(new XYChart.Data&lt;&gt;(course, avg))</b>
+&nbsp;        );
+<b class="nc">&nbsp;        barChart.getData().add(seriesBar);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    protected Map&lt;String, Double&gt; calculateCourseAverages(List&lt;Grade&gt; grades) {
+<b class="nc">&nbsp;        Map&lt;String, List&lt;Double&gt;&gt; courseScores = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Map&lt;String, Double&gt; averages = new HashMap&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        grades.forEach(grade -&gt; {</b>
+<b class="nc">&nbsp;            String course = grade.getCourseName();</b>
+<b class="nc">&nbsp;            double score = grade.getScore();</b>
+<b class="nc">&nbsp;            courseScores.computeIfAbsent(course, k -&gt; FXCollections.observableArrayList())</b>
+<b class="nc">&nbsp;                    .add(score);</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        courseScores.forEach((course, scores) -&gt; {</b>
+<b class="nc">&nbsp;            double avg = scores.stream()</b>
+<b class="nc">&nbsp;                    .mapToDouble(Double::doubleValue)</b>
+<b class="nc">&nbsp;                    .average()</b>
+<b class="nc">&nbsp;                    .orElse(0.0);</b>
+<b class="nc">&nbsp;            averages.put(course, avg);</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        return averages;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void reset() {
+<b class="nc">&nbsp;        courseCombox.setValue(null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void query() {
+<b class="nc">&nbsp;        String selectedCourse = courseCombox.getValue();</b>
+&nbsp;
+<b class="nc">&nbsp;        ObservableList&lt;Grade&gt; filteredList = FXCollections.observableArrayList();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Grade grade : gradeList) {</b>
+<b class="nc">&nbsp;            boolean matches = true;</b>
+<b class="nc">&nbsp;            if (selectedCourse != null &amp;&amp; !selectedCourse.isEmpty() &amp;&amp; !grade.getCourseName().equals(selectedCourse)) {</b>
+<b class="nc">&nbsp;                matches = false;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (matches) {</b>
+<b class="nc">&nbsp;                filteredList.add(grade);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        gradeTable.setItems(filteredList);</b>
+<b class="nc">&nbsp;        loadChart(filteredList);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>

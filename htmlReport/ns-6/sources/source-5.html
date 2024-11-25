@@ -1,0 +1,289 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MemberDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.dao.internal</a>
+</div>
+
+<h1>Coverage Summary for Class: MemberDAO (comp3111.examsystem.dao.internal)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MemberDAO</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80.4%
+  </span>
+  <span class="absValue">
+    (82/102)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.8%
+  </span>
+  <span class="absValue">
+    (46/48)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.dao.internal;
+&nbsp;
+&nbsp;import comp3111.examsystem.DatabaseConnection;
+&nbsp;import comp3111.examsystem.entity.Member;
+&nbsp;import comp3111.examsystem.entity.Student;
+&nbsp;import comp3111.examsystem.entity.Teacher;
+&nbsp;import org.jooq.DSLContext;
+&nbsp;import org.jooq.SQLDialect;
+&nbsp;import org.jooq.impl.DSL;
+&nbsp;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.SQLException;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static com.examsystem.jooq.generated.tables.Members.MEMBERS;
+&nbsp;public class MemberDAO {
+&nbsp;    private DSLContext create;
+&nbsp;
+&nbsp;    /** Constructor
+&nbsp;     * This constructor initializes the DSLContext for interacting with the database
+&nbsp;     * using the SQLite dialect. It attempts to establish a connection to the database
+&nbsp;     * and sets up the DSLContext for executing SQL queries.
+&nbsp;     * If a SQLException occurs while attempting to establish the connection, the stack trace
+&nbsp;     * of the exception is printed.
+&nbsp;     */
+<b class="fc">&nbsp;    public MemberDAO() {</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Connection conn = DatabaseConnection.getConnection();</b>
+<b class="fc">&nbsp;            this.create = DSL.using(conn, SQLDialect.SQLITE);</b>
+&nbsp;        } catch (SQLException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     * &lt;p&gt;
+&nbsp;     *     This constructor initializes the DSLContext for interacting with the database
+&nbsp;     *     using the SQLite dialect. It attempts to establish a connection to the database
+&nbsp;     *     and sets up the DSLContext for executing SQL queries.
+&nbsp;     *     &lt;/p&gt;
+&nbsp;     * @param conn connection to the database
+&nbsp;     */
+<b class="fc">&nbsp;    public MemberDAO(Connection conn) {</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            this.create = DSL.using(conn, SQLDialect.SQLITE);</b>
+&nbsp;        } catch (Exception e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Adds a member to the database.
+&nbsp;     * @param member member to be added
+&nbsp;     */
+&nbsp;    public void addMember(Member member) {
+<b class="pc">&nbsp;        create.insertInto(MEMBERS, MEMBERS.USERNAME, MEMBERS.PASSWORD, MEMBERS.AGE, MEMBERS.DEPARTMENT, MEMBERS.GENDER, MEMBERS.NAME, MEMBERS.TYPE)</b>
+<b class="fc">&nbsp;                .values(member.getUsername(), member.getPassword(), member.getAge(), member.getDepartment(), member.getGender(), member.getName(), &quot;Student&quot;)</b>
+<b class="fc">&nbsp;                .execute();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Adds a teacher to the database.
+&nbsp;     * @param teacher teacher to be added
+&nbsp;     */
+&nbsp;    public void addTeacher(Teacher teacher) {
+<b class="pc">&nbsp;        create.insertInto(MEMBERS, MEMBERS.USERNAME, MEMBERS.PASSWORD, MEMBERS.AGE, MEMBERS.DEPARTMENT, MEMBERS.GENDER, MEMBERS.NAME, MEMBERS.TYPE, MEMBERS.POSITION)</b>
+<b class="fc">&nbsp;                .values(teacher.getUsername(), teacher.getPassword(), teacher.getAge(), teacher.getDepartment(), teacher.getGender(), teacher.getName(), &quot;Teacher&quot;, teacher.getPosition())</b>
+<b class="fc">&nbsp;                .execute();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves a member from the database using the member ID.
+&nbsp;     * @param id the ID of the member to be retrieved
+&nbsp;     * @return the member with the given ID
+&nbsp;     */
+&nbsp;    public Member getMember(int id) {
+<b class="pc">&nbsp;        return create.selectFrom(MEMBERS)</b>
+<b class="fc">&nbsp;                .where(MEMBERS.ID.eq(id))</b>
+<b class="fc">&nbsp;                .fetchOneInto(Member.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;//    public Member getMember(String username) {
+&nbsp;//        return create.selectFrom(MEMBERS)
+&nbsp;//                .where(MEMBERS.USERNAME.eq(username))
+&nbsp;//                .fetchOneInto(Member.class);
+&nbsp;//    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves a teacher from the database using the teacher ID.
+&nbsp;     * @param id the ID of the teacher to be retrieved
+&nbsp;     * @return the teacher with the given ID
+&nbsp;     */
+&nbsp;    public Teacher getTeacher(int id) {
+<b class="pc">&nbsp;        return create.selectFrom(MEMBERS)</b>
+<b class="fc">&nbsp;                .where(MEMBERS.ID.eq(id), MEMBERS.TYPE.eq(&quot;Teacher&quot;))</b>
+<b class="fc">&nbsp;                .fetchOneInto(Teacher.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves a student from the database using the student ID.
+&nbsp;     * @param id the ID of the student to be retrieved
+&nbsp;     * @return the student with the given ID
+&nbsp;     */
+&nbsp;    public Student getStudent(int id) {
+<b class="pc">&nbsp;        return create.selectFrom(MEMBERS)</b>
+<b class="fc">&nbsp;                .where(MEMBERS.ID.eq(id), MEMBERS.TYPE.eq(&quot;Student&quot;))</b>
+<b class="fc">&nbsp;                .fetchOneInto(Student.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Updates a member in the database.
+&nbsp;     * @param member member to be updated
+&nbsp;     *               &lt;p&gt;
+&nbsp;     *               This function updates a member in the database using the given Member object.
+&nbsp;     *               If the member is a teacher, the additional data members will also be added.
+&nbsp;     *               &lt;/p&gt;
+&nbsp;     */
+&nbsp;    public void updateMember(Member member) {
+<b class="pc">&nbsp;        var updateQuery = create.update(MEMBERS)</b>
+<b class="fc">&nbsp;                .set(MEMBERS.USERNAME, member.getUsername())</b>
+<b class="fc">&nbsp;                .set(MEMBERS.PASSWORD, member.getPassword())</b>
+<b class="fc">&nbsp;                .set(MEMBERS.AGE, member.getAge())</b>
+<b class="fc">&nbsp;                .set(MEMBERS.DEPARTMENT, member.getDepartment())</b>
+<b class="fc">&nbsp;                .set(MEMBERS.GENDER, member.getGender())</b>
+<b class="fc">&nbsp;                .set(MEMBERS.NAME, member.getName());</b>
+<b class="fc">&nbsp;        if (member instanceof Teacher) {</b>
+<b class="fc">&nbsp;            updateQuery = updateQuery.set(MEMBERS.POSITION, ((Teacher) member).getPosition());</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        updateQuery.where(MEMBERS.ID.eq(member.getId()))</b>
+<b class="fc">&nbsp;                .execute();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Deletes a member from the database.
+&nbsp;     * @param id the ID of the member to be deleted
+&nbsp;     */
+&nbsp;    public void deleteMember(int id) {
+<b class="pc">&nbsp;        create.deleteFrom(MEMBERS)</b>
+<b class="fc">&nbsp;                .where(MEMBERS.ID.eq(id))</b>
+<b class="fc">&nbsp;                .execute();</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves all members from the database.
+&nbsp;     * @return list of all members
+&nbsp;     */
+&nbsp;    public List&lt;Member&gt; getAllMembers() {
+<b class="pc">&nbsp;        return create.selectFrom(MEMBERS)</b>
+<b class="fc">&nbsp;                .fetchInto(Member.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves all teachers from the database.
+&nbsp;     * @return list of all teachers
+&nbsp;     */
+&nbsp;    public List&lt;Teacher&gt; getAllTeachers() {
+<b class="pc">&nbsp;        return create.selectFrom(MEMBERS)</b>
+<b class="fc">&nbsp;                .where(MEMBERS.TYPE.eq(&quot;Teacher&quot;))</b>
+<b class="fc">&nbsp;                .fetchInto(Teacher.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves all students from the database.
+&nbsp;     * @return list of all students
+&nbsp;     */
+&nbsp;    public List&lt;Student&gt; getAllStudents() {
+<b class="pc">&nbsp;        return create.selectFrom(MEMBERS)</b>
+<b class="fc">&nbsp;                .where(MEMBERS.TYPE.eq(&quot;Student&quot;))</b>
+<b class="fc">&nbsp;                .fetchInto(Student.class);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>

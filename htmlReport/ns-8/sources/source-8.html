@@ -1,0 +1,253 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > TeacherServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.service.internal</a>
+</div>
+
+<h1>Coverage Summary for Class: TeacherServiceImpl (comp3111.examsystem.service.internal)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TeacherServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90%
+  </span>
+  <span class="absValue">
+    (9/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (36/36)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.2%
+  </span>
+  <span class="absValue">
+    (40/42)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.service.internal;
+&nbsp;
+&nbsp;import comp3111.examsystem.dao.internal.MemberDAO;
+&nbsp;import comp3111.examsystem.entity.Teacher;
+&nbsp;import comp3111.examsystem.service.TeacherService;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;public class TeacherServiceImpl implements TeacherService  {
+&nbsp;    private final MemberDAO teacherDAO;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     */
+<b class="nc">&nbsp;    public TeacherServiceImpl() {</b>
+<b class="nc">&nbsp;        this.teacherDAO = new MemberDAO();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     * @param teacherDAO self-defined MemberDAO object for testing
+&nbsp;     */
+<b class="fc">&nbsp;    public TeacherServiceImpl(MemberDAO teacherDAO) {</b>
+<b class="fc">&nbsp;        this.teacherDAO = teacherDAO;</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * @param teacher teacher to be added
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void addTeacher(Teacher teacher) {
+<b class="fc">&nbsp;        if(teacher == null) {</b>
+<b class="fc">&nbsp;            throw new NullPointerException(&quot;Teacher cannot be null&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        teacherDAO.addTeacher(teacher);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param id id of teacher
+&nbsp;     * @return Teacher with the given id
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Teacher getTeacher(int id) {
+<b class="fc">&nbsp;        if(id &lt;= 0) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Invalid ID: ID must be positive&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        Teacher teacher = teacherDAO.getTeacher(id);</b>
+<b class="fc">&nbsp;        if(teacher == null) {</b>
+<b class="fc">&nbsp;            throw new IllegalStateException(&quot;Teacher not found with ID: &quot; + id);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return teacher;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return List of all teachers
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public List&lt;Teacher&gt; getAllTeachers() {
+<b class="fc">&nbsp;        return teacherDAO.getAllTeachers();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param id id of teacher
+&nbsp;     * @param teacher teacher to be updated
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void updateTeacher(int id, Teacher teacher) {
+<b class="fc">&nbsp;        if(id &lt;= 0) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Invalid ID: ID must be positive&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if(teacher == null) {</b>
+<b class="fc">&nbsp;            throw new NullPointerException(&quot;Teacher cannot be null&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if(teacherDAO.getTeacher(id) == null) {</b>
+<b class="fc">&nbsp;            throw new IllegalStateException(&quot;Teacher not found with ID: &quot; + id);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        teacher.setId(id);</b>
+<b class="fc">&nbsp;        teacherDAO.updateMember(teacher);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param id id of teacher to be deleted
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void deleteTeacher(int id) {
+<b class="fc">&nbsp;        if(id &lt;= 0) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Invalid ID: ID must be positive&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if(teacherDAO.getTeacher(id) == null) {</b>
+<b class="fc">&nbsp;            throw new IllegalStateException(&quot;Teacher not found with ID: &quot; + id);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        teacherDAO.deleteMember(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param username username of teacher
+&nbsp;     * @param name name of teacher
+&nbsp;     * @param department department of teacher
+&nbsp;     *        &lt;p&gt;
+&nbsp;     * This method filters the teacherTable based on the given values.
+&nbsp;     * If the value is empty, it will not be used as a filter.
+&nbsp;     *       &lt;/p&gt;
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public List&lt;Teacher&gt; filterTeachers(String username, String name, String department) {
+<b class="fc">&nbsp;        if(username == null || name == null || department == null) {</b>
+<b class="fc">&nbsp;            throw new NullPointerException(&quot;Filter criteria cannot be null&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return teacherDAO.getAllTeachers().stream()</b>
+<b class="fc">&nbsp;                .filter(teacher -&gt; username.isEmpty() || teacher.getUsername().toLowerCase().contains(username))</b>
+<b class="fc">&nbsp;                .filter(teacher -&gt; name.isEmpty() || teacher.getName().toLowerCase().contains(name))</b>
+<b class="fc">&nbsp;                .filter(teacher -&gt; department.isEmpty() || teacher.getDepartment().toLowerCase().contains(department))</b>
+<b class="fc">&nbsp;                .collect(Collectors.toList());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean account_exist(String user)
+&nbsp;    {
+<b class="fc">&nbsp;        for(Teacher member: getAllTeachers())</b>
+&nbsp;        {
+<b class="fc">&nbsp;            if(member.getUsername().equals(user))</b>
+&nbsp;            {
+<b class="fc">&nbsp;                return true;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Teacher getTeacherbyUserName(String username) {
+<b class="fc">&nbsp;        for (Teacher teacher :  getAllTeachers()) {</b>
+<b class="fc">&nbsp;            if (teacher.getUsername().equals(username)) {</b>
+<b class="fc">&nbsp;                return teacher;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return null; // 如果未找到匹配的教师,返回 null</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>

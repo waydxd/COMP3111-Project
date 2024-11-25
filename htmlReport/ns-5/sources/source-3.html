@@ -1,0 +1,587 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ExamManagementSystemController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: ExamManagementSystemController (comp3111.examsystem.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ExamManagementSystemController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/19)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/88)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/146)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.controller;
+&nbsp;
+&nbsp;import comp3111.examsystem.entity.Examination;
+&nbsp;import comp3111.examsystem.entity.Question;
+&nbsp;import comp3111.examsystem.service.CourseService;
+&nbsp;import comp3111.examsystem.service.ExaminationService;
+&nbsp;import comp3111.examsystem.service.QuestionService;
+&nbsp;import comp3111.examsystem.service.internal.CourseServiceImpl;
+&nbsp;import comp3111.examsystem.service.internal.ExaminationServiceImpl;
+&nbsp;import comp3111.examsystem.service.internal.QuestionServiceImpl;
+&nbsp;import javafx.collections.FXCollections;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.control.*;
+&nbsp;import javafx.scene.control.cell.PropertyValueFactory;
+&nbsp;import javafx.beans.property.SimpleFloatProperty;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;import static java.lang.Float.parseFloat;
+&nbsp;
+&nbsp;/**
+&nbsp; * The `ExamManagementSystemController` class is responsible for managing the user interface of the Exam Management System.
+&nbsp; * It handles user interactions, such as creating and updating examinations, adding and removing questions from examinations,
+&nbsp; * and filtering examinations and questions based on various criteria.
+&nbsp; */
+<b class="nc">&nbsp;public class ExamManagementSystemController {</b>
+&nbsp;        @FXML private TextField examNameTextField;
+&nbsp;        @FXML private ComboBox&lt;String&gt; filterCourseID;
+&nbsp;        @FXML private ComboBox&lt;String&gt; filterPublish;
+&nbsp;        @FXML private TextField questionTextField;
+&nbsp;        @FXML private ComboBox&lt;String&gt; questionTypeComboBox;
+&nbsp;        @FXML private TextField scoreTextField;
+&nbsp;        @FXML
+&nbsp;        private TextField examNameField;
+&nbsp;        @FXML
+&nbsp;        private TextField examTimeField;
+&nbsp;        @FXML
+&nbsp;        private  ComboBox&lt;String&gt; courseComboBox;
+&nbsp;        @FXML
+&nbsp;        private  ComboBox&lt;String&gt; publishComboBox;
+&nbsp;        @FXML
+&nbsp;        private TableView&lt;Examination&gt; ExamTableView;
+&nbsp;        @FXML
+&nbsp;        private TableView&lt;Question&gt; LeftQuestionTableView;
+&nbsp;        @FXML
+&nbsp;        private TableView&lt;Question&gt; All_QuestionTableView;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Examination, String&gt; examNameColumn;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Examination, String&gt; courseIdColumn;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Examination, Float&gt; examTimeColumn;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Examination, String&gt; publishColumn;
+&nbsp;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Question, String&gt; questionColumn;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Question, String&gt; typeColumn;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Question, Float&gt; scoreColumn_left;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Question, Float&gt; scoreColumn_right;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Question, String&gt; questionTextColumn;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;Question, String&gt; questionTypeColumn;
+&nbsp;
+<b class="nc">&nbsp;    private static int init_flag=0;</b>
+&nbsp;
+<b class="nc">&nbsp;    private final ExaminationService examinationService = new ExaminationServiceImpl();</b>
+&nbsp;
+<b class="nc">&nbsp;    private final CourseService courseService = new CourseServiceImpl();</b>
+&nbsp;
+<b class="nc">&nbsp;    private final QuestionService questionService = new QuestionServiceImpl();</b>
+&nbsp;    /**
+&nbsp;     * Initializes the controller by setting up the table views, populating the combo boxes, and adding a listener to the ExamTableView selection.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    void initialize() {
+<b class="nc">&nbsp;        init_All();</b>
+&nbsp;        // Ensure the list is not null
+<b class="nc">&nbsp;        ObservableList&lt;Examination&gt; examinations = FXCollections.observableArrayList(examinationService.getAllExaminations());</b>
+<b class="nc">&nbsp;        if (examinations == null) {</b>
+<b class="nc">&nbsp;            examinations = FXCollections.observableArrayList();</b>
+&nbsp;        }
+<b class="nc">&nbsp;        ExamTableView.setItems(examinations);</b>
+<b class="nc">&nbsp;        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));</b>
+&nbsp;
+&nbsp;        // Add a listener to the ExamTableView selection model
+<b class="nc">&nbsp;        ExamTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -&gt; {</b>
+<b class="nc">&nbsp;            if (newValue != null) {</b>
+&nbsp;                // Get the quiz questions from the selected Examination object
+&nbsp;                // Update the QuizTableView with the quiz questions
+&nbsp;//                LeftQuestionTableView.setItems(FXCollections.observableArrayList(newValue.getQuiz()));
+<b class="nc">&nbsp;                LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(newValue.getId())));</b>
+&nbsp;
+&nbsp;            } else {
+&nbsp;                // Clear the QuizTableView if no exam is selected
+<b class="nc">&nbsp;                LeftQuestionTableView.setItems(null);</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    private void init_All()
+&nbsp;    {
+<b class="nc">&nbsp;        bind_all_columns();</b>
+&nbsp;
+<b class="nc">&nbsp;        init_Exam();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void init_Exam()
+&nbsp;    {
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        filterCourseID.getItems().addAll(courseService.getAllCoursesID());</b>
+<b class="nc">&nbsp;        filterPublish.getItems().addAll(&quot;yes&quot;,&quot;no&quot;);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        questionTypeComboBox.getItems().addAll(&quot;Single&quot;,&quot;Multiple&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        courseComboBox.getItems().addAll(courseService.getAllCoursesID());</b>
+<b class="nc">&nbsp;        publishComboBox.getItems().addAll(&quot;yes&quot;,&quot;no&quot;);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    private void bind_all_columns()
+&nbsp;    {
+&nbsp;        // Populate the question table view
+&nbsp;        // Initialize the TableView columns
+<b class="nc">&nbsp;        examNameColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;examName&quot;));</b>
+<b class="nc">&nbsp;        courseIdColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;courseID&quot;));</b>
+<b class="nc">&nbsp;        examTimeColumn.setCellValueFactory(cellData -&gt;</b>
+<b class="nc">&nbsp;                new SimpleFloatProperty(cellData.getValue().getExamTime()).asObject());</b>
+<b class="nc">&nbsp;        publishColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;publish&quot;));</b>
+&nbsp;
+&nbsp;        //Question in exam
+<b class="nc">&nbsp;        questionColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;question&quot;));</b>
+<b class="nc">&nbsp;        typeColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;type&quot;));</b>
+<b class="nc">&nbsp;        scoreColumn_left.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;score&quot;));</b>
+&nbsp;
+&nbsp;        //All questions
+<b class="nc">&nbsp;        questionTextColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;question&quot;));</b>
+<b class="nc">&nbsp;        questionTypeColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;type&quot;));</b>
+<b class="nc">&nbsp;        scoreColumn_right.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;score&quot;));</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Filters the questions displayed in the All_QuestionTableView based on the input criteria from the user.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    private void filterQuestions() {
+&nbsp;
+&nbsp;        // Get the selected values from the filter controls
+<b class="nc">&nbsp;        String selectedScore = scoreTextField.getText();</b>
+<b class="nc">&nbsp;        String selectedQuestion = questionTextField.getText();</b>
+<b class="nc">&nbsp;        String selectedType = questionTypeComboBox.getValue();</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        Float parsedScore = null;</b>
+<b class="nc">&nbsp;        if (!selectedScore.isEmpty()) {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                parsedScore = Float.parseFloat(selectedScore);</b>
+&nbsp;            } catch (NumberFormatException e) {
+<b class="nc">&nbsp;                ErrorPopupController.Error_Popup(&quot;Please enter a valid numeric score.&quot;);</b>
+&nbsp;                return; // Exit the method if score is invalid
+&nbsp;            }
+&nbsp;        }
+&nbsp;        // Filter the questions based on the selected criteria
+&nbsp;//        ObservableList&lt;Question&gt; filteredQuestions = FXCollections.observableArrayList();
+&nbsp;//        for (Question question : questionService.getAllQuestions()) {
+&nbsp;//            if (
+&nbsp;//                    (parseFloat(String.valueOf(question.getScore()))==parseFloat(selectedScore)||selectedScore== null || selectedScore.isEmpty() ||String.valueOf(question.getScore()).equals(selectedScore)) &amp;&amp;
+&nbsp;//                            (selectedQuestion == null || selectedQuestion.isEmpty() ||question.getQuestion().contains(selectedQuestion)) &amp;&amp;
+&nbsp;//                            (selectedType == null || question.getType().equals(selectedType))) {
+&nbsp;//                filteredQuestions.add(question);
+&nbsp;//            }
+&nbsp;//        }
+&nbsp;        //
+&nbsp;        // Filter the questionList based on the selected values
+<b class="nc">&nbsp;        List&lt;Question&gt; filteredQuestions = questionService.getAllQuestions().stream()</b>
+<b class="nc">&nbsp;                .filter(q -&gt; {</b>
+<b class="nc">&nbsp;                    boolean questionFilter = selectedQuestion == null || selectedQuestion.isEmpty() || q.getQuestion().contains(selectedQuestion);</b>
+<b class="nc">&nbsp;                    boolean typeFilter = selectedType == null || selectedType.equals(&quot;Type&quot;) || q.getType().equals(selectedType);</b>
+<b class="nc">&nbsp;                    boolean scoreFilter = selectedScore == null || selectedScore.isEmpty() || parseFloat(String.valueOf(q.getScore()))==parseFloat(selectedScore);</b>
+<b class="nc">&nbsp;                    return questionFilter &amp;&amp; typeFilter &amp;&amp; scoreFilter;</b>
+&nbsp;
+&nbsp;                })
+&nbsp;
+<b class="nc">&nbsp;                .collect(Collectors.toList());</b>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        All_QuestionTableView.setItems(FXCollections.observableArrayList(filteredQuestions));</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Deletes the selected question from the LeftQuestionTableView and the associated examination.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    private void deleteFromLeft() {
+<b class="nc">&nbsp;        Question selectedQuestion =  LeftQuestionTableView.getSelectionModel().getSelectedItem();</b>
+<b class="nc">&nbsp;        Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();</b>
+&nbsp;
+<b class="nc">&nbsp;        if (selectedExam != null &amp;&amp; selectedQuestion != null) {</b>
+<b class="nc">&nbsp;                examinationService.removeQuestionFromExamination(selectedExam.getId(), selectedQuestion.getId());</b>
+<b class="nc">&nbsp;                LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));</b>
+<b class="nc">&nbsp;                LeftQuestionTableView.refresh();</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            String message = &quot;Selected Exam: &quot; + (selectedExam != null ? selectedExam.getExamName() : &quot;None&quot;) + &quot;\n&quot; +</b>
+<b class="nc">&nbsp;                    &quot;Selected Question: &quot; + (selectedQuestion != null ? selectedQuestion.getQuestion() : &quot;None&quot;) + &quot;\n&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp;            Alert alert = new Alert(Alert.AlertType.INFORMATION);</b>
+<b class="nc">&nbsp;            alert.setTitle(&quot;Selection Details&quot;);</b>
+<b class="nc">&nbsp;            alert.setHeaderText(null);</b>
+<b class="nc">&nbsp;            alert.setContentText(message);</b>
+<b class="nc">&nbsp;            alert.showAndWait();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Adds the selected question from All_QuestionTableView to the selected examination in LeftQuestionTableView.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    void addToLeft() {
+&nbsp;        // Add a new question to the TableView
+<b class="nc">&nbsp;        Question selectedQuestion =All_QuestionTableView.getSelectionModel().getSelectedItem();</b>
+<b class="nc">&nbsp;        Examination selectedExam =ExamTableView.getSelectionModel().getSelectedItem();</b>
+<b class="nc">&nbsp;        if (selectedExam!=null) {</b>
+&nbsp;
+&nbsp;            //Show existing quiz in exam
+<b class="nc">&nbsp;            LeftQuestionTableView.setItems(FXCollections.observableArrayList(</b>
+<b class="nc">&nbsp;                    examinationService.getQuestionsInExamination(selectedExam.getId()))</b>
+&nbsp;            );
+&nbsp;
+<b class="nc">&nbsp;            if(selectedQuestion != null)</b>
+&nbsp;            {
+&nbsp;                // Validate the updated values
+&nbsp;                //if (!selectedExam.getQuiz().contains(selectedQuestion))
+<b class="nc">&nbsp;                if (!examinationService.getQuestionsInExamination(selectedExam.getId()).contains(selectedQuestion))</b>
+&nbsp;                {
+&nbsp;                    try {
+<b class="nc">&nbsp;                        examinationService.addQuestionToExamination(selectedExam.getId(),selectedQuestion.getId());</b>
+<b class="nc">&nbsp;                        LeftQuestionTableView.setItems(FXCollections.observableArrayList(examinationService.getQuestionsInExamination(selectedExam.getId())));</b>
+&nbsp;                    } catch (Exception e) {
+<b class="nc">&nbsp;                        if(&quot;repeated&quot;.equals(e.getMessage())) {</b>
+<b class="nc">&nbsp;                            Alert alert = new Alert(Alert.AlertType.ERROR);</b>
+<b class="nc">&nbsp;                            alert.setTitle(&quot;Error&quot;);</b>
+<b class="nc">&nbsp;                            alert.setHeaderText(null);</b>
+<b class="nc">&nbsp;                            alert.setContentText(&quot;The question is already in the exam.&quot;);</b>
+<b class="nc">&nbsp;                            alert.showAndWait();</b>
+&nbsp;                        } else {
+<b class="nc">&nbsp;                            e.printStackTrace();</b>
+&nbsp;                        }
+&nbsp;                    }
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Refreshes all table views and clears all input fields.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    private void refreshTable() {
+&nbsp;        // Refresh the TableView with the updated data
+<b class="nc">&nbsp;        ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));</b>
+<b class="nc">&nbsp;        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));</b>
+&nbsp;
+&nbsp;        // Clear the input fields and comboboxes
+<b class="nc">&nbsp;        examNameTextField.clear();</b>
+<b class="nc">&nbsp;        examNameField.clear();</b>
+<b class="nc">&nbsp;        examTimeField.clear();</b>
+<b class="nc">&nbsp;        courseComboBox.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        publishComboBox.getSelectionModel().clearSelection();</b>
+&nbsp;
+<b class="nc">&nbsp;        questionTextField.clear();</b>
+<b class="nc">&nbsp;        questionTypeComboBox.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        scoreTextField.clear();</b>
+&nbsp;
+<b class="nc">&nbsp;        filterCourseID.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        filterPublish.getSelectionModel().clearSelection();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Updates the selected examination with new values from the input fields.
+&nbsp;     *
+&nbsp;     * @param actionEvent The action event triggered by the user.
+&nbsp;     */
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    public void UpdateExam(ActionEvent actionEvent) {
+&nbsp;        // Get the selected exam from the ExamTableView
+<b class="nc">&nbsp;        Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();</b>
+<b class="nc">&nbsp;        if (selectedExam != null) {</b>
+&nbsp;            //Check the invalid condition
+<b class="nc">&nbsp;            if (selectedExam != null) {</b>
+&nbsp;                // Retrieve input values
+<b class="nc">&nbsp;                String examName = examNameField.getText().trim();</b>
+<b class="nc">&nbsp;                String examTimeText = examTimeField.getText().trim();</b>
+<b class="nc">&nbsp;                String courseID = courseComboBox.getValue();</b>
+<b class="nc">&nbsp;                String publishStatus = publishComboBox.getValue();</b>
+&nbsp;
+&nbsp;                // Validate inputs
+<b class="nc">&nbsp;                if (examName.isEmpty() || examTimeText.isEmpty() || courseID == null || publishStatus == null) {</b>
+&nbsp;                    // Show an error message for incomplete input
+<b class="nc">&nbsp;                    ErrorPopupController.Error_Popup(&quot;Please fill in all fields.&quot;);</b>
+&nbsp;                    return;
+&nbsp;                }
+&nbsp;
+&nbsp;                float examTime;
+&nbsp;                try {
+<b class="nc">&nbsp;                    examTime = Float.parseFloat(examTimeText);</b>
+<b class="nc">&nbsp;                    if (examTime &lt; 0) {</b>
+<b class="nc">&nbsp;                        ErrorPopupController.Error_Popup(&quot;Exam time must be a non-negative number.&quot;);</b>
+&nbsp;                        return;
+&nbsp;                    }
+&nbsp;                } catch (NumberFormatException e) {
+<b class="nc">&nbsp;                    ErrorPopupController.Error_Popup(&quot;Invalid exam time. Please enter a valid number.&quot;);</b>
+&nbsp;                    return;
+&nbsp;                }
+&nbsp;
+&nbsp;
+&nbsp;            // Update the selected exam with the new values
+&nbsp;
+<b class="nc">&nbsp;            selectedExam.setExamName(examNameField.getText());</b>
+<b class="nc">&nbsp;            selectedExam.setExamTime(Float.parseFloat(examTimeField.getText()));</b>
+<b class="nc">&nbsp;            selectedExam.setCourseID(courseComboBox.getValue());</b>
+<b class="nc">&nbsp;            selectedExam.setPublish(publishComboBox.getValue().equals(&quot;yes&quot;));</b>
+<b class="nc">&nbsp;            examinationService.updateExamination(selectedExam);</b>
+&nbsp;
+&nbsp;            // Refresh the ExamTableView
+<b class="nc">&nbsp;            ExamTableView.refresh();</b>
+&nbsp;        }
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Adds a new examination based on the input values from the user.
+&nbsp;     *
+&nbsp;     * @param actionEvent The action event triggered by the user.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void AddExam(ActionEvent actionEvent) {
+&nbsp;
+&nbsp;        // Get the values from the input fields
+&nbsp;
+<b class="nc">&nbsp;        String examName = examNameField.getText();</b>
+<b class="nc">&nbsp;        String courseID = courseComboBox.getValue();</b>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;        // Validate the input fields
+<b class="nc">&nbsp;        if (examName.isEmpty() ||examTimeField.getText().isEmpty() || courseID == null || publishComboBox.getValue() == null) {</b>
+<b class="nc">&nbsp;            ErrorPopupController.Error_Popup(&quot;Please fill in all the required fields.&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        //Validate the double conversion not work
+&nbsp;        try {
+<b class="nc">&nbsp;            float examTime = Float.parseFloat(examTimeField.getText());</b>
+&nbsp;        } catch (NumberFormatException e) {
+<b class="nc">&nbsp;            ErrorPopupController.Error_Popup(&quot;Invalid exam time format. Please enter a valid number.&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="nc">&nbsp;        boolean publish = publishComboBox.getValue().equals(&quot;yes&quot;);</b>
+<b class="nc">&nbsp;        float examTime = Float.parseFloat(examTimeField.getText());</b>
+&nbsp;
+&nbsp;        // Create a new Examination object
+<b class="nc">&nbsp;        Examination newExam = new Examination(</b>
+&nbsp;                courseID,
+&nbsp;                examTime,
+&nbsp;                examName,
+&nbsp;                publish
+&nbsp;        );
+&nbsp;
+&nbsp;        // Add the new exam to the ExamTableView
+<b class="nc">&nbsp;        examinationService.addExamination(newExam);</b>
+<b class="nc">&nbsp;        ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));</b>
+&nbsp;
+&nbsp;        // Clear the input fields
+<b class="nc">&nbsp;        examNameField.clear();</b>
+<b class="nc">&nbsp;        examTimeField.clear();</b>
+<b class="nc">&nbsp;        courseComboBox.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        publishComboBox.getSelectionModel().clearSelection();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Resets the fields related to questions to their default state.
+&nbsp;     *
+&nbsp;     * @param actionEvent The action event triggered by the user.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void resetQuestionFields(ActionEvent actionEvent) {
+<b class="nc">&nbsp;        questionTextField.clear();</b>
+<b class="nc">&nbsp;        questionTypeComboBox.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        scoreTextField.clear();</b>
+&nbsp;
+&nbsp;//        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
+&nbsp;
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Resets the fields related to exams to their default state.
+&nbsp;     *
+&nbsp;     * @param actionEvent The action event triggered by the user.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void resetExamFields(ActionEvent actionEvent) {
+&nbsp;        // Clear the input fields
+<b class="nc">&nbsp;        examNameTextField.clear();</b>
+<b class="nc">&nbsp;        filterCourseID.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        filterPublish.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Filters the examinations displayed in the ExamTableView based on the input criteria from the user.
+&nbsp;     *
+&nbsp;     * @param actionEvent The action event triggered by the user.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void filterExams(ActionEvent actionEvent) {
+&nbsp;        // Get the selected values from the filter controls
+<b class="nc">&nbsp;        String selectedCourseId = filterCourseID.getValue();</b>
+<b class="nc">&nbsp;        String selectedPublish = filterPublish.getValue();</b>
+<b class="nc">&nbsp;        String selectedExamName = examNameTextField.getText();</b>
+&nbsp;        // Filter the exams based on the selected criteria
+<b class="nc">&nbsp;        ObservableList&lt;Examination&gt; filteredExams = FXCollections.observableArrayList();</b>
+<b class="nc">&nbsp;        for (Examination exam : examinationService.getAllExaminations()) {</b>
+<b class="nc">&nbsp;            if ((selectedCourseId == null || selectedCourseId.isEmpty() || exam.getCourseID().equals(selectedCourseId)) &amp;&amp;</b>
+<b class="nc">&nbsp;                    (selectedPublish == null || selectedPublish.isEmpty() ||</b>
+&nbsp;                    // selected value is &quot;yes&quot; or &quot;no&quot; while exam.getPublish() returns true or false
+<b class="nc">&nbsp;                    ((selectedPublish.equals(&quot;yes&quot;) &amp;&amp; exam.getPublish()) || (selectedPublish.equals(&quot;no&quot;) &amp;&amp; !exam.getPublish()))) &amp;&amp;</b>
+<b class="nc">&nbsp;                    (selectedExamName == null || selectedExamName.isEmpty() || exam.getExamName().contains(selectedExamName))) {</b>
+<b class="nc">&nbsp;                filteredExams.add(exam);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        // Update the ExamTableView with the filtered exams
+<b class="nc">&nbsp;        ExamTableView.setItems(filteredExams);</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Deletes the selected examination from the ExamTableView.
+&nbsp;     *
+&nbsp;     * @param actionEvent The action event triggered by the user.
+&nbsp;     */
+&nbsp;    public void deleteExam(ActionEvent actionEvent) {
+&nbsp;        // Get the selected exam from the ExamTableView
+<b class="nc">&nbsp;        Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();</b>
+&nbsp;
+<b class="nc">&nbsp;        if (selectedExam != null) {</b>
+&nbsp;            // Remove the selected exam from the static exam list
+<b class="nc">&nbsp;            examinationService.deleteExamination(selectedExam.getId());</b>
+&nbsp;
+&nbsp;            // Refresh the ExamTableView
+<b class="nc">&nbsp;            ExamTableView.setItems(FXCollections.observableArrayList(examinationService.getAllExaminations()));</b>
+&nbsp;        } else {
+&nbsp;            // Display an error message or alert if no exam is selected
+<b class="nc">&nbsp;            ErrorPopupController.Error_Popup(&quot;No exam selected for deletion.&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>

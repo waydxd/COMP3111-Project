@@ -1,0 +1,272 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > TeacherLoginController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: TeacherLoginController (comp3111.examsystem.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TeacherLoginController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/36)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.controller;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.List;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;
+&nbsp;import comp3111.examsystem.Main;
+&nbsp;import comp3111.examsystem.entity.Teacher;
+&nbsp;import comp3111.examsystem.service.TeacherService;
+&nbsp;import comp3111.examsystem.service.internal.TeacherServiceImpl;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.FXMLLoader;
+&nbsp;import javafx.fxml.Initializable;
+&nbsp;import javafx.scene.Scene;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import javafx.scene.control.PasswordField;
+&nbsp;import javafx.scene.control.TextField;
+&nbsp;import javafx.stage.Stage;
+&nbsp;
+&nbsp;/**
+&nbsp; * The `TeacherLoginController` class manages the teacher login functionality within the Exam Management System.
+&nbsp; * It handles user authentication by verifying the teacher&#39;s credentials and managing the transition
+&nbsp; * to the main user interface upon successful login.
+&nbsp; */
+<b class="nc">&nbsp;public class TeacherLoginController implements Initializable {</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TextField usernameTxt;
+&nbsp;    @FXML
+&nbsp;    private PasswordField passwordTxt;
+&nbsp;
+&nbsp;    public static Stage registerstage;
+&nbsp;
+<b class="nc">&nbsp;    private final TeacherService teacherService = new TeacherServiceImpl();</b>
+<b class="nc">&nbsp;    private List&lt;Teacher&gt; teacherList = teacherService.getAllTeachers();</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets the list of teachers.
+&nbsp;     *
+&nbsp;     * @param teacherList A list of Teacher objects to set.
+&nbsp;     */
+&nbsp;    public void setTeacherList(List&lt;Teacher&gt; teacherList) {
+<b class="nc">&nbsp;        this.teacherList = teacherList;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Initializes the controller. This method is called after the FXML file has been loaded.
+&nbsp;     *
+&nbsp;     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+&nbsp;     * @param resources The resources used to localize the root object, or null if the root object is not localized.
+&nbsp;     */
+&nbsp;    public void initialize(URL location, ResourceBundle resources) {
+&nbsp;        // Initialization logic can go here if needed
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Checks if a teacher account exists based on the provided username.
+&nbsp;     *
+&nbsp;     * @param user The username to check.
+&nbsp;     * @return True if the account exists, false otherwise.
+&nbsp;     */
+&nbsp;    public boolean account_exist(String user) {
+<b class="nc">&nbsp;        for (Teacher member : teacherList) {</b>
+<b class="nc">&nbsp;            if (member.getUsername().equals(user)) {</b>
+<b class="nc">&nbsp;                return true;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves a Teacher object based on the provided username.
+&nbsp;     *
+&nbsp;     * @param username The username of the teacher to retrieve.
+&nbsp;     * @return The Teacher object if found, or null if not found.
+&nbsp;     */
+&nbsp;    public Teacher getTeacherbyUserName(String username) {
+<b class="nc">&nbsp;        teacherList = teacherService.getAllTeachers();</b>
+<b class="nc">&nbsp;        for (Teacher teacher : teacherList) {</b>
+<b class="nc">&nbsp;            if (teacher.getUsername().equals(username)) {</b>
+<b class="nc">&nbsp;                return teacher;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return null; // Return null if no matching teacher is found</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Validates the login credentials of a teacher.
+&nbsp;     *
+&nbsp;     * @return True if the login is successful (account exists and password is correct), false otherwise.
+&nbsp;     */
+&nbsp;    public boolean Check_login() {
+<b class="nc">&nbsp;        if (teacherService.account_exist(usernameTxt.getText())) {</b>
+<b class="nc">&nbsp;            if (getTeacherbyUserName(usernameTxt.getText()).Check_password(passwordTxt.getText())) {</b>
+<b class="nc">&nbsp;                return true;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Handles the login action triggered by the user.
+&nbsp;     *
+&nbsp;     * @param e The action event triggered by the login button.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void login(ActionEvent e) {
+&nbsp;        try {
+&nbsp;            // Proceed if login is successful
+<b class="nc">&nbsp;            if (Check_login()) {</b>
+<b class="nc">&nbsp;                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(&quot;TeacherMainUI.fxml&quot;));</b>
+<b class="nc">&nbsp;                Stage stage = new Stage();</b>
+<b class="nc">&nbsp;                stage.setTitle(&quot;Hi &quot; + usernameTxt.getText() + &quot;, Welcome to HKUST Examination System&quot;);</b>
+<b class="nc">&nbsp;                stage.setScene(new Scene(fxmlLoader.load()));</b>
+<b class="nc">&nbsp;                stage.show();</b>
+<b class="nc">&nbsp;                ((Stage) ((Button) e.getSource()).getScene().getWindow()).close();</b>
+&nbsp;            } else {
+&nbsp;                // Show error popup on login failure
+<b class="nc">&nbsp;                ErrorPopupController.Error_Popup(&quot;login failed&quot;);</b>
+&nbsp;            }
+&nbsp;        } catch (IOException e1) {
+<b class="nc">&nbsp;            e1.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Opens the teacher registration window.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void register() {
+&nbsp;        try {
+<b class="nc">&nbsp;            if (registerstage == null) {</b>
+<b class="nc">&nbsp;                registerstage = new Stage();</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(&quot;TeacherRegisterUI.fxml&quot;));</b>
+<b class="nc">&nbsp;            Scene scene = new Scene(fxmlLoader.load());</b>
+<b class="nc">&nbsp;            registerstage.setTitle(&quot;Teacher Register&quot;);</b>
+<b class="nc">&nbsp;            registerstage.setScene(scene);</b>
+<b class="nc">&nbsp;            registerstage.show();</b>
+&nbsp;        } catch (IOException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retrieves the registration stage.
+&nbsp;     *
+&nbsp;     * @return The stage for teacher registration.
+&nbsp;     */
+&nbsp;    public Stage getRegisterStage() {
+<b class="nc">&nbsp;        return registerstage;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,391 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > TeacherGradeStatisticController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">comp3111.examsystem.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: TeacherGradeStatisticController (comp3111.examsystem.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TeacherGradeStatisticController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/89)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package comp3111.examsystem.controller;
+&nbsp;
+&nbsp;import comp3111.examsystem.service.GradeService;
+&nbsp;import comp3111.examsystem.service.internal.GradeServiceImpl;
+&nbsp;import javafx.collections.FXCollections;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.Initializable;
+&nbsp;import javafx.scene.chart.*;
+&nbsp;import javafx.scene.control.ChoiceBox;
+&nbsp;import javafx.scene.control.TableColumn;
+&nbsp;import javafx.scene.control.TableView;
+&nbsp;import javafx.scene.control.TextField;
+&nbsp;import javafx.scene.control.cell.PropertyValueFactory;
+&nbsp;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.Set;
+&nbsp;import comp3111.examsystem.entity.Grade;
+&nbsp;
+<b class="nc">&nbsp;public class TeacherGradeStatisticController implements Initializable {</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    protected ChoiceBox&lt;String&gt; courseCombox;
+&nbsp;    @FXML
+&nbsp;    protected TextField examTextField;
+&nbsp;    @FXML
+&nbsp;    protected TextField studentTextField;
+&nbsp;    @FXML
+&nbsp;    protected TableView&lt;Grade&gt; gradeTable;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; studentColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; courseColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; examColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; scoreColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; fullScoreColumn;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Grade, String&gt; timeSpendColumn;
+&nbsp;    @FXML
+&nbsp;    BarChart&lt;String, Number&gt; barChart;
+&nbsp;    @FXML
+&nbsp;    CategoryAxis categoryAxisBar;
+&nbsp;    @FXML
+&nbsp;    NumberAxis numberAxisBar;
+&nbsp;    @FXML
+&nbsp;    LineChart&lt;String, Number&gt; lineChart;
+&nbsp;    @FXML
+&nbsp;    CategoryAxis categoryAxisLine;
+&nbsp;    @FXML
+&nbsp;    NumberAxis numberAxisLine;
+&nbsp;    @FXML
+&nbsp;    PieChart pieChart;
+&nbsp;
+<b class="nc">&nbsp;    protected final ObservableList&lt;Grade&gt; gradeList = FXCollections.observableArrayList();</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+&nbsp;     *
+&nbsp;     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+&nbsp;     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+&nbsp;     * &lt;p&gt;
+&nbsp;     * This method performs the following tasks:
+&nbsp;     * 1. Initializes the GradeService.
+&nbsp;     * 2. Configures the bar chart, pie chart, and line chart.
+&nbsp;     * 3. Populates the grade list with data from the GradeService.
+&nbsp;     * 4. Sets up the table columns with the appropriate cell value factories.
+&nbsp;     * 5. Initializes the choice boxes with unique values.
+&nbsp;     * 6. Refreshes the table and loads the charts with the initial data.
+&nbsp;     *                       &lt;p/&gt;
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+<b class="nc">&nbsp;        GradeService gradeService = new GradeServiceImpl();</b>
+&nbsp;
+<b class="nc">&nbsp;        barChart.setLegendVisible(false);</b>
+<b class="nc">&nbsp;        categoryAxisBar.setLabel(&quot;Course&quot;);</b>
+<b class="nc">&nbsp;        numberAxisBar.setLabel(&quot;Avg. Score&quot;);</b>
+<b class="nc">&nbsp;        pieChart.setLegendVisible(false);</b>
+<b class="nc">&nbsp;        pieChart.setTitle(&quot;Student Scores&quot;);</b>
+<b class="nc">&nbsp;        lineChart.setLegendVisible(false);</b>
+<b class="nc">&nbsp;        categoryAxisLine.setLabel(&quot;Exam&quot;);</b>
+<b class="nc">&nbsp;        numberAxisLine.setLabel(&quot;Avg. Score&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        gradeList.addAll(gradeService.getAllGrades());</b>
+<b class="nc">&nbsp;        gradeTable.setItems(gradeList);</b>
+<b class="nc">&nbsp;        studentColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;studentName&quot;));</b>
+<b class="nc">&nbsp;        courseColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;courseName&quot;));</b>
+<b class="nc">&nbsp;        examColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;examName&quot;));</b>
+<b class="nc">&nbsp;        scoreColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;score&quot;));</b>
+<b class="nc">&nbsp;        fullScoreColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;fullScore&quot;));</b>
+<b class="nc">&nbsp;        timeSpendColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;timeSpent&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        initializeChoiceBoxes();</b>
+&nbsp;
+<b class="nc">&nbsp;        refresh();</b>
+<b class="nc">&nbsp;        loadChart(gradeList);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Initializes the choice boxes with unique values.
+&nbsp;     * This method performs the following tasks:
+&nbsp;     * 1. Creates sets to store unique course names, exam names, and student names.
+&nbsp;     * 2. Converts the sets to sorted lists.
+&nbsp;     * 3. Adds an empty choice as the first item in each list.
+&nbsp;     * 4. Sets the items of the choice boxes to the sorted lists.
+&nbsp;     * 5. Sets the default values of the choice boxes to empty strings.
+&nbsp;     */
+&nbsp;    private void initializeChoiceBoxes() {
+&nbsp;        // Get unique values
+<b class="nc">&nbsp;        Set&lt;String&gt; courses = new HashSet&lt;&gt;();</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        gradeList.forEach(grade -&gt; {</b>
+<b class="nc">&nbsp;            courses.add(grade.getCourseName());</b>
+&nbsp;        });
+&nbsp;
+&nbsp;        // Convert sets to sorted lists
+<b class="nc">&nbsp;        ObservableList&lt;String&gt; courseItems = FXCollections.observableArrayList(courses);</b>
+&nbsp;
+&nbsp;        // Sort the lists
+<b class="nc">&nbsp;        FXCollections.sort(courseItems);</b>
+&nbsp;
+&nbsp;        // Add an empty choice as first item
+<b class="nc">&nbsp;        courseItems.addFirst(&quot;&quot;);</b>
+&nbsp;
+&nbsp;
+&nbsp;        // Set items to choice boxes
+<b class="nc">&nbsp;        courseCombox.setItems(courseItems);</b>
+<b class="nc">&nbsp;        examTextField.setText(&quot;Exam&quot;);</b>
+<b class="nc">&nbsp;        studentTextField.setText(&quot;Student&quot;);</b>
+&nbsp;
+&nbsp;        // Set default values
+<b class="nc">&nbsp;        courseCombox.setValue(&quot;&quot;);</b>
+<b class="nc">&nbsp;        examTextField.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;        studentTextField.setText(&quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Refreshes the table and loads the charts with the latest data.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void refresh() {
+<b class="nc">&nbsp;        gradeTable.refresh();</b>
+<b class="nc">&nbsp;        loadChart(gradeList);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Loads the bar chart, pie chart, and line chart with the latest data.
+&nbsp;     * This method performs the following tasks:
+&nbsp;     * 1. Calculates the average score per course.
+&nbsp;     * 2. Populates the bar chart with the average scores.
+&nbsp;     * 3. Populates the pie chart with the student scores.
+&nbsp;     * 4. Populates the line chart with the score progression.
+&nbsp;     */
+&nbsp;    private void loadChart(List&lt;Grade&gt; grades) {
+&nbsp;        // Bar Chart - Average score per course
+<b class="nc">&nbsp;        XYChart.Series&lt;String, Number&gt; seriesBar = new XYChart.Series&lt;&gt;();</b>
+<b class="nc">&nbsp;        Map&lt;String, Double&gt; courseAverages = calculateCourseAverages(grades);</b>
+<b class="nc">&nbsp;        seriesBar.getData().clear();</b>
+<b class="nc">&nbsp;        barChart.getData().clear();</b>
+<b class="nc">&nbsp;        courseAverages.forEach((course, avg) -&gt;</b>
+<b class="nc">&nbsp;                seriesBar.getData().add(new XYChart.Data&lt;&gt;(course, avg))</b>
+&nbsp;        );
+<b class="nc">&nbsp;        barChart.getData().add(seriesBar);</b>
+&nbsp;
+&nbsp;        // Pie Chart - Student score distribution
+<b class="nc">&nbsp;        pieChart.getData().clear();</b>
+<b class="nc">&nbsp;        grades.forEach(grade -&gt;</b>
+<b class="nc">&nbsp;                pieChart.getData().add(new PieChart.Data(</b>
+<b class="nc">&nbsp;                        grade.getStudentName(),</b>
+<b class="nc">&nbsp;                        grade.getScore()</b>
+&nbsp;                ))
+&nbsp;        );
+&nbsp;
+&nbsp;        // Line Chart - Score progression
+<b class="nc">&nbsp;        XYChart.Series&lt;String, Number&gt; seriesLine = new XYChart.Series&lt;&gt;();</b>
+<b class="nc">&nbsp;        seriesLine.getData().clear();</b>
+<b class="nc">&nbsp;        lineChart.getData().clear();</b>
+<b class="nc">&nbsp;        grades.forEach(grade -&gt;</b>
+<b class="nc">&nbsp;                seriesLine.getData().add(new XYChart.Data&lt;&gt;(</b>
+<b class="nc">&nbsp;                        grade.getCourseName() + &quot;-&quot; + grade.getExamName(),</b>
+<b class="nc">&nbsp;                        grade.getScore()</b>
+&nbsp;                ))
+&nbsp;        );
+<b class="nc">&nbsp;        lineChart.getData().add(seriesLine);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Calculates the average score per course.
+&nbsp;     * This method performs the following tasks:
+&nbsp;     * 1. Creates a map to store course names and their corresponding scores.
+&nbsp;     * 2. Creates a map to store course names and their corresponding averages.
+&nbsp;     * 3. Iterates through the grade list and populates the course scores map.
+&nbsp;     * 4. Iterates through the course scores map and calculates the averages.
+&nbsp;     *
+&nbsp;     * @return A map of course names and their corresponding averages.
+&nbsp;     */
+&nbsp;
+&nbsp;    protected Map&lt;String, Double&gt; calculateCourseAverages(List&lt;Grade&gt; grades) {
+<b class="nc">&nbsp;        Map&lt;String, List&lt;Double&gt;&gt; courseScores = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        Map&lt;String, Double&gt; averages = new HashMap&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        grades.forEach(grade -&gt; {</b>
+<b class="nc">&nbsp;            String course = grade.getCourseName();</b>
+<b class="nc">&nbsp;            double score = grade.getScore();</b>
+<b class="nc">&nbsp;            courseScores.computeIfAbsent(course, k -&gt; FXCollections.observableArrayList())</b>
+<b class="nc">&nbsp;                    .add(score);</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        courseScores.forEach((course, scores) -&gt; {</b>
+<b class="nc">&nbsp;            double avg = scores.stream()</b>
+<b class="nc">&nbsp;                    .mapToDouble(Double::doubleValue)</b>
+<b class="nc">&nbsp;                    .average()</b>
+<b class="nc">&nbsp;                    .orElse(0.0);</b>
+<b class="nc">&nbsp;            averages.put(course, avg);</b>
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        return averages;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Resets the choice boxes and table to their initial state.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void reset() {
+<b class="nc">&nbsp;        courseCombox.setValue(null);</b>
+<b class="nc">&nbsp;        examTextField.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;        studentTextField.setText(&quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;  /**
+&nbsp;     * Queries the grade list based on the selected course, exam, and student.
+&nbsp;     * This method performs the following tasks:
+&nbsp;     * 1. Gets the selected course, exam, and student from the choice boxes.
+&nbsp;     * 2. Filters the grade list based on the selected values.
+&nbsp;     * 3. Sets the filtered list to the table.
+&nbsp;     * 4. Loads the charts with the filtered data.
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    public void query() {
+<b class="nc">&nbsp;        String selectedCourse = courseCombox.getValue();</b>
+<b class="nc">&nbsp;        String selectedExam = examTextField.getText();</b>
+<b class="nc">&nbsp;        String selectedStudent = studentTextField.getText();</b>
+&nbsp;
+<b class="nc">&nbsp;        ObservableList&lt;Grade&gt; filteredList = FXCollections.observableArrayList();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Grade grade : gradeList) {</b>
+<b class="nc">&nbsp;            boolean matches = true;</b>
+<b class="nc">&nbsp;            if (selectedCourse != null &amp;&amp; !selectedCourse.isEmpty() &amp;&amp; !grade.getCourseName().equals(selectedCourse)) {</b>
+<b class="nc">&nbsp;                matches = false;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (selectedExam != null &amp;&amp; !selectedExam.isEmpty() &amp;&amp; !grade.getExamName().contains(selectedExam)) {</b>
+<b class="nc">&nbsp;                matches = false;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (selectedStudent != null &amp;&amp; !selectedStudent.isEmpty() &amp;&amp; !grade.getStudentName().contains(selectedStudent)) {</b>
+<b class="nc">&nbsp;                matches = false;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (matches) {</b>
+<b class="nc">&nbsp;                filteredList.add(grade);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        gradeTable.setItems(filteredList);</b>
+<b class="nc">&nbsp;        loadChart(filteredList);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-25 19:26</div>
+</div>
+</body>
+</html>
