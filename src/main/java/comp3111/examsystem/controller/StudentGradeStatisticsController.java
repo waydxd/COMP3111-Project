@@ -61,7 +61,6 @@ public class StudentGradeStatisticsController implements Initializable {
      */
     public void setUsername(String username) {
         this.username = username;
-        System.out.println("GetGrades Username: " + username);
         loadGrades();
     }
 

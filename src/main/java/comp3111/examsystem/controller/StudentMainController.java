@@ -138,7 +138,6 @@ public class StudentMainController implements Initializable {
             stage.setTitle("Grade Statistics");
             stage.setScene(new Scene(fxmlLoader.load()));
 
-            System.out.println("SetStats Username: " + username);
             StudentGradeStatisticsController controller = fxmlLoader.getController();
             controller.setUsername(username);
 

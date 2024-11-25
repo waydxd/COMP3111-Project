@@ -341,10 +341,7 @@ public class StudentExamController {
             }
         }
         // Print the selectedMultipleChoices map
-        System.out.println("Selected Single Choices: " + selectedChoices);
-        for (Map.Entry<Integer, boolean[]> entry : selectedMultipleChoices.entrySet()) {
-            System.out.println("Question Index: " + entry.getKey() + ", Selections: " + Arrays.toString(entry.getValue()));
-        }
+
     }
 
     /**
