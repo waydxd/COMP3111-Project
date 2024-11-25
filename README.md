@@ -95,7 +95,6 @@ Note that the tests only fully covered `comp3111.examsystem.dao`, `comp3111.exam
     <p class="c12 subtitle" id="h.cr52oen6jr4r">
       <span class="c7 c9">Team 9</span>
     </p>
-    <p class="c2 c14"><span class="c10">&#12289;</span></p>
     <p class="c2 c8"><span class="c3"></span></p>
     <p class="c4 title" id="h.vwk5ut6lj0r5">
       <span class="c17">Screenshots</span>
