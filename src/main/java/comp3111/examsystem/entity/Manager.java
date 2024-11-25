@@ -9,9 +9,16 @@ public class Manager extends Member {
     private String Username;
     private String Password;
 
+
+    /**
+     * The AccountManager class is responsible for managing user accounts
+     * in the system, which include teachers, students, and managers.
+     * It provides methods to add accounts, check for account existence,
+     * and retrieve specific account types by username.
+     */
     public static class AccountManager
     {
-        private List<Member> all_accounts;//储存所有账户
+        private List<Member> all_accounts;
         private List<Teacher> teacher_accounts;
         private List<Student> student_accounts;
         private List<Manager> manager_accounts;
@@ -21,7 +28,7 @@ public class Manager extends Member {
                 throw new NullPointerException("Account cannot be null");
             }
             all_accounts.add(account);
-            // 判断账户类型,并分别添加到相应的列表中
+
             if (account instanceof Teacher) {
                 teacher_accounts.add((Teacher) account);
             } else if (account instanceof Student) {
@@ -30,9 +37,20 @@ public class Manager extends Member {
                 manager_accounts.add((Manager) account);
             }
         }
+        /**
+         * Retrieves a list of all accounts managed by this AccountManager.
+         *
+         * @return a List of all Member accounts
+         */
         public List<Member> getAllAccounts() {
             return all_accounts;
         }
+
+
+        /**
+         * Constructs an AccountManager instance, initializing the lists for
+         * all accounts, teachers, students, and managers.
+         */
         public AccountManager()
         {
             all_accounts =new ArrayList<>();
@@ -40,6 +58,12 @@ public class Manager extends Member {
             student_accounts=new ArrayList<>();
             manager_accounts=new ArrayList<>();
         }
+        /**
+         * Checks if an account with the specified username exists in the system.
+         *
+         * @param user the username to check for
+         * @return true if the account exists, false otherwise
+         */
         public boolean account_exist(String user)
         {
             for(Member member: all_accounts)
@@ -51,23 +75,40 @@ public class Manager extends Member {
             }
             return false;
         }
+        /**
+         * Retrieves a Teacher account by username if it exists.
+         *
+         * @param username the username of the Teacher to retrieve
+         * @return the Teacher account if found, null otherwise
+         */
         public Teacher getTeacherbyUserName(String username) {
             for (Teacher teacher : teacher_accounts) {
                 if (teacher.getUsername().equals(username)) {
                     return teacher;
                 }
             }
-            return null; // 如果未找到匹配的教师,返回 null
+            return null;
         }
+        /**
+         * Retrieves a Student account by username if it exists.
+         *
+         * @param username the username of the Student to retrieve
+         * @return the Student account if found, null otherwise
+         */
         public Student getStudentbyUserName(String username) {
             for (Student student : student_accounts) {
                 if (student.getUsername().equals(username)) {
                     return student;
                 }
             }
-            return null; // 如果未找到匹配的学生,返回 null
+            return null;
         }
-
+        /**
+         * Retrieves a Manager account by username if it exists.
+         *
+         * @param username the username of the Manager to retrieve
+         * @return the Manager account if found, null otherwise
+         */
         public Manager getManagerbyUserName(String username) {
             for (Manager manager : manager_accounts) {
                 if (manager.getUsername().equals(username)) {

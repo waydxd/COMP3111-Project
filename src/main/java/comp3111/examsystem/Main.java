@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	/**
 	 * Start the application
-	 * @param primaryStage the primary stage
+	 * @param primaryStage the primary stage	
 	 */
 	public void start(Stage primaryStage) {
 		try {

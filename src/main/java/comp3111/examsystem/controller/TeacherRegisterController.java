@@ -130,7 +130,7 @@ public class TeacherRegisterController implements Initializable {
                     register_success = false;
 
                     // Error popup
-                    ErrorPopupController.Error_Popup("Age must be between 18 and 100.");
+                    ErrorPopupController.Error_Popup("Age must be between 0 and 100.");
                     return; }
             }
         }
