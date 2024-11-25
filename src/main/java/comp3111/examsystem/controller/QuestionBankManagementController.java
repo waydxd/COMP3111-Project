@@ -203,8 +203,16 @@ public class QuestionBankManagementController implements Initializable {
             // Validate the updated values
             if (updatedQuestion.isEmpty() || updatedOptionA.isEmpty() || updatedOptionB.isEmpty() || updatedOptionC.isEmpty() || updatedOptionD.isEmpty() || updatedAnswer.isEmpty() || updatedType == null || updatedType.equals("Type") || updatedScore.isEmpty()) {
                 // Display an error message or show a dialog to the user
-                ErrorPopupController.Error_Popup();
+                ErrorPopupController.Error_Popup("Please fill in all the required fields.");
                 throw new RuntimeException("Please fill in all the required fields.");
+            }
+
+            // Validate the score
+            try {
+                Float.parseFloat(updatedScore);
+            } catch (NumberFormatException e) {
+                ErrorPopupController.Error_Popup("Please enter a numeric score.");
+                throw new RuntimeException("Please enter a numeric score.");
             }
 
             // Update the selected question with the new values
@@ -288,17 +296,20 @@ public class QuestionBankManagementController implements Initializable {
         String selectedType =  typeFilterTextField.getValue();
         String selectedScore = scoreFilterTextField.getText();
         // Validate the filter inputs
-        if (selectedQuestion == null || selectedQuestion.isEmpty()) {
-            throw new RuntimeException("Question filter cannot be empty.");
-        }
+//        if (selectedQuestion == null || selectedQuestion.isEmpty()) {
+//            ErrorPopupController.Error_Popup("Please fill in all the required fields.");
+//            throw new RuntimeException("Question filter cannot be empty.");
+//        }
 
-        if (selectedType == null || selectedType.equals("Type")) {
-            throw new RuntimeException("Type filter cannot be empty.");
-        }
-
-        if (selectedScore == null || selectedScore.isEmpty()) {
-            throw new RuntimeException("Score filter cannot be empty.");
-        }
+//        if (selectedType == null || selectedType.equals("Type")) {
+//            ErrorPopupController.Error_Popup("Please fill in all the required fields.");
+//            throw new RuntimeException("Type filter cannot be empty.");
+//        }
+//
+//        if (selectedScore == null || selectedScore.isEmpty()) {
+//            ErrorPopupController.Error_Popup("Please fill in all the required fields.");
+//            throw new RuntimeException("Score filter cannot be empty.");
+//        }
         // Filter the questionList based on the selected values
         List<Question> filteredQuestions = questionService.getAllQuestions().stream()
                 .filter(q -> {

@@ -19,6 +19,10 @@ import javafx.beans.property.SimpleFloatProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.lang.Float.parseFloat;
+
 /**
  * The `ExamManagementSystemController` class is responsible for managing the user interface of the Exam Management System.
  * It handles user interactions, such as creating and updating examinations, adding and removing questions from examinations,
@@ -161,19 +165,43 @@ public class ExamManagementSystemController {
         String selectedQuestion = questionTextField.getText();
         String selectedType = questionTypeComboBox.getValue();
 
-        // Filter the questions based on the selected criteria
-        ObservableList<Question> filteredQuestions = FXCollections.observableArrayList();
-        for (Question question : questionService.getAllQuestions()) {
-            if (
-                    (selectedScore== null || selectedScore.isEmpty() ||String.valueOf(question.getScore()).equals(selectedScore)) &&
-                            (selectedQuestion == null || selectedQuestion.isEmpty() ||question.getQuestion().contains(selectedQuestion)) &&
-                            (selectedType == null || question.getType().equals(selectedType))) {
-                filteredQuestions.add(question);
+
+        Float parsedScore = null;
+        if (!selectedScore.isEmpty()) {
+            try {
+                parsedScore = Float.parseFloat(selectedScore);
+            } catch (NumberFormatException e) {
+                ErrorPopupController.Error_Popup("Please enter a valid numeric score.");
+                return; // Exit the method if score is invalid
             }
         }
+        // Filter the questions based on the selected criteria
+//        ObservableList<Question> filteredQuestions = FXCollections.observableArrayList();
+//        for (Question question : questionService.getAllQuestions()) {
+//            if (
+//                    (parseFloat(String.valueOf(question.getScore()))==parseFloat(selectedScore)||selectedScore== null || selectedScore.isEmpty() ||String.valueOf(question.getScore()).equals(selectedScore)) &&
+//                            (selectedQuestion == null || selectedQuestion.isEmpty() ||question.getQuestion().contains(selectedQuestion)) &&
+//                            (selectedType == null || question.getType().equals(selectedType))) {
+//                filteredQuestions.add(question);
+//            }
+//        }
+        //
+        // Filter the questionList based on the selected values
+        List<Question> filteredQuestions = questionService.getAllQuestions().stream()
+                .filter(q -> {
+                    boolean questionFilter = selectedQuestion == null || selectedQuestion.isEmpty() || q.getQuestion().contains(selectedQuestion);
+                    boolean typeFilter = selectedType == null || selectedType.equals("Type") || q.getType().equals(selectedType);
+                    boolean scoreFilter = selectedScore == null || selectedScore.isEmpty() || parseFloat(String.valueOf(q.getScore()))==parseFloat(selectedScore);
+                    return questionFilter && typeFilter && scoreFilter;
+
+                })
+
+                .collect(Collectors.toList());
 
 
-        All_QuestionTableView.setItems(filteredQuestions);
+
+
+        All_QuestionTableView.setItems(FXCollections.observableArrayList(filteredQuestions));
     }
     /**
      * Deletes the selected question from the LeftQuestionTableView and the associated examination.
@@ -274,16 +302,45 @@ public class ExamManagementSystemController {
         // Get the selected exam from the ExamTableView
         Examination selectedExam = ExamTableView.getSelectionModel().getSelectedItem();
         if (selectedExam != null) {
+            //Check the invalid condition
+            if (selectedExam != null) {
+                // Retrieve input values
+                String examName = examNameField.getText().trim();
+                String examTimeText = examTimeField.getText().trim();
+                String courseID = courseComboBox.getValue();
+                String publishStatus = publishComboBox.getValue();
+
+                // Validate inputs
+                if (examName.isEmpty() || examTimeText.isEmpty() || courseID == null || publishStatus == null) {
+                    // Show an error message for incomplete input
+                    ErrorPopupController.Error_Popup("Please fill in all fields.");
+                    return;
+                }
+
+                float examTime;
+                try {
+                    examTime = Float.parseFloat(examTimeText);
+                    if (examTime < 0) {
+                        ErrorPopupController.Error_Popup("Exam time must be a non-negative number.");
+                        return;
+                    }
+                } catch (NumberFormatException e) {
+                    ErrorPopupController.Error_Popup("Invalid exam time. Please enter a valid number.");
+                    return;
+                }
+
+
             // Update the selected exam with the new values
 
             selectedExam.setExamName(examNameField.getText());
             selectedExam.setExamTime(Float.parseFloat(examTimeField.getText()));
             selectedExam.setCourseID(courseComboBox.getValue());
-            selectedExam.setPublish(publishComboBox.getValue().equals("Published"));
+            selectedExam.setPublish(publishComboBox.getValue().equals("yes"));
             examinationService.updateExamination(selectedExam);
 
             // Refresh the ExamTableView
             ExamTableView.refresh();
+        }
         }
 
     }
@@ -348,7 +405,7 @@ public class ExamManagementSystemController {
         questionTypeComboBox.getSelectionModel().clearSelection();
         scoreTextField.clear();
 
-        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
+//        All_QuestionTableView.setItems(FXCollections.observableArrayList(questionService.getAllQuestions()));
 
     }
     /**

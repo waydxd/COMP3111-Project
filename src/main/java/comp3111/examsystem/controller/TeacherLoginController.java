@@ -77,6 +77,7 @@ public class TeacherLoginController implements Initializable {
      * @return The Teacher object if found, or null if not found.
      */
     public Teacher getTeacherbyUserName(String username) {
+        teacherList = teacherService.getAllTeachers();
         for (Teacher teacher : teacherList) {
             if (teacher.getUsername().equals(username)) {
                 return teacher;

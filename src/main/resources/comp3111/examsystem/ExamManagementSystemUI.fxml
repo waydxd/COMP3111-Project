@@ -22,7 +22,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import javafx.scene.layout.Priority?>
-<BorderPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.ExamManagementSystemController">
+<BorderPane prefHeight="600.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp3111.examsystem.controller.ExamManagementSystemController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="120" BorderPane.alignment="TOP_CENTER">
             <HBox alignment="CENTER_LEFT" spacing="10.0">
@@ -41,7 +41,7 @@
                 <Label text="Type"/>
                 <ComboBox fx:id="questionTypeComboBox" promptText="Type"/>
                 <Label text="Score"/>
-                <TextField fx:id="scoreTextField" prefWidth="30"  />
+                <TextField fx:id="scoreTextField" prefWidth="70"  />
                 <Button mnemonicParsing="false" onAction="#resetQuestionFields" text="Reset" />
                 <Button mnemonicParsing="false" onAction="#filterQuestions" text="Filter" />
             </HBox>

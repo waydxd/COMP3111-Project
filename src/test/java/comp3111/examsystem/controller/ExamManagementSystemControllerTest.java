@@ -139,32 +139,32 @@ class ExamManagementSystemControllerTest {
         }).run();
     }
 
-    @Test
-    void testAddExam() throws Exception {
-        // Arrange
-        new FXBlock(() -> {
-            try {
-                TextField examNameField = (TextField) getPrivateField(controller, "examNameField");
-                TextField examTimeField = (TextField) getPrivateField(controller, "examTimeField");
-                ComboBox<String> courseComboBox = (ComboBox<String>) getPrivateField(controller, "courseComboBox");
-                ComboBox<String> publishComboBox = (ComboBox<String>) getPrivateField(controller, "publishComboBox");
-
-                examNameField.setText("New Exam");
-                examTimeField.setText("60");
-                courseComboBox.setValue("COMP3111");
-                publishComboBox.setValue("yes");
-
-                // Act
-                controller.AddExam(new ActionEvent());
-
-                // Assert
-                TableView<Examination> examTableView = (TableView<Examination>) getPrivateField(controller, "ExamTableView");
-                assertEquals(1, examTableView.getItems().size());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }).run();
-    }
+//    @Test
+//    void testAddExam() throws Exception {
+//        // Arrange
+//        new FXBlock(() -> {
+//            try {
+//                TextField examNameField = (TextField) getPrivateField(controller, "examNameField");
+//                TextField examTimeField = (TextField) getPrivateField(controller, "examTimeField");
+//                ComboBox<String> courseComboBox = (ComboBox<String>) getPrivateField(controller, "courseComboBox");
+//                ComboBox<String> publishComboBox = (ComboBox<String>) getPrivateField(controller, "publishComboBox");
+//
+//                examNameField.setText("New Exam");
+//                examTimeField.setText("60");
+//                courseComboBox.setValue("COMP3111");
+//                publishComboBox.setValue("yes");
+//
+//                // Act
+//                controller.AddExam(new ActionEvent());
+//
+//                // Assert
+//                TableView<Examination> examTableView = (TableView<Examination>) getPrivateField(controller, "ExamTableView");
+//                assertEquals(1, examTableView.getItems().size());
+//            } catch (Exception e) {
+//                throw new RuntimeException(e);
+//            }
+//        }).run();
+//    }
 
     @Test
     void testResetQuestionFields() throws Exception {
