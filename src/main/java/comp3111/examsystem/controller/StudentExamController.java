@@ -287,16 +287,11 @@ public class StudentExamController {
             String correctAnswer = question.getAnswer();
             if (question.getType().equals("Multiple")) {
                 boolean isCorrect = true;
-                if (correctAnswer.equals("ALL")) {
-                    if (!optionACheckBox.isSelected() || !optionBCheckBox.isSelected() || !optionCCheckBox.isSelected() || !optionDCheckBox.isSelected()) {
-                        isCorrect = false;
-                    }
-                } else {
-                    if (correctAnswer.contains("A") != optionACheckBox.isSelected()) isCorrect = false;
-                    if (correctAnswer.contains("B") != optionBCheckBox.isSelected()) isCorrect = false;
-                    if (correctAnswer.contains("C") != optionCCheckBox.isSelected()) isCorrect = false;
-                    if (correctAnswer.contains("D") != optionDCheckBox.isSelected()) isCorrect = false;
-                }
+                boolean[] selected = selectedMultipleChoices.getOrDefault(i, new boolean[4]);
+                if (correctAnswer.contains("A") != selected[0]) isCorrect = false;
+                if (correctAnswer.contains("B") != selected[1]) isCorrect = false;
+                if (correctAnswer.contains("C") != selected[2]) isCorrect = false;
+                if (correctAnswer.contains("D") != selected[3]) isCorrect = false;
                 if (isCorrect) correctAnswers.incrementAndGet();
             } else {
                 RadioButton selectedRadioButton = selectedChoices.get(i);
@@ -363,6 +358,7 @@ public class StudentExamController {
         float fullScore = (float) totalQuestions;
         String[] timerParts = timerLabel.getText().split(" ");
         float timeSpent = Float.parseFloat(timerParts[1]);
+        timeSpent = timeSpent/60;
 
         Student student = studentService.getStudent(studentid);
         String studentName = student.getName();
