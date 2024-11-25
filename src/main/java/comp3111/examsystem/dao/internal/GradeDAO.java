@@ -142,7 +142,7 @@ public class GradeDAO {
      */
     public List<Grade> getGradesForUser(String username) {
         return create.selectFrom(GRADES)
-                .where(GRADES.STUDENT_NAME.eq(username))
+                .where(GRADES.USERNAME.eq(username))
                 .fetchInto(Grade.class);
     }
 }
