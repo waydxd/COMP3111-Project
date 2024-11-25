@@ -118,7 +118,7 @@ public class TeacherLoginController implements Initializable {
                 ((Stage) ((Button) e.getSource()).getScene().getWindow()).close();
             } else {
                 // Show error popup on login failure
-                ErrorPopupController.Error_Popup();
+                ErrorPopupController.Error_Popup("login failed");
             }
         } catch (IOException e1) {
             e1.printStackTrace();

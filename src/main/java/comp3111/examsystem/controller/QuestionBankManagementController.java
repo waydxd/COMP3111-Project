@@ -165,9 +165,23 @@ public class QuestionBankManagementController implements Initializable {
         // Validate the user input
         if (question.isEmpty() || optionA.isEmpty() || optionB.isEmpty() || optionC.isEmpty() || optionD.isEmpty() || answer.isEmpty() || type == null || type.equals("Type") || score.isEmpty()) {
             // Display an error message or show a dialog to the user
-            ErrorPopupController.Error_Popup();
+            ErrorPopupController.Error_Popup("Please fill in all the required fields.");
+            return;
             // Throw a RuntimeException with an appropriate error message
-            throw new RuntimeException("Please fill in all the required fields.");
+//            throw new RuntimeException("Please fill in all the required fields.");
+        }
+        //Validate the option
+        if(!answer.matches("[ABCD]*") && !answer.equals("ALL"))
+        {
+            ErrorPopupController.Error_Popup("Please fill in the answer with ABCD or ALL");
+        }
+        // Validate the score
+        try {
+            Float.parseFloat(score);
+        } catch (NumberFormatException e) {
+            ErrorPopupController.Error_Popup("Please enter a numeric score.");
+            return;
+//                throw new RuntimeException("Please enter a numeric score.");
         }
         // Create a new Question object with the entered data
         Question newQuestion = new Question(question, new String[] {optionA, optionB, optionC, optionD}, answer, type, score);
@@ -204,7 +218,8 @@ public class QuestionBankManagementController implements Initializable {
             if (updatedQuestion.isEmpty() || updatedOptionA.isEmpty() || updatedOptionB.isEmpty() || updatedOptionC.isEmpty() || updatedOptionD.isEmpty() || updatedAnswer.isEmpty() || updatedType == null || updatedType.equals("Type") || updatedScore.isEmpty()) {
                 // Display an error message or show a dialog to the user
                 ErrorPopupController.Error_Popup("Please fill in all the required fields.");
-                throw new RuntimeException("Please fill in all the required fields.");
+                return;
+//                throw new RuntimeException("Please fill in all the required fields.");
             }
 
             // Validate the score
@@ -212,7 +227,8 @@ public class QuestionBankManagementController implements Initializable {
                 Float.parseFloat(updatedScore);
             } catch (NumberFormatException e) {
                 ErrorPopupController.Error_Popup("Please enter a numeric score.");
-                throw new RuntimeException("Please enter a numeric score.");
+                return;
+//                throw new RuntimeException("Please enter a numeric score.");
             }
 
             // Update the selected question with the new values
@@ -232,8 +248,9 @@ public class QuestionBankManagementController implements Initializable {
         }
         else {
             // Throw a RuntimeException if no question is selected
-            ErrorPopupController.Error_Popup();
-            throw new RuntimeException("No question selected for update.");
+            ErrorPopupController.Error_Popup("No question selected for update.");
+            return;
+//            throw new RuntimeException("No question selected for update.");
         }
     }
 
@@ -256,7 +273,8 @@ public class QuestionBankManagementController implements Initializable {
         }
         else {
             // Throw a RuntimeException if no question is selected
-            throw new RuntimeException("No question selected for deletion.");
+            ErrorPopupController.Error_Popup("No question selected for deletion.");
+//            throw new RuntimeException("No question selected for deletion.");
         }
     }
 
@@ -310,6 +328,14 @@ public class QuestionBankManagementController implements Initializable {
 //            ErrorPopupController.Error_Popup("Please fill in all the required fields.");
 //            throw new RuntimeException("Score filter cannot be empty.");
 //        }
+        // Validate the score
+        try {
+            Float.parseFloat(selectedScore);
+        } catch (NumberFormatException e) {
+            ErrorPopupController.Error_Popup("Please enter a numeric score.");
+            return;
+//                throw new RuntimeException("Please enter a numeric score.");
+        }
         // Filter the questionList based on the selected values
         List<Question> filteredQuestions = questionService.getAllQuestions().stream()
                 .filter(q -> {
