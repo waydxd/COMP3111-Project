@@ -1,1 +1,0 @@
-moduleSearchIndex = [{"l":"comp3111.examsystem"}];updateSearchResults();
